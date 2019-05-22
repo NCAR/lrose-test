@@ -167,7 +167,54 @@ REGR5_CLUT     REGR5_CLUT  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstor
 ======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -5   80  7  dcont   1 0
+
+# SPOL MOMENTS - regression order 7
+
+REGR7_DBZ_F   REGR7_DBZ_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ_F   dbz.colors   dBZ -7 80 7 radial 1 0
+REGR7_DBZ     REGR7_DBZ     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ     dbz.colors   dBZ -7 80 7 radial 1 0
+REGR7_VEL_F   REGR7_VEL_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL_F   vel.colors   m/s -7 80 7 radial 1 0
+REGR7_VEL     REGR7_VEL     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL     vel.colors   m/s -7 80 7 radial 1 0
+REGR7_WIDTH_F REGR7_WIDTH_F mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH_F  width.colors m/s -7 80 7 radial 1 0
+REGR7_WIDTH   REGR7_WIDTH   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH    width.colors m/s -7 80 7 radial 1 0
+REGR7_ZDR_F   REGR7_ZDR_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR_F zdr.colors   dB  -7 80 7 radial 1 0
+REGR7_ZDR     REGR7_ZDR     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR   zdr.colors   dB  -7 80 7 radial 1 0
+
+REGR7_PHIDP_F REGR7_PHIDP_F mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP_F phidp.colors deg -7 80 7 radial 1 0
+REGR7_PHIDP   REGR7_PHIDP   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP   phidp.colors deg -7 80 7 radial 1 0
+REGR7_RHOHV_F REGR7_RHOHV_F mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV_F rhohv.colors _   -7 80 7 radial 1 0
+REGR7_RHOHV   REGR7_RHOHV   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV   rhohv.colors _   -7 80 7 radial 1 0
+REGR7_LDRH_F  REGR7_LDRH_F  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH_F ldr.colors   dB  -7 80 7 radial 1 0
+REGR7_LDRH    REGR7_LDRH    mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH   ldr.colors   dB  -7 80 7 radial 1 0
+REGR7_KDP_F   REGR7_KDP_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP_F  kdp_sband.colors   deg/km -7 80 7 radial 1 0     
+REGR7_KDP     REGR7_KDP     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP    kdp_sband.colors   deg/km -7 80 7 radial 1 0     
+
+REGR7_SNRHC_F   REGR7_SNRHC_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC_F  snr.colors   dB     -7 80 7 radial 1 0
+REGR7_SNRHC     REGR7_SNRHC     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC    snr.colors   dB     -7 80 7 radial 1 0
+REGR7_SNRVC_F   REGR7_SNRVC_F   mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC_F  snr.colors   dB     -7 80 7 radial 1 0
+REGR7_SNRVC     REGR7_SNRVC     mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC    snr.colors   dB     -7 80 7 radial 1 0
+REGR7_DBMHC_F  REGR7_DBMHC_F  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC_F  dbmlow.colors dBm -7 80 7 radial 1 0
+REGR7_DBMHC    REGR7_DBMHC    mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC    dbmlow.colors dBm -7 80 7 radial 1 0
+REGR7_DBMVC_F  REGR7_DBMVC_F  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC_F  dbmlow.colors dBm -7 80 7 radial 1 0
+REGR7_DBMVC    REGR7_DBMVC    mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC    dbmlow.colors dBm -7 80 7 radial 1 0
+
+REGR7_CPA      REGR7_CPA    mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&CPA  cpa.colors  - -7 80 7 radial 1 0
+REGR7_NCP      REGR7_NCP    mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&NCP  ncp.colors  dB   -7   80  7  radial   1 0
+REGR7_CMD      REGR7_CMD       mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD      cmd.colors  none -7 80 7 radial 1 0
+REGR7_CMD_FLAG REGR7_CMD_FLAG  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD_FLAG cmd_flag.colors  none -7 80 7 radial 1 0
+REGR7_CLUT     REGR7_CLUT  mdvp:://localhost:0:/scr/sci/dixon/data/bomb_snowstorm/cfradial/spol_regr7/sur&CLUT  dbz.colors dB -7 80 7 radial 1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
+======== ========  mdvp::static//localhost:0:/spacer&Elevation  none.colors   m   -7   80  7  dcont   1 0
 
 # SPOL MOMENTS - regression order 9
 
@@ -542,7 +589,7 @@ KFTG_REGR9_CLUT     KFTG_REGR9_CLUT  mdvp:://localhost:0:/scr/sci/dixon/data/bom
 
 Counties     Counties     us_counties.map   1      0.0      10000.0     blue 
 States       States       usa.map           1      0.0      10000.0     white
-#dia          dia          DIA_all.map       1      0.0      10000.0     white
+dia          dia          DIA_all.map       1      0.0      10000.0     white
 SPOL         SPOL         spol_marshall.map 1      0.0      10000.0    yellow
 KFTG         KFTG         kftg.map          1      0.0      10000.0    yellow
 
