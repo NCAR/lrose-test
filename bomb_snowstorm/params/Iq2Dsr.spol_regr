@@ -89,7 +89,7 @@ use_multiple_threads = TRUE;
 // Type: int
 //
 
-n_compute_threads = 16;
+n_compute_threads = 6;
 
 //======================================================================
 //
