@@ -1903,7 +1903,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7",
+    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_regra",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };

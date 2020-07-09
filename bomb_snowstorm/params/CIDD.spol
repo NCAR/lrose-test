@@ -77,44 +77,48 @@
 
 # SPOL MOMENTS - regression order 7
 
-REGR7_DBZ_F   REGR7_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7_DBZ     REGR7_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7_VEL_F   REGR7_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR7_VEL     REGR7_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR7_WIDTH_F REGR7_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR7_WIDTH   REGR7_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
-REGR7_ZDR_F   REGR7_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR7_ZDR     REGR7_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR_AUTO_DBZ_F   REGR_AUTO_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_AUTO_DBZ     REGR_AUTO_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_AUTO_VEL_F   REGR_AUTO_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR_AUTO_VEL     REGR_AUTO_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR_AUTO_WIDTH_F REGR_AUTO_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR_AUTO_WIDTH   REGR_AUTO_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR7_PHIDP_F REGR7_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR7_PHIDP   REGR7_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR7_RHOHV_F REGR7_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR7_RHOHV   REGR7_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
-REGR7_LDRH_F  REGR7_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
-REGR7_LDRH    REGR7_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
-REGR7_KDP_F   REGR7_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-REGR7_KDP     REGR7_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_AUTO_ZDR_F   REGR_AUTO_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR_AUTO_ZDR     REGR_AUTO_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR_AUTO_PHIDP_F REGR_AUTO_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR_AUTO_PHIDP   REGR_AUTO_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR_AUTO_RHOHV_F REGR_AUTO_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_AUTO_RHOHV   REGR_AUTO_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR7_SNRHC_F   REGR7_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-REGR7_SNRHC     REGR7_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-REGR7_SNRVC_F   REGR7_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-REGR7_SNRVC     REGR7_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
-REGR7_DBMHC_F  REGR7_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-REGR7_DBMHC    REGR7_DBMHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-REGR7_DBMVC_F  REGR7_DBMVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-REGR7_DBMVC    REGR7_DBMVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_AUTO_LDRH_F  REGR_AUTO_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
+REGR_AUTO_LDRH    REGR_AUTO_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
+REGR_AUTO_KDP_F   REGR_AUTO_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_AUTO_KDP     REGR_AUTO_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_AUTO_SNRHC_F   REGR_AUTO_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_AUTO_SNRHC     REGR_AUTO_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
 
-REGR7_CPA      REGR7_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR7_NCP      REGR7_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR7_CMD      REGR7_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR7_CMD_FLAG REGR7_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR7_CLUT     REGR7_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
-CSR_REGR3      CSR_REGR3   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
-REGR_ORDER     REGR_ORDER  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
-REGR_INTERP_RATIO  REGR_INTERP_RATIO mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
+REGR_AUTO_SNRVC_F   REGR_AUTO_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_AUTO_SNRVC     REGR_AUTO_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+REGR_AUTO_DBMHC_F  REGR_AUTO_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_AUTO_DBMHC    REGR_AUTO_DBMHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_AUTO_DBMVC_F  REGR_AUTO_DBMVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_AUTO_DBMVC    REGR_AUTO_DBMVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
 
+REGR_AUTO_CPA      REGR_AUTO_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR_AUTO_NCP      REGR_AUTO_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR_AUTO_CMD      REGR_AUTO_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR_AUTO_CMD_FLAG REGR_AUTO_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_AUTO_CLUT     REGR_AUTO_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+CNR_REGR3      CNR_REGR3   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
+
+REGR_ORDER     REGR_ORDER  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
+REGR_INTERP_RATIO  REGR_INTERP_RATIO mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra/sur&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -130,20 +134,21 @@ ADAPT_VEL_F   ADAPT_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfrad
 ADAPT_VEL     ADAPT_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
 ADAPT_WIDTH_F ADAPT_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 ADAPT_WIDTH   ADAPT_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
 ADAPT_ZDR_F   ADAPT_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
 ADAPT_ZDR     ADAPT_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-
 ADAPT_PHIDP_F ADAPT_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
 ADAPT_PHIDP   ADAPT_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
 ADAPT_RHOHV_F ADAPT_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
 ADAPT_RHOHV   ADAPT_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+
 ADAPT_LDRH_F  ADAPT_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
 ADAPT_LDRH    ADAPT_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
 ADAPT_KDP_F   ADAPT_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
 ADAPT_KDP     ADAPT_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-
 ADAPT_SNRHC_F   ADAPT_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
 ADAPT_SNRHC     ADAPT_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+
 ADAPT_SNRVC_F   ADAPT_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
 ADAPT_SNRVC     ADAPT_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
 ADAPT_DBMHC_F  ADAPT_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
@@ -157,11 +162,7 @@ ADAPT_CMD      ADAPT_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cf
 ADAPT_CMD_FLAG ADAPT_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 ADAPT_CLUT     ADAPT_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -177,20 +178,21 @@ REGR5_VEL_F   REGR5_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfrad
 REGR5_VEL     REGR5_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
 REGR5_WIDTH_F REGR5_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 REGR5_WIDTH   REGR5_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
 REGR5_ZDR_F   REGR5_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
 REGR5_ZDR     REGR5_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-
 REGR5_PHIDP_F REGR5_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
 REGR5_PHIDP   REGR5_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
 REGR5_RHOHV_F REGR5_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
 REGR5_RHOHV   REGR5_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+
 REGR5_LDRH_F  REGR5_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
 REGR5_LDRH    REGR5_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
 REGR5_KDP_F   REGR5_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
 REGR5_KDP     REGR5_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-
 REGR5_SNRHC_F   REGR5_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
 REGR5_SNRHC     REGR5_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+
 REGR5_SNRVC_F   REGR5_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
 REGR5_SNRVC     REGR5_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
 REGR5_DBMHC_F  REGR5_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
@@ -203,12 +205,52 @@ REGR5_NCP      REGR5_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfrad
 REGR5_CMD      REGR5_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
 REGR5_CMD_FLAG REGR5_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 REGR5_CLUT     REGR5_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR5_REGR_ORDER REGR5_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+# SPOL MOMENTS - regression order 7
+
+REGR7_DBZ_F   REGR7_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7_DBZ     REGR7_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7_VEL_F   REGR7_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR7_VEL     REGR7_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR7_WIDTH_F REGR7_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR7_WIDTH   REGR7_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+REGR7_ZDR_F   REGR7_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR7_ZDR     REGR7_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR7_PHIDP_F REGR7_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR7_PHIDP   REGR7_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR7_RHOHV_F REGR7_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR7_RHOHV   REGR7_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+
+REGR7_LDRH_F  REGR7_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
+REGR7_LDRH    REGR7_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
+REGR7_KDP_F   REGR7_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR7_KDP     REGR7_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR7_SNRHC_F   REGR7_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR7_SNRHC     REGR7_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+
+REGR7_SNRVC_F   REGR7_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR7_SNRVC     REGR7_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+REGR7_DBMHC_F  REGR7_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR7_DBMHC    REGR7_DBMHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR7_DBMVC_F  REGR7_DBMVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR7_DBMVC    REGR7_DBMVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+REGR7_CPA      REGR7_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR7_NCP      REGR7_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR7_CMD      REGR7_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR7_CMD_FLAG REGR7_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR7_CLUT     REGR7_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR7_REGR_ORDER REGR7_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -224,20 +266,21 @@ REGR9_VEL_F   REGR9_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfrad
 REGR9_VEL     REGR9_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
 REGR9_WIDTH_F REGR9_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 REGR9_WIDTH   REGR9_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
 REGR9_ZDR_F   REGR9_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
 REGR9_ZDR     REGR9_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-
 REGR9_PHIDP_F REGR9_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
 REGR9_PHIDP   REGR9_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
 REGR9_RHOHV_F REGR9_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
 REGR9_RHOHV   REGR9_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+
 REGR9_LDRH_F  REGR9_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
 REGR9_LDRH    REGR9_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
 REGR9_KDP_F   REGR9_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
 REGR9_KDP     REGR9_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-
 REGR9_SNRHC_F   REGR9_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
 REGR9_SNRHC     REGR9_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+
 REGR9_SNRVC_F   REGR9_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
 REGR9_SNRVC     REGR9_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
 REGR9_DBMHC_F  REGR9_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
@@ -250,9 +293,7 @@ REGR9_NCP      REGR9_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfrad
 REGR9_CMD      REGR9_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
 REGR9_CMD_FLAG REGR9_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 REGR9_CLUT     REGR9_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+REGR9_REGR_ORDER REGR9_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -260,55 +301,6 @@ REGR9_CLUT     REGR9_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradi
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-# SPOL MOMENTS - regression order 15
-
-#REGR15_DBZ_F   REGR15_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-#REGR15_DBZ     REGR15_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-#REGR15_VEL_F   REGR15_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-#REGR15_VEL     REGR15_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
-#REGR15_WIDTH_F REGR15_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-#REGR15_WIDTH   REGR15_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
-#REGR15_ZDR_F   REGR15_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-#REGR15_ZDR     REGR15_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-
-#REGR15_PHIDP_F REGR15_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-#REGR15_PHIDP   REGR15_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-#REGR15_RHOHV_F REGR15_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-#REGR15_RHOHV   REGR15_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
-#REGR15_LDRH_F  REGR15_LDRH_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
-#REGR15_LDRH    REGR15_LDRH    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
-#REGR15_KDP_F   REGR15_KDP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-#REGR15_KDP     REGR15_KDP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-
-#REGR15_SNRHC_F   REGR15_SNRHC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-#REGR15_SNRHC     REGR15_SNRHC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-#REGR15_SNRVC_F   REGR15_SNRVC_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-#REGR15_SNRVC     REGR15_SNRVC     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
-#REGR15_DBMHC_F  REGR15_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-#REGR15_DBMHC    REGR15_DBMHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-#REGR15_DBMVC_F  REGR15_DBMVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-#REGR15_DBMVC    REGR15_DBMVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
-
-#REGR15_CPA      REGR15_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
-#REGR15_NCP      REGR15_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-#REGR15_CMD      REGR15_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
-#REGR15_CMD_FLAG REGR15_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-#REGR15_CLUT     REGR15_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr15/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # KFTG MOMENTS - adaptive filter
 
@@ -520,13 +512,13 @@ REGR9_CLUT     REGR9_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradi
 
 # Colorado
 
-Counties     Counties     us_counties.map   1      0.0      10000.0     blue 
-States       States       usa.map           1      0.0      10000.0     white
-ncar         ncar         ncar.map          1      0.0      10000.0     white
-dia          dia          DIA_all.map       1      0.0      10000.0     white
-BAO          BAO          bao_tower.map     1      0.0      10000.0     white
-SPOL         SPOL         spol_firestone.map 1      0.0      10000.0    yellow
-CHILL        CHILL        spol_firestone.map 1      0.0      10000.0    cyan
+Counties     Counties     us_counties.map    0      0.0      10000.0     blue 
+States       States       usa.map            0      0.0      10000.0     white
+ncar         ncar         ncar.map           0      0.0      10000.0     white
+dia          dia          DIA_all.map        0      0.0      10000.0     white
+BAO          BAO          bao_tower.map      0      0.0      10000.0     white
+SPOL         SPOL         spol_firestone.map 0      0.0      10000.0    yellow
+CHILL        CHILL        spol_firestone.map 0      0.0      10000.0    cyan
 
 # Taiwan
 
@@ -625,8 +617,8 @@ cidd.debug2_flag:           0
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
 #cidd.demo_time:  11:30 03/13/2019
-#cidd.demo_time:  23:40 03/13/2019
-cidd.demo_time:  22:05 03/13/2019
+cidd.demo_time:  23:40 03/13/2019
+#cidd.demo_time:  22:05 03/13/2019
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -858,11 +850,11 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  40km
-cidd.level1_min_xkm:                -40.0
-cidd.level1_min_ykm:                -40.0
-cidd.level1_max_xkm:                40.0
-cidd.level1_max_ykm:                40.0
+cidd.level1_label:                  sample
+cidd.level1_min_xkm:                -45.0
+cidd.level1_min_ykm:                -45.0
+cidd.level1_max_xkm:                100.0
+cidd.level1_max_ykm:                100.0
 #
 cidd.level2_label:                  75km
 cidd.level2_min_xkm:                -75.0
@@ -1305,7 +1297,7 @@ cidd.click_posn_rel_to_origin: 1
 # Set this parameter to force the field menu popup to this many columns
 # If set <= 0, then cidd sets this dynamically, allowing at most 30 in each
 # column.
-cidd.num_field_menu_cols: 8
+cidd.num_field_menu_cols: 6
 
 # This parameter sets WSDDM specific behavior On -
 # - Go to end of loop when movie stops.

@@ -898,7 +898,7 @@ moments_params = {
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_ANGLE,
     beam_n_samples = 192,
-    beam_angle_deg = 0.5,
+    beam_angle_deg = 1.0,
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
@@ -1947,7 +1947,7 @@ regression_filter_notch_edge_power_ratio_threshold_db = -45;
 // Type: double
 //
 
-regression_filter_min_csr_db = -5;
+regression_filter_min_csr_db = -6;
 
 ///////////// regression_filter_interp_across_notch ///
 //
