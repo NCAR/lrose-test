@@ -1876,7 +1876,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt64",
+    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };

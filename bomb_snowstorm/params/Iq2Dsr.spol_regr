@@ -1900,7 +1900,7 @@ use_polynomial_regression_clutter_filter = TRUE;
 // Type: int
 //
 
-regression_filter_polynomial_order = 9;
+regression_filter_polynomial_order = 7;
 
 ///////////// regression_filter_determine_order_from_CSR 
 //
