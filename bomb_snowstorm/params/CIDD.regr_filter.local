@@ -81,6 +81,8 @@ CMD-ADAPT64_DBZ_F   CMD-ADAPT64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_sno
 CMD-ADAPT64_DBZ     CMD-ADAPT64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
 CMD-ADAPT64_VEL_F   CMD-ADAPT64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
 CMD-ADAPT64_VEL     CMD-ADAPT64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+#CMD-ADAPT64_VEL_HV_F   CMD-ADAPT64_VEL_HV_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
+#CMD-ADAPT64_VEL_HV     CMD-ADAPT64_VEL_HV     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
 CMD-ADAPT64_WIDTH_F CMD-ADAPT64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 CMD-ADAPT64_WIDTH   CMD-ADAPT64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
@@ -88,6 +90,8 @@ ALL-ADAPT64_DBZ_F   ALL-ADAPT64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_sno
 ALL-ADAPT64_DBZ     ALL-ADAPT64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
 ALL-ADAPT64_VEL_F   ALL-ADAPT64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
 ALL-ADAPT64_VEL     ALL-ADAPT64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+#ALL-ADAPT64_VEL_HV_F   ALL-ADAPT64_VEL_HV_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
+#ALL-ADAPT64_VEL_HV     ALL-ADAPT64_VEL_HV     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
 ALL-ADAPT64_WIDTH_F ALL-ADAPT64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 ALL-ADAPT64_WIDTH   ALL-ADAPT64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
@@ -95,6 +99,8 @@ ALL-ADAPT64_ZDR_F   ALL-ADAPT64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_sno
 ALL-ADAPT64_ZDR     ALL-ADAPT64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
 ALL-ADAPT64_PHIDP_F ALL-ADAPT64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
 ALL-ADAPT64_PHIDP   ALL-ADAPT64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+#CMD-ADAPT64_PHIDP_F CMD-ADAPT64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+#CMD-ADAPT64_PHIDP   CMD-ADAPT64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-cmd/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
 ALL-ADAPT64_RHOHV_F ALL-ADAPT64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
 ALL-ADAPT64_RHOHV   ALL-ADAPT64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
