@@ -141,12 +141,12 @@ ADAPT32_CMD_FLAG ADAPT32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstor
 ALL-ADAPT32_CLUT     ALL-ADAPT32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32-all/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
 CMD-ADAPT32_CLUT     CMD-ADAPT32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32-cmd/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # SPOL MOMENTS - regression order auto
 
@@ -210,12 +210,12 @@ ALL-RAUTO32_CNR      ALL-RAUTO32_CNR   mdvp:://front.eol.ucar.edu:8080:bomb_snow
 ALL-RAUTO32_ORDER    ALL-RAUTO32_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32-all/sur?use_http=true&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
 ALL-RAUTO32_IRATIO   ALL-RAUTO32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32-all/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # SPOL MOMENTS - regression order 5
 
@@ -261,12 +261,12 @@ ALL-REGR5-32_CNR      ALL-REGR5-32_CNR    mdvp:://front.eol.ucar.edu:8080:bomb_s
 ALL-REGR5-32_ORDER    ALL-REGR5-32_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32-all/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 ALL-REGR5-32_IRATIO   ALL-REGR5-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32-all/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # SPOL MOMENTS - regression order 7
 
@@ -312,12 +312,12 @@ ALL-REGR7-32_CNR      ALL-REGR7-32_CNR    mdvp:://front.eol.ucar.edu:8080:bomb_s
 ALL-REGR7-32_ORDER    ALL-REGR7-32_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32-all/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 ALL-REGR7-32_IRATIO   ALL-REGR7-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32-all/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # SPOL MOMENTS - regression order 9
 
@@ -363,12 +363,12 @@ ALL-REGR9-32_CNR      ALL-REGR9-32_CNR    mdvp:://front.eol.ucar.edu:8080:bomb_s
 ALL-REGR9-32_ORDER    ALL-REGR9-32_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32-all/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32-all/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # KFTG MOMENTS - adaptive filter
 
@@ -404,18 +404,18 @@ ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_s
 # KFTG_ADAPT_CMD      KFTG_ADAPT_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_adapt/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
 # KFTG_ADAPT_CMD_FLAG KFTG_ADAPT_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_adapt/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 # KFTG_ADAPT_CLUT     KFTG_ADAPT_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_adapt/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 
 # KFTG MOMENTS - regression filter order 3
@@ -452,18 +452,18 @@ ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_s
 # KFTG_REGR3_CMD      KFTG_REGR3_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr3/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
 # KFTG_REGR3_CMD_FLAG KFTG_REGR3_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr3/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 # KFTG_REGR3_CLUT     KFTG_REGR3_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr3/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # KFTG MOMENTS - regression filter order 5
 
@@ -499,18 +499,18 @@ ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_s
 # KFTG_REGR5_CMD      KFTG_REGR5_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr5/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
 # KFTG_REGR5_CMD_FLAG KFTG_REGR5_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr5/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 # KFTG_REGR5_CLUT     KFTG_REGR5_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr5/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # KFTG MOMENTS - regression filter order 9
 
@@ -546,18 +546,18 @@ ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_s
 # KFTG_REGR9_CMD      KFTG_REGR9_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr9/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
 # KFTG_REGR9_CMD_FLAG KFTG_REGR9_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr9/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 # KFTG_REGR9_CLUT     KFTG_REGR9_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/kftg_regr9/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-#======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+#======== ========  mdvp::static//localhost::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 
 </GRIDS>
@@ -885,8 +885,8 @@ cidd.enable_save_image_panel: 1
  
 # On startup and each time the reset button is pressed, the display
 # will indicate a click at this point, as if the user had clicked..
-cidd.reset_click_longitude:  $(RADAR_LON)
-cidd.reset_click_latitude:   $(RADAR_LAT)
+cidd.reset_click_longitude:  -105.1951
+cidd.reset_click_latitude:   39.9502
 #
 # The Outer most domain: Overlays are clipped to this domain and 
 # pan/moves cannot exceed these edge limits.
@@ -897,8 +897,8 @@ cidd.domain_limit_max_y:         5000
  
 # The Lat, Long of the center of the display. Internal range rings
 # are relative to this point.
-cidd.origin_longitude:       $(RADAR_LON)
-cidd.origin_latitude:        $(RADAR_LAT)
+cidd.origin_longitude:       -105.1951
+cidd.origin_latitude:        39.9502
 #
 #
 # Select the data fields/page to start on.
@@ -988,8 +988,8 @@ cidd.max_adeg:               360.0
 
 # List of comma delimited local directories or HTTP URLs to search
 # Searchs . then each directory/URL in order 
-cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales,http://front.eol.ucar.edu/color_scales
-cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps,http://front.eol.ucar.edu/maps
+cidd.color_file_subdir:   http://front.eol.ucar.edu/color_scales
+cidd.map_file_subdir:     http://front.eol.ucar.edu/maps
 
 #
 # Station locator features
@@ -1512,7 +1512,7 @@ cidd.menu_bar_funct15: SHOW_STATUS_PANEL
 
 ##########################################
 
-cidd.horiz_frame_label: SPOL $(SITE_NAME)
+cidd.horiz_frame_label: SPOL MARSHALL
 
 # Set the message to display when no data is availible
 cidd.no_data_message:     NO DATA FOUND (in this area at the selected time)
@@ -1700,7 +1700,7 @@ short_requests = TRUE;
 prod_info = {
    {
     menu_label = "RHI-ticks",
-    url = "spdbp:Rhi2Symprod:ticks//$(DATA_HOST)::spdb/rhi/sband",
+    url = "spdbp:Rhi2Symprod:ticks//localhost::spdb/rhi/sband",
     data_type = 0,
     render_type = RENDER_ALL_VALID,
     on_by_default = FALSE,
@@ -1713,7 +1713,7 @@ prod_info = {
   , 
   {
     menu_label = "RHI-label",
-    url = "spdbp:Rhi2Symprod:label//$(DATA_HOST)::spdb/rhi/sband",
+    url = "spdbp:Rhi2Symprod:label//localhost::spdb/rhi/sband",
     data_type = 0,
     render_type = RENDER_ALL_VALID,
     on_by_default = FALSE,
@@ -1723,71 +1723,6 @@ prod_info = {
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
   }
-  // ,
-  // {
-  //   menu_label = "METARS-simple",
-  //   url = "spdbp:Metar2Symprod:simple//$(DATA_HOST)::spol/spdb/metar",
-  //   data_type = 0,
-  //   render_type = RENDER_LATEST_IN_FRAME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 90.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  // ,
-  // {
-  //   menu_label = "METARS-full",
-  //   url = "spdbp:Metar2Symprod:labels//$(DATA_HOST)::spol/spdb/metar",
-  //   data_type = 0,
-  //   render_type = RENDER_LATEST_IN_FRAME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 90.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  // ,
-  // {
-  //   menu_label = "SYN-OBS",
-  //   url = "spdbp:Metar2Symprod:simple//$(DATA_HOST)::spol/spdb/synop_obs",
-  //   data_type = 0,
-  //   render_type = RENDER_LATEST_IN_FRAME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 240.0,
-  //   minutes_allow_after = 6.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  // ,
-  // {
-  //   menu_label = "WWLLN-1hour" ,
-  //   url = "spdbp:Ltg2Symprod:wwlln//$(DATA_HOST)::spol/spdb/wwlln",
-  //   data_type = 0,
-  //   render_type = RENDER_ALL_BEFORE_DATA_TIME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 60.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   FALSE,
-  //   FALSE
-  // }
-  // ,                        
-  // {
-  //   menu_label = "Falcon Track 10-min",
-  //   url = "spdbp:AcTrack2Symprod:10_min//$(DATA_HOST)::spol/spdb/ac_posn/falcon",
-  //   data_type = 0,
-  //   render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 15.0,
-  //   minutes_allow_after = 15.0,
-  //   text_off_threshold = 0.4,
-  //   FALSE,
-  //   FALSE
-  // }
 };
 
 </SYMPRODS> 
