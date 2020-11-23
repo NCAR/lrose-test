@@ -73,7 +73,7 @@
 # Front Range
 #
 
-CENSOR  CENSOR $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PURPLE_HAZE purple_haze.colors m/s -5 80 5 radial 1 1
+CENSOR CENSOR $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PURPLE_HAZE purple_haze.colors m/s -5 80 5 radial 1 1
 VEL   VEL   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&VEL vel.colors m/s -5 80 5 radial 0 0
 
 </GRIDS>

@@ -1519,6 +1519,54 @@ output_fields = {
     output_scale = 1,
     output_offset = 0
   }
+  ,
+  {
+    input_field_name = "SW",
+    output_field_name = "WIDTH",
+    long_name = "spectrum_width",
+    standard_name = "doppler_spectrum_width",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "ZDR",
+    output_field_name = "ZDR",
+    long_name = "differential_reflectivity",
+    standard_name = "log_differential_reflectivity_hv",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "PHI",
+    output_field_name = "PHIDP",
+    long_name = "differential_phase",
+    standard_name = "differential_phase_hv",
+    output_units = "deg",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "RHO",
+    output_field_name = "RHOHV",
+    long_name = "cross_correlation",
+    standard_name = "cross_correlation_ratio_hv",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
 };
 
 ///////////// write_other_fields_unchanged ////////////
@@ -1532,7 +1580,7 @@ output_fields = {
 // Type: boolean
 //
 
-write_other_fields_unchanged = FALSE;
+write_other_fields_unchanged = TRUE;
 
 ///////////// exclude_specified_fields ////////////////
 //
