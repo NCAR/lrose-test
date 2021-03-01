@@ -110,15 +110,15 @@ DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat&DbzColMax 
 DbzBackground   DbzBackground   $(HOME)/data/convstrat/mdv/conv_strat&DbzBackground   dbz.colors - -5 80 5 cart 1 0
 ConvRadius      ConvRadius      $(HOME)/data/convstrat/mdv/conv_strat&ConvRadius      number.colors - -5 80 5 cart 1 0
 
-ConvStrat3D       ConvStrat3D       $(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat.colors - -5 80 5 cart 1 0
+ConvStrat3D       ConvStrat3D       $(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat2.colors - -5 80 5 cart 1 0
 ConvStratFromText ConvStratFromText $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D conv_strat_from_texture.colors - -5 80 5 cart 1 0
-ConvStrat       ConvStrat       $(HOME)/data/convstrat/mdv/conv_strat&ConvStrat       conv_strat.colors - -5 80 5 cart 1 0
-PartitionLow    PartitionLow    $(HOME)/data/convstrat/mdv/conv_strat&PartitionLow    conv_strat.colors - -5 80 5 cart 1 0
-PartitionMid    PartitionMid    $(HOME)/data/convstrat/mdv/conv_strat&PartitionMid    conv_strat.colors - -5 80 5 cart 1 0
-PartitionHigh    PartitionHigh    $(HOME)/data/convstrat/mdv/conv_strat&PartitionHigh    conv_strat.colors - -5 80 5 cart 1 0
+ConvStrat       ConvStrat       $(HOME)/data/convstrat/mdv/conv_strat&ConvStrat       conv_strat2.colors - -5 80 5 cart 1 0
+PartitionLow    PartitionLow    $(HOME)/data/convstrat/mdv/conv_strat&PartitionLow    conv_strat2.colors - -5 80 5 cart 1 0
+PartitionMid    PartitionMid    $(HOME)/data/convstrat/mdv/conv_strat&PartitionMid    conv_strat2.colors - -5 80 5 cart 1 0
+PartitionHigh    PartitionHigh    $(HOME)/data/convstrat/mdv/conv_strat&PartitionHigh    conv_strat2.colors - -5 80 5 cart 1 0
 
 DbzTexture3D    DbzTexture3D    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart 1 0
-Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/conv_strat&Convectivity3D    interest.colors - -5 80 5 cart 1 0
+Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/conv_strat&Convectivity3D    convectivity.colors - -5 80 5 cart 1 0
 
 DbzTexture3DMax    DbzTexture3DMax    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart,comp 1 0
 DbzTexture2D    DbzTexture3D    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart 1 0

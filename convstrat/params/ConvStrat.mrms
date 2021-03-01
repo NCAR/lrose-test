@@ -161,55 +161,57 @@ temp_profile_field_name = "TMP";
 
 temp_profile_search_margin = 21600;
 
-///////////// freezing_level_ht ///////////////////////
+///////////// shallow_threshold_ht ////////////////////
 //
-// Freezing level height (km).
+// Shallow cloud height threshold (km).
 //
-// Used if vert_levels_type = VERT_LEVELS_BY_HT.
-//
-//
-// Type: double
-//
-
-freezing_level_ht = 4.5;
-
-///////////// freezing_level_temp /////////////////////
-//
-// Freezing level temperature (degC).
-//
-// Used if vert_levels_type = VERT_LEVELS_BY_TEMP.
+// Shallow cloud tops are below this height. Used if vert_levels_type = 
+//   VERT_LEVELS_BY_HT.
 //
 //
 // Type: double
 //
 
-freezing_level_temp = 0;
+shallow_threshold_ht = 4.0;
 
-///////////// divergence_level_ht /////////////////////
+///////////// shallow_threshold_temp //////////////////
 //
-// Divergence level height (km).
+// Shallow cloud temperature threshold (degC).
 //
-// Convective divergence occurs above this height, forming anvils. Used 
-//   if vert_levels_type = VERT_LEVELS_BY_HT.
+// Shallow cloud tops are below this temperature. Used if 
+//   vert_levels_type = VERT_LEVELS_BY_TEMP.
 //
 //
 // Type: double
 //
 
-divergence_level_ht = 8;
+shallow_threshold_temp = 0;
 
-///////////// divergence_level_temp ///////////////////
+///////////// deep_threshold_ht ///////////////////////
 //
-// Divergence level temperature (degC).
+// Deep cloud height threshold (km).
 //
-// Convective divergence occurs above this height, forming anvils. Used 
-//   if vert_levels_type = VERT_LEVELS_BY_TEMP.
+// Deep clouds extend above this height. Used if vert_levels_type = 
+//   VERT_LEVELS_BY_HT.
 //
 //
 // Type: double
 //
 
-divergence_level_temp = -18;
+deep_threshold_ht = 8;
+
+///////////// deep_threshold_temp /////////////////////
+//
+// Deep cloud temperature threshold (degC).
+//
+// Deep clouds extend above this height. Used if vert_levels_type = 
+//   VERT_LEVELS_BY_TEMP.
+//
+//
+// Type: double
+//
+
+deep_threshold_temp = -12;
 
 //======================================================================
 //
@@ -251,7 +253,7 @@ max_valid_height = 25;
 // Type: double
 //
 
-min_valid_dbz = 10;
+min_valid_dbz = 0;
 
 ///////////// dbz_threshold_for_definite_convection ///
 //
@@ -267,6 +269,19 @@ min_valid_dbz = 10;
 //
 
 dbz_threshold_for_definite_convection = 53;
+
+///////////// dbz_for_echo_tops ///////////////////////
+//
+// Reflectivity for determing echo tops.
+//
+// Echo tops are defined as the max ht with reflectivity at or above 
+//   this value.
+//
+//
+// Type: double
+//
+
+dbz_for_echo_tops = 18;
 
 //======================================================================
 //
