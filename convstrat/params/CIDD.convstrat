@@ -116,10 +116,13 @@ PartitionLow    PartitionLow    $(HOME)/data/convstrat/mdv/conv_strat&PartitionL
 PartitionMid    PartitionMid    $(HOME)/data/convstrat/mdv/conv_strat&PartitionMid    conv_strat2.colors - -5 80 5 cart 1 0
 PartitionHigh    PartitionHigh    $(HOME)/data/convstrat/mdv/conv_strat&PartitionHigh    conv_strat2.colors - -5 80 5 cart 1 0
 
+DbzTexture3D    DbzTexture3D    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart 1 0
+Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/conv_strat&Convectivity3D    interest.colors - -5 80 5 cart 1 0
+
 DbzTexture3DMax    DbzTexture3DMax    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart,comp 1 0
 DbzTexture2D    DbzTexture3D    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart 1 0
 DbzTextureMean DbzTextureMean  $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMean  dbz.colors - -5 80 5 cart 1  0
- DbzTextureLow DbzTextureLow   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureLow   dbz.colors - -5 80 5 cart 1 0
+DbzTextureLow DbzTextureLow   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureLow   dbz.colors - -5 80 5 cart 1 0
 DbzTextureMid  DbzTextureMid   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMid   dbz.colors - -5 80 5 cart 1 0
 DbzTextureHigh DbzTextureHigh  $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureHigh  dbz.colors - -5 80 5 cart 1 0
 DbzTextureMax  DbzTextureMax   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMax   dbz.colors - -5 80 5 cart 1 0
