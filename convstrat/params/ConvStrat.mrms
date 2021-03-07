@@ -172,7 +172,7 @@ temp_profile_search_margin = 21600;
 // Type: double
 //
 
-shallow_threshold_ht = 4.0;
+shallow_threshold_ht = 4;
 
 ///////////// shallow_threshold_temp //////////////////
 //
