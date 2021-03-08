@@ -119,7 +119,7 @@ DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat&DbzColMax 
 DbzBackground   DbzBackground   $(HOME)/data/convstrat/mdv/conv_strat&DbzBackground   dbz.colors - -5 80 5 cart 1 0
 ConvRadius      ConvRadius      $(HOME)/data/convstrat/mdv/conv_strat&ConvRadius      number.colors - -5 80 5 cart 1 0
 
-ConvStrat3D       ConvStrat3D       $(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat2.colors - -5 80 5 cart 1 0
+Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart 1 0
 ConvStratFromTexture ConvStratFromTexture $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D conv_strat_from_texture.colors - -5 80 5 cart 1 0
 ConvStrat       ConvStrat       $(HOME)/data/convstrat/mdv/conv_strat&ConvStrat       conv_strat2.colors - -5 80 5 cart 1 0
 PartitionLow    PartitionLow    $(HOME)/data/convstrat/mdv/conv_strat&PartitionLow    conv_strat2.colors - -5 80 5 cart 1 0
