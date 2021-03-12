@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ConvStrat
+ * TDRP params for ./ConvStrat
  **********************************************************************/
 
 //======================================================================
@@ -267,21 +267,6 @@ min_valid_dbz = 0;
 
 min_valid_volume_for_convective = 20;
 
-///////////// dbz_threshold_for_definite_convective ///
-//
-// Reflectivity value that indicates definite convection.
-//
-// If the reflectivity exceeds this value at a point, we assume 
-//   convection is definitely active at that point. To use this, we first 
-//   compute the column maximum reflectivity. If the column max dbz at a 
-//   point exceeds this threshold, then we flag that point as convective.
-//
-//
-// Type: double
-//
-
-dbz_threshold_for_definite_convective = 53;
-
 ///////////// dbz_for_echo_tops ///////////////////////
 //
 // Reflectivity for determing echo tops.
@@ -294,56 +279,6 @@ dbz_threshold_for_definite_convective = 53;
 //
 
 dbz_for_echo_tops = 18;
-
-//======================================================================
-//
-// COMPUTING THE CONVECTIVE RADIUS.
-//
-// The convective radius is the distance by which identified convection 
-//   will be expanded around the convective point. A linear function is 
-//   used to compute the radius from the background reflectivity.
-//
-//======================================================================
- 
-///////////// background_dbz_radius_km ////////////////
-//
-// Radius for computing background reflectivity (km).
-//
-// The background dbz at a point is the mean within this specified 
-//   radius of the point.
-//
-//
-// Type: double
-//
-
-background_dbz_radius_km = 11;
-
-///////////// conv_radius_function ////////////////////
-//
-// End points of the linear function to compute the radius from the 
-//   background reflectivity.
-//
-// The radius function varies linearly between the min and max dbz. For 
-//   dbz below the min, the min radius applies. For dbz above the max, the 
-//   max radius applies.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double min_dbz;
-//      double max_dbz;
-//      double min_radius_km;
-//      double max_radius_km;
-//   }
-//
-//
-
-conv_radius_function = {
-    min_dbz = 22.5,
-    max_dbz = 42.5,
-    min_radius_km = 1,
-    max_radius_km = 5
-};
 
 //======================================================================
 //
@@ -368,11 +303,10 @@ texture_radius_km = 7;
 
 ///////////// min_valid_fraction_for_texture //////////
 //
-// Minimum fraction of surroundingpoints for texture computations.
+// Minimum fraction of surrounding points for texture computations.
 //
 // For a valid computation of texture, we require at least this fraction 
-//   of points around the central point to have reflectivity in excess of 
-//   min_valid_dbz.
+//   of points around the central point to have valid reflectivity.
 //
 //
 // Type: double
@@ -380,68 +314,55 @@ texture_radius_km = 7;
 
 min_valid_fraction_for_texture = 0.25;
 
-///////////// min_texture_for_convective //////////////
+///////////// min_valid_fraction_for_fit //////////////
 //
-// Minimum texture for convective at a point.
+// Minimum fraction of surrounding points for 2D fit to DBZ.
 //
-// If the texture at a point exceeds this value, we set the convective 
-//   flag at this point. We then expand the convective influence around 
-//   the point using a computed radius that depends on the strength of the 
-//   background reflectivity.
-//
-//
-// Type: double
-//
-
-min_texture_for_convective = 15;
-
-///////////// max_texture_for_stratiform //////////////
-//
-// Maximum texture for stratiform at a point.
-//
-// If the texture at a point is less than this value, we set the 
-//   stratiform flag at this point.
+// We compute a 2D fit to the reflectivity around a grid point, to 
+//   remove any systematic gradient. For a valid fit, we require at least 
+//   this fraction of points around the central point to have valid 
+//   reflectivity.
 //
 //
 // Type: double
 //
 
-max_texture_for_stratiform = 11;
+min_valid_fraction_for_fit = 0.67;
 
 //======================================================================
 //
-// SETTING CONVECTIVE OR STRATIFORM FLAGS BASED ON INTEREST.
+// SETTING CONVECTIVE OR STRATIFORM FLAGS BASED ON CONVECTIVITY.
 //
 // If neither is set, we flag the point as MIXED.
 //
 //======================================================================
  
-///////////// min_interest_for_convective /////////////
+///////////// min_convectivity_for_convective /////////
 //
-// Minimum interest for convective at a point.
+// Minimum convectivity for convective at a point.
 //
-// If the interest at a point exceeds this value, we set the convective 
-//   flag at this point.
+// If the convectivity at a point exceeds this value, we set the 
+//   convective flag at this point.
 //
 //
 // Type: double
 //
 
-min_interest_for_convective = 0.5;
+min_convectivity_for_convective = 0.5;
 
-///////////// max_interest_for_stratiform /////////////
+///////////// max_convectivity_for_stratiform /////////
 //
-// Maximum interest for stratiform at a point.
+// Maximum convectivity for stratiform at a point.
 //
-// If the interest at a point is less than this value, we set the 
+// If the convectivity at a point is less than this value, we set the 
 //   stratiform flag at this point. If it is above this but less than 
-//   min_interest_for_convective we flag the point as MIXED.
+//   min_convectivity_for_convective we flag the point as MIXED.
 //
 //
 // Type: double
 //
 
-max_interest_for_stratiform = 0.4;
+max_convectivity_for_stratiform = 0.4;
 
 ///////////// min_overlap_for_convective_clumps ///////
 //
@@ -476,29 +397,59 @@ min_overlap_for_convective_clumps = 1;
 
 output_url = "$(HOME)/data/convstrat/mdv/conv_strat";
 
-///////////// write_partition_field ///////////////////
+///////////// write_partition /////////////////////////
 //
-// Option to write out partition field.
+// Write out partition fields.
+//
+// This will write out the 3D, 2D and column-max partition.
 //
 //
 // Type: boolean
 //
 
-write_partition_field = TRUE;
+write_partition = TRUE;
 
-///////////// partition_field_name ////////////////////
+///////////// write_texture ///////////////////////////
 //
-// Name of convective / stratiform partition field.
+// Write out texture fields.
+//
+// This will write out the 3D and column-max texture.
 //
 //
-// Type: string
+// Type: boolean
 //
 
-partition_field_name = "ConvStrat";
+write_texture = TRUE;
+
+///////////// write_convectivity //////////////////////
+//
+// Write out convectivity fields.
+//
+// This will write out the 3D and column-max convectivity.
+//
+//
+// Type: boolean
+//
+
+write_convectivity = TRUE;
+
+///////////// write_3D_dbz ////////////////////////////
+//
+// Write out 3D dbz field.
+//
+// This will be an echo of the input field.
+//
+//
+// Type: boolean
+//
+
+write_3D_dbz = TRUE;
 
 ///////////// write_convective_dbz ////////////////////
 //
-// Option to write out convective dbz field.
+// Write out convective dbz field.
+//
+// This will write out the 3D convective DBZ field.
 //
 //
 // Type: boolean
@@ -506,67 +457,63 @@ partition_field_name = "ConvStrat";
 
 write_convective_dbz = TRUE;
 
-///////////// convective_dbz_field_name ///////////////
+///////////// write_col_max_dbz ///////////////////////
 //
-// Name of convective dbz field.
+// Write out column maximum dbz field.
 //
-//
-// Type: string
-//
-
-convective_dbz_field_name = "DbzConv";
-
-///////////// convert_convective_dbz_to_column_max ////
-//
-// Option to convert convective dbz field to col max before writing.
+// This is the max reflectivity at any height.
 //
 //
 // Type: boolean
 //
 
-convert_convective_dbz_to_column_max = FALSE;
+write_col_max_dbz = TRUE;
 
-///////////// write_stratiform_dbz ////////////////////
+///////////// write_tops //////////////////////////////
 //
-// Option to write out conveective dbz field.
+// Write out echo, convective and stratiform tops.
+//
+// These are 2D fields.
 //
 //
 // Type: boolean
 //
 
-write_stratiform_dbz = TRUE;
+write_tops = TRUE;
 
-///////////// stratiform_dbz_field_name ///////////////
+///////////// write_fraction_active ///////////////////
 //
-// Name of convective dbz field.
+// Write out 2D field showing fraction active.
 //
-//
-// Type: string
-//
-
-stratiform_dbz_field_name = "DbzStrat";
-
-///////////// convert_stratiform_dbz_to_column_max ////
-//
-// Option to convert stratiform dbz field to col max before writing.
+// This the active fraction in the computational circle.
 //
 //
 // Type: boolean
 //
 
-convert_stratiform_dbz_to_column_max = FALSE;
+write_fraction_active = TRUE;
 
-///////////// write_debug_fields //////////////////////
+///////////// write_height_grids //////////////////////
 //
-// Option to write out debug fields.
+// Write out 2D field showing shallow and deep heights.
 //
-// These are the intermediate fields used for the computation: 
-//   'FractionActive', 'DbzTexture', 'ColMaxDbz', 'ConvFromColMax', 
-//   'ConvFromTexture'.
+// These are based on model temperature.
 //
 //
 // Type: boolean
 //
 
-write_debug_fields = TRUE;
+write_height_grids = TRUE;
+
+///////////// write_temperature ///////////////////////
+//
+// Write out 3D temperature field.
+//
+// This comes from a model, remapped onto the reflectivity grid.
+//
+//
+// Type: boolean
+//
+
+write_temperature = TRUE;
 

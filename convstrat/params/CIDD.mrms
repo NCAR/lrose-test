@@ -100,55 +100,33 @@ field_list = {
 # MRMS mosaic
 
 MrmsDbz3DComp MrmsDbz3DComp $(HOME)/data/convstrat/mdv/mrms_3d&DBZ dbz.colors dBZ -5 80 5 cart,comp 1 0
-
 MrmsDbz3D MrmsDbz3D $(HOME)/data/convstrat/mdv/mrms_3d&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
-
 MrmsDbzHidden MrmsDbzHidden $(HOME)/data/convstrat/mdv/mrms_3d&DBZ       dbz_mrms.colors   dBZ -5 80 5 cart 1 0
-
-Dbz3D Dbz3D $(HOME)/data/convstrat/mdv/conv_strat&Dbz3D   dbz.colors - -5 80 5 cart 1 0
-
-Dbz3DComp Dbz3DComp $(HOME)/data/convstrat/mdv/conv_strat&Dbz3D   dbz.colors - -5 80 5 cart,comp 1 0
+Dbz3D Dbz3D $(HOME)/data/convstrat/mdv/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
 
 DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
 DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTextureMax DbzTextureMax $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMax dbz.colors - -5 80 5 cart 1 0
+
 Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
 Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+ConvectivityMax  ConvectivityMax  $(HOME)/data/convstrat/mdv/conv_strat&ConvectivityMax convectivity.colors - -5 80 5 cart,comp 1 0
+
 Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart 1 0
 Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart,comp 1 0
+Partition2D     Partition2D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition2D conv_strat2.colors - -5 80 5 cart 1 0
+PartitionMax    PartitionMax  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&PartitionMax conv_strat3.colors - -5 80 5 cart 1 0
 
 FractionActive FractionActive  $(HOME)/data/convstrat/mdv/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
 DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat&DbzColMax       dbz.colors - -5 80 5 cart 1 0
-DbzBackground   DbzBackground   $(HOME)/data/convstrat/mdv/conv_strat&DbzBackground   dbz.colors - -5 80 5 cart 1 0
-ConvRadius      ConvRadius      $(HOME)/data/convstrat/mdv/conv_strat&ConvRadius      number.colors - -5 80 5 cart 1 0
-
-ConvStratFromTexture ConvStratFromTexture $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D conv_strat_from_texture.colors - -5 80 5 cart 1 0
-ConvStrat       ConvStrat       $(HOME)/data/convstrat/mdv/conv_strat&ConvStrat       conv_strat2.colors - -5 80 5 cart 1 0
-PartitionLow    PartitionLow    $(HOME)/data/convstrat/mdv/conv_strat&PartitionLow    conv_strat2.colors - -5 80 5 cart 1 0
-PartitionMid    PartitionMid    $(HOME)/data/convstrat/mdv/conv_strat&PartitionMid    conv_strat2.colors - -5 80 5 cart 1 0
-PartitionHigh    PartitionHigh    $(HOME)/data/convstrat/mdv/conv_strat&PartitionHigh    conv_strat2.colors - -5 80 5 cart 1 0
-
-DbzTexture2D    DbzTexture3D    $(HOME)/data/convstrat/mdv/conv_strat&DbzTexture3D      dbz.colors - -5 80 5 cart 1 0
-DbzTextureMean DbzTextureMean  $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMean  dbz.colors - -5 80 5 cart 1  0
-DbzTextureLow DbzTextureLow   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureLow   dbz.colors - -5 80 5 cart 1 0
-DbzTextureMid  DbzTextureMid   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMid   dbz.colors - -5 80 5 cart 1 0
-DbzTextureHigh DbzTextureHigh  $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureHigh  dbz.colors - -5 80 5 cart 1 0
-DbzTextureMax  DbzTextureMax   $(HOME)/data/convstrat/mdv/conv_strat&DbzTextureMax   dbz.colors - -5 80 5 cart 1 0
 
 ShallowHt ShallowHt $(HOME)/data/convstrat/mdv/conv_strat&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHt DeepHt $(HOME)/data/convstrat/mdv/conv_strat&DeepHt number.colors km -5 80 5 cart 1 0
 Temp Temp $(HOME)/data/convstrat/mdv/conv_strat&TMP temp.colors C -5 80 5 cart 1 0
 
-ConvBase        ConvBase       $(HOME)/data/convstrat/mdv/conv_strat&ConvBase   heightkm.colors km -5 80 5 cart 1 0
-ConvTop         ConvTop        $(HOME)/data/convstrat/mdv/conv_strat&ConvTop    heightkm.colors km -5 80 5 cart 1 0
-StratBase        StratBase       $(HOME)/data/convstrat/mdv/conv_strat&StratBase   heightkm.colors km -5 80 5 cart 1 0
-StratTop         StratTop        $(HOME)/data/convstrat/mdv/conv_strat&StratTop    heightkm.colors km -5 80 5 cart 1 0
-
-EchoTop         EchoTop        $(HOME)/data/convstrat/mdv/conv_strat&EchoTop    heightkm.colors km -5 80 5 cart 1 0
-
-ConvStrat0       ConvStrat0       /scr/rain1/rsfdata/projects/pecan/mdv/conv_strat/mrms_qc&ConvStrat  conv_strat.colors - -5 80 5 cart 1 0
-ConvFromTexture0 ConvFromTexture0 /scr/rain1/rsfdata/projects/pecan/mdv/conv_strat/mrms_qc&ConvFromTexture conv_strat.colors - -5 80 5 cart 1 0
-ConvFromColMax0  ConvFromColMax0  /scr/rain1/rsfdata/projects/pecan/mdv/conv_strat/mrms_qc&ConvFromColMax  conv_strat.colors - -5 80 5 cart 1 0
-
+ConvTops   ConvTops      $(HOME)/data/convstrat/mdv/conv_strat&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops     $(HOME)/data/convstrat/mdv/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops      $(HOME)/data/convstrat/mdv/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 
 </GRIDS>
 
