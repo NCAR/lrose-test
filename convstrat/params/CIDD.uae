@@ -217,7 +217,7 @@ cidd.debug2_flag:           0
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
 #cidd.demo_time:  00:10 06/30/2020
-cidd.demo_time:  00:10 03/25/2017
+cidd.demo_time:  06:00 03/25/2017
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -228,12 +228,12 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:  24
+cidd.starting_movie_frames:  50
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
 # oldest movie frame and creating and drawing a new one.
-cidd.time_interval:  5
+cidd.time_interval:  10
 
 # This parameter sets the maximum number of hours in the future a user can select
 # from the quick forecast menu. See SHOW_FORECAST_MENU menu bar button
@@ -365,7 +365,7 @@ cidd.print_script: convert_image_print.csh
 # Button, after the last image has output. The arguments will be a list
 # of each output file in the series. CIDD will prepends the cidd.image_dir to each
 # files name which takes the form: cidd_field_name_zoom_name.xwd 
-cidd.series_convert_script: /opt/local/lrose/bin/make_anim.csh
+cidd.series_convert_script: /home/mdtest/cidd/bin/make_anim.csh
 
 # Set to 1 to ask that data be compressed during the MDV Protocol
 # data requests. Default is = 0
@@ -404,7 +404,7 @@ cidd.always_get_full_domain:  0
 # ration for all zooms. Ratio is Width/Height.
 # If set <= 0.0, CIDD will compute the aspect ratio based on the extent of the
 # first domain.
-cidd.aspect_ratio:   1.0
+cidd.aspect_ratio:   1.4
 
 # Switch to enable the status window. 0 = off
 cidd.enable_status_window: 0
@@ -439,8 +439,8 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       1
-cidd.start_zoom_level:      1
+cidd.num_zoom_levels:       2
+cidd.start_zoom_level:      2
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -455,11 +455,11 @@ cidd.level1_min_ykm:                -530
 cidd.level1_max_xkm:                250
 cidd.level1_max_ykm:                200
 #
-cidd.level2_label:                  PECAN-DOMAIN
-cidd.level2_min_xkm:                -103.7
-cidd.level2_min_ykm:                35.45
-cidd.level2_max_xkm:                -95.2
-cidd.level2_max_ykm:                41.6
+cidd.level2_label:                  INNER
+cidd.level2_min_xkm:                -420.0
+cidd.level2_min_ykm:                -280
+cidd.level2_max_xkm:                200
+cidd.level2_max_ykm:                240
 #
 #
 #
