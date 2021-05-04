@@ -95,13 +95,46 @@ field_list = {
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
 
-# UAE
+# Sydney merge - remote
 
-DBZ-Comp DBZ-Comp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-DBZ DBZ $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+DBZ-Comp-orig DBZ-Comp-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+DBZ-3D-orig DBZ-3D-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
 
-DbzComp DbzComp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-Dbz3D Dbz3D $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
+Dbz-Comp Dbz-Comp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz-3D Dbz-3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
+
+DbzTexture3DComp DbzTexture3DComp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D DbzTexture3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+
+Convectivity3DComp  Convectivity3DComp  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D  Convectivity3D  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+
+Partition3DComp Partition3DComp  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D     Partition3D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+
+Partition2D     Partition2D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+FractionActive FractionActive  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+ConvTops   ConvTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops     mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+# Sydney merge - local
+
+DBZ-Comp-orig DBZ-Comp-orig $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+DBZ-3D-orig DBZ-3D-orig $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+
+Dbz-Comp Dbz-Comp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz-3D Dbz-3D $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
 
 DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
 DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
@@ -493,8 +526,10 @@ cidd.max_adeg:               360.0
 # List of comma delimited local directories or HTTP URLs to search
 # Searchs . then each directory/URL in order 
 
-cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales
-cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps
+#cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales,http://front.eol.ucar.edu/color_scales
+#cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps,http://front.eol.ucar.edu/maps
+cidd.color_file_subdir:   http://front.eol.ucar.edu/color_scales
+cidd.map_file_subdir:     http://front.eol.ucar.edu/maps
 
 #
 # Station locator features

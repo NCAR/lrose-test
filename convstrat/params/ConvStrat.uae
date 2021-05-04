@@ -172,8 +172,8 @@ temp_profile_search_margin = 21600;
 // Type: double
 //
 
-shallow_threshold_ht = 3.8; // 2017/03/25
-// shallow_threshold_ht = 5.8; // 2020/06/30
+// shallow_threshold_ht = 3.8; // 2017/03/25
+shallow_threshold_ht = 5.8; // 2020/06/30
 
 ///////////// shallow_threshold_temp //////////////////
 //
@@ -199,8 +199,8 @@ shallow_threshold_temp = 0;
 // Type: double
 //
 
-deep_threshold_ht = 7.7; // 2017/03/25
-// deep_threshold_ht = 9.7; // 2020/06/30
+// deep_threshold_ht = 7.7; // 2017/03/25
+deep_threshold_ht = 9.7; // 2020/06/30
 
 ///////////// deep_threshold_temp /////////////////////
 //
