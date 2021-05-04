@@ -109,10 +109,10 @@ DbzTexture3D DbzTexture3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat
 Convectivity3DComp  Convectivity3DComp  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
 Convectivity3D  Convectivity3D  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
 
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D  mdvp::no_interp//localhost:0:mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Partition3DComp Partition3DComp  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D     Partition3D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
 
-Partition2D     Partition2D  mdvp::no_interp//localhost:0:mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Partition2D     Partition2D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
 ========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
 
 FractionActive FractionActive  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/uae/conv_strat?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
