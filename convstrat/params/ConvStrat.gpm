@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./ConvStrat
+ * TDRP params for ConvStrat
  **********************************************************************/
 
 //======================================================================
@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms";
+instance = "pecan";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,8 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-// input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
-input_url = "/scr/rain2/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
+input_url = "$(HOME)/data/convstrat/mdv/gpm";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -136,7 +135,6 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-// temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
 temp_profile_url = "/scr/rain2/rsfdata/projects/pecan/mdv/ruc";
 
 ///////////// temp_profile_field_name /////////////////
@@ -269,6 +267,23 @@ min_valid_dbz = 0;
 
 min_valid_volume_for_convective = 20;
 
+///////////// min_vert_extent_for_convective //////////
+//
+// Min vertical echo extent of a convective region (km).
+//
+// The vertical extent is computed as the mid height of the top layer in 
+//   the echo minus the mid height of the bottom layer. For an echo that 
+//   exists in only one layer, the vertical extent would therefore be 
+//   zero. This parameter lets us require that a valid convective echo 
+//   exist in multiple layers, which is desirable and helps to remove 
+//   spurious echoes as candidates for convection.
+//
+//
+// Type: double
+//
+
+min_vert_extent_for_convective = 1;
+
 ///////////// dbz_for_echo_tops ///////////////////////
 //
 // Reflectivity for determing echo tops.
@@ -330,6 +345,44 @@ min_valid_fraction_for_texture = 0.25;
 //
 
 min_valid_fraction_for_fit = 0.67;
+
+//======================================================================
+//
+// CONVERTING REFLECTIVITY TEXTURE TO CONVECTIVITY.
+//
+// Convectivity ranges from 0 to 1. To convert texture to convectivity, 
+//   we apply a piece-wise linear transfer function. This section defines 
+//   the lower texture limit and the upper texture limit. At or below the 
+//   lower limit convectivity is set to 0. At or above the upper limit 
+//   convectivity is set to 1. Between these two limits convectivity 
+//   varies linearly with texture.
+//
+//======================================================================
+ 
+///////////// texture_limit_low ///////////////////////
+//
+// Lower limit for texture.
+//
+// Below this texture the convectivity is set to 0.
+//
+//
+// Type: double
+//
+
+texture_limit_low = 0;
+
+///////////// texture_limit_high //////////////////////
+//
+// Upper limit for texture.
+//
+// Above this texture the convectivity is set to 1. Between the limits 
+//   convectivity varies linearly with texture.
+//
+//
+// Type: double
+//
+
+texture_limit_high = 25;
 
 //======================================================================
 //
@@ -397,7 +450,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat/mrms";
+output_url = "$(HOME)/data/convstrat/mdv/conv_strat/gpm";
 
 ///////////// write_partition /////////////////////////
 //
