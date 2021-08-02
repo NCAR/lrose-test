@@ -345,7 +345,7 @@ vel_to_m_per_sec_scale = 1;
 // Type: boolean
 //
 
-remap_z_to_constant_grid = FALSE;
+remap_z_to_constant_grid = TRUE;
 
 ///////////// remap_z_grid ////////////////////////////
 //
@@ -362,9 +362,9 @@ remap_z_to_constant_grid = FALSE;
 //
 
 remap_z_grid = {
-    nz = 10,
-    minz = 0,
-    dz = 1
+    nz = 74,
+    minz = 0.5,
+    dz = 0.25
 };
 
 //======================================================================
@@ -1465,7 +1465,7 @@ FOKR_cat4_zmax_thresh = 65;
 // Type: string
 //
 
-storm_data_dir = "$(HOME)/data/titan_test/storms";
+storm_data_dir = "$(HOME)/data/titan_test/storms7";
 
 ///////////// store_storm_runs ////////////////////////
 //
