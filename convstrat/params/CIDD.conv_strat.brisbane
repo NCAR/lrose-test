@@ -95,34 +95,66 @@ field_list = {
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
 
-# UAE
+# Bris merge - remote
 
-DBZ-Comp DBZ-Comp $(HOME)/data/convstrat/mdv/uae/radarMerge&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-DBZ DBZ $(HOME)/data/convstrat/mdv/uae/radarMerge&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+DBZ-Comp-orig DBZ-Comp-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+DBZ-3D-orig DBZ-3D-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
 
-DbzComp DbzComp $(HOME)/data/convstrat/mdv/uae/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-Dbz3D Dbz3D $(HOME)/data/convstrat/mdv/uae/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
+Dbz-Comp Dbz-Comp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz-3D Dbz-3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
 
-DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/uae/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
-DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/uae/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+DbzTexture3DComp DbzTexture3DComp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D DbzTexture3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
 
-Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/uae/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
-Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/uae/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+Convectivity3DComp  Convectivity3DComp  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D  Convectivity3D  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
 
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/uae/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/uae/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Partition3DComp Partition3DComp  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D     Partition3D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
 
-Partition2D     Partition2D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/uae/conv_strat&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Partition2D     Partition2D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
 ========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
 
-FractionActive FractionActive  $(HOME)/data/convstrat/mdv/uae/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
+FractionActive FractionActive  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
 ========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
 
-ConvTops   ConvTops      $(HOME)/data/convstrat/mdv/uae/conv_strat&ConvTops     heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops     $(HOME)/data/convstrat/mdv/uae/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
-EchoTops   EchoTops      $(HOME)/data/convstrat/mdv/uae/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+ConvTops   ConvTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops     mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/BrisMerge/conv_strat?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 ========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
 
+==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+# Bris merge - local
+
+DBZ-Comp-orig DBZ-Comp-orig $(HOME)/data/convstrat/mdv/bom/BrisMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+DBZ-3D-orig DBZ-3D-orig $(HOME)/data/convstrat/mdv/bom/BrisMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+
+Dbz-Comp Dbz-Comp $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz-3D Dbz-3D $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
+
+DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+
+Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+
+Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+
+Partition2D     Partition2D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+FractionActive FractionActive  $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+
+ConvTops   ConvTops      $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops     $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops      $(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
 
 </GRIDS>
 
@@ -137,8 +169,16 @@ EchoTops   EchoTops      $(HOME)/data/convstrat/mdv/uae/conv_strat&EchoTops     
 # MAP_CODE Control_Label   Map_File_Name   On/OFF Detail__min Detail_max Color     
 #------------------------------------------------------------------------------------------
 
-UAE          UAE          uae_region.map      1  0.0 10000.0  gray70
-#world         world        world_states.map             1  0.0 10000.0  gray70
+Queensland Queensland Queensland.map 1 0.0 10000.0    white
+#NswCoast   NswCoast NswCoast.map   1  0.0 10000.0     white
+AusCoast   AusCoast AusCoast.map   1  0.0 10000.0     white
+world         world        world_states.map             0  0.0 10000.0  gray70
+
+#natural     natural        aus-natural.shp              0  0.0 10000.0  white
+#waterways   waterways      aus-waterways.shp            1  0.0 10000.0  blue
+#roads       roads          aus-roads.shp                0  0.0 10000.0  brown
+#places      places         aus-places.shp               0  0.0 10000.0  yellow
+
 
 </MAPS>
 
@@ -216,8 +256,8 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-#cidd.demo_time:  00:10 06/30/2020
-cidd.demo_time:  06:00 03/25/2017
+#cidd.demo_time:  07:10 02/20/2021
+cidd.demo_time:  03:00 02/23/2021
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -228,7 +268,7 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:  50
+cidd.starting_movie_frames:  60
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
@@ -415,8 +455,8 @@ cidd.enable_save_image_panel: 1
  
 # On startup and each time the reset button is pressed, the display
 # will indicate a click at this point, as if the user had clicked..
-cidd.reset_click_longitude:  54.9
-cidd.reset_click_latitude:   24.9
+cidd.reset_click_longitude:   153.118
+cidd.reset_click_latitude:    -27.3841
 #
 # The Outer most domain: Overlays are clipped to this domain and 
 # pan/moves cannot exceed these edge limits.
@@ -427,8 +467,8 @@ cidd.domain_limit_max_y:         5000
  
 # The Lat, Long of the center of the display. Internal range rings
 # are relative to this point.
-cidd.origin_longitude:       54.9
-cidd.origin_latitude:        24.9
+cidd.origin_longitude:        153.118
+cidd.origin_latitude:        -27.3841
 
 #
 #
@@ -456,10 +496,10 @@ cidd.level1_max_xkm:                250
 cidd.level1_max_ykm:                200
 #
 cidd.level2_label:                  INNER
-cidd.level2_min_xkm:                -420.0
-cidd.level2_min_ykm:                -280
-cidd.level2_max_xkm:                200
-cidd.level2_max_ykm:                240
+cidd.level2_min_xkm:                -230.0
+cidd.level2_min_ykm:                -230
+cidd.level2_max_xkm:                230
+cidd.level2_max_ykm:                230
 #
 #
 #

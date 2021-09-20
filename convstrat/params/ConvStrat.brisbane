@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sydney";
+instance = "brisbane";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic";
+input_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge/mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -172,13 +172,8 @@ temp_profile_search_margin = 21600;
 // Type: double
 //
 
-// shallow_threshold_ht = 3.475; // 2021/02/01
-// shallow_threshold_ht = 3.960; // 2021/03/13
-// shallow_threshold_ht = 3.230; // 2021/03/17
-// shallow_threshold_ht = 3.474; // 2021/03/18
-shallow_threshold_ht = 3.352; // 2021/03/19
-// shallow_threshold_ht = 3.230; // 2021/03/20
-// shallow_threshold_ht = 3.350; // 2021/03/21
+// shallow_threshold_ht = 4.450; // 2021/02/20
+shallow_threshold_ht = 4.080; // 2021/02/23
 
 ///////////// shallow_threshold_temp //////////////////
 //
@@ -204,13 +199,8 @@ shallow_threshold_temp = 0;
 // Type: double
 //
 
-// deep_threshold_ht = 7.770; // 2021/02/01
-// deep_threshold_ht = 7.770; // 2021/03/13
-// deep_threshold_ht = 6.858; // 2021/03/17
-// deep_threshold_ht = 7.163; // 2021/03/18
-deep_threshold_ht = 7.544; // 2021/03/19
-// deep_threshold_ht = 7.620; // 2021/03/20
-// deep_threshold_ht = 7.925; // 2021/03/21
+// deep_threshold_ht = 8.077; // 2021/02/20
+deep_threshold_ht = 7.450; // 2021/02/23
 
 ///////////// deep_threshold_temp /////////////////////
 //
@@ -424,7 +414,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat";
+output_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat";
 
 ///////////// write_partition /////////////////////////
 //

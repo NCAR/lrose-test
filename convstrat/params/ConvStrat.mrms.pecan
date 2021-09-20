@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms";
+instance = "mrms.pecan";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -63,7 +63,7 @@ instance = "mrms";
 //     FILELIST
 //
 
-mode = REALTIME;
+mode = ARCHIVE;
 
 //======================================================================
 //
@@ -82,7 +82,8 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
+// input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
+input_url = "/scr/rain2/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +136,8 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+// temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+temp_profile_url = "/scr/rain2/rsfdata/projects/pecan/mdv/ruc";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -395,7 +397,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat";
+output_url = "$(HOME)/data/convstrat/mdv/conv_strat/pecan/mrms";
 
 ///////////// write_partition /////////////////////////
 //
