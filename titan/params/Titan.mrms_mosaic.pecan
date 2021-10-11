@@ -1465,7 +1465,7 @@ FOKR_cat4_zmax_thresh = 65;
 // Type: string
 //
 
-storm_data_dir = "$(HOME)/data/titan_test/storms7";
+storm_data_dir = "$(HOME)/data/titan_test/storms11";
 
 ///////////// store_storm_runs ////////////////////////
 //
