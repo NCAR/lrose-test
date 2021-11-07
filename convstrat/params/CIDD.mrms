@@ -101,7 +101,7 @@ MrmsDbz3DComp MrmsDbz3DComp  $(HOME)/data/convstrat/mdv/mrms_3d&DBZ dbz.colors  
 MrmsDbz3D     MrmsDbz3D      $(HOME)/data/convstrat/mdv/mrms_3d&DBZ dbz.colors      dBZ -5 80 5 cart 1 0
 MrmsDbzHidden MrmsDbzHidden  $(HOME)/data/convstrat/mdv/mrms_3d&DBZ dbz_mrms.colors dBZ -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-
+a
 Dbz3DComp Dbz3DComp $(HOME)/data/convstrat/mdv/conv_strat&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
 Dbz3D     Dbz3D     $(HOME)/data/convstrat/mdv/conv_strat&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
@@ -121,15 +121,11 @@ Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convs
 Partition3D     Partition3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart 1 0
 Partition2D     Partition2D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition2D conv_strat3.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat&DbzColMax       dbz.colors - -5 80 5 cart 1 0
 FractionActive  FractionActive  $(HOME)/data/convstrat/mdv/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
 DbzConvComp     DbzConvComp     $(HOME)/data/convstrat/mdv/conv_strat&DbzConv         dbz.colors - -5 80 5 cart,comp 1 0
 DbzConv         DbzConv         $(HOME)/data/convstrat/mdv/conv_strat&DbzConv         dbz.colors - -5 80 5 cart 1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 ShallowHt ShallowHt $(HOME)/data/convstrat/mdv/conv_strat&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHt    DeepHt    $(HOME)/data/convstrat/mdv/conv_strat&DeepHt    number.colors km -5 80 5 cart 1 0
@@ -139,6 +135,46 @@ Temp      Temp      $(HOME)/data/convstrat/mdv/conv_strat&TMP       temp.colors 
 ConvTops   ConvTops  $(HOME)/data/convstrat/mdv/conv_strat&ConvTops     heightkm.colors km -5 80 5 cart 1 0
 StratTops  StratTops $(HOME)/data/convstrat/mdv/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
 EchoTops   EchoTops  $(HOME)/data/convstrat/mdv/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Dbz3DComp Dbz3DComp $(HOME)/data/convstrat/mdv/conv_strat1&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D     $(HOME)/data/convstrat/mdv/conv_strat1&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/conv_strat1&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D     DbzTexture3D     $(HOME)/data/convstrat/mdv/conv_strat1&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+DbzTexture2D     DbzTexture2D     $(HOME)/data/convstrat/mdv/conv_strat1&DbzTexture2D dbz.colors - -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/conv_strat1&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D      Convectivity3D      $(HOME)/data/convstrat/mdv/conv_strat1&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+Convectivity2D      Convectivity2D      $(HOME)/data/convstrat/mdv/conv_strat1&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D     Partition3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Partition2D     Partition2D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat1&DbzColMax       dbz.colors - -5 80 5 cart 1 0
+FractionActive  FractionActive  $(HOME)/data/convstrat/mdv/conv_strat1&FractionActive  fraction.colors - -5 80 5 cart 1 0
+DbzConvComp     DbzConvComp     $(HOME)/data/convstrat/mdv/conv_strat1&DbzConv         dbz.colors - -5 80 5 cart,comp 1 0
+DbzConv         DbzConv         $(HOME)/data/convstrat/mdv/conv_strat1&DbzConv         dbz.colors - -5 80 5 cart 1 0
+
+ShallowHt ShallowHt $(HOME)/data/convstrat/mdv/conv_strat1&ShallowHt number.colors km -5 80 5 cart 1 0
+DeepHt    DeepHt    $(HOME)/data/convstrat/mdv/conv_strat1&DeepHt    number.colors km -5 80 5 cart 1 0
+Temp      Temp      $(HOME)/data/convstrat/mdv/conv_strat1&TMP       temp.colors C -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+ConvTops   ConvTops  $(HOME)/data/convstrat/mdv/conv_strat1&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops $(HOME)/data/convstrat/mdv/conv_strat1&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops  $(HOME)/data/convstrat/mdv/conv_strat1&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
@@ -929,7 +965,7 @@ cidd.click_posn_rel_to_origin: 1
 # Set this parameter to force the field menu popup to this many columns
 # If set <= 0, then cidd sets this dynamically, allowing at most 30 in each
 # column.
-cidd.num_field_menu_cols: 2
+cidd.num_field_menu_cols: 4
 
 # This parameter sets WSDDM specific behavior On -
 # - Go to end of loop when movie stops.
