@@ -140,6 +140,15 @@ DbzConv         DbzConv         mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_s
 PartitionColMax    PartitionColMax    $(HOME)/data/convstrat/mdv/conv_strat/pecan/mrms?use_http=true&PartitionColMax    conv_strat_2d.colors - -5 80 5 cart,comp 1 0
 DbzTextureColMax    DbzTextureColMax    $(HOME)/data/convstrat/mdv/conv_strat/pecan/mrms?use_http=true&DbzTextureColMax   dbz.colors - -5 80 5 cart,comp 1 0
 ConvectivityColMax  ConvectivityColMax  $(HOME)/data/convstrat/mdv/conv_strat/pecan/mrms?use_http=true&ConvectivityColMax convectivity.colors - -5 80 5 cart,comp 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Partition3DMax2 Partition3DMax2  mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/new-elev?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Partition3D2     Partition3D2      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/new-elev?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Partition2D2     Partition2D2      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/new-elev?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
