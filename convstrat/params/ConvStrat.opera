@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms.pecan";
+instance = "opera";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
+input_url = "$(HOME)/data/convstrat/mdv/opera/lambert";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -122,7 +122,7 @@ dbz_field_name = "DBZ";
 //     VERT_LEVELS_BY_HT
 //
 
-vert_levels_type = VERT_LEVELS_BY_TEMP;
+vert_levels_type = VERT_LEVELS_BY_HT;
 
 ///////////// temp_profile_url ////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+temp_profile_url = "mdv/model";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -146,7 +146,7 @@ temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
 // Type: string
 //
 
-temp_profile_field_name = "TMP";
+temp_profile_field_name = "Temp";
 
 ///////////// temp_profile_search_margin //////////////
 //
@@ -172,7 +172,7 @@ temp_profile_search_margin = 21600;
 // Type: double
 //
 
-shallow_threshold_ht = 4;
+shallow_threshold_ht = -1;
 
 ///////////// shallow_threshold_temp //////////////////
 //
@@ -198,7 +198,7 @@ shallow_threshold_temp = 0;
 // Type: double
 //
 
-deep_threshold_ht = 9;
+deep_threshold_ht = 1;
 
 ///////////// deep_threshold_temp /////////////////////
 //
@@ -211,7 +211,7 @@ deep_threshold_ht = 9;
 // Type: double
 //
 
-deep_threshold_temp = -30;
+deep_threshold_temp = -12;
 
 //======================================================================
 //
@@ -229,7 +229,7 @@ deep_threshold_temp = -30;
 // Type: double
 //
 
-min_valid_height = 0;
+min_valid_height = -1;
 
 ///////////// max_valid_height ////////////////////////
 //
@@ -265,7 +265,7 @@ min_valid_dbz = 0;
 // Type: double
 //
 
-min_valid_volume_for_convective = 20;
+min_valid_volume_for_convective = 30;
 
 ///////////// min_vert_extent_for_convective //////////
 //
@@ -282,7 +282,7 @@ min_valid_volume_for_convective = 20;
 // Type: double
 //
 
-min_vert_extent_for_convective = 1;
+min_vert_extent_for_convective = 0;
 
 ///////////// dbz_for_echo_tops ///////////////////////
 //
@@ -382,7 +382,7 @@ texture_limit_low = 0;
 // Type: double
 //
 
-texture_limit_high = 30;
+texture_limit_high = 27;
 
 //======================================================================
 //
@@ -436,68 +436,6 @@ min_overlap_for_convective_clumps = 1;
 
 //======================================================================
 //
-// OPTIONS TO USE DUAL THRESHOLDS.
-//
-//======================================================================
- 
-///////////// use_dual_thresholds /////////////////////
-//
-// Option to use dual thresholds to identify convective clumps.
-//
-// NOTE: this step is performed in 2D. If set, the identification is 
-//   performed in multiple stages. First, an outer convectivity envelope 
-//   is computed, using min_convectivity_for_convective. This is the 
-//   default method. Then, using the dual_threshold parameters, a search 
-//   is performed for clumps within the envelope exceeding the min 
-//   convectivity threshold. If there is only one region at the higher 
-//   convectivity, the entire outer envelope is used. If there are two or 
-//   more regions which meet or exceed the required characteristics, these 
-//   regions are grown back out to the original envelope, but stop growing 
-//   where they meet between the higher-convectivity areas. The final 
-//   clumps are computed by breaking the original clump into regions based 
-//   upon these secondary areas.
-//
-//
-// Type: boolean
-//
-
-use_dual_thresholds = TRUE;
-
-///////////// dual_threshold //////////////////////////
-//
-// Parameters for dual threshold identification. Performed in 2D.
-//
-// See 'use_dual_thresholds'. secondary_threshold: convectivity 
-//   threshold for this stage. A number of regions may be identified at 
-//   the higher threshold. min_fraction_all_parts: we sum the sizes of the 
-//   parts at the higher threshold, and the sum divided by the original 
-//   size of the envelope must exceed this fraction. If it does not the 
-//   original envelope is used. min_fraction_each_part: for any part to be 
-//   valid its size as a fraction of all of the parts must exceed this 
-//   value. min_size_each_part: for any part to be valid its area must 
-//   exceed this value. If it does not the part is ignored. If only 1 part 
-//   is valid, the entire envelope is used.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double secondary_threshold;
-//      double min_fraction_all_parts;
-//      double min_fraction_each_part;
-//      double min_size_each_part;
-//   }
-//
-//
-
-dual_threshold = {
-    secondary_threshold = 0.65,
-    min_fraction_all_parts = 0.33,
-    min_fraction_each_part = 0.02,
-    min_size_each_part = 2
-};
-
-//======================================================================
-//
 // DATA OUTPUT.
 //
 //======================================================================
@@ -512,7 +450,7 @@ dual_threshold = {
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat1";
+output_url = "$(HOME)/data/convstrat/mdv/conv_strat/opera/lambert";
 
 ///////////// write_partition /////////////////////////
 //
@@ -560,7 +498,7 @@ write_convectivity = TRUE;
 // Type: boolean
 //
 
-write_3D_dbz = TRUE;
+write_3D_dbz = FALSE;
 
 ///////////// write_convective_dbz ////////////////////
 //
@@ -572,7 +510,7 @@ write_3D_dbz = TRUE;
 // Type: boolean
 //
 
-write_convective_dbz = TRUE;
+write_convective_dbz = FALSE;
 
 ///////////// write_col_max_dbz ///////////////////////
 //
@@ -584,7 +522,7 @@ write_convective_dbz = TRUE;
 // Type: boolean
 //
 
-write_col_max_dbz = TRUE;
+write_col_max_dbz = FALSE;
 
 ///////////// write_tops //////////////////////////////
 //
@@ -596,7 +534,7 @@ write_col_max_dbz = TRUE;
 // Type: boolean
 //
 
-write_tops = TRUE;
+write_tops = FALSE;
 
 ///////////// write_fraction_active ///////////////////
 //
@@ -620,7 +558,7 @@ write_fraction_active = TRUE;
 // Type: boolean
 //
 
-write_height_grids = TRUE;
+write_height_grids = FALSE;
 
 ///////////// write_temperature ///////////////////////
 //
@@ -632,5 +570,5 @@ write_height_grids = TRUE;
 // Type: boolean
 //
 
-write_temperature = TRUE;
+write_temperature = FALSE;
 
