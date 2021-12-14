@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/opera/lambert";
+input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/opera/lambert";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -436,6 +436,68 @@ min_overlap_for_convective_clumps = 1;
 
 //======================================================================
 //
+// OPTIONS TO USE DUAL THRESHOLDS.
+//
+//======================================================================
+ 
+///////////// use_dual_thresholds /////////////////////
+//
+// Option to use dual thresholds to identify convective clumps.
+//
+// NOTE: this step is performed in 2D. If set, the identification is 
+//   performed in multiple stages. First, an outer convectivity envelope 
+//   is computed, using min_convectivity_for_convective. This is the 
+//   default method. Then, using the dual_threshold parameters, a search 
+//   is performed for clumps within the envelope exceeding the min 
+//   convectivity threshold. If there is only one region at the higher 
+//   convectivity, the entire outer envelope is used. If there are two or 
+//   more regions which meet or exceed the required characteristics, these 
+//   regions are grown back out to the original envelope, but stop growing 
+//   where they meet between the higher-convectivity areas. The final 
+//   clumps are computed by breaking the original clump into regions based 
+//   upon these secondary areas.
+//
+//
+// Type: boolean
+//
+
+use_dual_thresholds = TRUE;
+
+///////////// dual_threshold //////////////////////////
+//
+// Parameters for dual threshold identification. Performed in 2D.
+//
+// See 'use_dual_thresholds'. secondary_threshold: convectivity 
+//   threshold for this stage. A number of regions may be identified at 
+//   the higher threshold. min_fraction_all_parts: we sum the sizes of the 
+//   parts at the higher threshold, and the sum divided by the original 
+//   size of the envelope must exceed this fraction. If it does not the 
+//   original envelope is used. min_fraction_each_part: for any part to be 
+//   valid its size as a fraction of all of the parts must exceed this 
+//   value. min_size_each_part: for any part to be valid its area must 
+//   exceed this value. If it does not the part is ignored. If only 1 part 
+//   is valid, the entire envelope is used.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double secondary_threshold;
+//      double min_fraction_all_parts;
+//      double min_fraction_each_part;
+//      double min_size_each_part;
+//   }
+//
+//
+
+dual_threshold = {
+    secondary_threshold = 0.65,
+    min_fraction_all_parts = 0.33,
+    min_fraction_each_part = 0.02,
+    min_size_each_part = 2
+};
+
+//======================================================================
+//
 // DATA OUTPUT.
 //
 //======================================================================
@@ -450,7 +512,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat/opera/lambert";
+output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/opera/conv_strat";
 
 ///////////// write_partition /////////////////////////
 //
