@@ -95,67 +95,35 @@ field_list = {
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
 
-# Sydney merge - remote
-
-DBZ-Comp-orig DBZ-Comp-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-DBZ-3D-orig DBZ-3D-orig mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/mosaic?use_http=true&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
-
-Dbz-Comp Dbz-Comp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-Dbz-3D Dbz-3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
-
-DbzTexture3DComp DbzTexture3DComp mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
-DbzTexture3D DbzTexture3D mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
-
-Convectivity3DComp  Convectivity3DComp  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
-Convectivity3D  Convectivity3D  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
-
-Partition3DComp Partition3DComp  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-
-Partition2D     Partition2D  mdvp::no_interp//front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
-FractionActive FractionActive  mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
-ConvTops   ConvTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops     mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
-EchoTops   EchoTops      mdvp:://front.eol.ucar.edu:8080:eolbase/mdv/conv_strat/SydneyMerge/conv_strat?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
-==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-==local==        ==local==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-==VVVVV==        ==VVVVV==          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
 # Sydney merge - local
 
-DBZ-Comp-orig DBZ-Comp-orig $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-DBZ-3D-orig DBZ-3D-orig $(HOME)/data/convstrat/mdv/bom/SydneyMerge/mosaic&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+Dbz3DMax Dbz3DMax mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D     mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
 
-Dbz-Comp Dbz-Comp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart,comp 1 0
-Dbz-3D Dbz-3D $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Dbz3D       dbz.colors   dBZ -5 80 5 cart 1 0
+DbzTexture3DMax DbzTexture3DMax mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D     DbzTexture3D     mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+DbzTexture2D     DbzTexture2D     mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzTexture2D dbz.colors - -5 80 5 cart 1 0
 
-DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
-DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+Convectivity3DMax  Convectivity3DMax  mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D      Convectivity3D      mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+Convectivity2D      Convectivity2D      mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
 
-Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
-Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+DbzConvMax     DbzConvMax     mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzConv         dbz.colors - -5 80 5 cart,comp 1 0
+DbzConv         DbzConv         mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzConv         dbz.colors - -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMax-Dual Part3DMax-Dual  mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D-Dual     Part3D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D-Dual     Part2D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
 
-Partition2D     Partition2D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
+ConvTops   ConvTops  mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops  mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 
-FractionActive FractionActive  $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
-ConvTops   ConvTops      $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&ConvTops     heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops     $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
-EchoTops   EchoTops      $(HOME)/data/convstrat/mdv/bom/SydneyMerge/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
-========        ======          mdvp:://junk.eol.ucar.edu:8080:pecan/mdv/radarCart/mrms_comp?use_http=true&DBZ         dbz.colors   dBZ -5 80 5 cart,comp 1 0
-
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
@@ -253,7 +221,8 @@ cidd.debug2_flag:           0
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
 #cidd.demo_time:  00:10 06/30/2020
-cidd.demo_time:  12:00 03/20/2021
+#cidd.demo_time:  12:00 03/20/2021
+cidd.demo_time:  11:30 03/13/2021
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -915,7 +884,7 @@ cidd.click_posn_rel_to_origin: 1
 # Set this parameter to force the field menu popup to this many columns
 # If set <= 0, then cidd sets this dynamically, allowing at most 30 in each
 # column.
-cidd.num_field_menu_cols: 2
+cidd.num_field_menu_cols: 3
 
 # This parameter sets WSDDM specific behavior On -
 # - Go to end of loop when movie stops.
@@ -1248,226 +1217,6 @@ short_requests = TRUE;
 //         Note: scale_constant set in MAIN_PARAM section.      
 
 prod_info = {
-  {
-    menu_label = "RHI-spol",
-    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:pecan/spdb/spol/rhi/sband?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    on_by_default = FALSE,
-    minutes_allow_before = 20,
-    minutes_allow_after = 10,
-    text_off_threshold = 0.4,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  // , 
-  // {
-  //   menu_label = "RHI-label",
-  //   url = "spdbp:Rhi2Symprod:label//front.eol.ucar.edu:8080:pecan/spdb/spol/rhi/sband?use_http=true",
-  //   data_type = 0,
-  //   render_type = RENDER_ALL_VALID,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 20,
-  //   minutes_allow_after = 10,
-  //   text_off_threshold = 0.4,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  ,
-  {
-    menu_label = "METARS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/metar?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "METARS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/metar?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "MADIS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/madis?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "MADIS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/madis?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "KSMeso-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/KSMeso?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "KSMeso-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/KSMeso?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "NLDN-15" ,
-    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:pecan/spdb/ltg/nldn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 15.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    FALSE,
-    FALSE
-  }
-  ,                        
-  {
-    menu_label = "AcPosn 10-min",
-    url = "spdbp:AcTrack2Symprod:10_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 15.0,
-    minutes_allow_after = 15.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
-  ,                        
-  {
-    menu_label = "AcPosn 20-min",
-    url = "spdbp:AcTrack2Symprod:20_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 15.0,
-    minutes_allow_after = 15.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
-  ,                        
-  {
-    menu_label = "AcPosn 30-min",
-    url = "spdbp:AcTrack2Symprod:30_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 15.0,
-    minutes_allow_after = 15.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
-  ,                        
-  {
-    menu_label = "MobilePosn",
-    url = "spdbp:AcTrack2Symprod:mobile//front.eol.ucar.edu:8080:pecan/spdb/mobile_posn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 60.0,
-    minutes_allow_after = 60.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
-  ,
-  {
-    menu_label = "titan-forecast 60-min",
-    url = "spdbp:Tstorms2Symprod:60min//front.eol.ucar.edu:8080:pecan/spdb/tstorms/mrms_conv?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 20.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0,
-    FALSE,
-    FALSE
-  }
-  ,
-  {
-    menu_label = "titan-forecast 120-min",
-    url = "spdbp:Tstorms2Symprod:120min//front.eol.ucar.edu:8080:pecan/spdb/tstorms/mrms_conv?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 20.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0,
-    FALSE,
-    FALSE
-  }
-  ,
-  {
-    menu_label = "precip_front_range",
-    url = "spdbp:Metar2Symprod://front.eol.ucar.edu:8080:pecan/spdb/precip/front_range?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    on_by_default = FALSE,
-    minutes_allow_before = 300.0,
-    minutes_allow_after = 300.0,
-    text_off_threshold = 0,
-    FALSE,
-    FALSE
-  }
-  ,
-  {
-    menu_label = "precip_ncdc",
-    url = "spdbp:Metar2Symprod://front.eol.ucar.edu:8080:pecan/spdb/precip/ncdc?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    on_by_default = FALSE,
-    minutes_allow_before = 300.0,
-    minutes_allow_after = 300.0,
-    text_off_threshold = 0,
-    FALSE,
-    FALSE
-  }
 };
 
 </SYMPRODS> 
