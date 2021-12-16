@@ -14,8 +14,8 @@ endTime=datetime(2015,7,17,0,0,0);
 plotIndiv=0;
 saveData=1;
 
-indir=['/scr/rain2/rsfdata/projects/pecan/mdv/conv_strat/new/'];
-indirL=['/scr/rain2/rsfdata/projects/pecan/mdv/ltg/nldn-5min/'];
+indir=['/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/new/'];
+indirL=['/scr/cirrus1/rsfdata/projects/pecan/mdv/ltg/nldn-5min/'];
 
 figdir=['/scr/sci/romatsch/stratConv/compLightning/'];
 

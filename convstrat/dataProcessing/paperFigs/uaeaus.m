@@ -305,7 +305,6 @@ in3D.part3D(in3D.part3Din==38)=-1; % conv deep
 ax5=subplot(4,2,2);
 
 hold on
-geoshow(countries,'FaceColor',[1,1,1],'facealpha',0);
 
 surf(lonReal',latReal',max(in3D.refl,[],3)','edgecolor','none');
 view(2)
@@ -314,6 +313,7 @@ ylim([latReal(1,1),latReal(1,end)-0.1]);
 caxis([0 55]);
 cb1=colorbar;
 cb1.Title.String='dBZ';
+geoshow(countries,'FaceColor',[1,1,1],'facealpha',0);
 
 grid on
 box on
@@ -397,7 +397,7 @@ ax2.Position=[0.055 0.535 0.38 0.16];
 ax3.Position=[0.055 0.257 0.38 0.23];
 ax4.Position=[0.055 0.045 0.38 0.16];
 
-ax5.Position=[0.49 0.745 0.38 0.23];
+ax5.Position=[0.49 0.753 0.38 0.214];
 ax6.Position=[0.49 0.535 0.38 0.16];
 ax7.Position=[0.49 0.257 0.38 0.23];
 ax8.Position=[0.49 0.045 0.38 0.16];
