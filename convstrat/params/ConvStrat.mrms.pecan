@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
+input_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+temp_profile_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/ruc/";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -512,7 +512,7 @@ dual_threshold = {
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat1";
+output_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/test1";
 
 ///////////// write_partition /////////////////////////
 //
