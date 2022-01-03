@@ -352,7 +352,7 @@ cidd.idle_reset_seconds: 0
 
 # HTML Mode - Set this to 1 to put CIDD into the automatic HTML output mode.
 # Note: cidd.image_dir MUST be set.
-cidd.html_mode: 0
+cidd.html_mode: 1
 
 # Image Generation related resources
 # Set this to a value to get cidd to output imagery as XWD in this directory
@@ -360,7 +360,7 @@ cidd.image_dir: $(HOME)/images
 
 # Set to 1 if one wants CIDD to run once through it's HTML output
 # plot list and then exit - Currently all fields at each zoom level
-cidd.run_once_and_exit: 0
+cidd.run_once_and_exit: 1
 
 # The HTML MODE Output file name is built from parts:
 # 'cidd' + fieldname + zoom_level + [height] +
@@ -468,8 +468,8 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       7
-cidd.start_zoom_level:      6
+cidd.num_zoom_levels:       1
+cidd.start_zoom_level:      1
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -478,11 +478,11 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  SPOL-150km
-cidd.level1_min_xkm:                -101.27
-cidd.level1_min_ykm:                37.18
-cidd.level1_max_xkm:                -97.80
-cidd.level1_max_ykm:                39.90
+cidd.level1_label:                  SAMPLE
+cidd.level1_min_xkm:                -101.926
+cidd.level1_min_ykm:                40.5
+cidd.level1_max_xkm:                -100.079
+cidd.level1_max_ykm:                41.907.
 #
 cidd.level2_label:                  PECAN-DOMAIN
 cidd.level2_min_xkm:                -103.7
@@ -517,11 +517,6 @@ cidd.level6_min_ykm:                -90
 cidd.level6_max_xkm:                180
 cidd.level6_max_ykm:                90
 #
-cidd.level6_label:                  SAMPLE
-cidd.level6_min_xkm:                -101.926
-cidd.level6_min_ykm:                40.5
-cidd.level6_max_xkm:                -100.079
-cidd.level6_max_ykm:                41.907.
 #
 
 # Vertical Range and Resolution - Establishes a vertical coordinate system
