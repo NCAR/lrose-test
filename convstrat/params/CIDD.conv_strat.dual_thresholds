@@ -95,14 +95,7 @@ field_list = {
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
 
-# ConvStrat for PECAN
-
-#MrmsDbz3DComp MrmsDbz3DComp  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&DBZ dbz.colors      dBZ -5 80 5 cart,comp 1 0
-#MrmsDbz3D     MrmsDbz3D      mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&DBZ dbz.colors      dBZ -5 80 5 cart 1 0
-#MrmsDbzHidden MrmsDbzHidden  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&DBZ dbz_mrms.colors dBZ -5 80 5 cart 1 0
-#========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-
-Dbz3DMax Dbz3DMax mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3DMax Dbz3DMax mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Dbz3D  dbz_jet.colors   dBZ -5 80 5 cart,comp 1 0
 Dbz3D     Dbz3D     mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
 FractionActive  FractionActive  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&FractionActive  fraction.colors - -5 80 5 cart 1 0
 
@@ -616,10 +609,10 @@ cidd.locator_margin_km:   50
 cidd.foreground_color: black
 
 # Background of Images use this color
-cidd.background_color: white
+cidd.background_color: grey75
 
 # Background of margins will be this color
-cidd.margin_color: white
+cidd.margin_color: grey75
 
 # Render values outside the data range of the color scale in this color
 # 'transparent' is the default
@@ -647,9 +640,9 @@ cidd.range_ring_color: gray
 # Set the follwing colors to 'transparent' to avoid having these
 # plotted. (This is the default) Otherwise, these data will be
 # plotted in the indicated color
-cidd.missing_data_color: white
+cidd.missing_data_color: grey75
 
-cidd.bad_data_color: white
+cidd.bad_data_color: grey75
 #
 # Time Control (Movie) Popup Colors
 cidd.epoch_indicator_color: orange
@@ -733,8 +726,8 @@ cidd.bot_margin_render_style: 2
 # Explititly set the Label start coords, and delta Y.
 # If left unset, ledgends start relative to the top and left margins.
 #
-cidd.horiz_legends_start_x:  30
-cidd.horiz_legends_start_y:  40
+cidd.horiz_legends_start_x:  10
+cidd.horiz_legends_start_y:  10
 cidd.horiz_legends_delta_y:  30
 
 #
@@ -746,10 +739,10 @@ cidd.horiz_min_width:         400
 cidd.horiz_default_x_pos:     0
 cidd.horiz_default_y_pos:     0
 
-cidd.horiz_top_margin:        30
+cidd.horiz_top_margin:        0
 cidd.horiz_bot_margin:        0
-cidd.horiz_left_margin:       40
-cidd.horiz_right_margin:      0
+cidd.horiz_left_margin:       0
+cidd.horiz_right_margin:      60
 
 cidd.vert_min_height:        120
 cidd.vert_min_width:         120
