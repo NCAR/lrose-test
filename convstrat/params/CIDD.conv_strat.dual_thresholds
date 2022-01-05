@@ -131,12 +131,12 @@ ConvTops   ConvTops  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_d
 StratTops  StratTops mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
 EchoTops   EchoTops  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 
-AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/titan/dual_threshold&All sub_clump.colors - -5 80 5 cart 1 0
-ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/titan/dual_threshold&Valid sub_clump.colors - -5 80 5 cart 1 0
-GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/titan/dual_threshold&Grown sub_clump.colors - -5 80 5 cart 1 0
+AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh&AllClumps sub_clump.colors - -5 80 5 cart 1 0
+ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh&ValidClumps sub_clump.colors - -5 80 5 cart 1 0
+GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh&GrownClumps sub_clump.colors - -5 80 5 cart 1 0
 
-CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/titan/dual_threshold&CompDbz dbz.colors - -5 80 5 cart 1 0
-CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/titan/dual_threshold&CompDbz dbz_flag.colors - -5 80 5 cart 1 0
+CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh&ClumpsCompDbz dbz.colors - -5 80 5 cart 1 0
+CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh&ClumpsCompDbz dbz_flag.colors - -5 80 5 cart 1 0
 ConvThresh   ConvThresh  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Convectivity3D convectivity_thresholded.colors - -5 80 5 cart,comp 1 0
 
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
@@ -155,6 +155,8 @@ ConvThresh   ConvThresh  mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mr
 #------------------------------------------------------------------------------------------
 # MAP_CODE Control_Label   Map_File_Name   On/OFF Detail__min Detail_max Color     
 #------------------------------------------------------------------------------------------
+
+convstrat_zoom convstrat_zoom  convstrat_zoom_pecan.map   0      0.0      10000.0     blue
 
 #PECAN        PECAN        pecan_domain.map  0  0.0 1000000.0  orange
 #Counties     Counties     us_counties.map   0      0.0      10000.0     brown4
@@ -245,7 +247,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-#cidd.demo_time:  00:00 06/26/2015
+#cidd.demo_time:  04:22 06/26/2015
 cidd.demo_time:  23:50 06/14/2015
 
 # Set times to the nearest value divisible by the number of seconds
@@ -352,7 +354,7 @@ cidd.idle_reset_seconds: 0
 
 # HTML Mode - Set this to 1 to put CIDD into the automatic HTML output mode.
 # Note: cidd.image_dir MUST be set.
-cidd.html_mode: 1
+cidd.html_mode: 0
 
 # Image Generation related resources
 # Set this to a value to get cidd to output imagery as XWD in this directory
@@ -360,7 +362,7 @@ cidd.image_dir: $(HOME)/images
 
 # Set to 1 if one wants CIDD to run once through it's HTML output
 # plot list and then exit - Currently all fields at each zoom level
-cidd.run_once_and_exit: 1
+cidd.run_once_and_exit: 0
 
 # The HTML MODE Output file name is built from parts:
 # 'cidd' + fieldname + zoom_level + [height] +
@@ -468,7 +470,7 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       1
+cidd.num_zoom_levels:       7
 cidd.start_zoom_level:      1
 
 # The number of Cached images for zooms.
@@ -482,40 +484,46 @@ cidd.level1_label:                  SAMPLE
 cidd.level1_min_xkm:                -101.926
 cidd.level1_min_ykm:                40.5
 cidd.level1_max_xkm:                -100.079
-cidd.level1_max_ykm:                41.907.
+cidd.level1_max_ykm:                41.907
 #
-cidd.level2_label:                  PECAN-DOMAIN
-cidd.level2_min_xkm:                -103.7
-cidd.level2_min_ykm:                35.45
-cidd.level2_max_xkm:                -95.2
-cidd.level2_max_ykm:                41.6
+cidd.level2_label:                  SAMPLE2
+cidd.level2_min_xkm:                -105.5579
+cidd.level2_min_ykm:                37.2239
+cidd.level2_max_xkm:                -100.7173
+cidd.level2_max_ykm:                40.9618
 #
-#
-cidd.level3_label:                  WIDE
-cidd.level3_min_xkm:                -107.0
-cidd.level3_min_ykm:                33.5
-cidd.level3_max_xkm:                -92.0
-cidd.level3_max_ykm:                43.5
-#
-#
-cidd.level4_label:                  REGIONAL
-cidd.level4_min_xkm:                -110
-cidd.level4_min_ykm:                29
-cidd.level4_max_xkm:                -90
-cidd.level4_max_ykm:                46
+cidd.level3_label:                  SAMPLE3
+cidd.level3_min_xkm:                -102.9817
+cidd.level3_min_ykm:                40.1366
+cidd.level3_max_xkm:                -102.5603
+cidd.level3_max_ykm:                 40.4952
 #
 #
-cidd.level5_label:                  CONUS
-cidd.level5_min_xkm:                -125
-cidd.level5_min_ykm:                25
-cidd.level5_max_xkm:                -70
-cidd.level5_max_ykm:                50
+cidd.level4_label:                  WIDE
+cidd.level4_min_xkm:                -107.0
+cidd.level4_min_ykm:                33.5
+cidd.level4_max_xkm:                -92.0
+cidd.level4_max_ykm:                43.5
 #
-cidd.level6_label:                  WORLD
-cidd.level6_min_xkm:                -180
-cidd.level6_min_ykm:                -90
-cidd.level6_max_xkm:                180
-cidd.level6_max_ykm:                90
+#
+cidd.level5_label:                  REGIONAL
+cidd.level5_min_xkm:                -110
+cidd.level5_min_ykm:                29
+cidd.level5_max_xkm:                -90
+cidd.level5_max_ykm:                46
+#
+#
+cidd.level6_label:                  CONUS
+cidd.level6_min_xkm:                -125
+cidd.level6_min_ykm:                25
+cidd.level6_max_xkm:                -70
+cidd.level6_max_ykm:                50
+#
+cidd.level7_label:                  WORLD
+cidd.level7_min_xkm:                -180
+cidd.level7_min_ykm:                -90
+cidd.level7_max_xkm:                180
+cidd.level7_max_ykm:                90
 #
 #
 
@@ -651,7 +659,7 @@ cidd.time_tick_color6: blue
 
 #Toggle for displaying the height Selector in Right Margin
 # Note Right Margin shoud be at least 50 pixels wide
-cidd.show_height_sel:       1
+cidd.show_height_sel:       0
 
 # Display data access and rendering messages - This is probably not
 # necessary in situations where all data is small and local.
@@ -737,7 +745,7 @@ cidd.horiz_default_y_pos:     0
 cidd.horiz_top_margin:        0
 cidd.horiz_bot_margin:        0
 cidd.horiz_left_margin:       0
-cidd.horiz_right_margin:      60
+cidd.horiz_right_margin:      40
 
 cidd.vert_min_height:        120
 cidd.vert_min_width:         120

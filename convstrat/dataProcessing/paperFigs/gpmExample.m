@@ -133,7 +133,7 @@ xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 plot(lineBounds1,[latDisp1,latDisp1],'-k','linewidth',2);
 
-text(titleLargeXY(1),titleLargeXY(2),'(a) Ground Based Reflectivity',...
+text(titleLargeXY(1),titleLargeXY(2),'(a) Ground based reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-96.4,41.9,'A','Fontsize',11,'fontweight','bold');
@@ -154,7 +154,7 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(-95.93,11.5,'(c) Ground Based reflectivity',...
+text(-95.93,11.5,'(c) Ground based reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -178,7 +178,7 @@ box on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 
-text(titleLargeXY(1),titleLargeXY(2),'(f) Ground Based 2D Classification',...
+text(titleLargeXY(1),titleLargeXY(2),'(f) Ground based 2D precip type',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax3.SortMethod = 'childorder';
 
@@ -196,7 +196,7 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(-95.93,11.5,'(h) Ground Based Classification',...
+text(-95.93,11.5,'(h) Ground based precip type',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -299,7 +299,7 @@ xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 plot(lineBounds1,[latDisp1,latDisp1],'-k','linewidth',2);
 
-text(titleLargeXY(1),titleLargeXY(2),'(b) GPM DPR Reflectivity',...
+text(titleLargeXY(1),titleLargeXY(2),'(b) GPM reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-95.4,41.9,'C','Fontsize',11,'fontweight','bold');
@@ -323,7 +323,7 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(-94.94,11.7,'(d) GPM Refl.',...
+text(-94.94,11.7,'(d) GPM reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-94.95,1,'C','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -344,7 +344,7 @@ ax62.YTickLabel='';
 grid on
 box on
 
-text(-94.94,11.7,'(e) GPM Class.',...
+text(-94.94,11.7,'(e) GPM precip type',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-94.95,1,'C','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -370,7 +370,7 @@ box on
 %ax3.YTick=(24:26);
 ylabel('Latitude (deg)');
 
-text(titleLargeXY(1),titleLargeXY(2),'(g) GPM 2D Classification',...
+text(titleLargeXY(1),titleLargeXY(2),'(g) GPM 2D precip type',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 ax7.SortMethod = 'childorder';
@@ -399,7 +399,7 @@ ylabel('Latitude (deg)');
 
 ax8.YTick=37:43;
 
-text(titleLargeXY(1),titleLargeXY(2),'(i) GPM Precipitation Type',...
+text(titleLargeXY(1),titleLargeXY(2),'(i) GPM precip type',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax8.SortMethod = 'childorder';
 

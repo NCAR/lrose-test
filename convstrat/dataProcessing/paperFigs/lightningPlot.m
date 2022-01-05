@@ -102,7 +102,7 @@ ylim([0,35]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of area [%]')
-title('(a) Area per category');
+title('(a) Area per precip type category');
 
 ax3=subplot('Position',[0.39 0.71 0.27 0.25]);
 b=bar(countPercAll,1,'FaceColor','flat');
@@ -117,7 +117,7 @@ ylim([0,55]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of flashes [%]')
-title('(b) Flashes per category');
+title('(b) Flashes per precip type category');
 
 ax4=subplot('Position',[0.72 0.71 0.27 0.25]);
 b=bar(lightPerArea,1,'FaceColor','flat');

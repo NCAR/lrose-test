@@ -138,7 +138,7 @@ cb3.Ticks=[1.5,2.5,3.5];
 cb3.TickLabels=cat(2,{'Stratiform','Mixed','Convective'});
 geoshow(countries,'FaceColor',[1,1,1],'facealpha',0);
 
-title('(c) Basic conv/strat classification');
+title('(c) Basic precipitation type');
 grid on
 box on
 xlabel('Longitude (deg)');

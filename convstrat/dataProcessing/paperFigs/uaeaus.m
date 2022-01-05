@@ -184,7 +184,7 @@ ylim([latReal(1,1),latReal(1,end)]);
 caxis([-8 0]);
 colormap(ax3,colmapPart);
 
-title(['2D Classification']);
+title(['2D Precipitation type']);
 grid on
 box on
 ax3.YTick=(24:26);
@@ -206,7 +206,7 @@ caxis([-8 0]);
 colormap(ax4,colmapPart);
 ylabel('Alt. above radar (km)');
 
-title('3D Classification');
+title('3D Precipitation type');
 grid on
 box on
 

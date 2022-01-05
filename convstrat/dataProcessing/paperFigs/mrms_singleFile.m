@@ -172,7 +172,7 @@ cb2=colorbar;
 cb2.Ticks=[-7.5,-6.5,-5.5,-4.5,-3.5,-2.5,-1.5,-0.5];
 cb2.TickLabels=categories;
 
-title(['2D Classification']);
+title(['2D Precipitation type']);
 box on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
