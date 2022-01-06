@@ -133,7 +133,7 @@ xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 plot(lineBounds1,[latDisp1,latDisp1],'-k','linewidth',2);
 
-text(titleLargeXY(1),titleLargeXY(2),'(a) Ground based reflectivity',...
+text(titleLargeXY(1),titleLargeXY(2),'(a) MRMS reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-96.4,41.9,'A','Fontsize',11,'fontweight','bold');
@@ -154,7 +154,7 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(-95.93,11.5,'(c) Ground based reflectivity',...
+text(-95.93,11.5,'(c) MRMS reflectivity',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -178,7 +178,7 @@ box on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 
-text(titleLargeXY(1),titleLargeXY(2),'(f) Ground based 2D precip type',...
+text(titleLargeXY(1),titleLargeXY(2),'(f) MRMS ECCO-COMP',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax3.SortMethod = 'childorder';
 
@@ -196,7 +196,7 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(-95.93,11.5,'(h) Ground based precip type',...
+text(-95.93,11.5,'(h) MRMS ECCO-3D',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -344,7 +344,7 @@ ax62.YTickLabel='';
 grid on
 box on
 
-text(-94.94,11.7,'(e) GPM precip type',...
+text(-94.94,11.7,'(e) GPM ECCO-3D',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 text(-94.95,1,'C','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
@@ -370,7 +370,7 @@ box on
 %ax3.YTick=(24:26);
 ylabel('Latitude (deg)');
 
-text(titleLargeXY(1),titleLargeXY(2),'(g) GPM 2D precip type',...
+text(titleLargeXY(1),titleLargeXY(2),'(g) GPM ECCO-COMP',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
 ax7.SortMethod = 'childorder';
@@ -399,7 +399,7 @@ ylabel('Latitude (deg)');
 
 ax8.YTick=37:43;
 
-text(titleLargeXY(1),titleLargeXY(2),'(i) GPM precip type',...
+text(titleLargeXY(1),titleLargeXY(2),'(i) GPM PT',...
     'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax8.SortMethod = 'childorder';
 

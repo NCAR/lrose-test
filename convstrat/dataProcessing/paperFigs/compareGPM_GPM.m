@@ -77,7 +77,7 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title(['(a) ',num2str(size(stratPart,1)),' GPM stratiform points']);
+title(['(a) ',num2str(size(stratPart,1)),' GPM PT stratiform points']);
 box on
 
 s2=subplot(3,1,2);
@@ -95,7 +95,7 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title(['(b) ',num2str(size(convPart,1)),' GPM convective points']);
+title(['(b) ',num2str(size(convPart,1)),' GPM PT convective points']);
 box on
 
 s3=subplot(3,1,3);
@@ -113,7 +113,7 @@ ylim([0,55]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title(['(c) ',num2str(size(otherPart,1)),' GPM other points']);
+title(['(c) ',num2str(size(otherPart,1)),' GPM PT other points']);
 box on
 
 s1.Position=[0.11 0.71 0.87 0.265];

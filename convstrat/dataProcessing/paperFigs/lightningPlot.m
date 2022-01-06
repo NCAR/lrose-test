@@ -63,7 +63,7 @@ ylim([lat(1),lat(end)]);
 caxis([-8 20]);
 
 colormap(ax1,colmap);
-scatter(lonlatL(1,:),lonlatL(2,:),0.1,lonlatL(3,:),'o','filled');
+scatter(lonlatL(1,:),lonlatL(2,:),1.3,lonlatL(3,:),'o','filled');
 title('(d) Classification and flash counts');
 grid on
 xlabel('Longitude (deg)');
@@ -102,7 +102,7 @@ ylim([0,35]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of area [%]')
-title('(a) Area per precip type category');
+title('(a) Area per echo type category');
 
 ax3=subplot('Position',[0.39 0.71 0.27 0.25]);
 b=bar(countPercAll,1,'FaceColor','flat');
@@ -117,7 +117,7 @@ ylim([0,55]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of flashes [%]')
-title('(b) Flashes per precip type category');
+title('(b) Flashes per echo type category');
 
 ax4=subplot('Position',[0.72 0.71 0.27 0.25]);
 b=bar(lightPerArea,1,'FaceColor','flat');

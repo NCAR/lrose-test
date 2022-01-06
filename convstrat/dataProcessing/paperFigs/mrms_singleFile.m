@@ -147,7 +147,7 @@ plot([lonDisp1,lonDisp1],lineBounds2,'-m','linewidth',2);
 plot([lonDisp2,lonDisp2],lineBounds3,'-m','linewidth',2);
 ax1.SortMethod = 'childorder';
 
-text(-126.5,53.5,'(a)','Fontsize',11,'FontWeight','bold');
+text(-125,51,'(a)','Fontsize',11,'FontWeight','bold');
 
 text(-104,38,'A','Fontsize',10,'FontWeight','bold');
 text(-100,38,'B','Fontsize',10,'FontWeight','bold');
@@ -172,13 +172,13 @@ cb2=colorbar;
 cb2.Ticks=[-7.5,-6.5,-5.5,-4.5,-3.5,-2.5,-1.5,-0.5];
 cb2.TickLabels=categories;
 
-title(['2D Precipitation type']);
+title(['ECCO echo type']);
 box on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 ax2.SortMethod = 'childorder';
 
-text(-126.5,53.5,'(e)','Fontsize',11,'FontWeight','bold');
+text(-125,51,'(e)','Fontsize',11,'FontWeight','bold');
 
 ax3=subplot(6,3,3);
 

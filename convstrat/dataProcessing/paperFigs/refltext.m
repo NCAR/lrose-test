@@ -196,7 +196,7 @@ caxis([-6 -3]);
 colormap(ax5,[0,0,1;0.32,0.78,0.59;1 0 0]);
 ax5.YTick=(35:2:43);
 
-title('(e) Basic precipitation type');
+title('(e) Basic echo type');
 grid on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
@@ -216,7 +216,7 @@ cb=colorbar;
 cb.Ticks=[-5.5,-4.5,-3.5];
 cb.TickLabels=cat(2,{'Stratiform','Mixed','Convective'});
 
-title('(f) Basic precipitation type');
+title('(f) Basic echo type');
 grid on
 
 ax1.Position=[0.06 0.72 0.35 0.25];

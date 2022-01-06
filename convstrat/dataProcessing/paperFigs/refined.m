@@ -142,7 +142,7 @@ ylim([0,altLim1]);
 caxis([-8 0]);
 colormap(ax2,colmapPart);
 
-title('(b) 3D Precipitation type');
+title('(b) ECCO-3D echo type');
 grid on
 box on
 
@@ -159,7 +159,7 @@ cb2=colorbar;
 cb2.Ticks=[-7.5,-6.5,-5.5,-4.5,-3.5,-2.5,-1.5,-0.5];
 cb2.TickLabels=categories;
 
-title(['(c) 2D Precipitation type']);
+title(['(c) ECCO-COMP echo type']);
 %caxis([0 60]);
 %ax3.YTick=(35:2:43);
 
@@ -279,7 +279,7 @@ ylim([0,altLim1]);
 caxis([-8 0]);
 colormap(ax5,colmapPart);
 
-title('(e) 3D Precipitation type');
+title('(e) ECCO-3D echo type');
 grid on
 box on
 
@@ -293,7 +293,7 @@ ylim([lat(1),lat(end)]);
 caxis([-8 0]);
 colormap(ax6,colmapPart);
 
-title(['(f) 2D Precipitation type']);
+title(['(f) ECCO-COMP echo type']);
 grid on
 box on
 xlabel('Longitude (deg)');
