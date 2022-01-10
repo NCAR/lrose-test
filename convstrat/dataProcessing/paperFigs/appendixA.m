@@ -179,7 +179,7 @@ ylim([lat(1),lat(end)]);
 ax3.Colormap=lines(5);
 ax3.YTick=(35:0.5:43);
 
-title(['(c) Large clumps']);
+title(['(c) Small clumps']);
 grid on
 box on
 xlabel('Longitude (deg)');
