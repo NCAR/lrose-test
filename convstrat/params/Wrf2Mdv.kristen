@@ -531,37 +531,37 @@ output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen";
 output_fields = {
   {
     name = U_FIELD,
-    encoding = OUT_INT8
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = V_FIELD,
-    encoding = OUT_INT8
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = TC_FIELD,
-    encoding = OUT_INT16
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = RH_FIELD,
-    encoding = OUT_INT8
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = CLW_FIELD,
-    encoding = OUT_INT8
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = FZLEVEL_FIELD,
-    encoding = OUT_INT16
+    encoding = OUT_FLOAT32
   }
   ,
   {
     name = DBZ_3D_FIELD,
-    encoding = OUT_INT8
+    encoding = OUT_FLOAT32
   }
 };
 
