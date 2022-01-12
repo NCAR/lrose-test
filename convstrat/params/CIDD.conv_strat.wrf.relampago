@@ -100,9 +100,9 @@ field_list = {
 # RELAMPAGO
 #
 
-WRF-DBZ      WRF-DBZ     scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&DBZ   dbz.colors   dBZ   -5 80 5 radial 1 0
-WRF-Temp     WRF-Temp    scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&Temp  temp.colors   dBZ   -5 80 5 radial 1 0
-WRF-RH       WRF-RH      scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&RH    rh.colors   dBZ   -5 80 5 radial 1 0
+WRF-DBZ      WRF-DBZ     /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&DBZ   dbz.colors   dBZ  -5 80 5 cart 1 0
+WRF-Temp     WRF-Temp    /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&Temp  temp.colors  C    -5 80 5 cart 1 0
+WRF-RH       WRF-RH      /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&RH    rh.colors    %    -5 80 5 cart 1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
@@ -539,7 +539,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  21:30 12/13/2018
+cidd.demo_time:  20:00 12/13/2018
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -550,12 +550,12 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:  24
+cidd.starting_movie_frames:  12
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
 # oldest movie frame and creating and drawing a new one.
-cidd.time_interval:  15
+cidd.time_interval:  10
 
 # This parameter sets the maximum number of hours in the future a user can select
 # from the quick forecast menu. See SHOW_FORECAST_MENU menu bar button
@@ -763,7 +763,7 @@ cidd.xsect_start_page:      1
 #
 # The Outer most domain:
 cidd.num_zoom_levels:       8
-cidd.start_zoom_level:      5
+cidd.start_zoom_level:      1
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -772,11 +772,11 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  300km
-cidd.level1_min_xkm:                -68
-cidd.level1_min_ykm:                -35
-cidd.level1_max_xkm:                -62
-cidd.level1_max_ykm:                -30
+cidd.level1_label:                  WRF
+cidd.level1_min_xkm:                -69
+cidd.level1_min_ykm:                -36
+cidd.level1_max_xkm:                -60
+cidd.level1_max_ykm:                -27.5
 #
 cidd.level2_label:                  400km
 cidd.level2_min_xkm:                -69
@@ -838,7 +838,7 @@ cidd.level8_max_ykm:                89
 #  
 cidd.min_ht:               0.0
 cidd.max_ht:               20.0
-cidd.start_ht:             1.7
+cidd.start_ht:             2.5
 
 # Radial data Limits
 cidd.min_rkm:                0.0

@@ -60,7 +60,7 @@ alg_debug = DEBUG_NONE;
 // Type: string
 //
 
-instance = "kristen";
+instance = "kristen.replampago";
 
 ///////////// Procmap_reg_interval_secs ///////////////
 //
@@ -1349,7 +1349,7 @@ wind_speed_in_knots = FALSE;
 //     OUTPUT_PROJ_NATIVE
 //
 
-output_projection = OUTPUT_PROJ_NATIVE;
+output_projection = OUTPUT_PROJ_LATLON;
 
 ///////////// output_origin ///////////////////////////
 //
@@ -1368,8 +1368,8 @@ output_projection = OUTPUT_PROJ_NATIVE;
 //
 
 output_origin = {
-    lat = 40,
-    lon = -104
+    lat = -31.9,
+    lon = -64.3
 };
 
 ///////////// lambert_lat1 ////////////////////////////
@@ -1432,12 +1432,12 @@ stereographic_tangent_lon = 0;
 //
 
 output_grid = {
-    nx = 300,
-    ny = 300,
-    minx = -149.5,
-    miny = -149.5,
-    dx = 1,
-    dy = 1
+    nx = 800,
+    ny = 840,
+    minx = -67.8,
+    miny = -35.9,
+    dx = 0.01,
+    dy = 0.01
 };
 
 ///////////// output_levels ///////////////////////////
