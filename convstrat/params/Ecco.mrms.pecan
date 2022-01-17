@@ -507,20 +507,6 @@ each_subclump_min_area_fraction = 0.02;
 
 each_subclump_min_area_km2 = 2;
 
-///////////// clumping_write_debug_fields /////////////
-//
-// Option to write fields to the output files for debugging the dual 
-//   threshold clumping.
-//
-// If this is set, the following debug fields are written to the output 
-//   files: .
-//
-//
-// Type: boolean
-//
-
-clumping_write_debug_fields = TRUE;
-
 //======================================================================
 //
 // DATA OUTPUT.
@@ -587,18 +573,6 @@ write_convectivity = TRUE;
 
 write_3D_dbz = TRUE;
 
-///////////// write_convective_dbz ////////////////////
-//
-// Write out convective dbz field.
-//
-// This will write out the 3D convective DBZ field.
-//
-//
-// Type: boolean
-//
-
-write_convective_dbz = TRUE;
-
 ///////////// write_col_max_dbz ///////////////////////
 //
 // Write out column maximum dbz field.
@@ -610,6 +584,18 @@ write_convective_dbz = TRUE;
 //
 
 write_col_max_dbz = TRUE;
+
+///////////// write_convective_dbz ////////////////////
+//
+// Write out convective dbz field.
+//
+// This will write out the 3D convective DBZ field.
+//
+//
+// Type: boolean
+//
+
+write_convective_dbz = TRUE;
 
 ///////////// write_tops //////////////////////////////
 //
@@ -658,4 +644,18 @@ write_height_grids = TRUE;
 //
 
 write_temperature = TRUE;
+
+///////////// write_clumping_debug_fields /////////////
+//
+// Option to write fields to the output files for debugging the dual 
+//   threshold clumping.
+//
+// If this is set, the following debug fields are written to the output 
+//   files: .
+//
+//
+// Type: boolean
+//
+
+write_clumping_debug_fields = FALSE;
 
