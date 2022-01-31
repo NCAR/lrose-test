@@ -125,9 +125,9 @@ DbzConv         DbzConv         /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-Part3DMax Part3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D    Part3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D    Part2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+EchoType3DMax EchoType3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+EchoType2D    EchoType2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
 ShallowHt ShallowHt /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHt    DeepHt    /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DeepHt    number.colors km -5 80 5 cart 1 0
@@ -141,17 +141,17 @@ EchoTops   EchoTops  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&AllClumps sub_clump.colors - -5 80 5 cart 1 0
-ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ValidClumps sub_clump.colors - -5 80 5 cart 1 0
-GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&GrownClumps sub_clump.colors - -5 80 5 cart 1 0
+#AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&AllClumps sub_clump.colors - -5 80 5 cart 1 0
+#ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ValidClumps sub_clump.colors - -5 80 5 cart 1 0
+#GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&GrownClumps sub_clump.colors - -5 80 5 cart 1 0
 
-CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz.colors - -5 80 5 cart 1 0
-CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz_flag.colors - -5 80 5 cart 1 0
-ConvThresh   ConvThresh  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/conv_strat/wrf/relampago&Convectivity3D convectivity_thresholded.colors - -5 80 5 cart,comp 1 0
+#CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz.colors - -5 80 5 cart 1 0
+#CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz_flag.colors - -5 80 5 cart 1 0
+#ConvThresh   ConvThresh  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/conv_strat/wrf/relampago&Convectivity3D convectivity_thresholded.colors - -5 80 5 cart,comp 1 0
 
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+#========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+#========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+#========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
@@ -421,7 +421,7 @@ cidd.print_script: convert_image_print.csh
 # Button, after the last image has output. The arguments will be a list
 # of each output file in the series. CIDD will prepends the cidd.image_dir to each
 # files name which takes the form: cidd_field_name_zoom_name.xwd 
-cidd.series_convert_script: /opt/local/lrose/bin/make_anim.csh
+cidd.series_convert_script: make_anim.csh
 
 # Set to 1 to ask that data be compressed during the MDV Protocol
 # data requests. Default is = 0
@@ -1309,7 +1309,7 @@ prod_info = {
     url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true",
     data_type = 0,
     render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 90.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
@@ -1362,7 +1362,7 @@ prod_info = {
     data_type = 0,
     render_type = RENDER_ALL_VALID,
     // render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
+    on_by_default = TRUE,
     minutes_allow_before = 20.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
@@ -1390,7 +1390,7 @@ prod_info = {
     data_type = 0,
     render_type = RENDER_ALL_VALID,
     // render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
+    on_by_default = TRUE,
     minutes_allow_before = 20.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
@@ -1416,7 +1416,7 @@ prod_info = {
     url = "spdbp:AcTrack2Symprod:10_min//front.eol.ucar.edu:8080:relampago/spdb/ac_posn?use_http=true",
     data_type = 0,
     render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 15.0,
     minutes_allow_after = 15.0,
     text_off_threshold = 0.4,
@@ -1514,8 +1514,8 @@ id_label = "Terrain";
 // Type: string
 //
 
-terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:relampago/mdv/terrain?use_http=true&Elevation";
-// terrain_url = "";
+// terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:relampago/mdv/terrain?use_http=true&Elevation";
+terrain_url = "";
 
 ///////////// height_scaler ///////////////////////////
 //
