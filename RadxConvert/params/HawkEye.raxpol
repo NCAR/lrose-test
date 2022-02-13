@@ -396,60 +396,6 @@ fields = {
     color_map = "rhohv.colors",
     shortcut = "8"
   }
-  , 
-  {
-    label = "REFL",
-    raw_name = "Intensity",
-    filtered_name = "",
-    units = "dBZ",
-    color_map = "dbz.colors",
-    shortcut = "2"
-  }
-  ,
-  {
-    label = "VEL",
-    raw_name = "Radial_Velocity",
-    filtered_name = "",
-    units = "m/s",
-    color_map = "vel.colors",
-    shortcut = "3"
-  }
-  ,
-  {
-    label = "SW",
-    raw_name = "Width",
-    filtered_name = "",
-    units = "m/s",
-    color_map = "width.colors",
-    shortcut = "5"
-  }
-  ,
-  {
-    label = "ZDR",
-    raw_name = "Differential_Reflectivity",
-    filtered_name = "",
-    units = "dB",
-    color_map = "zdr.colors",
-    shortcut = "6"
-  }
-  ,
-  {
-    label = "PHIDP",
-    raw_name = "PhiDP",
-    filtered_name = "",
-    units = "deg",
-    color_map = "phidp.colors",
-    shortcut = "7"
-  }
-  ,
-  {
-    label = "RHOHV",
-    raw_name = "RhoHV",
-    filtered_name = "",
-    units = "unitless",
-    color_map = "rhohv.colors",
-    shortcut = "8"
-  }
 };
 
 ///////////// background_render_mins //////////////////
