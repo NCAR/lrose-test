@@ -79,14 +79,14 @@ register_with_procmap = FALSE;
 //   for new files, and will process those files as they arrive. This mode 
 //   is suitable for automated operation. 
 //
-// MOMENTS_REALTIME_INPUT: watch the input directory for new moments 
+// COVAR_REALTIME_INPUT: watch the input directory for new covariances 
 //   files, and process each volume as it arrives. 
 //
-// MOMENTS_ARCHIVE_INPUT: will process the moments files in the input 
+// COVAR_ARCHIVE_INPUT: will process the covariances files in the input 
 //   directory, between the start and end times. 
 //
-// MOMENTS_FILELIST_INPUT: will process the moments files listed on the 
-//   command line. .
+// COVAR_FILELIST_INPUT: will process the covariances files listed on 
+//   the command line. .
 //
 //
 // Type: enum
@@ -94,9 +94,9 @@ register_with_procmap = FALSE;
 //     TS_FILELIST_INPUT
 //     TS_FMQ_INPUT
 //     TS_REALTIME_DIR_INPUT
-//     MOMENTS_REALTIME_INPUT
-//     MOMENTS_ARCHIVE_INPUT
-//     MOMENTS_FILELIST_INPUT
+//     COVAR_REALTIME_INPUT
+//     COVAR_ARCHIVE_INPUT
+//     COVAR_FILELIST_INPUT
 //
 
 input_mode = TS_FILELIST_INPUT;
@@ -133,8 +133,7 @@ input_dir = "/tmp/data/time_series/suncal";
 //
 // Specify the start time for the files in archive mode.
 //
-// Format is 'yyyy mm dd hh mm ss'. Applies to MOMENTS_ARCHIVE_INPUT 
-//   mode.
+// Format is 'yyyy mm dd hh mm ss'. Applies to COVAR_ARCHIVE_INPUT mode.
 //
 //
 // Type: string
@@ -146,8 +145,7 @@ archive_start_time = "2012 06 01 00 00 00";
 //
 // Specify the end time for the files in archive mode.
 //
-// Format is 'yyyy mm dd hh mm ss'. Applies to MOMENTS_ARCHIVE_INPUT 
-//   mode.
+// Format is 'yyyy mm dd hh mm ss'. Applies to COVAR_ARCHIVE_INPUT mode.
 //
 //
 // Type: string
@@ -185,18 +183,6 @@ start_gate = 300;
 
 n_gates = 240;
 
-///////////// use_peak_power //////////////////////////
-//
-// Option to compute power from the peak value.
-//
-// If false, the mean power in range is used.
-//
-//
-// Type: boolean
-//
-
-use_peak_power = FALSE;
-
 ///////////// alternating_mode ////////////////////////
 //
 // Does this system transmit alternating H and V pulses.
@@ -220,7 +206,7 @@ alternating_mode = FALSE;
 //   pulses. This is done to create a co-polar and cross-polar receiver 
 //   system which is more stable for ZDR. If this is set to TRUE, then the 
 //   receiver is assumed to switch and the data for each channel is 
-//   gathered accordingly.
+//   gathered accordingly. NOTE - this only applies in alternating mode.
 //
 //
 // Type: boolean
@@ -242,50 +228,86 @@ switching_receiver = FALSE;
 
 invert_hv_flag = FALSE;
 
+///////////// print_missing_pulses ////////////////////
+//
+// Option to print message about missing pulses.
+//
+// Only applies to time series data input. If true, a message will be 
+//   printed to stderr if a missing pulse is noted in the time series.
+//
+//
+// Type: boolean
+//
+
+print_missing_pulses = FALSE;
+
+///////////// check_scan_segment_name /////////////////
+//
+// Option to check for the scan name before processing.
+//
+// Only applies to time series data input. If true, only scans that 
+//   match the scan name will be used.
+//
+//
+// Type: boolean
+//
+
+check_scan_segment_name = FALSE;
+
+///////////// scan_segment_name ///////////////////////
+//
+// Name of scan segment to check for.
+//
+// See 'check_scan_segment_name'.
+//
+//
+// Type: string
+//
+
+scan_segment_name = "Solar";
+
 //======================================================================
 //
-// FIELD NAMES FOR MOMENTS FILES.
+// FIELD NAMES FOR COVAR FILES.
 //
-// Names of specified fields in the moments files.
+// Names of specified fields in the covariances files. HCVX and VCHX 
+//   fields are for alternating mode. RVVHH fields are for simultaneous 
+//   mode.
 //
 //======================================================================
  
-///////////// moments_field_names /////////////////////
+///////////// covar_field_names ///////////////////////
 //
 //
 // Type: struct
 //   typedef struct {
-//      string DBMHC;
-//      string DBMVC;
-//      string DBMHX;
-//      string DBMVX;
-//      string ZDR;
-//      string PHIDP;
-//      string RHOHV;
-//      string NCP;
-//      string LAG1_HC_DB;
-//      string LAG1_HC_PHASE;
-//      string LAG1_VC_DB;
-//      string LAG1_VC_PHASE;
+//      string LAG0_HC_DB;
+//      string LAG0_HX_DB;
+//      string LAG0_VC_DB;
+//      string LAG0_VX_DB;
+//      string LAG0_HCVX_DB;
+//      string LAG0_HCVX_PHASE;
+//      string LAG0_VCHX_DB;
+//      string LAG0_VCHX_PHASE;
+//      string LAG1_VXHX_DB;
+//      string LAG1_VXHX_PHASE;
 //      string RVVHH0_DB;
 //      string RVVHH0_PHASE;
 //   }
 //
 //
 
-moments_field_names = {
-    DBMHC = "DBMHC",
-    DBMVC = "DBMVC",
-    DBMHX = "DBMHX",
-    DBMVX = "DBMVX",
-    ZDR = "ZDR",
-    PHIDP = "PHIDP",
-    RHOHV = "RHOHV",
-    NCP = "NCP",
-    LAG1_HC_DB = "LAG1_HC_DB",
-    LAG1_HC_PHASE = "LAG1_HC_PHASE",
-    LAG1_VC_DB = "LAG1_VC_DB",
-    LAG1_VC_PHASE = "LAG1_VC_PHASE",
+covar_field_names = {
+    LAG0_HC_DB = "LAG0_HC_DB",
+    LAG0_HX_DB = "LAG0_HX_DB",
+    LAG0_VC_DB = "LAG0_VC_DB",
+    LAG0_VX_DB = "LAG0_VX_DB",
+    LAG0_HCVX_DB = "LAG0_HCVX_DB",
+    LAG0_HCVX_PHASE = "LAG0_HCVX_PHASE",
+    LAG0_VCHX_DB = "LAG0_VCHX_DB",
+    LAG0_VCHX_PHASE = "LAG0_VCHX_PHASE",
+    LAG1_VXHX_DB = "LAG1_VXHX_DB",
+    LAG1_VXHX_PHASE = "LAG1_VXHX_PHASE",
     RVVHH0_DB = "RVVHH0_DB",
     RVVHH0_PHASE = "RVVHH0_PHASE"
 };
@@ -747,6 +769,40 @@ max_solid_angle_for_mean_correlation = 1;
 
 //======================================================================
 //
+// COMPUTING DIFFERENCE IN ELLIPSE POWER PATTERN BETWEEN H and V.
+//
+//======================================================================
+ 
+///////////// compute_ellipse_hv_power_diffs //////////
+//
+// Option to compute the power differences for the H and V ellipses.
+//
+// The differences are computed along the centroid axes, covering the 
+//   specified solid angle.
+//
+//
+// Type: boolean
+//
+
+compute_ellipse_hv_power_diffs = FALSE;
+
+///////////// solid_angle_for_ellipse_power_diffs /////
+//
+// Solid angle for computing ellipse power pattern diffs (deg).
+//
+// We compute the mean power ratio between H and V, along the 
+//   centroid-centered axes in elevation and azimuth. The difference 
+//   between these gives a measure of the distortion in the ellipse shapes 
+//   between H and V.
+//
+//
+// Type: double
+//
+
+solid_angle_for_ellipse_power_diffs = 2;
+
+//======================================================================
+//
 // CROSS-POLAR POWER ANALYSIS.
 //
 //======================================================================
@@ -909,6 +965,19 @@ cross_polar_min_valid_ratio_db = -10;
 
 cross_polar_max_valid_ratio_db = 10;
 
+///////////// cross_polar_min_rho_vx_hx ///////////////
+//
+// Minimum valid Vx-Hx correlation (dB).
+//
+// Sometimes, odd data leads to inappropriate ratios. This sets a 
+//   minimum value for the correlation between vx and hx.
+//
+//
+// Type: double
+//
+
+cross_polar_min_rho_vx_hx = 0.97;
+
 ///////////// min_angle_offset_for_cross_pol_ratio ////
 //
 // Min angle offset from sun center for cross polar ratio (deg).
@@ -996,6 +1065,40 @@ xpol_ratio_search_margin_secs = 3600;
 
 //======================================================================
 //
+// OPTION TO RETRIEVE SITE TEMP from XML in time series.
+//
+//======================================================================
+ 
+///////////// read_site_temp_from_time_series_xml /////
+//
+// Option to read the site ambient temperature from the XML status in 
+//   the time series.
+//
+// It can be useful to check for dependency between the solar data, xpol 
+//   ratio and temperature. This gives you the option of retrieving the 
+//   temperature from the XML status in the time series.
+//
+//
+// Type: boolean
+//
+
+read_site_temp_from_time_series_xml = FALSE;
+
+///////////// temp_tag_list_in_status_xml /////////////
+//
+// List of tags to find site temp in status XML.
+//
+// This is the tag list, from outer to inner, use to find the 
+//   temperature in the status XML embedded in the time series.
+//
+//
+// Type: string
+//
+
+temp_tag_list_in_status_xml = "<SpolStatus><WxStation><tempC>";
+
+//======================================================================
+//
 // OPTION TO RETRIEVE SITE TEMP from SPDB.
 //
 //======================================================================
@@ -1038,6 +1141,19 @@ site_temp_spdb_url = "spdb/temperature";
 
 site_temp_station_name = "";
 
+///////////// site_temp_data_type /////////////////////
+//
+// Data type instead of station name.
+//
+// If this is -1, site_temp_station_name is used. If not -1, this value 
+//   is used instead of specifying the station name.
+//
+//
+// Type: int
+//
+
+site_temp_data_type = -1;
+
 ///////////// site_temp_search_margin_secs ////////////
 //
 // Search margin when finding site temp data (secs).
@@ -1070,29 +1186,63 @@ site_temp_search_margin_secs = 3600;
 
 compute_test_pulse_powers = FALSE;
 
-///////////// test_pulse_min_range_km /////////////////
+///////////// test_pulse_range_km_hc //////////////////
 //
-// Range to start of test pulse (km).
+// Range to test pulse for HC channel (km).
 //
-// This delimits the test pulse gates in the moments.
-//
-//
-// Type: double
-//
-
-test_pulse_min_range_km = 147.5;
-
-///////////// test_pulse_max_range_km /////////////////
-//
-// Range to end of test pulse (km).
-//
-// This delimits the test pulse gates in the moments.
+// We compute the gate number from this range.
 //
 //
 // Type: double
 //
 
-test_pulse_max_range_km = 147.8;
+test_pulse_range_km_hc = 148.7;
+
+///////////// test_pulse_range_km_hx //////////////////
+//
+// Range to test pulse for HX channel (km).
+//
+// We compute the gate number from this range.
+//
+//
+// Type: double
+//
+
+test_pulse_range_km_hx = 148.7;
+
+///////////// test_pulse_range_km_vc //////////////////
+//
+// Range to test pulse for VC channel (km).
+//
+// We compute the gate number from this range.
+//
+//
+// Type: double
+//
+
+test_pulse_range_km_vc = 149;
+
+///////////// test_pulse_range_km_vx //////////////////
+//
+// Range to test pulse for VX channel (km).
+//
+// We compute the gate number from this range.
+//
+//
+// Type: double
+//
+
+test_pulse_range_km_vx = 149;
+
+///////////// test_pulse_n_samples ////////////////////
+//
+// Number of samples used to compute test pulse power.
+//
+//
+// Type: int
+//
+
+test_pulse_n_samples = 5000;
 
 //======================================================================
 //
@@ -1115,10 +1265,23 @@ compute_mean_transmit_powers = FALSE;
 
 //======================================================================
 //
-// OUTPUT TEXT RESULTS.
+// WRITE RESULTS.
 //
 //======================================================================
  
+///////////// only_write_for_valid_centroid ///////////
+//
+// Only write out data if the computed centroid position is valid.
+//
+// If the parabolic fit in el and az is not valid, do not write out the 
+//   data.
+//
+//
+// Type: boolean
+//
+
+only_write_for_valid_centroid = FALSE;
+
 ///////////// write_text_files ////////////////////////
 //
 // Option to write out text files.
@@ -1163,6 +1326,18 @@ append_to_global_results_file = TRUE;
 //
 
 global_file_name = "SunCal.global_results.txt";
+
+///////////// write_gridded_files /////////////////////
+//
+// Option to write out gridded text files.
+//
+// These can be used for plotting in Matlab or similar.
+//
+//
+// Type: boolean
+//
+
+write_gridded_files = FALSE;
 
 //======================================================================
 //
@@ -1224,4 +1399,61 @@ write_summary_to_spdb = TRUE;
 //
 
 spdb_output_url = "$(DATA_DIR)/spdb/sunscan/koun";
+
+//======================================================================
+//
+// OPTION TO TEST C CODE FOR NEXRAD PROCESSING.
+//
+//======================================================================
+ 
+///////////// test_nexrad_processing //////////////////
+//
+// Option to test NEXRAD processing for solar analysis.
+//
+// For NEXRAD, a C-code module was added. Testing this module ensures 
+//   that the NEXRAD processing works correctly as compared with the NCAR 
+//   processing.
+//
+//
+// Type: boolean
+//
+
+test_nexrad_processing = FALSE;
+
+///////////// nexrad_text_output_dir //////////////////
+//
+// Dir for output text files.
+//
+// The NEXRAD results will be written to sub-directories named from the 
+//   cal time.
+//
+//
+// Type: string
+//
+
+nexrad_text_output_dir = "/tmp/nexrad/output";
+
+///////////// nexrad_mdv_output_url ///////////////////
+//
+// URL for output MDV files.
+//
+// For NEXRAD writes, specify the directory.
+//
+//
+// Type: string
+//
+
+nexrad_mdv_output_url = "/tmp/nexrad/mdv";
+
+///////////// nexrad_spdb_output_url //////////////////
+//
+// URL for SPDB XML.
+//
+// For NEXRAD writes, specify the directory.
+//
+//
+// Type: string
+//
+
+nexrad_spdb_output_url = "/tmp/nexrad/spdb";
 
