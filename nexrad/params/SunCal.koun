@@ -127,7 +127,7 @@ input_fmq_name = "/tmp/fmq/ts";
 // Type: string
 //
 
-input_dir = "/tmp/data/time_series/suncal";
+input_dir = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20";
 
 ///////////// archive_start_time //////////////////////
 //
@@ -139,7 +139,7 @@ input_dir = "/tmp/data/time_series/suncal";
 // Type: string
 //
 
-archive_start_time = "2012 06 01 00 00 00";
+archive_start_time = "2012 12 23 00 00 00";
 
 ///////////// archive_end_time ////////////////////////
 //
@@ -151,7 +151,7 @@ archive_start_time = "2012 06 01 00 00 00";
 // Type: string
 //
 
-archive_end_time = "2012 06 02 00 00 00";
+archive_end_time = "2012 12 27 00 00 00";
 
 ///////////// n_samples ///////////////////////////////
 //
@@ -1305,7 +1305,7 @@ write_text_files = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/cal/sunscan/koun";
+text_output_dir = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_output";
 
 ///////////// append_to_global_results_file ///////////
 //
@@ -1366,7 +1366,7 @@ write_mdv_files = TRUE;
 // Type: string
 //
 
-mdv_output_url = "$(DATA_DIR)/mdv/sunscan/koun";
+mdv_output_url = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv";
 
 //======================================================================
 //
@@ -1398,7 +1398,7 @@ write_summary_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/spdb/sunscan/koun";
+spdb_output_url = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/spdb";
 
 //======================================================================
 //
@@ -1418,7 +1418,7 @@ spdb_output_url = "$(DATA_DIR)/spdb/sunscan/koun";
 // Type: boolean
 //
 
-test_nexrad_processing = FALSE;
+test_nexrad_processing = TRUE;
 
 ///////////// nexrad_text_output_dir //////////////////
 //
@@ -1431,7 +1431,7 @@ test_nexrad_processing = FALSE;
 // Type: string
 //
 
-nexrad_text_output_dir = "/tmp/nexrad/output";
+nexrad_text_output_dir = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/test/text_output";
 
 ///////////// nexrad_mdv_output_url ///////////////////
 //
@@ -1443,7 +1443,7 @@ nexrad_text_output_dir = "/tmp/nexrad/output";
 // Type: string
 //
 
-nexrad_mdv_output_url = "/tmp/nexrad/mdv";
+nexrad_mdv_output_url = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/test/mdv";
 
 ///////////// nexrad_spdb_output_url //////////////////
 //
@@ -1455,5 +1455,5 @@ nexrad_mdv_output_url = "/tmp/nexrad/mdv";
 // Type: string
 //
 
-nexrad_spdb_output_url = "/tmp/nexrad/spdb";
+nexrad_spdb_output_url = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/test/spdb";
 
