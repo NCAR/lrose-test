@@ -1,0 +1,11 @@
+#! /bin/csh
+
+cd $HOME/git/lrose-test/nexrad/params
+
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121220/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121221/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121222/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121223/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121224/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121225/KOUN*
+SunCal -params SunCal.koun -debug -f /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/time_series/xpol-koun-12-12-20/20121226/KOUN*
