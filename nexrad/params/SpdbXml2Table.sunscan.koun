@@ -208,13 +208,6 @@ xml_entries = {
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><VolumeNumber>",
-    specify_label = TRUE,
-    label = "VolumeNumber",
-    required = TRUE
-  }
-  ,
-  {
     xml_tag_list = "<RadarSunCal><meanSunEl>",
     specify_label = TRUE,
     label = "meanSunEl",
@@ -243,23 +236,9 @@ xml_entries = {
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><noiseDbmHx>",
-    specify_label = TRUE,
-    label = "noiseDbmHx",
-    required = TRUE
-  }
-  ,
-  {
     xml_tag_list = "<RadarSunCal><noiseDbmVc>",
     specify_label = TRUE,
     label = "noiseDbmVc",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><noiseDbmVx>",
-    specify_label = TRUE,
-    label = "noiseDbmVx",
     required = TRUE
   }
   ,
@@ -278,34 +257,6 @@ xml_entries = {
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><maxPowerDbmHc>",
-    specify_label = TRUE,
-    label = "maxPowerDbmHc",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><quadPowerDbmHc>",
-    specify_label = TRUE,
-    label = "quadPowerDbmHc",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><maxPowerDbmVc>",
-    specify_label = TRUE,
-    label = "maxPowerDbmVc",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><quadPowerDbmVc>",
-    specify_label = TRUE,
-    label = "quadPowerDbmVc",
-    required = TRUE
-  }
-  ,
-  {
     xml_tag_list = "<RadarSunCal><centroidAzOffset>",
     specify_label = TRUE,
     label = "centroidAzOffset",
@@ -320,86 +271,51 @@ xml_entries = {
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidAzOffsetHc>",
+    xml_tag_list = "<RadarSunCal><ratioDbmVcHc>",
     specify_label = TRUE,
-    label = "centroidAzOffsetHc",
+    label = "ratioDbmVcHc",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidElOffsetHc>",
+    xml_tag_list = "<RadarSunCal><SS>",
     specify_label = TRUE,
-    label = "centroidElOffsetHc",
+    label = "SS",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidAzOffsetVc>",
+    xml_tag_list = "<RadarSunCal><sdevSS>",
     specify_label = TRUE,
-    label = "centroidAzOffsetVc",
+    label = "sdevSS",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidElOffsetVc>",
+    xml_tag_list = "<RadarSunCal><corr00>",
     specify_label = TRUE,
-    label = "centroidElOffsetVc",
+    label = "corr00",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><nXpolPoints>",
+    xml_tag_list = "<RadarSunCal><widthRatioElAzHc>",
     specify_label = TRUE,
-    label = "nXpolPoints",
+    label = "widthRatioElAzHc",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><meanXpolRatioDb>",
+    xml_tag_list = "<RadarSunCal><widthRatioElAzVc>",
     specify_label = TRUE,
-    label = "meanXpolRatioDb",
+    label = "widthRatioElAzVc",
     required = TRUE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><S1S2>",
+    xml_tag_list = "<RadarSunCal><widthRatioElAzDiffHV>",
     specify_label = TRUE,
-    label = "S1S2",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><zdrCorr>",
-    specify_label = TRUE,
-    label = "zdrCorr",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><meanXmitPowerHDbm>",
-    specify_label = TRUE,
-    label = "meanXmitPowerHDbm",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><meanXmitPowerVDbm>",
-    specify_label = TRUE,
-    label = "meanXmitPowerVDbm",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><xpolRatioDbFromSpdb>",
-    specify_label = TRUE,
-    label = "xpolRatioDb",
-    required = TRUE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><siteTempC>",
-    specify_label = TRUE,
-    label = "siteTemp",
+    label = "widthRatioElAzDiffHV",
     required = TRUE
   }
 };
