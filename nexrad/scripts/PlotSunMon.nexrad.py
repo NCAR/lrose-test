@@ -187,7 +187,8 @@ def movingAverage(values, filtLen):
     weights = np.repeat(1.0, filtLen)/filtLen
     sma = np.convolve(values, weights, 'valid')
     smaList = sma.tolist()
-    for ii in range(0, filtLen / 2):
+    halfLen = int(filtLen / 2)
+    for ii in range(0, halfLen):
         smaList.insert(0, smaList[0])
         smaList.append(smaList[-1])
     return np.array(smaList).astype(np.double)
@@ -208,11 +209,11 @@ def doPlot(scTimes, scData):
     # sun angle offset - only use values < max valid
 
     elOffset = np.array(scData["centroidElOffset"]).astype(np.double)
-    validElOffset = (np.isfinite(elOffset))
+    validElOffset = (np.isfinite(elOffset) & (np.absolute(elOffset) < 0.2))
     meanElOffset = np.mean(elOffset[validElOffset])
 
     azOffset = np.array(scData["centroidAzOffset"]).astype(np.double)
-    validAzOffset = (np.isfinite(azOffset))
+    validAzOffset = (np.isfinite(azOffset) & (np.absolute(azOffset) < 0.2))
     meanAzOffset = np.mean(azOffset[validAzOffset])
     
     np.set_printoptions(precision=3)
@@ -247,9 +248,10 @@ def doPlot(scTimes, scData):
     # load up SS, xpol ratio
     
     SS = np.array(scData["SS"]).astype(np.double)
-    validSS = (np.isfinite(SS) & \
-                 (SS < 1.2) & \
-                 (SS > 0.5))
+    validSS = (np.isfinite(SS) & (SS > -1.2) & (SS < -0.5))
+    if (options.debug):
+        print("  SS: ", SS, file=sys.stderr)
+        print("  validSS: ", validSS, file=sys.stderr)
     smoothedSS = movingAverage(SS[validSS], int(options.meanLen))
     
     XpolR = np.array(scData["ratioDbmVcHc"]).astype(np.double)
@@ -294,25 +296,32 @@ def doPlot(scTimes, scData):
     
     # plot receiver gain etc - axis 3
     
-    ax3.plot(dailyTimesHc, dailyRxGainsHc, \
-             label = 'RxGainHc', linewidth=1, color='red')
-    ax3.plot(dailyTimesVc, dailyRxGainsVc, \
-             label = 'RxGainVc', linewidth=1, color='blue')
-    ax3.plot(dailyTimesHc, dailyRxGainsHc, \
-             "^", label = 'RxGainHc', color='red', markersize=10)
-    ax3.plot(dailyTimesVc, dailyRxGainsVc, \
-             "^", label = 'RxGainVc', color='blue', markersize=10)
+    #ax3.plot(dailyTimesHc, dailyRxGainsHc, \
+    #         label = 'RxGainHc', linewidth=1, color='red')
+    #ax3.plot(dailyTimesVc, dailyRxGainsVc, \
+    #         label = 'RxGainVc', linewidth=1, color='blue')
+    #ax3.plot(dailyTimesHc, dailyRxGainsHc, \
+    #         "^", label = 'RxGainHc', color='red', markersize=10)
+    #ax3.plot(dailyTimesVc, dailyRxGainsVc, \
+    #         "^", label = 'RxGainVc', color='blue', markersize=10)
+
+    ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
+             label = 'El Offset (deg)', linewidth=1, color='red')
+    
+    ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+             label = 'Az Offset (deg)', linewidth=1, color='blue')
+    
 
     # plot SS, xpol ratio - axis 4
     
     ax4.plot(stimes[validSS], smoothedSS, \
              label = 'SS', linewidth=1, color='red')
     
-    ax4.plot(stimes[validXpolR], smoothedXpolR, \
-             label = 'XpolR', linewidth=1, color='blue')
+    #ax4.plot(stimes[validXpolR], smoothedXpolR, \
+    #         label = 'XpolR', linewidth=1, color='blue')
     
-    ax4.plot(stimes[validZdrM], smoothedZdrM, \
-             label = 'ZdrM', linewidth=1, color='green')
+    #ax4.plot(stimes[validZdrM], smoothedZdrM, \
+    #         label = 'ZdrM', linewidth=1, color='green')
     
     #ax4.plot(stimes[validAngleOffset], angleOffset[validAngleOffset], \
     #         label = 'AngleOffset (deg)', linewidth=1, color='green')
@@ -324,12 +333,12 @@ def doPlot(scTimes, scData):
     
     ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
     ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
-    ax3.set_title("SPOL retrieved receiver gain (dB)", fontsize=12)
+    ax3.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
     ax4.set_title("SS, X-pol ratio and ZDR bias (dB)", fontsize=12)
     
     configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
     configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper left')
-    configureAxis(ax3, -9999.0, -9999.0, "Receiver gain (dB)", 'upper right')
+    configureAxis(ax3, -9999.0, -9999.0, "Antenna errors (deg)", 'upper right')
     configureAxis(ax4, -9999.0, -9999.0, "ZDR ratios (dB)", 'upper right')
 
     fig1.suptitle("SPOL ANALYSIS OF SUN SPIKES IN NORMAL VOLUME SCANS", fontsize=16)
