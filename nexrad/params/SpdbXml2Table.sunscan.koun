@@ -250,9 +250,37 @@ xml_entries = {
   }
   ,
   {
+    xml_tag_list = "<RadarSunCal><maxPowerDbmHc>",
+    specify_label = TRUE,
+    label = "maxPowerDbmHc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<RadarSunCal><maxPowerDbmVc>",
+    specify_label = TRUE,
+    label = "maxPowerDbmVc",
+    required = TRUE
+  }
+  ,
+  {
     xml_tag_list = "<RadarSunCal><quadPowerDbm>",
     specify_label = TRUE,
     label = "quadPowerDbm",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<RadarSunCal><quadPowerDbmHc>",
+    specify_label = TRUE,
+    label = "quadPowerDbmHc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<RadarSunCal><quadPowerDbmVc>",
+    specify_label = TRUE,
+    label = "quadPowerDbmVc",
     required = TRUE
   }
   ,

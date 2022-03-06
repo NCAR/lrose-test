@@ -29,7 +29,7 @@ def main():
     global debug
     global meanLen
     
-    suncalPathDefault = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table/sunscan.koun.txt"
+    suncalPathDefault = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table/sunscan.koun.trimmed.txt"
     
     # parse the command line
 
@@ -314,7 +314,7 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     
     maxValidPower = -55.0
     minValidPower = -70.0
-    powerHc = np.array(scData["maxPowerDbm"]).astype(np.double)
+    powerHc = np.array(scData["maxPowerDbmHc"]).astype(np.double)
     validPowerHc = (np.isfinite(powerHc) & isToday &\
                     (powerHc < maxValidPower) & \
                     (powerHc > minValidPower))
@@ -324,7 +324,7 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
 
     smoothedPowerHc = movingAverage(powerHc[validPowerHc], int(options.meanLen))
 
-    powerVc = np.array(scData["maxPowerDbm"]).astype(np.double)
+    powerVc = np.array(scData["maxPowerDbmVc"]).astype(np.double)
     validPowerVc = (np.isfinite(powerVc) & isToday & \
                     (powerVc < maxValidPower) & \
                     (powerVc > minValidPower))
@@ -373,13 +373,13 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     if (index == 0):
         ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
                  label = 'Power HC', linewidth=1, color='red')
-        #ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
-        #         label = 'Power VC', linewidth=1, color='blue')
+        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+                 label = 'Power VC', linewidth=1, color='blue')
     else:
         ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
                  linewidth=1, color='red')
-        #ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
-        #         linewidth=1, color='blue')
+        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+                 linewidth=1, color='blue')
 
     # plot SS - axis 3
     
