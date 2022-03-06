@@ -216,6 +216,7 @@ def doPlot(scTimes, scData):
     ax2 = fig1.add_subplot(4,1,2,xmargin=0.0)
     ax3 = fig1.add_subplot(4,1,3,xmargin=0.0)
     ax4 = fig1.add_subplot(4,1,4,xmargin=0.0)
+    ax4r = ax4.twinx()
 
     #oneDay = datetime.timedelta(1.0)
     #ax1.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
@@ -240,6 +241,7 @@ def doPlot(scTimes, scData):
     ax2.set_xlim([startTimeLimit, endTimeLimit])
     ax3.set_xlim([startTimeLimit, endTimeLimit])
     ax4.set_xlim([startTimeLimit, endTimeLimit])
+    ax4r.set_xlim([startTimeLimit, endTimeLimit])
 
     # loop through the days
 
@@ -252,7 +254,7 @@ def doPlot(scTimes, scData):
 
     index = 0
     for dayOrd in range(startOrdinal, endOrdinal + 1):
-        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4)
+        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4, ax4r)
         index = index + 1
 
     # legends etc
@@ -260,14 +262,15 @@ def doPlot(scTimes, scData):
     ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
     ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
     ax3.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
-    ax4.set_title("SS, X-pol ratio and ZDR bias (dB)", fontsize=12)
+    ax4.set_title("SS(dB), mean correlation", fontsize=12)
     
     configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
     configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper right')
     configureAxis(ax3, -9999.0, -9999.0, "Antenna errors (deg)", 'upper right')
     configureAxis(ax4, -9999.0, -9999.0, "ZDR ratios (dB)", 'upper right')
+    # configureAxis(ax4r, -9999.0, -9999.0, "", 'upper right')
 
-    fig1.suptitle("SPOL ANALYSIS OF SUN SPIKES IN NORMAL VOLUME SCANS", fontsize=16)
+    fig1.suptitle("ANALYSIS OF KOUN SUN SCANS", fontsize=16)
     fig1.autofmt_xdate()
 
     plt.tight_layout()
@@ -277,7 +280,7 @@ def doPlot(scTimes, scData):
 ########################################################################
 # Plot data for a day
 
-def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
+def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4, ax4r):
 
     isToday =[]
     for scTime in scTimes:
@@ -342,6 +345,13 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
         print("  validSS: ", validSS, file=sys.stderr)
     smoothedSS = movingAverage(SS[validSS], int(options.meanLen))
     
+    corr00 = np.array(scData["corr00"]).astype(np.double)
+    validCorr00 = (np.isfinite(corr00) & (corr00 < 0.05) & isToday)
+    if (options.debug):
+        print("  corr00: ", corr00, file=sys.stderr)
+        print("  validCorr00: ", validCorr00, file=sys.stderr)
+    smoothedCorr00 = movingAverage(corr00[validCorr00], int(options.meanLen))
+    
     XpolR = np.array(scData["ratioDbmVcHc"]).astype(np.double)
     validXpolR = np.isfinite(XpolR) & isToday
     smoothedXpolR = movingAverage(XpolR[validXpolR], int(options.meanLen))
@@ -394,13 +404,17 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
         
 
     # plot SS, xpol ratio - axis 4
-    
+
     if (index == 0):
         ax4.plot(stimes[validSS], smoothedSS, \
                  label = 'SS', linewidth=1, color='red')
+        ax4r.plot(stimes[validCorr00], smoothedCorr00, \
+                  label = 'corr00', linewidth=1, color='blue')
     else:
         ax4.plot(stimes[validSS], smoothedSS, \
                  linewidth=1, color='red')
+        ax4r.plot(stimes[validCorr00], smoothedCorr00, \
+                  linewidth=1, color='blue')
         
     #ax4.plot(stimes[validXpolR], smoothedXpolR, \
     #         label = 'XpolR', linewidth=1, color='blue')
