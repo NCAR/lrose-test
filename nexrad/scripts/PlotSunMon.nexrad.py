@@ -216,7 +216,6 @@ def doPlot(scTimes, scData):
     ax2 = fig1.add_subplot(4,1,2,xmargin=0.0)
     ax3 = fig1.add_subplot(4,1,3,xmargin=0.0)
     ax4 = fig1.add_subplot(4,1,4,xmargin=0.0)
-    ax4r = ax4.twinx()
 
     #oneDay = datetime.timedelta(1.0)
     #ax1.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
@@ -234,14 +233,10 @@ def doPlot(scTimes, scData):
     endTimeLimit = datetime.datetime(endTime.year, endTime.month, endTime.day,
                                      23, 59, 59)
 
-    print("111111111  startTimeLimit: ", startTimeLimit, file=sys.stderr)
-    print("111111111  endTimeLimit: ", endTimeLimit, file=sys.stderr)
-    
     ax1.set_xlim([startTimeLimit, endTimeLimit])
     ax2.set_xlim([startTimeLimit, endTimeLimit])
     ax3.set_xlim([startTimeLimit, endTimeLimit])
     ax4.set_xlim([startTimeLimit, endTimeLimit])
-    ax4r.set_xlim([startTimeLimit, endTimeLimit])
 
     # loop through the days
 
@@ -254,33 +249,32 @@ def doPlot(scTimes, scData):
 
     index = 0
     for dayOrd in range(startOrdinal, endOrdinal + 1):
-        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4, ax4r)
+        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4)
         index = index + 1
 
     # legends etc
     
-    ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
-    ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
-    ax3.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
-    ax4.set_title("SS(dB), mean correlation", fontsize=12)
+    ax1.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
+    ax2.set_title("Mean power in solar disk (dBm)", fontsize=12)
+    ax3.set_title("SS (dB)", fontsize=12)
+    ax4.set_title("Mean correlation", fontsize=12)
     
-    configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
-    configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper right')
-    configureAxis(ax3, -9999.0, -9999.0, "Antenna errors (deg)", 'upper right')
-    configureAxis(ax4, -9999.0, -9999.0, "ZDR ratios (dB)", 'upper right')
-    # configureAxis(ax4r, -9999.0, -9999.0, "", 'upper right')
+    configureAxis(ax1, -9999.0, -9999.0, "Antenna errors (deg)", 'upper left')
+    configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper left')
+    configureAxis(ax3, -9999.0, -9999.0, "SS (dB)", 'upper left')
+    configureAxis(ax4, -9999.0, -9999.0, "Mean correlation", 'upper left')
 
     fig1.suptitle("ANALYSIS OF KOUN SUN SCANS", fontsize=16)
     fig1.autofmt_xdate()
 
     plt.tight_layout()
-    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.94)
+    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.92)
     plt.show()
 
 ########################################################################
 # Plot data for a day
 
-def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4, ax4r):
+def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
 
     isToday =[]
     for scTime in scTimes:
@@ -361,73 +355,50 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4, ax4r):
     powerHcGood = smoothedPowerHc
     powerVcGood = smoothedPowerVc
 
-    # plot power - axis 2
-
-    if (index == 0):
-        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
-                 label = 'Smoothed Power HC', linewidth=1, color='red')
-        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
-                 label = 'Smoothed Power VC', linewidth=1, color='blue')
-    else:
-        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
-                 linewidth=1, color='red')
-        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
-                 linewidth=1, color='blue')
-
-    #ax2.plot(stimes[validPowerHc], powerHc[validPowerHc], \
-    #         label = 'Power HC', linewidth=1, color='red')
-
-    #ax2.plot(stimes[validPowerVc], powerVc[validPowerVc], \
-    #         label = 'Power VC', linewidth=1, color='blue')
+    # plot antenna errors - axis 1
     
-    # plot receiver gain etc - axis 3
-    
-    #ax3.plot(dailyTimesHc, dailyRxGainsHc, \
-    #         label = 'RxGainHc', linewidth=1, color='red')
-    #ax3.plot(dailyTimesVc, dailyRxGainsVc, \
-    #         label = 'RxGainVc', linewidth=1, color='blue')
-    #ax3.plot(dailyTimesHc, dailyRxGainsHc, \
-    #         "^", label = 'RxGainHc', color='red', markersize=10)
-    #ax3.plot(dailyTimesVc, dailyRxGainsVc, \
-    #         "^", label = 'RxGainVc', color='blue', markersize=10)
-
     if (index == 0):
-        ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
+        ax1.plot(stimes[validElOffset], elOffset[validElOffset], \
                  label = 'El Offset (deg)', linewidth=1, color='red')
-        ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+        ax1.plot(stimes[validAzOffset], azOffset[validAzOffset], \
                  label = 'Az Offset (deg)', linewidth=1, color='blue')
     else:
-        ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
+        ax1.plot(stimes[validElOffset], elOffset[validElOffset], \
                  linewidth=1, color='red')
-        ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+        ax1.plot(stimes[validAzOffset], azOffset[validAzOffset], \
                  linewidth=1, color='blue')
         
-
-    # plot SS, xpol ratio - axis 4
+    # plot mean power - axis 2
 
     if (index == 0):
-        ax4.plot(stimes[validSS], smoothedSS, \
-                 label = 'SS', linewidth=1, color='red')
-        ax4r.plot(stimes[validCorr00], smoothedCorr00, \
-                  label = 'corr00', linewidth=1, color='blue')
+        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
+                 label = 'Power HC', linewidth=1, color='red')
+        #ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+        #         label = 'Power VC', linewidth=1, color='blue')
     else:
-        ax4.plot(stimes[validSS], smoothedSS, \
+        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
                  linewidth=1, color='red')
-        ax4r.plot(stimes[validCorr00], smoothedCorr00, \
-                  linewidth=1, color='blue')
-        
-    #ax4.plot(stimes[validXpolR], smoothedXpolR, \
-    #         label = 'XpolR', linewidth=1, color='blue')
-    
-    #ax4.plot(stimes[validZdrM], smoothedZdrM, \
-    #         label = 'ZdrM', linewidth=1, color='green')
-    
-    #ax4.plot(stimes[validAngleOffset], angleOffset[validAngleOffset], \
-    #         label = 'AngleOffset (deg)', linewidth=1, color='green')
-    
-    #ax4.plot(stimes[validZdrCorr], ZdrCorr[validZdrCorr], \
-    #         label = 'ZdrCorr', linewidth=1, color='green')
+        #ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+        #         linewidth=1, color='blue')
 
+    # plot SS - axis 3
+    
+    if (index == 0):
+        ax3.plot(stimes[validSS], smoothedSS, \
+                 label = 'SS', linewidth=1, color='red')
+    else:
+        ax3.plot(stimes[validSS], smoothedSS, \
+                 linewidth=1, color='red')
+
+    # plot correlation - axis 4
+
+    if (index == 0):
+        ax4.plot(stimes[validCorr00], smoothedCorr00, \
+                 label = 'corr00', linewidth=1, color='blue')
+    else:
+        ax4.plot(stimes[validCorr00], smoothedCorr00, \
+                 linewidth=1, color='blue')
+        
 
 ########################################################################
 # initialize legends etc
