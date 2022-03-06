@@ -206,14 +206,102 @@ def doPlot(scTimes, scData):
     titleStr = "File: " + fileName
     hfmt = dates.DateFormatter('%y/%m/%d')
 
+    # set up plot structure
+
+    widthIn = float(options.figWidthMm) / 25.4
+    htIn = float(options.figHeightMm) / 25.4
+
+    fig1 = plt.figure(1, (widthIn, htIn))
+    ax1 = fig1.add_subplot(4,1,1,xmargin=0.0)
+    ax2 = fig1.add_subplot(4,1,2,xmargin=0.0)
+    ax3 = fig1.add_subplot(4,1,3,xmargin=0.0)
+    ax4 = fig1.add_subplot(4,1,4,xmargin=0.0)
+
+    #oneDay = datetime.timedelta(1.0)
+    #ax1.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    #ax2.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    #ax3.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    #ax4.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+
+    startTime = scTimes[0]
+    endTime = scTimes[-1]
+    startOrdinal = startTime.toordinal()
+    endOrdinal = endTime.toordinal()
+
+    startTimeLimit = datetime.datetime(startTime.year, startTime.month, startTime.day,
+                                       0, 0, 0)
+    endTimeLimit = datetime.datetime(endTime.year, endTime.month, endTime.day,
+                                     23, 59, 59)
+
+    print("111111111  startTimeLimit: ", startTimeLimit, file=sys.stderr)
+    print("111111111  endTimeLimit: ", endTimeLimit, file=sys.stderr)
+    
+    ax1.set_xlim([startTimeLimit, endTimeLimit])
+    ax2.set_xlim([startTimeLimit, endTimeLimit])
+    ax3.set_xlim([startTimeLimit, endTimeLimit])
+    ax4.set_xlim([startTimeLimit, endTimeLimit])
+
+    # loop through the days
+
+    
+    #if (options.debug):
+    print("  startTime: ", startTime, file=sys.stderr)
+    print("  startOrdinal: ", startOrdinal, file=sys.stderr)
+    print("  endTime: ", endTime, file=sys.stderr)
+    print("  endOrdinal: ", endOrdinal, file=sys.stderr)
+
+    index = 0
+    for dayOrd in range(startOrdinal, endOrdinal + 1):
+        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4)
+        index = index + 1
+
+    # legends etc
+    
+    ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
+    ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
+    ax3.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
+    ax4.set_title("SS, X-pol ratio and ZDR bias (dB)", fontsize=12)
+    
+    configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
+    configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper right')
+    configureAxis(ax3, -9999.0, -9999.0, "Antenna errors (deg)", 'upper right')
+    configureAxis(ax4, -9999.0, -9999.0, "ZDR ratios (dB)", 'upper right')
+
+    fig1.suptitle("SPOL ANALYSIS OF SUN SPIKES IN NORMAL VOLUME SCANS", fontsize=16)
+    fig1.autofmt_xdate()
+
+    plt.tight_layout()
+    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.94)
+    plt.show()
+
+########################################################################
+# Plot data for a day
+
+def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
+
+    isToday =[]
+    for scTime in scTimes:
+        if (scTime.toordinal() == dayOrd):
+            isToday.append(True)
+        else:
+            isToday.append(False)
+            
+    # sunscan times
+    
+    stimes = np.array(scTimes).astype(datetime.datetime)
+
+    fileName = options.suncalFilePath
+    titleStr = "File: " + fileName
+    hfmt = dates.DateFormatter('%y/%m/%d')
+
     # sun angle offset - only use values < max valid
 
     elOffset = np.array(scData["centroidElOffset"]).astype(np.double)
-    validElOffset = (np.isfinite(elOffset) & (np.absolute(elOffset) < 0.2))
+    validElOffset = (np.isfinite(elOffset) & (np.absolute(elOffset) < 0.2) & isToday)
     meanElOffset = np.mean(elOffset[validElOffset])
 
     azOffset = np.array(scData["centroidAzOffset"]).astype(np.double)
-    validAzOffset = (np.isfinite(azOffset) & (np.absolute(azOffset) < 0.2))
+    validAzOffset = (np.isfinite(azOffset) & (np.absolute(azOffset) < 0.2) & isToday)
     meanAzOffset = np.mean(azOffset[validAzOffset])
     
     np.set_printoptions(precision=3)
@@ -230,7 +318,7 @@ def doPlot(scTimes, scData):
     maxValidPower = -55.0
     minValidPower = -70.0
     powerHc = np.array(scData["maxPowerDbm"]).astype(np.double)
-    validPowerHc = (np.isfinite(powerHc) & \
+    validPowerHc = (np.isfinite(powerHc) & isToday &\
                     (powerHc < maxValidPower) & \
                     (powerHc > minValidPower))
     if (options.debug):
@@ -240,7 +328,7 @@ def doPlot(scTimes, scData):
     smoothedPowerHc = movingAverage(powerHc[validPowerHc], int(options.meanLen))
 
     powerVc = np.array(scData["maxPowerDbm"]).astype(np.double)
-    validPowerVc = (np.isfinite(powerVc) & \
+    validPowerVc = (np.isfinite(powerVc) & isToday & \
                     (powerVc < maxValidPower) & \
                     (powerVc > minValidPower))
     smoothedPowerVc = movingAverage(powerVc[validPowerVc], int(options.meanLen))
@@ -248,14 +336,14 @@ def doPlot(scTimes, scData):
     # load up SS, xpol ratio
     
     SS = np.array(scData["SS"]).astype(np.double)
-    validSS = (np.isfinite(SS) & (SS > -1.2) & (SS < -0.5))
+    validSS = (np.isfinite(SS) & (SS > -1.2) & (SS < -0.5) & isToday)
     if (options.debug):
         print("  SS: ", SS, file=sys.stderr)
         print("  validSS: ", validSS, file=sys.stderr)
     smoothedSS = movingAverage(SS[validSS], int(options.meanLen))
     
     XpolR = np.array(scData["ratioDbmVcHc"]).astype(np.double)
-    validXpolR = np.isfinite(XpolR)
+    validXpolR = np.isfinite(XpolR) & isToday
     smoothedXpolR = movingAverage(XpolR[validXpolR], int(options.meanLen))
     
     goodTimesHc = stimes[validPowerHc]
@@ -263,30 +351,18 @@ def doPlot(scTimes, scData):
     powerHcGood = smoothedPowerHc
     powerVcGood = smoothedPowerVc
 
-    # set up plot structure
-
-    widthIn = float(options.figWidthMm) / 25.4
-    htIn = float(options.figHeightMm) / 25.4
-
-    fig1 = plt.figure(1, (widthIn, htIn))
-    ax1 = fig1.add_subplot(4,1,1,xmargin=0.0)
-    ax2 = fig1.add_subplot(4,1,2,xmargin=0.0)
-    ax3 = fig1.add_subplot(4,1,3,xmargin=0.0)
-    ax4 = fig1.add_subplot(4,1,4,xmargin=0.0)
-
-    oneDay = datetime.timedelta(1.0)
-    ax1.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
-    ax2.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
-    ax3.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
-    ax4.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
-    
     # plot power - axis 2
-    
-    ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
-             label = 'Smoothed Power HC', linewidth=1, color='red')
 
-    ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
-             label = 'Smoothed Power VC', linewidth=1, color='blue')
+    if (index == 0):
+        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
+                 label = 'Smoothed Power HC', linewidth=1, color='red')
+        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+                 label = 'Smoothed Power VC', linewidth=1, color='blue')
+    else:
+        ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
+                 linewidth=1, color='red')
+        ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
+                 linewidth=1, color='blue')
 
     #ax2.plot(stimes[validPowerHc], powerHc[validPowerHc], \
     #         label = 'Power HC', linewidth=1, color='red')
@@ -305,18 +381,27 @@ def doPlot(scTimes, scData):
     #ax3.plot(dailyTimesVc, dailyRxGainsVc, \
     #         "^", label = 'RxGainVc', color='blue', markersize=10)
 
-    ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
-             label = 'El Offset (deg)', linewidth=1, color='red')
-    
-    ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
-             label = 'Az Offset (deg)', linewidth=1, color='blue')
-    
+    if (index == 0):
+        ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
+                 label = 'El Offset (deg)', linewidth=1, color='red')
+        ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+                 label = 'Az Offset (deg)', linewidth=1, color='blue')
+    else:
+        ax3.plot(stimes[validElOffset], elOffset[validElOffset], \
+                 linewidth=1, color='red')
+        ax3.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+                 linewidth=1, color='blue')
+        
 
     # plot SS, xpol ratio - axis 4
     
-    ax4.plot(stimes[validSS], smoothedSS, \
-             label = 'SS', linewidth=1, color='red')
-    
+    if (index == 0):
+        ax4.plot(stimes[validSS], smoothedSS, \
+                 label = 'SS', linewidth=1, color='red')
+    else:
+        ax4.plot(stimes[validSS], smoothedSS, \
+                 linewidth=1, color='red')
+        
     #ax4.plot(stimes[validXpolR], smoothedXpolR, \
     #         label = 'XpolR', linewidth=1, color='blue')
     
@@ -329,24 +414,6 @@ def doPlot(scTimes, scData):
     #ax4.plot(stimes[validZdrCorr], ZdrCorr[validZdrCorr], \
     #         label = 'ZdrCorr', linewidth=1, color='green')
 
-    # legends etc
-    
-    ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
-    ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
-    ax3.set_title("Elevation and Azimuth offset (deg)", fontsize=12)
-    ax4.set_title("SS, X-pol ratio and ZDR bias (dB)", fontsize=12)
-    
-    configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
-    configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper left')
-    configureAxis(ax3, -9999.0, -9999.0, "Antenna errors (deg)", 'upper right')
-    configureAxis(ax4, -9999.0, -9999.0, "ZDR ratios (dB)", 'upper right')
-
-    fig1.suptitle("SPOL ANALYSIS OF SUN SPIKES IN NORMAL VOLUME SCANS", fontsize=16)
-    fig1.autofmt_xdate()
-
-    plt.tight_layout()
-    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.94)
-    plt.show()
 
 ########################################################################
 # initialize legends etc
