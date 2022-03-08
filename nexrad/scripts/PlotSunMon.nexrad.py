@@ -35,6 +35,7 @@ def main():
 
     usage = "usage: %prog [options]"
     parser = OptionParser(usage)
+
     parser.add_option('--debug',
                       dest='debug', default=False,
                       action="store_true",
@@ -170,12 +171,8 @@ def readInputData(filePath, colHeaders, colData):
 
     obsTimes = []
     for ii, var in enumerate(year, start=0):
-        if (options.overlayDays):
-            thisTime = datetime.datetime(startTime.year, startTime.month, startTime.day,
-                                         hour[ii], minute[ii], sec[ii])
-        else:
-            thisTime = datetime.datetime(year[ii], month[ii], day[ii],
-                                         hour[ii], minute[ii], sec[ii])
+        thisTime = datetime.datetime(year[ii], month[ii], day[ii],
+                                     hour[ii], minute[ii], sec[ii])
         obsTimes.append(thisTime)
 
     return obsTimes, colData
@@ -243,6 +240,11 @@ def doPlot(scTimes, scData):
                                        0, 0, 0)
     endTimeLimit = datetime.datetime(endTime.year, endTime.month, endTime.day,
                                      23, 59, 59)
+    if (options.overlayDays):
+        startTimeLimit = datetime.datetime(startTime.year, startTime.month, startTime.day,
+                                           15, 0, 0)
+        endTimeLimit = datetime.datetime(startTime.year, startTime.month, startTime.day,
+                                         22, 0, 0)
 
     ax1.set_xlim([startTimeLimit, endTimeLimit])
     ax2.set_xlim([startTimeLimit, endTimeLimit])
@@ -275,7 +277,11 @@ def doPlot(scTimes, scData):
     configureAxis(ax3, -9999.0, -9999.0, "SS (dB)", 'upper left')
     configureAxis(ax4, -9999.0, -9999.0, "Mean correlation", 'upper left')
 
-    fig1.suptitle("ANALYSIS OF KOUN SUN SCANS, December 2012", fontsize=16)
+    if (options.overlayDays):
+        fig1.suptitle("DIURNAL ANALYSIS OF KOUN SUN SCANS, December 2012", fontsize=16)
+    else:
+        fig1.suptitle("5-DAY ANALYSIS OF KOUN SUN SCANS, December 2012", fontsize=16)
+
     fig1.autofmt_xdate()
 
     plt.tight_layout()
@@ -286,17 +292,27 @@ def doPlot(scTimes, scData):
 # Plot data for a day
 
 def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
-
+    
+    startTime = scTimes[0]
+    plotTimes = scTimes
+    
     isToday =[]
-    for scTime in scTimes:
-        if (scTime.toordinal() == dayOrd):
+    for plotTime in plotTimes:
+        if (plotTime.toordinal() == dayOrd):
             isToday.append(True)
         else:
             isToday.append(False)
-            
-    # sunscan times
+
+    if (options.overlayDays):
+        plotTimes = []
+        for scTime in scTimes:
+            plotTime = datetime.datetime(startTime.year, startTime.month, startTime.day,
+                                         scTime.hour, scTime.minute, scTime.second)
+            plotTimes.append(plotTime)
+        
+            # sunscan times
     
-    stimes = np.array(scTimes).astype(datetime.datetime)
+    stimes = np.array(plotTimes).astype(datetime.datetime)
 
     fileName = options.suncalFilePath
     titleStr = "File: " + fileName
@@ -307,10 +323,12 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     elOffset = np.array(scData["centroidElOffset"]).astype(np.double)
     validElOffset = (np.isfinite(elOffset) & (np.absolute(elOffset) < 0.2) & isToday)
     meanElOffset = np.mean(elOffset[validElOffset])
+    smoothedElOffset = movingAverage(elOffset[validElOffset], int(options.meanLen))
 
     azOffset = np.array(scData["centroidAzOffset"]).astype(np.double)
     validAzOffset = (np.isfinite(azOffset) & (np.absolute(azOffset) < 0.2) & isToday)
     meanAzOffset = np.mean(azOffset[validAzOffset])
+    smoothedAzOffset = movingAverage(azOffset[validAzOffset], int(options.meanLen))
     
     np.set_printoptions(precision=3)
     np.set_printoptions(suppress=False)
@@ -369,14 +387,14 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     # plot antenna errors - axis 1
     
     if (index == 0):
-        ax1.plot(stimes[validElOffset], elOffset[validElOffset], \
+        ax1.plot(stimes[validElOffset], smoothedElOffset, \
                  label = 'El Offset (deg)', linewidth=1, color='red')
-        ax1.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+        ax1.plot(stimes[validAzOffset], smoothedAzOffset, \
                  label = 'Az Offset (deg)', linewidth=1, color='blue')
     else:
-        ax1.plot(stimes[validElOffset], elOffset[validElOffset], \
+        ax1.plot(stimes[validElOffset], smoothedElOffset, \
                  linewidth=1, color='red')
-        ax1.plot(stimes[validAzOffset], azOffset[validAzOffset], \
+        ax1.plot(stimes[validAzOffset], smoothedAzOffset, \
                  linewidth=1, color='blue')
         
     # plot mean power - axis 2
@@ -419,13 +437,20 @@ def configureAxis(ax, miny, maxy, ylabel, legendLoc):
     legend = ax.legend(loc=legendLoc, ncol=6)
     for label in legend.get_texts():
         label.set_fontsize('x-small')
-    ax.set_xlabel("Date-Hr")
+    if (options.overlayDays):
+        ax.set_xlabel("Time-of-day")
+    else:
+        ax.set_xlabel("Date-Hr")
     ax.set_ylabel(ylabel)
     ax.grid(True)
     if (miny > -9990 and maxy > -9990):
         ax.set_ylim([miny, maxy])
-    hfmt = dates.DateFormatter('%y/%m/%d-%H')
-    ax.xaxis.set_major_locator(dates.HourLocator(interval=6))
+    if (options.overlayDays):
+        hfmt = dates.DateFormatter('%H:%M')
+        ax.xaxis.set_major_locator(dates.HourLocator(interval=1))
+    else:
+        hfmt = dates.DateFormatter('%y/%m/%d-%H')
+        ax.xaxis.set_major_locator(dates.HourLocator(interval=6))
     ax.xaxis.set_major_formatter(hfmt)
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 
