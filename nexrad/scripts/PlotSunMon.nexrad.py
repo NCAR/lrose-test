@@ -275,7 +275,7 @@ def doPlot(scTimes, scData):
     configureAxis(ax3, -9999.0, -9999.0, "SS (dB)", 'upper left')
     configureAxis(ax4, -9999.0, -9999.0, "Mean correlation", 'upper left')
 
-    fig1.suptitle("ANALYSIS OF KOUN SUN SCANS", fontsize=16)
+    fig1.suptitle("ANALYSIS OF KOUN SUN SCANS, December 2012", fontsize=16)
     fig1.autofmt_xdate()
 
     plt.tight_layout()
@@ -419,13 +419,13 @@ def configureAxis(ax, miny, maxy, ylabel, legendLoc):
     legend = ax.legend(loc=legendLoc, ncol=6)
     for label in legend.get_texts():
         label.set_fontsize('x-small')
-    ax.set_xlabel("Date")
+    ax.set_xlabel("Date-Hr")
     ax.set_ylabel(ylabel)
     ax.grid(True)
     if (miny > -9990 and maxy > -9990):
         ax.set_ylim([miny, maxy])
-    hfmt = dates.DateFormatter('%y/%m/%d')
-    ax.xaxis.set_major_locator(dates.DayLocator())
+    hfmt = dates.DateFormatter('%y/%m/%d-%H')
+    ax.xaxis.set_major_locator(dates.HourLocator(interval=6))
     ax.xaxis.set_major_formatter(hfmt)
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 
