@@ -20,6 +20,7 @@ from matplotlib import dates
 import math
 import datetime
 import contextlib
+import csv
 
 def main():
 
@@ -30,6 +31,7 @@ def main():
     global meanLen
     
     suncalPathDefault = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table/sunscan.koun.trimmed.txt"
+    tempsPathDefault = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/temps/koun_temp_2012.csv"
     
     # parse the command line
 
@@ -48,6 +50,10 @@ def main():
                       dest='suncalFilePath',
                       default=suncalPathDefault,
                       help='SunCal results text file path')
+    parser.add_option('--temps_file',
+                      dest='tempsFilePath',
+                      default=tempsPathDefault,
+                      help='KOUN Temps CSV file path')
     parser.add_option('--title',
                       dest='title',
                       default='NEXRAD SUN SCAN ANALYSIS',
@@ -62,7 +68,7 @@ def main():
                       help='Height of figure in mm')
     parser.add_option('--meanLen',
                       dest='meanLen',
-                      default=15,
+                      default=11,
                       help='Len of moving mean filter')
     parser.add_option('--overlayDays',
                       dest='overlayDays', default=False,
@@ -77,6 +83,7 @@ def main():
     if (options.debug == True):
         print("Running %prog", file=sys.stderr)
         print("  suncalFilePath: ", options.suncalFilePath, file=sys.stderr)
+        print("  tempsFilePath: ", options.tempsFilePath, file=sys.stderr)
 
     # read in column headers for sunscan results
 
@@ -88,9 +95,13 @@ def main():
 
     (scTimes, scData) = readInputData(options.suncalFilePath, scHdrs, scData)
 
+    # read in temperature data
+
+    (tempTimes, tempData) = readTempData(options.tempsFilePath, scTimes)
+
     # render the plot
     
-    doPlot(scTimes, scData)
+    doPlot(scTimes, scData, tempTimes, tempData)
 
     sys.exit(0)
     
@@ -178,6 +189,44 @@ def readInputData(filePath, colHeaders, colData):
     return obsTimes, colData
 
 ########################################################################
+# Read in the temperature data from CSV file
+
+def readTempData(filePath, scTimes):
+
+    startTime = scTimes[0]
+    endTime = scTimes[-1]
+    
+    # open and read the file
+
+    fp = open(filePath, 'r')
+    csvFile = csv.reader(fp)
+ 
+    # interpret the contents of the CSV file
+
+    dateIndex = 0
+    tempIndex = 0
+    ttimes = []
+    temps = []
+    
+    for line in csvFile:
+
+        if (line[0] == 'STATION'):
+            dateIndex = line.index('DATE')
+            tempIndex = line.index('TMP')
+        else:
+            temp = line[tempIndex].split(",")[0]
+            tempC = float(line[tempIndex].split(",")[0]) / 10.0
+            timeFormat = "%Y-%m-%dT%H:%M:%S"
+            thisTime = datetime.datetime.strptime(line[dateIndex], timeFormat)
+            if ((tempC < 999.0) & (thisTime >= startTime) & (thisTime <= endTime)):
+                ttimes.append(thisTime)
+                temps.append(tempC)
+        
+    fp.close()
+
+    return ttimes, temps
+
+########################################################################
 # Check is a number
 
 def isNumber(s):
@@ -204,7 +253,7 @@ def movingAverage(values, filtLen):
 ########################################################################
 # Plot
 
-def doPlot(scTimes, scData):
+def doPlot(scTimes, scData, tempTimes, tempData):
 
     # sunscan times
     
@@ -251,6 +300,8 @@ def doPlot(scTimes, scData):
     ax3.set_xlim([startTimeLimit, endTimeLimit])
     ax4.set_xlim([startTimeLimit, endTimeLimit])
 
+    ax3r = ax3.twinx()
+
     # loop through the days
 
     
@@ -262,7 +313,7 @@ def doPlot(scTimes, scData):
 
     index = 0
     for dayOrd in range(startOrdinal, endOrdinal + 1):
-        doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4)
+        doPlotDay(scTimes, scData, dayOrd, index, tempTimes, tempData, ax1, ax2, ax3, ax3r, ax4)
         index = index + 1
 
     # legends etc
@@ -275,6 +326,7 @@ def doPlot(scTimes, scData):
     configureAxis(ax1, -9999.0, -9999.0, "Antenna errors (deg)", 'upper left')
     configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper left')
     configureAxis(ax3, -9999.0, -9999.0, "SS (dB)", 'upper left')
+    configureAxis(ax3r, -9999.0, -9999.0, "Temp (C)", 'upper left')
     configureAxis(ax4, -9999.0, -9999.0, "Mean correlation", 'upper left')
 
     if (options.overlayDays):
@@ -291,7 +343,7 @@ def doPlot(scTimes, scData):
 ########################################################################
 # Plot data for a day
 
-def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
+def doPlotDay(scTimes, scData, dayOrd, index, tempTimes, tempData, ax1, ax2, ax3, ax3r, ax4):
     
     startTime = scTimes[0]
     plotTimes = scTimes
@@ -384,6 +436,10 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     powerHcGood = smoothedPowerHc
     powerVcGood = smoothedPowerVc
 
+    # temperatures
+
+    smoothedTemps = movingAverage(tempData, int(options.meanLen))
+
     # plot antenna errors - axis 1
     
     if (index == 0):
@@ -415,9 +471,13 @@ def doPlotDay(scTimes, scData, dayOrd, index, ax1, ax2, ax3, ax4):
     if (index == 0):
         ax3.plot(stimes[validSS], smoothedSS, \
                  label = 'SS', linewidth=1, color='red')
+        ax3r.plot(tempTimes, smoothedTemps, \
+                  label = 'TempC', linewidth=1, color='blue')
     else:
         ax3.plot(stimes[validSS], smoothedSS, \
                  linewidth=1, color='red')
+        ax3r.plot(tempTimes, smoothedTemps, \
+                  linewidth=1, color='blue')
 
     # plot correlation - axis 4
 
