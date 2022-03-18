@@ -199,7 +199,7 @@ radar_min_z_km = 0;
 // Type: double
 //
 
-radar_delta_z_km = 0.125;
+radar_delta_z_km = 0.25;
 
 ///////////// remap_gates_to_vert_levels //////////////
 //

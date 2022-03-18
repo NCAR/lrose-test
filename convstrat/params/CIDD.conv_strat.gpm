@@ -125,8 +125,8 @@ ConvTopsGpm   ConvTopsGpm  mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convst
 StratTopsGpm  StratTopsGpm mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&StratTops    heightkm.colors km -5 80 5 cart 1 0
 EchoTopsGpm   EchoTopsGpm  mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&EchoTops     heightkm.colors km -5 80 5 cart 1 0
 
-latentHeating latentHeating mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latentHeating&latentHeating    number.colors K/hr -5 80 5 cart 1 0
-meltLayerHeight  meltLayerHeight mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latentHeating&meltLayerHeight   heightkm.colors m -5 80 5 cart 1 0
+latentHeating latentHeating mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latentHeating&latentHeating    latent_heating.colors K/hr -5 80 5 cart 1 0
+meltLayerHeight  meltLayerHeight mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latentHeating&meltLayerHeight   heights_meters.colors m -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
@@ -573,8 +573,8 @@ cidd.max_adeg:               360.0
 # List of comma delimited local directories or HTTP URLs to search
 # Searchs . then each directory/URL in order 
 
-cidd.color_file_subdir:   http://front.eol.ucar.edu/color_scales
-cidd.map_file_subdir:     http://front.eol.ucar.edu/maps
+cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales,http://front.eol.ucar.edu/color_scales
+cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps,http://front.eol.ucar.edu/maps
 
 #
 # Station locator features
