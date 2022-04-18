@@ -72,11 +72,15 @@ subplot(1,2,1)
 scatter(belowAll(:,1),belowAll(:,3));
 xlim([0 1])
 ylim([-10 40])
+xlabel('Below Convectivity')
+ylabel('Below Latent Heating')
 
 subplot(1,2,2)
 scatter(belowAll(:,2),belowAll(:,3));
 xlim([10 60])
 ylim([-10 40])
+xlabel('Below Reflectivity')
+ylabel('Below Latent Heating')
 
 % Above
 figure('Position',[100 100 1200 600],'DefaultAxesFontSize',12)
@@ -84,8 +88,43 @@ subplot(1,2,1)
 scatter(aboveAll(:,1),aboveAll(:,3));
 xlim([0 1])
 ylim([-10 40])
+xlabel('Above Convectivity')
+ylabel('Above Latent Heating')
 
 subplot(1,2,2)
 scatter(aboveAll(:,2),aboveAll(:,3));
 xlim([10 60])
 ylim([-10 40])
+xlabel('Above Reflectivity')
+ylabel('Above Latent Heating')
+
+%% hist
+
+close all
+% Below
+figure('Position',[100 100 1200 600],'DefaultAxesFontSize',12)
+subplot(1,2,1)
+hist3([belowAll(:,1),belowAll(:,3)],'CdataMode','auto','Ctrs',{0:0.1:1 -5:1:15})
+view(2)
+xlabel('Below Convectivity')
+ylabel('Below Latent Heating')
+
+subplot(1,2,2)
+hist3([belowAll(:,2),belowAll(:,3)],'CdataMode','auto','Ctrs',{10:5:60 -5:1:15})
+view(2)
+xlabel('Below Reflectivity')
+ylabel('Below Latent Heating')
+
+% Above
+figure('Position',[100 100 1200 600],'DefaultAxesFontSize',12)
+subplot(1,2,1)
+hist3([aboveAll(:,1),aboveAll(:,3)],'CdataMode','auto','Ctrs',{0:0.1:1 -5:1:15})
+view(2)
+xlabel('Above Convectivity')
+ylabel('Above Latent Heating')
+
+subplot(1,2,2)
+hist3([aboveAll(:,2),aboveAll(:,3)],'CdataMode','auto','Ctrs',{10:5:60 -5:1:15})
+view(2)
+xlabel('Above Reflectivity')
+ylabel('Above Latent Heating')
