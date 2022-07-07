@@ -110,7 +110,7 @@ colmapPart=[0,0.1,0.6;
     0.38,0.42,0.96;
     0.65,0.74,0.86;
     0.32,0.78,0.59;
-    1,0,1;
+    0.8,0,1;
     1,1,0;
     0.99,0.77,0.22;
     1 0 0];
@@ -206,6 +206,7 @@ surf(lon,lat,in2D.partS2D','edgecolor','none');
 view(2)
 xlim([lon(1),lon(end)]);
 ylim([lat(1),lat(end)]);
+caxis([-8 0]);
 ax5.Colormap=colmapPart;
 ax5.YTick=(35:0.5:43);
 
@@ -223,6 +224,7 @@ surf(lon,lat,in2D.part2D','edgecolor','none');
 view(2)
 xlim([lon(1),lon(end)]);
 ylim([lat(1),lat(end)]);
+caxis([-8 0]);
 ax6.Colormap=colmapPart;
 ax6.YTick=(35:0.5:43);
 

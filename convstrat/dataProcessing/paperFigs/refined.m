@@ -33,10 +33,10 @@ alt=ncread(file,'z2');
 in3D.texture3D=ncread(file,'DbzTexture3D');
 in3D.Convectivity3D=ncread(file,'Convectivity3D');
 in3D.refl=ncread(file,'Dbz3D');
-in3D.part3Din=ncread(file,'Partition3D');
+in3D.part3Din=ncread(file,'EchoType3D');
 
 % 2D
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 
 %% Cut out sub region
 
@@ -87,7 +87,7 @@ colmapPart=[0,0.1,0.6;
     0.38,0.42,0.96;
     0.65,0.74,0.86;
     0.32,0.78,0.59;
-    1,0,1;
+    0.8,0,1;
     1,1,0;
     0.99,0.77,0.22;
     1 0 0];
@@ -202,10 +202,10 @@ in2D=[];
 in3D.texture3D=ncread(file,'DbzTexture3D');
 in3D.Convectivity3D=ncread(file,'Convectivity3D');
 in3D.refl=ncread(file,'Dbz3D');
-in3D.part3Din=ncread(file,'Partition3D');
+in3D.part3Din=ncread(file,'EchoType3D');
 
 % 2D
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 
 %% Cut out sub region
 
