@@ -55,6 +55,14 @@ def main():
                       dest='hdf5FilePath',
                       default='/data/dixon/caroline/West_Coast_wave_2005.h5',
                       help='HDF5 data file')
+    parser.add_option('--field',
+                      dest='fieldName',
+                      default='significant_wave_height',
+                      help='Name of field to be plotted. Options are: directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width, water_depth')
+    parser.add_option('--miss',
+                      dest='missingVal',
+                      default=-999.0,
+                      help='Missing value for field')
     parser.add_option('--width',
                       dest='figWidthMm',
                       default=200,
@@ -63,22 +71,6 @@ def main():
                       dest='figHeightMm',
                       default=200,
                       help='Height of figure in mm')
-    parser.add_option('--minX',
-                      dest='minX',
-                      default=-2.0,
-                      help='Minimum X val')
-    parser.add_option('--maxX',
-                      dest='maxX',
-                      default=2.0,
-                      help='Maximum X val')
-    parser.add_option('--minY',
-                      dest='minY',
-                      default=-2.0,
-                      help='Minimum Y val')
-    parser.add_option('--maxY',
-                      dest='maxY',
-                      default=2.0,
-                      help='Maximum Y val')
     parser.add_option('--nX',
                       dest='nX',
                       default=500,
@@ -91,45 +83,39 @@ def main():
                       dest='nPts',
                       default=500,
                       help='Number of points in data set')
+    parser.add_option('--test',
+                      dest='plotTest', default=False,
+                      action="store_true",
+                      help='Plot the test data')
 
     (options, args) = parser.parse_args()
     
     if (options.verbose):
         options.debug = True
 
-    global nPts, minX, maxX, minY, maxY, xRange, yRange
-    nPts = int(options.nPts)
-    minX = float(options.minX)
-    maxX = float(options.maxX)
-    minY = float(options.minY)
-    maxY = float(options.maxY)
-    xRange = maxX - minX
-    yRange = maxY - minY
-
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  hdf5FilePath: ", options.hdf5FilePath, file=sys.stderr)
-        print("  minX: ", options.minX, file=sys.stderr)
-        print("  maxX: ", options.maxX, file=sys.stderr)
-        print("  minY: ", options.minY, file=sys.stderr)
-        print("  maxY: ", options.maxY, file=sys.stderr)
+        print("  fieldName: ", options.fieldName, file=sys.stderr)
+        print("  missingVal: ", options.missingVal, file=sys.stderr)
         print("  nX: ", options.nX, file=sys.stderr)
         print("  nY: ", options.nY, file=sys.stderr)
         print("  nPts: ", options.nPts, file=sys.stderr)
 
     # render the test plot
-    
-    #doPlotTest()
-    #sys.exit(0)
+
+    if (options.plotTest):
+        doPlotTest()
+        sys.exit(0)
 
     # open the HDF5 file
 
     h5File = h5.File(options.hdf5FilePath,'r')
     h5File.keys()
 
-    # plot wave data
+    # plot field data
 
-    doPlotWaveData(h5File)
+    doPlotFieldData(h5File)
     
     # done
     
@@ -138,52 +124,45 @@ def main():
 ########################################################################
 # Plot wave data
 
-def doPlotWaveData(h5File):
+def doPlotFieldData(h5File):
     
     widthIn = float(options.figWidthMm) / 25.4
     htIn = float(options.figHeightMm) / 25.4
     fig1 = plt.figure(1, (widthIn, htIn))
 
-    wht = h5File['significant_wave_height']
-    print("  wht: ", wht, file=sys.stderr)
+    fieldName = options.fieldName
+    fieldVals2D = h5File[fieldName][:]
 
-    #fieldName = 'mean_wave_direction'
-    #fieldName = 'spectral_width'
-    fieldName = 'significant_wave_height'
-    mwd = h5File[fieldName][:]
-    print("  ", fieldName, ": ", mwd, file=sys.stderr)
+    # field values from only one time
 
-    coords = h5File['coordinates'][:]
-
-    lats = coords[:,0]
-    lons = coords[:,1]
-
-    # mean wave direction from only one time
-    mwd_0 = mwd[0,:]
-    
-    # check dim sizes
-    
-    print(coords)
-    print(coords.shape)
-
-    print(lats.shape)
-    print(lats)
-    
-    print(lons.shape)
-    print(lons)
-    
-    print(mwd_0.shape)
-    print(mwd_0)
+    if (len(fieldVals2D.shape) == 1):
+        fVals = fieldVals2D
+    else:
+        fVals = fieldVals2D[0,:]
 
     # set missing to Nan
     
-    mwd_0[mwd_0 == -999] = math.nan
-    print(mwd_0)
-    minVal = np.nanmin(mwd_0)
-    maxVal = np.nanmax(mwd_0)
+    fVals[fVals == float(options.missingVal)] = math.nan
+    minVal = np.nanmin(fVals)
+    maxVal = np.nanmax(fVals)
 
-    print("  mwd min, max: ", minVal, maxVal, file=sys.stderr)
+    # coordinates
+    
+    coords = h5File['coordinates'][:]
+    lats = coords[:,0]
+    lons = coords[:,1]
 
+    if (options.debug):
+        print("==========================================", file=sys.stderr)
+        print("  fieldName: ", options.fieldName, file=sys.stderr)
+        print("  missingVal: ", options.missingVal, file=sys.stderr)
+        print("  field min, max: ", minVal, maxVal, file=sys.stderr)
+        print("  nPts: ", len(fVals), file=sys.stderr)
+        print("  fVals.shape: ",
+              fVals.shape, file=sys.stderr)
+        print("  len(fVals.shape): ",
+              len(fVals.shape), file=sys.stderr)
+        
     minLon = np.min(lons)
     maxLon = np.max(lons)
     minLat = np.min(lats)
@@ -192,54 +171,64 @@ def doPlotWaveData(h5File):
     deltaLon = maxLon - minLon
     deltaLat = maxLat - minLat
 
-    ax1 = newMap(fig1, minLon, maxLon, minLat, maxLat)
-
+    lowerLon = minLon - deltaLon / 50.0
+    upperLon = maxLon + deltaLon / 50.0
+    lowerLat = minLat - deltaLat / 50.0
+    upperLat = maxLat + deltaLat / 50.0
+    
     # create a grid with constant spacing
     
-    xi = np.linspace(minLon - deltaLon / 100.0,
-                     maxLon + deltaLon / 100.0,
-                     options.nX)
-    yi = np.linspace(minLat - deltaLat / 100.0,
-                     maxLat - deltaLat / 100.0,
-                     options.nY)
+    xLons = np.linspace(lowerLon, upperLon, options.nX)
+    yLats = np.linspace(lowerLat, upperLat, options.nY)
 
-    # make up some randomly distributed data
-    # seed(1234)
-    # x = uniform(minX,maxX,nPts)
-    # y = uniform(minY,maxY,nPts)
-    # z = x*np.exp(-x**2-y**2)
-    # # define grid.
-    # xi = np.linspace(minX - xRange / 100.0,
-    #                  maxX + xRange / 100.0,
-    #                  options.nX)
-    # yi = np.linspace(minY - yRange / 100.0,
-    #                  maxY + yRange / 100.0,
-    #                  options.nY)
     # grid the data.
-    zi = griddata((lons, lats), mwd_0, (xi[None,:], yi[:,None]), method='linear')
-    #zi = griddata((lons, lats), mwd_0, (xi, yi), method='linear')
-    print("  xi.shape: ", xi.shape, file=sys.stderr)
-    print("  xi: ", xi, file=sys.stderr)
-    print("  yi.shape: ", yi.shape, file=sys.stderr)
-    print("  yi: ", yi, file=sys.stderr)
-    print("  zi.shape: ", zi.shape, file=sys.stderr)
-    print("  zi: ", zi, file=sys.stderr)
-    # contour the gridded data, plotting dots at the randomly spaced data points.
-    #CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
-    #CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
-    # CS = ax1.contour(xi,yi,zi)
-    CS = ax1.contourf(xi,yi,zi,64,cmap=plt.cm.jet,vmin=minVal,vmax=maxVal)
+    gVals = griddata((lons, lats), fVals,
+                           (xLons[None,:], yLats[:,None]), method='linear')
+
+    if (options.debug):
+        print("  xLons.shape: ", xLons.shape, file=sys.stderr)
+        print("  yLats.shape: ", yLats.shape, file=sys.stderr)
+        print("  gVals.shape: ", gVals.shape, file=sys.stderr)
+
+    if (options.verbose):
+        # print("  xLons: ", xLons, file=sys.stderr)
+        # print("  yLats: ", yLats, file=sys.stderr)
+        print("  fieldVals: ",
+              fVals[fVals != math.nan],
+              file=sys.stderr)
+        print("  gVals: ",
+              gVals[gVals != math.nan],
+              file=sys.stderr)
+
+    # set up axis for plotting, using Cartopy
+    
+    ax1 = newMap(fig1, minLon, maxLon, minLat, maxLat)
+
+    # plot the gridded data as color-filled contours
+
+    #CS = plt.contour(xLons,yLats,gVals,16,linewidths=0.5,colors='k')
+    CS = ax1.contourf(xLons,yLats,gVals,64,cmap=plt.cm.jet,vmin=minVal,vmax=maxVal)
     cbar = fig1.colorbar(CS, ax=ax1, shrink=0.9) # draw colorbar
-    #plt.colorbar() # draw colorbar
+    
     # plot data points.
-    #plt.scatter(lons,lats,marker='.',c='b',s=5)
+    # plt.scatter(lons,lats,marker='.',c='b',s=5)
+
+    # plot coastlines and states
+    
     ax1.coastlines('10m', 'orange', linewidth=1, zorder=3)
     ax1.add_feature(cfeature.STATES, linewidth=0.3, edgecolor='brown', zorder=3)
-    #ax1.scatter(lons,lats,marker='.',c='b')
-    #ax1.coastlines('10m', 'darkgray', linewidth=1, zorder=0)
-    plt.xlim(minLon,maxLon)
-    plt.ylim(minLat,maxLat)
+
+    # set plot limits
+    
+    plt.xlim(lowerLon, upperLon)
+    plt.ylim(lowerLat, upperLat)
+
+    # title
+    
     plt.title(fieldName)
+
+    # show it
+    
     plt.show()
 
 ########################################################################
@@ -278,6 +267,14 @@ def newMap(fig, minLon, maxLon, minLat, maxLat):
 
 def doPlotTest():
     
+    nPts = int(options.nPts)
+    minX = -2.0
+    maxX = 2.0
+    minY = -2.0
+    maxY = 2.0
+    xRange = maxX - minX
+    yRange = maxY - minY
+
     # make up some randomly distributed data
     seed(1234)
     x = uniform(minX,maxX,nPts)
@@ -292,7 +289,6 @@ def doPlotTest():
                      options.nY)
     # grid the data.
     zi = griddata((x, y), z, (xi[None,:], yi[:,None]), method='cubic')
-    #zi = griddata((x, y), z, (xi, yi), method='cubic')
     # contour the gridded data, plotting dots at the randomly spaced data points.
     CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
     CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
