@@ -218,9 +218,9 @@ def doPlotWaveData(h5File):
     fig1.colorbar(CS) # draw colorbar
     # plot data points.
     #plt.scatter(lons,lats,marker='.',c='b',s=5)
-    ax1.coastlines('10m', 'orange', linewidth=1, zorder=0)
-    ax1.add_feature(cfeature.STATES, linewidth=0.3, edgecolor='brown')
-    #ax1.scatter(lons,lats,marker='.',c='b')
+    ax1.coastlines('10m', 'orange', linewidth=1, zorder=3)
+    ax1.add_feature(cfeature.STATES, linewidth=0.3, edgecolor='brown', zorder=3)
+    ax1.scatter(lons,lats,marker='.',c='b')
     #ax1.coastlines('10m', 'darkgray', linewidth=1, zorder=0)
     plt.xlim(minLon,maxLon)
     plt.ylim(minLat,maxLat)
