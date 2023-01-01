@@ -24,6 +24,13 @@ import h5py as h5
 import math
 import datetime
 import contextlib
+import cartopy
+import cartopy.crs as ccrs
+import cartopy.io.shapereader as shpreader
+import cartopy.geodesic as cgds
+from cartopy import feature as cfeature
+from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import shapely
 
 def main():
 
@@ -178,6 +185,8 @@ def doPlotWaveData(h5File):
     deltaLon = maxLon - minLon
     deltaLat = maxLat - minLat
 
+    ax1 = newMap(fig1, minLon, maxLon, minLat, maxLat)
+
     # create a grid with constant spacing
     
     xi = np.linspace(minLon - deltaLon / 100.0,
@@ -204,16 +213,50 @@ def doPlotWaveData(h5File):
     # contour the gridded data, plotting dots at the randomly spaced data points.
     #CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
     #CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
-    CS = plt.contour(xi,yi,zi)
-    CS = plt.contourf(xi,yi,zi)
-    plt.colorbar() # draw colorbar
+    #CS = ax1.contour(xi,yi,zi)
+    CS = ax1.contourf(xi,yi,zi)
+    fig1.colorbar(CS) # draw colorbar
     # plot data points.
     #plt.scatter(lons,lats,marker='.',c='b',s=5)
-    plt.scatter(lons,lats,marker='.',c='b')
+    ax1.coastlines('10m', 'orange', linewidth=1, zorder=0)
+    ax1.add_feature(cfeature.STATES, linewidth=0.3, edgecolor='brown')
+    #ax1.scatter(lons,lats,marker='.',c='b')
+    #ax1.coastlines('10m', 'darkgray', linewidth=1, zorder=0)
     plt.xlim(minLon,maxLon)
     plt.ylim(minLat,maxLat)
     plt.title(fieldName)
     plt.show()
+
+########################################################################
+# Create map for plotting lat/lon grids
+
+def newMap(fig, minLon, maxLon, minLat, maxLat):
+    
+    ## Create projection centered as the CWB radar image:
+    proj = ccrs.PlateCarree()
+    
+    ## New axes with the specified projection:
+    ax = fig.add_subplot(1, 1, 1, projection=proj)
+    
+    ## Set extent
+    ax.set_extent([minLon, maxLon, minLat, maxLat])
+    
+    ## Add grid lines & labels:
+    gl = ax.gridlines(crs=ccrs.PlateCarree(),
+                      draw_labels=True,
+                      linewidth=1,
+                      color='lightgray',
+                      alpha=0.5, linestyle='--')
+    gl.top_labels = False
+    gl.left_labels = True
+    gl.right_labels = False
+    gl.xlines = True
+    gl.ylines = True
+    gl.xformatter = LONGITUDE_FORMATTER
+    gl.yformatter = LATITUDE_FORMATTER
+    gl.xlabel_style = {'size': 8, 'weight': 'bold'}
+    gl.ylabel_style = {'size': 8, 'weight': 'bold'}
+    return ax
 
 ########################################################################
 # Plot test
