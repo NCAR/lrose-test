@@ -50,7 +50,7 @@ def main():
                       help='HDF5 data file')
     parser.add_option('--width',
                       dest='figWidthMm',
-                      default=400,
+                      default=200,
                       help='Width of figure in mm')
     parser.add_option('--height',
                       dest='figHeightMm',
@@ -74,11 +74,11 @@ def main():
                       help='Maximum Y val')
     parser.add_option('--nX',
                       dest='nX',
-                      default=200,
+                      default=500,
                       help='Number of regular grid locations in X')
     parser.add_option('--nY',
                       dest='nY',
-                      default=200,
+                      default=500,
                       help='Number of regular grid locations in Y')
     parser.add_option('--nPts',
                       dest='nPts',
@@ -114,54 +114,102 @@ def main():
     
     # doPlotTest()
 
-    # open the file and read in required fields
+    # open the HDF5 file
 
-    global h5File
     h5File = h5.File(options.hdf5FilePath,'r')
     h5File.keys()
-    wht = h5File['significant_wave_height']
-    print("  wht: ", wht, file=sys.stderr)
 
-    # plot wave height
+    # plot wave data
 
-    doPlotWaveHeight()
+    doPlotWaveData(h5File)
     
     # done
     
     sys.exit(0)
     
 ########################################################################
-# Plot wave height
+# Plot wave data
 
-def doPlotWaveHeight():
+def doPlotWaveData(h5File):
     
     widthIn = float(options.figWidthMm) / 25.4
     htIn = float(options.figHeightMm) / 25.4
     fig1 = plt.figure(1, (widthIn, htIn))
 
-    # make up some randomly distributed data
-    seed(1234)
-    x = uniform(minX,maxX,nPts)
-    y = uniform(minY,maxY,nPts)
-    z = x*np.exp(-x**2-y**2)
-    # define grid.
-    xi = np.linspace(minX - xRange / 100.0,
-                     maxX + xRange / 100.0,
+    wht = h5File['significant_wave_height']
+    print("  wht: ", wht, file=sys.stderr)
+
+    fieldName = 'mean_wave_direction'
+    mwd = h5File[fieldName][:]
+    print("  fieldName: ", mwd, file=sys.stderr)
+
+    coords = h5File['coordinates'][:]
+
+    lats = coords[:,0]
+    lons = coords[:,1]
+
+    # mean wave direction from only one time
+    mwd_0 = mwd[0,:]
+    
+    # check dim sizes
+    
+    print(coords)
+    print(coords.shape)
+
+    print(lats.shape)
+    print(lats)
+    
+    print(lons.shape)
+    print(lons)
+    
+    print(mwd_0.shape)
+    print(mwd_0)
+
+    # set missing to Nan
+    
+    mwd_0[mwd_0 == -999] = math.nan
+    print(mwd_0)
+
+    minLon = np.min(lons)
+    maxLon = np.max(lons)
+    minLat = np.min(lats)
+    maxLat = np.max(lats)
+
+    deltaLon = maxLon - minLon
+    deltaLat = maxLat - minLat
+
+    # create a grid with constant spacing
+    
+    xi = np.linspace(minLon - deltaLon / 100.0,
+                     maxLon + deltaLon / 100.0,
                      options.nX)
-    yi = np.linspace(minY - yRange / 100.0,
-                     maxY + yRange / 100.0,
+    yi = np.linspace(minLat - deltaLat / 100.0,
+                     maxLat - deltaLat / 100.0,
                      options.nY)
+
+    # make up some randomly distributed data
+    # seed(1234)
+    # x = uniform(minX,maxX,nPts)
+    # y = uniform(minY,maxY,nPts)
+    # z = x*np.exp(-x**2-y**2)
+    # # define grid.
+    # xi = np.linspace(minX - xRange / 100.0,
+    #                  maxX + xRange / 100.0,
+    #                  options.nX)
+    # yi = np.linspace(minY - yRange / 100.0,
+    #                  maxY + yRange / 100.0,
+    #                  options.nY)
     # grid the data.
-    zi = griddata((x, y), z, (xi[None,:], yi[:,None]), method='cubic')
+    zi = griddata((lons, lats), mwd_0, (xi[None,:], yi[:,None]), method='cubic')
     # contour the gridded data, plotting dots at the randomly spaced data points.
     CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
     CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
     plt.colorbar() # draw colorbar
     # plot data points.
-    plt.scatter(x,y,marker='o',c='b',s=5)
-    plt.xlim(minX,maxX)
-    plt.ylim(minY,maxY)
-    plt.title('griddata test (%d points)' % nPts)
+    plt.scatter(lons,lats,marker='o',c='b',s=5)
+    plt.xlim(minLon,maxLon)
+    plt.ylim(minLat,maxLat)
+    plt.title(fieldName)
     plt.show()
 
 ########################################################################
