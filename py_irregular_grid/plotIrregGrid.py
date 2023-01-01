@@ -202,11 +202,14 @@ def doPlotWaveData(h5File):
     # grid the data.
     zi = griddata((lons, lats), mwd_0, (xi[None,:], yi[:,None]), method='cubic')
     # contour the gridded data, plotting dots at the randomly spaced data points.
-    CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
-    CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
+    #CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
+    #CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
+    CS = plt.contour(xi,yi,zi)
+    CS = plt.contourf(xi,yi,zi)
     plt.colorbar() # draw colorbar
     # plot data points.
-    plt.scatter(lons,lats,marker='o',c='b',s=5)
+    #plt.scatter(lons,lats,marker='.',c='b',s=5)
+    plt.scatter(lons,lats,marker='.',c='b')
     plt.xlim(minLon,maxLon)
     plt.ylim(minLat,maxLat)
     plt.title(fieldName)
