@@ -132,6 +132,7 @@ def doPlotFieldData(h5File):
 
     fieldName = options.fieldName
     fieldVals2D = h5File[fieldName][:]
+    waterDepth = h5File['water_depth'][:]
 
     # field values from only one time
 
@@ -142,8 +143,23 @@ def doPlotFieldData(h5File):
 
     # set missing to Nan
     
-    fVals[fVals == float(options.missingVal)] = math.nan
+    #fVals[fVals == float(options.missingVal)] = math.nan
+
+    # compute min and max
+    
     minVal = np.nanmin(fVals)
+    maxVal = np.nanmax(fVals)
+
+    # set missing val to min val
+    
+    missVal = float(options.missingVal)
+    if (minVal < -5.0):
+        missVal = minVal
+    fVals[fVals == missVal] = math.nan
+    minVal = np.nanmin(fVals)
+
+    # recompute min
+    
     maxVal = np.nanmax(fVals)
 
     # coordinates
@@ -183,8 +199,13 @@ def doPlotFieldData(h5File):
 
     # grid the data.
     gVals = griddata((lons, lats), fVals,
-                           (xLons[None,:], yLats[:,None]), method='linear')
-
+                     (xLons[None,:], yLats[:,None]),
+                     method='linear', fill_value=math.nan)
+    wVals = griddata((lons, lats), waterDepth,
+                     (xLons[None,:], yLats[:,None]),
+                     method='linear', fill_value=math.nan)
+    gVals[wVals < 20] = math.nan
+    
     if (options.debug):
         print("  xLons.shape: ", xLons.shape, file=sys.stderr)
         print("  yLats.shape: ", yLats.shape, file=sys.stderr)
