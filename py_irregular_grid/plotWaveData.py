@@ -92,6 +92,15 @@ def main():
                       dest='nColors',
                       default=64,
                       help='Number of colors in filled contours')
+    parser.add_option('--save',
+                      dest='savePlot', default=False,
+                      action="store_true",
+                      help='Option to save the figure to a file and then exit')
+    parser.add_option('--saveDir',
+                      dest='saveDir',
+                      default='/tmp/waveData/images',
+                      help='Directory for saved images')
+
     (options, args) = parser.parse_args()
     
     if (options.verbose):
@@ -287,6 +296,18 @@ def doPlotFieldData(h5File, timeIndex):
 
     dataTimeStr = dataTime.strftime("%Y-%m-%d %H:%M:%S")
     plt.title(fieldName + "  " + dataTimeStr)
+
+    # save image option
+
+    if (options.savePlot):
+        if not os.path.exists(options.saveDir):
+            os.makedirs(options.saveDir, 0o775)
+        imageTimeStr = dataTime.strftime("%Y%m%d_%H%M%S")
+        imageName = fieldName + "_" + imageTimeStr + ".png"
+        savePath = os.path.join(options.saveDir, imageName)
+        print("==>> saving figure to path: ", savePath, file=sys.stderr)
+        fig1.savefig(savePath)
+        return
 
     # show it
     
