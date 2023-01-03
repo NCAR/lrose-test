@@ -2,7 +2,7 @@
 
 #===========================================================================
 #
-# Grid and plot irregular dataProduce plots for noise mon data by time
+# Grid and plot irregular grid of wave data
 #
 #===========================================================================
 
@@ -48,6 +48,10 @@ def main():
                       dest='hdf5FilePath',
                       default='/data/dixon/caroline/West_Coast_wave_2005.h5',
                       help='HDF5 data file')
+    parser.add_option('--time',
+                      dest='searchTime',
+                      default='2005 01 01 00 00 00',
+                      help='Time for plot data')
     parser.add_option('--field',
                       dest='fieldName',
                       default='significant_wave_height',
@@ -72,14 +76,6 @@ def main():
                       dest='nY',
                       default=500,
                       help='Number of regular grid locations in Y')
-    parser.add_option('--nPts',
-                      dest='nPts',
-                      default=500,
-                      help='Number of points in data set')
-    parser.add_option('--time',
-                      dest='searchTime',
-                      default='2005 01 01 00 00 00',
-                      help='Time for plot data')
     parser.add_option('--contours',
                       dest='plotContours', default=False,
                       action="store_true",
@@ -122,7 +118,6 @@ def main():
         print("  missingVal: ", options.missingVal, file=sys.stderr)
         print("  nX: ", options.nX, file=sys.stderr)
         print("  nY: ", options.nY, file=sys.stderr)
-        print("  nPts: ", options.nPts, file=sys.stderr)
 
     # open the HDF5 file
 
@@ -235,8 +230,8 @@ def doPlotFieldData(h5File, timeIndex):
     
     # create a grid with constant spacing
     
-    xLons = np.linspace(lowerLon, upperLon, options.nX)
-    yLats = np.linspace(lowerLat, upperLat, options.nY)
+    xLons = np.linspace(lowerLon, upperLon, int(options.nX))
+    yLats = np.linspace(lowerLat, upperLat, int(options.nY))
 
     # grid the data.
 
