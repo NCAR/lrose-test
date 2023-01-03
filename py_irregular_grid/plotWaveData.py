@@ -11,6 +11,9 @@ from __future__ import print_function
 import os
 import sys
 import subprocess
+import math
+import datetime
+import pytz
 from optparse import OptionParser
 import numpy as np
 from scipy.interpolate import griddata
@@ -21,8 +24,6 @@ from matplotlib import dates
 import numpy.ma as ma
 from numpy.random import uniform, seed
 import h5py as h5
-import math
-import datetime
 import contextlib
 import cartopy
 import cartopy.crs as ccrs
@@ -83,6 +84,10 @@ def main():
                       dest='nPts',
                       default=500,
                       help='Number of points in data set')
+    parser.add_option('--time',
+                      dest='searchTime',
+                      default='2005 01 01 00 00 00',
+                      help='Time for plot data')
     parser.add_option('--test',
                       dest='plotTest', default=False,
                       action="store_true",
@@ -93,9 +98,18 @@ def main():
     if (options.verbose):
         options.debug = True
 
+    # compute search time
+    
+    global searchTime
+    tz = pytz.timezone('UTC')
+    year, month, day, hour, minute, sec = options.searchTime.split()
+    searchTime = datetime.datetime(int(year), int(month), int(day),
+                                   int(hour), int(minute), int(sec), 0, tz)
+    
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  hdf5FilePath: ", options.hdf5FilePath, file=sys.stderr)
+        print("  searchTime: ", searchTime, file=sys.stderr)
         print("  fieldName: ", options.fieldName, file=sys.stderr)
         print("  missingVal: ", options.missingVal, file=sys.stderr)
         print("  nX: ", options.nX, file=sys.stderr)
@@ -113,18 +127,43 @@ def main():
     h5File = h5.File(options.hdf5FilePath,'r')
     h5File.keys()
 
+    # find time index closest to search time
+
+    timeIndex = getTimeIndex(h5File, searchTime)
+
     # plot field data
 
-    doPlotFieldData(h5File)
+    doPlotFieldData(h5File, timeIndex)
     
     # done
     
     sys.exit(0)
     
 ########################################################################
+# Get time index for search time
+
+def getTimeIndex(h5File, searchTime):
+    
+    timeStrings = h5File['time_index'][:]
+    minTimeDiff = 1.0e99
+    timeIndex = 0
+    global dataTime
+    dataTime = searchTime
+    for tIndex, timeStr in enumerate(timeStrings):
+        timeStr = timeStr.decode('utf-8')
+        thisTime = datetime.datetime.fromisoformat(timeStr)
+        timeDiff = math.fabs((thisTime - searchTime).total_seconds())
+        if (timeDiff < minTimeDiff):
+            minTimeDiff = timeDiff
+            timeIndex = tIndex
+            dataTime = thisTime
+
+    return timeIndex
+
+########################################################################
 # Plot wave data
 
-def doPlotFieldData(h5File):
+def doPlotFieldData(h5File, timeIndex):
     
     widthIn = float(options.figWidthMm) / 25.4
     htIn = float(options.figHeightMm) / 25.4
@@ -134,12 +173,12 @@ def doPlotFieldData(h5File):
     fieldVals2D = h5File[fieldName][:]
     waterDepth = h5File['water_depth'][:]
 
-    # field values from only one time
+    # field values from specified time
 
     if (len(fieldVals2D.shape) == 1):
         fVals = fieldVals2D
     else:
-        fVals = fieldVals2D[0,:]
+        fVals = fieldVals2D[timeIndex,:]
 
     # set missing to Nan
     
@@ -245,8 +284,9 @@ def doPlotFieldData(h5File):
     plt.ylim(lowerLat, upperLat)
 
     # title
-    
-    plt.title(fieldName)
+
+    dataTimeStr = dataTime.strftime("%Y-%m-%d %H:%M:%S")
+    plt.title(fieldName + "  " + dataTimeStr)
 
     # show it
     
