@@ -390,7 +390,7 @@ main_window_height = 900;
 // Type: int
 //
 
-main_window_start_x = 0;
+main_window_start_x = 30;
 
 ///////////// main_window_start_y /////////////////////
 //
@@ -400,7 +400,7 @@ main_window_start_x = 0;
 // Type: int
 //
 
-main_window_start_y = 0;
+main_window_start_y = 30;
 
 ///////////// main_window_title_margin ////////////////
 //
@@ -1416,7 +1416,7 @@ iq_plots = {
   ,
   {
     plot_type = SPECTRAL_POWER,
-    rx_channel = CHANNEL_VC,
+    rx_channel = CHANNEL_HC,
     fft_window = FFT_WINDOW_RECT,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
@@ -1424,7 +1424,7 @@ iq_plots = {
     clutter_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_filter_interp_across_notch = FALSE,
     compute_plot_range_dynamically = TRUE
   }
   ,
