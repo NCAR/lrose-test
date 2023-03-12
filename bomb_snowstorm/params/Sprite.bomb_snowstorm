@@ -181,7 +181,6 @@ archive_data_dir = "$(HOME)/data/bomb_snowstorm/time_series/spol";
 // Type: string
 //
 
-// archive_start_time = "2019 03 13 22 06 22";
 archive_start_time = "2019 03 13 11 55 00";
 
 ///////////// archive_time_span_secs //////////////////
@@ -1306,7 +1305,7 @@ waterfall_y_axis_labels_inside = FALSE;
 // Type: int
 //
 
-iqplots_n_rows = 2;
+iqplots_n_rows = 3;
 
 ///////////// iqplots_n_columns ///////////////////////
 //
@@ -1406,6 +1405,34 @@ iq_plots = {
     plot_clutter_model = TRUE,
     clutter_width_mps = 0.75,
     use_regression_filter = FALSE,
+    regression_order = 3,
+    regression_filter_interp_across_notch = TRUE,
+    compute_plot_range_dynamically = TRUE
+  }
+  ,
+  {
+    plot_type = SPECTRAL_POWER,
+    rx_channel = CHANNEL_HC,
+    fft_window = FFT_WINDOW_RECT,
+    median_filter_len = 1,
+    use_adaptive_filter = FALSE,
+    plot_clutter_model = TRUE,
+    clutter_width_mps = 0.75,
+    use_regression_filter = TRUE,
+    regression_order = 3,
+    regression_filter_interp_across_notch = TRUE,
+    compute_plot_range_dynamically = TRUE
+  }
+  ,
+  {
+    plot_type = SPECTRAL_POWER,
+    rx_channel = CHANNEL_VC,
+    fft_window = FFT_WINDOW_RECT,
+    median_filter_len = 1,
+    use_adaptive_filter = FALSE,
+    plot_clutter_model = TRUE,
+    clutter_width_mps = 0.75,
+    use_regression_filter = TRUE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
     compute_plot_range_dynamically = TRUE
@@ -2018,20 +2045,19 @@ use_polynomial_regression_clutter_filter = TRUE;
 
 regression_filter_polynomial_order = 5;
 
-///////////// regression_filter_determine_order_from_CSR 
+///////////// regression_filter_determine_order_from_CNR 
 //
 // Option to determine the polynomial order from the 
-//   Clutter-to-Signal-Ratio (CSR).
+//   Clutter-to-Noise-Ratio (CNR).
 //
-// If TRUE, we compute the CSR from the 3 central spectral points. Then, 
-//   using a lookup-table based on CSR, we determine the appropriate order 
-//   of the polynomial fit.
+// If TRUE, we compute the CNR from the 3 central spectral points. Then, 
+//   we compute the order using CNR, antenna speed etc.
 //
 //
 // Type: boolean
 //
 
-regression_filter_determine_order_from_CSR = FALSE;
+regression_filter_determine_order_from_CNR = TRUE;
 
 ///////////// regression_filter_notch_edge_power_ratio_threshold_db 
 //
@@ -2050,20 +2076,20 @@ regression_filter_determine_order_from_CSR = FALSE;
 
 regression_filter_notch_edge_power_ratio_threshold_db = -45;
 
-///////////// regression_filter_min_csr_db ////////////
+///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
 //   (dB).
 //
-// As a first step, we compute the CSR using a 3rd order regression fit. 
-//   If the CSR is below this threshold, we do not apply the filter at 
-//   all, and simply return the unfiltered spectrum.
+// As a first step, we compute the CNR the central 3 spectral points. If 
+//   the CNR is below this threshold, we do not apply the filter at all, 
+//   and simply return the unfiltered spectrum.
 //
 //
 // Type: double
 //
 
-regression_filter_min_csr_db = -5;
+regression_filter_min_cnr_db = -5;
 
 ///////////// use_simple_notch_clutter_filter /////////
 //
