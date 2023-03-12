@@ -380,7 +380,7 @@ main_window_width = 1800;
 // Type: int
 //
 
-main_window_height = 1200;
+main_window_height = 900;
 
 ///////////// main_window_start_x /////////////////////
 //
@@ -485,6 +485,36 @@ main_window_panel_divider_color = "yellow";
 //
 
 click_cross_size = 11;
+
+///////////// x_grid_lines_on /////////////////////////
+//
+// Option to draw grid lines in the X direction.
+//
+//
+// Type: boolean
+//
+
+x_grid_lines_on = TRUE;
+
+///////////// y_grid_lines_on /////////////////////////
+//
+// Option to draw grid lines in the Y direction.
+//
+//
+// Type: boolean
+//
+
+y_grid_lines_on = TRUE;
+
+///////////// legends_on //////////////////////////////
+//
+// Option to add legends to the plots.
+//
+//
+// Type: boolean
+//
+
+legends_on = TRUE;
 
 //======================================================================
 //
@@ -662,26 +692,6 @@ ascope_left_margin = 18;
 //
 
 ascope_bottom_margin = 18;
-
-///////////// ascope_x_grid_lines_on //////////////////
-//
-// Option to draw grid lines in the X direction.
-//
-//
-// Type: boolean
-//
-
-ascope_x_grid_lines_on = TRUE;
-
-///////////// ascope_y_grid_lines_on //////////////////
-//
-// Option to draw grid lines in the Y direction.
-//
-//
-// Type: boolean
-//
-
-ascope_y_grid_lines_on = TRUE;
 
 ///////////// ascope_axis_label_color /////////////////
 //
@@ -1169,26 +1179,6 @@ waterfall_left_margin = 18;
 //
 
 waterfall_bottom_margin = 18;
-
-///////////// waterfall_x_grid_lines_on ///////////////
-//
-// Option to draw grid lines in the X direction.
-//
-//
-// Type: boolean
-//
-
-waterfall_x_grid_lines_on = TRUE;
-
-///////////// waterfall_y_grid_lines_on ///////////////
-//
-// Option to draw grid lines in the Y direction.
-//
-//
-// Type: boolean
-//
-
-waterfall_y_grid_lines_on = TRUE;
 
 ///////////// waterfall_axis_label_color //////////////
 //
@@ -1842,26 +1832,6 @@ iqplot_polynomial_residual_color = "red";
 //
 
 iqplot_polynomial_line_width = 2;
-
-///////////// iqplot_y_grid_lines_on //////////////////
-//
-// Option to draw grid lines in the Y direction.
-//
-//
-// Type: boolean
-//
-
-iqplot_y_grid_lines_on = TRUE;
-
-///////////// iqplot_x_grid_lines_on //////////////////
-//
-// Option to draw grid lines in the X direction.
-//
-//
-// Type: boolean
-//
-
-iqplot_x_grid_lines_on = TRUE;
 
 ///////////// iqplot_draw_instrument_height_line //////
 //
