@@ -866,7 +866,7 @@ waterfall_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     use_adaptive_filter = FALSE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3
   }
@@ -876,7 +876,7 @@ waterfall_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     use_adaptive_filter = TRUE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3
   }
@@ -886,7 +886,7 @@ waterfall_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     use_adaptive_filter = FALSE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3
   }
@@ -896,7 +896,7 @@ waterfall_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     use_adaptive_filter = FALSE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3
   }
@@ -1361,7 +1361,7 @@ iqplots_n_columns = 2;
 //      int median_filter_len;
 //      boolean use_adaptive_filter;
 //      boolean plot_clutter_model;
-//      double clutter_width_mps;
+//      double clutter_model_width_mps;
 //      boolean use_regression_filter;
 //      int regression_order;
 //      boolean regression_filter_interp_across_notch;
@@ -1379,7 +1379,7 @@ iq_plots = {
     median_filter_len = 1,
     use_adaptive_filter = TRUE,
     plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
@@ -1393,7 +1393,7 @@ iq_plots = {
     median_filter_len = 1,
     use_adaptive_filter = TRUE,
     plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
@@ -1406,8 +1406,8 @@ iq_plots = {
     fft_window = FFT_WINDOW_RECT,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    plot_clutter_model = FALSE,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
@@ -1420,8 +1420,8 @@ iq_plots = {
     fft_window = FFT_WINDOW_RECT,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    plot_clutter_model = FALSE,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = 3,
     regression_filter_interp_across_notch = FALSE,
@@ -1434,8 +1434,8 @@ iq_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    plot_clutter_model = FALSE,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
@@ -1448,8 +1448,8 @@ iq_plots = {
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = TRUE,
-    clutter_width_mps = 0.75,
+    plot_clutter_model = FALSE,
+    clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = 3,
     regression_filter_interp_across_notch = TRUE,
