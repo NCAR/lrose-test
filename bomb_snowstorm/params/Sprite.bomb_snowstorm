@@ -824,7 +824,9 @@ waterfall_n_panels = 4;
 // PHIDP: phidp spectrum vs. range.
 // SDEV_ZDR: standard deviation of ZDR.
 // SDEV_PHIDP: standard deviation of PHIDP.
-// CMD: interest field for clutter likelihood.
+// CMD: interest field for clutter likelihood. For the regression 
+//   filter, set the order to -1 to compute the order automatically in the 
+//   filter.
 //
 //
 // Type: struct
@@ -852,9 +854,14 @@ waterfall_n_panels = 4;
 //          FFT_WINDOW_TUKEY_50
 //      int median_filter_len;
 //      boolean use_adaptive_filter;
-//      double clutter_width_mps;
+//      double clutter_model_width_mps;
 //      boolean use_regression_filter;
 //      int regression_order;
+//      notch_interp_method_t regression_filter_notch_interp_method;
+//        Options:
+//          INTERP_METHOD_NONE
+//          INTERP_METHOD_LINEAR
+//          INTERP_METHOD_GAUSSIAN
 //   }
 //
 // 1D array - variable length.
@@ -868,7 +875,8 @@ waterfall_plots = {
     use_adaptive_filter = FALSE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
@@ -878,7 +886,8 @@ waterfall_plots = {
     use_adaptive_filter = TRUE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
@@ -888,7 +897,8 @@ waterfall_plots = {
     use_adaptive_filter = FALSE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
@@ -898,7 +908,8 @@ waterfall_plots = {
     use_adaptive_filter = FALSE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
 };
 
@@ -1325,7 +1336,9 @@ iqplots_n_columns = 2;
 // I_VS_Q: I on x axis, Q on y axis.
 // PHASE: sum of I vs sum of Q. I on x axis.
 //
-// median_filter_len: median filter for spectra.
+// median_filter_len: median filter for spectra. For the regression 
+//   filter, set the order to -1 to compute the order automatically in the 
+//   filter.
 //
 //
 // Type: struct
@@ -1364,7 +1377,11 @@ iqplots_n_columns = 2;
 //      double clutter_model_width_mps;
 //      boolean use_regression_filter;
 //      int regression_order;
-//      boolean regression_filter_interp_across_notch;
+//      notch_interp_method_t regression_filter_notch_interp_method;
+//        Options:
+//          INTERP_METHOD_NONE
+//          INTERP_METHOD_LINEAR
+//          INTERP_METHOD_GAUSSIAN
 //      boolean compute_plot_range_dynamically;
 //   }
 //
@@ -1381,8 +1398,8 @@ iq_plots = {
     plot_clutter_model = TRUE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
   ,
@@ -1395,8 +1412,8 @@ iq_plots = {
     plot_clutter_model = TRUE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
   ,
@@ -1406,11 +1423,11 @@ iq_plots = {
     fft_window = FFT_WINDOW_RECT,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = FALSE,
+    plot_clutter_model = TRUE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
   ,
@@ -1420,11 +1437,11 @@ iq_plots = {
     fft_window = FFT_WINDOW_RECT,
     median_filter_len = 1,
     use_adaptive_filter = FALSE,
-    plot_clutter_model = FALSE,
+    plot_clutter_model = TRUE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = FALSE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_NONE,
     compute_plot_range_dynamically = TRUE
   }
   ,
@@ -1437,8 +1454,8 @@ iq_plots = {
     plot_clutter_model = FALSE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
   ,
@@ -1451,8 +1468,8 @@ iq_plots = {
     plot_clutter_model = FALSE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
-    regression_order = 3,
-    regression_filter_interp_across_notch = TRUE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
 };
@@ -2023,7 +2040,7 @@ regression_filter_determine_order_from_cnr = TRUE;
 //
 // Order of the polynomial fit for the regression filter.
 //
-// Used if regression_filter_determine_order_from_CNR is false.
+// Used if regression_filter_determine_order_from_cnr is false.
 //
 //
 // Type: int
@@ -2035,7 +2052,7 @@ regression_filter_specified_polynomial_order = 5;
 //
 // Width factor used when automatically computing polynomial order.
 //
-// Applies if regression_filter_determine_order_from_CNR it true. 
+// Applies if regression_filter_determine_order_from_cnr it true. 
 //   Default is 1. If less than 1, order will decrease. If more than 1, 
 //   order will increase.
 //
@@ -2049,7 +2066,7 @@ regression_filter_clutter_width_factor = 1;
 //
 // CNR exponent used when automatically computing polynomial order.
 //
-// Applies if regression_filter_determine_order_from_CNR it true. 
+// Applies if regression_filter_determine_order_from_cnr it true. 
 //   Default is 2/3. If less than 2/3, order will decrease. If more than 
 //   2/3, order will increase.
 //
