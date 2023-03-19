@@ -181,6 +181,62 @@ REGR_IRATIO    REGR_IRATIO    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfr
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 
+REGR_NOTCH_DBZ_F   REGR_NOTCH_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_NOTCH_DBZ     REGR_NOTCH_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_NOTCH_VEL_F   REGR_NOTCH_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR_NOTCH_VEL     REGR_NOTCH_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+
+REGR_NOTCH_WIDTH_F REGR_NOTCH_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR_NOTCH_WIDTH   REGR_NOTCH_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR_NOTCH_NCP_F   REGR_NOTCH_NCP_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&NCP_F    ncp.colors m/s -5 80 5 radial 1 0
+REGR_NOTCH_NCP     REGR_NOTCH_NCP     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&NCP      ncp.colors m/s -5 80 5 radial 1 0
+
+REGR_NOTCH_ZDR_F   REGR_NOTCH_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_ZDR     REGR_NOTCH_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_ZDRN_F  REGR_NOTCH_ZDRN_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&ZDRN_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_ZDRN    REGR_NOTCH_ZDRN    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&ZDRN   zdr.colors   dB  -5 80 5 radial 1 0
+
+REGR_NOTCH_PHIDP_F  REGR_NOTCH_PHIDP_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&PHIDP_F phidp_alt.colors deg -5 80 5 radial 1 0
+REGR_NOTCH_PHIDP    REGR_NOTCH_PHIDP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&PHIDP   phidp_alt.colors deg -5 80 5 radial 1 0
+REGR_NOTCH_PHIDPN_F REGR_NOTCH_PHIDPN_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&PHIDPN_F phidp_alt.colors deg -5 80 5 radial 1 0
+REGR_NOTCH_PHIDPN   REGR_NOTCH_PHIDPN   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&PHIDPN   phidp_alt.colors deg -5 80 5 radial 1 0
+
+REGR_NOTCH_RHOHV_F REGR_NOTCH_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&RHOHV_F    rhohv.colors _   -5 80 5 radial 1 0
+REGR_NOTCH_RHOHV   REGR_NOTCH_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&RHOHV      rhohv.colors _   -5 80 5 radial 1 0
+REGR_NOTCH_RHOHVN_F REGR_NOTCH_RHOHVN_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&RHOHVN_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_NOTCH_RHOHVN   REGR_NOTCH_RHOHVN   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&RHOHVN   rhohv.colors _   -5 80 5 radial 1 0
+
+REGR_NOTCH_LDRH_F   REGR_NOTCH_LDRH_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_LDRH     REGR_NOTCH_LDRH     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_KDP_F    REGR_NOTCH_KDP_F    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&KDP_F  kdp.colors   dB  -5 80 5 radial 1 0
+REGR_NOTCH_KDP      REGR_NOTCH_KDP      mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&KDP    kdp.colors   dB  -5 80 5 radial 1 0
+
+REGR_NOTCH_SNRHC_F  REGR_NOTCH_SNRHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_NOTCH_SNRHC    REGR_NOTCH_SNRHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+REGR_NOTCH_SNRVC_F  REGR_NOTCH_SNRVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_NOTCH_SNRVC    REGR_NOTCH_SNRVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+
+REGR_NOTCH_DBMHC_F  REGR_NOTCH_DBMHC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_NOTCH_DBMHC    REGR_NOTCH_DBMHC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_NOTCH_DBMVC_F  REGR_NOTCH_DBMVC_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_NOTCH_DBMVC    REGR_NOTCH_DBMVC    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+REGR_NOTCH_CLUT     REGR_NOTCH_CLUT     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&CLUT              dbz.colors dB -5 80 5 radial 1 0
+REGR_NOTCH_CMD      REGR_NOTCH_CMD      mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&CMD               cmd.colors  none -5 80 5 radial 1 0
+REGR_NOTCH_CMD_FLAG REGR_NOTCH_CMD_FLAG mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&CMD_FLAG          cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_NOTCH_CPA      REGR_NOTCH_CPA      mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&CPA               cpa.colors  - -5 80 5 radial 1 0
+
+REGR_NOTCH_CNR       REGR_NOTCH_CNR       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&REGR_NOTCH_CNR          dbz.colors dB -5 80 5 radial 1 0
+REGR_NOTCH_ORDER     REGR_NOTCH_ORDER     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&REGR_NOTCH_ORDER        poly_order.colors - -5 80 5 radial 1 0
+REGR_NOTCH_IRATIO    REGR_NOTCH_IRATIO    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_notched/sur&REGR_NOTCH_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+
 </GRIDS>
 
 <MAPS>

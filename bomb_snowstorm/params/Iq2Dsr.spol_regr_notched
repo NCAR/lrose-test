@@ -2249,7 +2249,7 @@ regression_filter_min_cnr_db = -6;
 //     INTERP_METHOD_GAUSSIAN
 //
 
-regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN;
+regression_filter_notch_interp_method = INTERP_METHOD_NONE;
 
 ///////////// simple_notch_filter_width_mps ///////////
 //
