@@ -1,0 +1,10 @@
+#! /bin/csh -f
+
+# QC time series processing for sband - group 1
+# 2022/05/25 to 2022/07/04
+#
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/bomb_snowstorm/params
+
+Iq2Dsr -params Iq2Dsr.spol_adapt -debug -f ~/data/bomb_snowstorm/time_series/spol/20190313/20190313_220622.734_005_117.sur.iwrf_ts
