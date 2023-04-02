@@ -1665,24 +1665,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "ZDRN",
-    output_name = "ZDRN",
-    long_name = "differential_reflectivity",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "ZDRN_F",
-    output_name = "ZDRN_F",
-    long_name = "differential_reflectivity_filtered",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "LDRH",
     output_name = "LDRH",
     long_name = "linear_depolarization_ratio_hc_to_vx",
@@ -1737,24 +1719,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "RHOHVN",
-    output_name = "RHOHVN",
-    long_name = "cross_correlation_ratio",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "RHOHVN_F",
-    output_name = "RHOHVN_F",
-    long_name = "cross_correlation_ratio_filtered",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "PHIDP",
     output_name = "PHIDP",
     long_name = "differential_phase",
@@ -1766,24 +1730,6 @@ output_fields = {
   {
     dsr_name = "PHIDP_F",
     output_name = "PHIDP_F",
-    long_name = "differential_phase_filtered",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "PHIDPN",
-    output_name = "PHIDPN",
-    long_name = "differential_phase",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "PHIDPN_F",
-    output_name = "PHIDPN_F",
     long_name = "differential_phase_filtered",
     standard_name = "differential_phase_hv",
     output_units = "deg",

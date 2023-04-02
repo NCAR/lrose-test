@@ -4746,17 +4746,7 @@ output_fields = {
   }
   ,
   {
-    id = TEST3,
-    name = "REGR_INTERP_RATIO",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = TEST4,
+    id = REGR_FILT_POLY_ORDER,
     name = "REGR_ORDER",
     units = "",
     scale = 0.01,
@@ -4766,43 +4756,13 @@ output_fields = {
   }
   ,
   {
-    id = TEST5,
+    id = REGR_FILT_CNR_DB,
     name = "REGR_CNR",
     units = "dB",
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
-  }
-  ,
-  {
-    id = TEST6,
-    name = "ZDRN",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-   id = TEST7,
-    name = "PHIDPN",
-    units = "deg",
-    scale = 0.06,
-    bias = -200,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = TEST8,
-    name = "RHOHVN",
-    units = "",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
   }
 };
 
