@@ -30,7 +30,7 @@
 //     DEBUG_EXTRA_VERBOSE
 //
 
-debug = DEBUG_NORM;
+debug = DEBUG_OFF;
 
 ///////////// beam_count_for_debug_print //////////////
 //
@@ -2215,7 +2215,8 @@ regression_filter_clutter_width_factor = 1;
 // Type: double
 //
 
-regression_filter_cnr_exponent = 0.666667;
+// regression_filter_cnr_exponent = 0.666667;
+regression_filter_cnr_exponent = 0.75;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //

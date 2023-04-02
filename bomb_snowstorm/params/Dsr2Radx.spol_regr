@@ -1949,7 +1949,7 @@ output_fields = {
     long_name = "polynomial_order_for_regression_filter",
     standard_name = "polynomial_order_for_regression_filter",
     output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    output_encoding = OUTPUT_FLOAT
   }
   ,
   {
