@@ -5,7 +5,8 @@ close all;
 
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
-maxRange=[];
+minMaxRange=[]; % Range interval [min,max] or leave empty
+minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5];
 
 censorOnDBZ=1;
@@ -31,22 +32,22 @@ for aa=1:size(inAll{1,1},1)
     fileType=inAll{1,12}(aa);
 
     if strcmp(fileType{:},'nc')
-        data1=[];
+        data1in=[];
 
-        data1.DBZ_F=[];
-        data1.VEL_F=[];
-        data1.WIDTH_F=[];
-        data1.ZDR_F=[];
-        data1.PHIDP_F=[];
-        data1.RHOHV_NNC_F=[];
-        data1.REGR_ORDER=[];
+        data1in.DBZ_F=[];
+        data1in.VEL_F=[];
+        data1in.WIDTH_F=[];
+        data1in.ZDR_F=[];
+        data1in.PHIDP_F=[];
+        data1in.RHOHV_NNC_F=[];
+        data1in.REGR_ORDER=[];
 
-        data1=read_spol(infile1{:},data1);
+        data1in=read_spol(infile1{:},data1in);
         nyquist=ncread(infile1{:},'nyquist_velocity');
    
     elseif strcmp(fileType{:},'table')
-        data1=readDataTables(infile1{:},' ');
-        data1.azimuth=round(data1.azimuth);
+        data1in=readDataTables(infile1{:},' ');
+        data1in.azimuth=round(data1in.azimuth);
     end
 
     %% Read file 2
@@ -57,22 +58,22 @@ for aa=1:size(inAll{1,1},1)
     fileType=inAll{1,13}(aa);
 
     if strcmp(fileType{:},'nc')
-        data2=[];
+        data2in=[];
 
-        data2.DBZ_F=[];
-        data2.VEL_F=[];
-        data2.WIDTH_F=[];
-        data2.ZDR_F=[];
-        data2.PHIDP_F=[];
-        data2.RHOHV_NNC_F=[];
-        data2.REGR_ORDER=[];
+        data2in.DBZ_F=[];
+        data2in.VEL_F=[];
+        data2in.WIDTH_F=[];
+        data2in.ZDR_F=[];
+        data2in.PHIDP_F=[];
+        data2in.RHOHV_NNC_F=[];
+        data2in.REGR_ORDER=[];
 
-        data2=read_spol(infile2{:},data2);
+        data2in=read_spol(infile2{:},data2in);
         nyquist=ncread(infile2{:},'nyquist_velocity');
 
     elseif strcmp(fileType{:},'table')
-        data2=readDataTables(infile2{:},' ');
-        data2.azimuth=round(data2.azimuth);
+        data2in=readDataTables(infile2{:},' ');
+        data2in.azimuth=round(data2in.azimuth);
     end
 
     if isempty(nyquist)
@@ -87,28 +88,45 @@ for aa=1:size(inAll{1,1},1)
 
     %% Match azimuths and nans
 
-    [~,ia,ib]=intersect(data1.azimuth,data2.azimuth);
+    allAz=1:360;
+    data1=[];
+    if ~isempty(minMaxAz)
+        data1in.azimuth(data1in.azimuth<minMaxAz(1) | data1in.azimuth>minMaxAz(2))=nan;
+        data2in.azimuth(data2in.azimuth<minMaxAz(1) | data2in.azimuth>minMaxAz(2))=nan;
+    end
+    [~,~,ib1]=intersect(allAz,data1in.azimuth);
+    data1.range=data1in.range;
+    data2=[];
+    [~,~,ib2]=intersect(allAz,data2in.azimuth);
+    data2.range=data2in.range;
 
-    inFields=fields(data1);
+    inFields=fields(data1in);
     for ii=1:size(inFields,1)
         if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
-            data1.(inFields{ii})=data1.(inFields{ii})(ia,:);
-            data2.(inFields{ii})=data2.(inFields{ii})(ib,:);
+            data1.(inFields{ii})=nan(length(allAz),size(data1in.(inFields{ii}),2));
+            data1.(inFields{ii})(ib1,:)=data1in.(inFields{ii})(ib1,:);
+            data2.(inFields{ii})=nan(length(allAz),size(data2in.(inFields{ii}),2));
+            data2.(inFields{ii})(ib2,:)=data2in.(inFields{ii})(ib2,:);
+        end
+    end
 
-            % Match nans
+    for ii=1:size(inFields,1)
+        if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
+            % Censor on DBZ
             if censorOnDBZ & size(data1.(inFields{ii}))==size(data1.DBZ_F)
                 data1.(inFields{ii})(isnan(data1.DBZ_F))=nan;
                 data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
             end
+            % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
             data2.(inFields{ii})(isnan(data1.(inFields{ii})))=nan;
         end
     end
-    
+
     %% Cut range
-    if ~isempty(maxRange)
-        
-        goodInds=find(data1.range<=maxRange);
+    if ~isempty(minMaxRange)
+
+        goodInds=find(data1.range>=minMaxRange(1) & data1.range<=minMaxRange(2));
 
         for ii=1:size(inFields,1)
             if ~(strcmp(inFields{ii},'azimuth') | strcmp(inFields{ii},'elevation') | strcmp(inFields{ii},'time'))
@@ -158,7 +176,7 @@ for aa=1:size(inAll{1,1},1)
         title([inFields{jj},' file 1'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -170,7 +188,7 @@ for aa=1:size(inAll{1,1},1)
         title([inFields{jj},' file 2'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -239,6 +257,13 @@ for aa=1:size(inAll{1,1},1)
         mtit([outstr],'fontsize',14,'xoff',0,'yoff',0.05,'interpreter','none');
 
         %% Save first zoom
+
+        if ~isnan(minMaxRange)
+            outstr=[outstr,'_range',num2str(minMaxRange(1)),'to',num2str(minMaxRange(2))];
+        end
+        if ~isnan(minMaxAz)
+            outstr=[outstr,'_az',num2str(minMaxAz(1)),'to',num2str(minMaxAz(2))];
+        end
 
         mkdir(figdir,outstr);
 
