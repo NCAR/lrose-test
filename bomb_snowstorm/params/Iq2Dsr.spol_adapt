@@ -2146,7 +2146,7 @@ init_notch_width_in_adaptive_filter = 1.5;
 // Type: boolean
 //
 
-apply_residue_correction_in_adaptive_filter = TRUE;
+apply_residue_correction_in_adaptive_filter = FALSE;
 
 ///////////// min_snr_db_for_residue_correction ///////
 //

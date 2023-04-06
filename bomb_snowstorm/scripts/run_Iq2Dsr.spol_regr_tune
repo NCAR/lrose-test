@@ -7,4 +7,4 @@
 
 cd $HOME/bomb_snowstorm/params
 
-Iq2Dsr -params Iq2Dsr.spol_regr_tune -debug -f ~/data/bomb_snowstorm/time_series/spol/20190313/20190313_220622.734_005_117.sur.iwrf_ts
+Iq2Dsr.test -params Iq2Dsr.spol_regr_tune -debug -f ~/data/bomb_snowstorm/time_series/spol/20190313/20190313_220622.734_005_117.sur.iwrf_ts
