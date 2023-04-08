@@ -110,7 +110,7 @@ input_mode = IWRF_FMQ_INPUT;
 // Type: string
 //
 
-input_fmq_url = "/tmp/fmq/kddc/shmem_44200";
+input_fmq_url = "/tmp/fmq/kddc/shmem_44400";
 
 ///////////// seek_to_start_of_fmq ////////////////////
 //
@@ -496,7 +496,7 @@ use_field_label_in_title = FALSE;
 // Type: boolean
 //
 
-set_max_range = TRUE;
+set_max_range = FALSE;
 
 ///////////// max_range_km ////////////////////////////
 //

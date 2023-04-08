@@ -110,7 +110,7 @@ input_mode = IWRF_FMQ_INPUT;
 // Type: string
 //
 
-input_fmq_url = "/tmp/fmq/kddc/shmem_44200";
+input_fmq_url = "/tmp/fmq/kddc/shmem_44400";
 
 ///////////// seek_to_start_of_fmq ////////////////////
 //
