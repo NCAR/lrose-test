@@ -5,7 +5,7 @@
 //======================================================================
 //
 // Iq2Dsr reads raw time-series data, computes the moments and writes 
-//   the contents into a DsRadar FMQ.
+//   the contents into a moments FMQ.
 //
 //======================================================================
  
@@ -55,7 +55,7 @@ beam_count_for_debug_print = 30;
 // Type: string
 //
 
-instance = "kddc.longprt";
+instance = "kddc.longprt.regr";
 
 //======================================================================
 //
@@ -75,7 +75,7 @@ instance = "kddc.longprt";
 // Type: boolean
 //
 
-use_multiple_threads = TRUE;
+use_multiple_threads = FALSE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -160,7 +160,7 @@ position_fmq_at_start = FALSE;
 // Type: string
 //
 
-input_dir = "/scr/sleet1/rsfdata/projects/eolbase/time_series/kddc";
+input_dir = "/scr/cirrus3/rsfdata/projects/nexrad/time_series/kddc";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -499,6 +499,77 @@ angle_interp_debug = FALSE;
 //
 //======================================================================
  
+///////////// platform_type ///////////////////////////
+//
+// Set the platform type.
+//
+// 	PLATFORM_FIXED  - radar is in a fixed location
+// 	PLATFORM_VEHICLE - radar is mounted on a land vehicle
+// 	PLATFORM_SHIP - radar is mounted on a ship
+// 	PLATFORM_AIRCRAFT_FORE - forward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_AFT - backward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_TAIL - tail - e.g. ELDORA
+// 	PLATFORM_AIRCRAFT_BELLY -  belly radar on aircraft
+// 	PLATFORM_AIRCRAFT_ROOF - roof radar on aircraft
+// 	PLATFORM_AIRCRAFT_NOSE - radar in nose radome on aircraft
+// 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
+// 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
+//
+//
+// Type: enum
+// Options:
+//     PLATFORM_FIXED
+//     PLATFORM_VEHICLE
+//     PLATFORM_SHIP
+//     PLATFORM_AIRCRAFT
+//     PLATFORM_AIRCRAFT_FORE
+//     PLATFORM_AIRCRAFT_AFT
+//     PLATFORM_AIRCRAFT_TAIL
+//     PLATFORM_AIRCRAFT_BELLY
+//     PLATFORM_AIRCRAFT_ROOF
+//     PLATFORM_AIRCRAFT_NOSE
+//     PLATFORM_SATELLITE_ORBIT
+//     PLATFORM_SATELLITE_GEOSTAT
+//
+
+platform_type = PLATFORM_FIXED;
+
+///////////// override_primary_axis ///////////////////
+//
+// Option to override primary axis on read. If true, the file will be 
+//   read in, the primary axis will be changed, and then any post-read 
+//   processing will be performed.
+//
+//
+// Type: boolean
+//
+
+override_primary_axis = FALSE;
+
+///////////// primary_axis ////////////////////////////
+//
+// Set the primary axis.
+//
+// 	PRIMARY_AXIS_Z - vertical
+// 	PRIMARY_AXIS_Y - longitudinal axis of platform
+// 	PRIMARY_AXIS_X - lateral axis of platform
+// 	PRIMARY_AXIS_Z_PRIME - inverted vertical
+// 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
+// 	PRIMARY_AXIS_X_PRIME - translated lateral.
+//
+//
+// Type: enum
+// Options:
+//     PRIMARY_AXIS_Z
+//     PRIMARY_AXIS_Y
+//     PRIMARY_AXIS_X
+//     PRIMARY_AXIS_Z_PRIME
+//     PRIMARY_AXIS_Y_PRIME
+//     PRIMARY_AXIS_X_PRIME
+//
+
+primary_axis = PRIMARY_AXIS_Z;
+
 ///////////// override_radar_name /////////////////////
 //
 // Option to override the radar name.
@@ -732,7 +803,7 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 
 //======================================================================
 //
-// MOMENTS COMPUTATIONS.
+// MOMENTS COMPUTATIONS and BEAM DWELL DEFINITION.
 //
 //======================================================================
  
@@ -815,7 +886,11 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //   applies to some electronically-steered radars, where the beam is 
 //   steered to a fixed angle for a while, and then jumps to a different 
 //   pointing direction. We use all of the pulses with a constant steering 
-//   angle to form the beam.
+//   angle to form the beam;
+// CONSTANT_PULSE_WIDTH: create beams (dwells) with with constant pulse 
+//   width. If the pulse width changes we move to a new dwell. Also, 
+//   optionally specify the pulase width and ignore pulses with a 
+//   different width.
 //
 //
 // Type: struct
@@ -845,6 +920,7 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //          BEAM_SPECIFY_N_SAMPLES
 //          BEAM_SPECIFY_ANGLE
 //          BEAM_CONSTANT_STEERING_ANGLE
+//          BEAM_CONSTANT_PULSE_WIDTH
 //      int beam_n_samples;
 //      double beam_angle_deg;
 //      boolean index_the_beams;
@@ -902,7 +978,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.5,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
     apply_clutter_filter = TRUE,
@@ -946,35 +1022,33 @@ min_n_samples = 16;
 
 max_n_samples = 128;
 
-///////////// control_n_samples_from_time_series //////
+///////////// specify_pulse_width /////////////////////
 //
-// Option to control n_samples by using the integration_cycle_pulses 
-//   value in the time series.
+// Option to specify the pulse width.
 //
-// If true, the number of samples will be determined by using the value 
-//   of integration_cycle_pulses in the time series. If false, the 
-//   beam_n_samples specified in moments_params will be used.
-//
-//
-// Type: boolean
-//
-
-control_n_samples_from_time_series = FALSE;
-
-///////////// control_xmit_rcv_mode_from_time_series //
-//
-// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
-//   in the time series.
-//
-// If true, the moments will be computed according to the xmit_rcv_mode 
-//   value in the time series. If false, the xmit_rcv_mode in the 
-//   moments_params will be used.
+// Only applicable if beam_method = BEAM_CONSTANT_PULSE_WIDTH. See 
+//   'fixed_pulse_width_us'. Pulses with different pulse widths are 
+//   discarded.
 //
 //
 // Type: boolean
 //
 
-control_xmit_rcv_mode_from_time_series = TRUE;
+specify_pulse_width = FALSE;
+
+///////////// fixed_pulse_width_us ////////////////////
+//
+// Specified pulse width in microseconds.
+//
+// See 'specify_pulse_width'. Only applicable if beam_method = 
+//   BEAM_CONSTANT_PULSE_WIDTH. Pulses with different pulse widths are 
+//   discarded.
+//
+//
+// Type: double
+//
+
+fixed_pulse_width_us = 1;
 
 ///////////// control_beam_indexing_from_time_series //
 //
@@ -1011,6 +1085,51 @@ control_beam_indexing_from_time_series = FALSE;
 
 discard_non_indexed_beams = FALSE;
 
+///////////// control_n_samples_from_time_series //////
+//
+// Option to control n_samples by using the integration_cycle_pulses 
+//   value in the time series.
+//
+// If true, the number of samples will be determined by using the value 
+//   of integration_cycle_pulses in the time series. If false, the 
+//   beam_n_samples specified in moments_params will be used.
+//
+//
+// Type: boolean
+//
+
+control_n_samples_from_time_series = FALSE;
+
+///////////// control_xmit_rcv_mode_from_time_series //
+//
+// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
+//   in the time series.
+//
+// If true, the moments will be computed according to the xmit_rcv_mode 
+//   value in the time series. If false, the xmit_rcv_mode in the 
+//   moments_params will be used.
+//
+//
+// Type: boolean
+//
+
+control_xmit_rcv_mode_from_time_series = TRUE;
+
+///////////// compute_zdr_using_snr ///////////////////
+//
+// Option to compute ZDR using SNR instead of power.
+//
+// If true, we compute ZDR as SNRHC/SNRVC. This method applies the 
+//   receiver gain, and has the effect of taking into account a difference 
+//   in noise floor in each channel. The ZDR correction applied must 
+//   therefore be computed relative to SNR, not power.
+//
+//
+// Type: boolean
+//
+
+compute_zdr_using_snr = FALSE;
+
 ///////////// adjust_dbz_for_measured_xmit_power //////
 //
 // Option to adjust DBZ based on measured transmitter power.
@@ -1025,21 +1144,6 @@ discard_non_indexed_beams = FALSE;
 
 adjust_dbz_for_measured_xmit_power = FALSE;
 
-///////////// compute_zdr_using_snr ///////////////////
-//
-// Option to compute ZDR using SNR instead of power.
-//
-// If true, we compute ZDR as SNRHC/SNRVC. This has the effect of taking 
-//   into account a difference in noise floor in each channel. The ZDR 
-//   correction applied must therefore be computed relatrive to SNR, not 
-//   power.
-//
-//
-// Type: boolean
-//
-
-compute_zdr_using_snr = FALSE;
-
 ///////////// adjust_zdr_for_measured_xmit_power //////
 //
 // Option to adjust ZDR based on measured transmitter power.
@@ -1053,6 +1157,32 @@ compute_zdr_using_snr = FALSE;
 //
 
 adjust_zdr_for_measured_xmit_power = FALSE;
+
+///////////// min_measured_xmit_power_dbm /////////////
+//
+// Min measured xmit power - dBm.
+//
+// If the measured power is below this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+min_measured_xmit_power_dbm = 81;
+
+///////////// max_measured_xmit_power_dbm /////////////
+//
+// Max measured xmit power - dBm.
+//
+// If the measured power is above this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+max_measured_xmit_power_dbm = 86;
 
 ///////////// check_for_missing_pulses ////////////////
 //
@@ -1215,7 +1345,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 // Type: string
 //
 
-startup_cal_file = "./kddc_cal.xml";
+startup_cal_file = "$(HOME)/git/lrose-test/kddc/params/kddc_cal.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //
@@ -1673,7 +1803,7 @@ hcr_delta_gain_search_margin_secs = 3600;
 
 ///////////// hcr_v_rx_delta_gain_tag_list ////////////
 //
-// URL for HCR gain correction from SPDB.
+// Tag list for HCR V channel gai correction.
 //
 //
 // Type: string
@@ -1712,6 +1842,149 @@ correct_altitude_for_egm = FALSE;
 //
 
 egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
+
+//======================================================================
+//
+// CORRECT CALIBRATION RECEIVER GAIN USING MEASURED NOISE VALUES.
+//
+// Noise values are measured using NoiseMon, which computes the noise 
+//   for gates above a designated height, and checks that rays are not 
+//   close to the sun or contain significant reflectivity.
+//
+//======================================================================
+ 
+///////////// noise_mon_correct_cal_rx_gain ///////////
+//
+// Option to correct calibration receiver gains using measured noise 
+//   values.
+//
+// Noise values are measured using NoiseMon.
+//
+//
+// Type: boolean
+//
+
+noise_mon_correct_cal_rx_gain = FALSE;
+
+///////////// noise_mon_spdb_url //////////////////////
+//
+// URL for NoiseMon results in SPDB.
+//
+//
+// Type: string
+//
+
+noise_mon_spdb_url = "$(DATA_DIR)/calibration/spol/noise_mon/sband/spdb";
+
+///////////// noise_mon_search_margin_secs ////////////
+//
+// Search margin for finding NoiseMon data (secs).
+//
+// We search a time period from the radar time minus the margin to the 
+//   radar time plus the margin. We compute the mean value within this 
+//   time range.
+//
+//
+// Type: int
+//
+
+noise_mon_search_margin_secs = 3600;
+
+///////////// noise_mon_tag_main //////////////////////
+//
+// XML tag for noise monitoring section.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_main = "NoiseMonitoring";
+
+///////////// noise_mon_tag_list_zdr //////////////////
+//
+// Tag for noise ZDR.
+//
+// This tag must exist in the noise monitoring XML.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_zdr = "<NoiseMonitoring><meanNoiseZdr>";
+
+///////////// noise_mon_tag_list_dbmhc ////////////////
+//
+// Tag for noise dbm in H co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_dbmhc = "<NoiseMonitoring><meanDbmhc>";
+
+///////////// noise_mon_tag_list_dbmvc ////////////////
+//
+// Tag for noise dbm in V co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_dbmvc = "<NoiseMonitoring><meanDbmvc>";
+
+///////////// noise_mon_tag_list_site_temp ////////////
+//
+// Tag for site temperature.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
+
+///////////// noise_mon_zdrm_corr /////////////////////
+//
+// Correction to estimate ZDRM bias from noise ZDR (dB).
+//
+// Separately from this app, we monitor the ZDRM bias, say using 
+//   vertical pointing scans. We compare the mean ZDRM bias with the mean 
+//   ZDR as computed from noise. Applying this correction allows us to 
+//   compute the ZDRM bias to use in the saved calibration.
+//
+//
+// Type: double
+//
+
+noise_mon_zdrm_corr = 0.52;
+
+///////////// noise_mon_mean_site_temp ////////////////
+//
+// Mean site temperature for ZDR analysis (C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the mean temperature from that analysis. We use 
+//   this to determine the ZDR bias from temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_mean_site_temp = 27.34;
+
+///////////// noise_mon_zdr_temp_slope ////////////////
+//
+// Slope of ZDR dependency on temperature (dB/C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the slope of the ZDR relationship on temperature 
+//   from that analysis. We use this to determine the ZDR bias from 
+//   temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_zdr_temp_slope = 0.01296;
 
 //======================================================================
 //
@@ -1848,6 +2121,25 @@ atmos_atten_db_per_km = 0.012;
 //
 //======================================================================
  
+///////////// clutter_filter_type /////////////////////
+//
+// Type of clutter filter to use.
+//
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+//   polynomial filter with specified interpolation. NOTCH: simple notch 
+//   filter of specified width. NONE: cancels clutter filtering.
+//
+//
+// Type: enum
+// Options:
+//     CLUTTER_FILTER_ADAPTIVE
+//     CLUTTER_FILTER_REGRESSION
+//     CLUTTER_FILTER_NOTCH
+//     CLUTTER_FILTER_NONE
+//
+
+clutter_filter_type = CLUTTER_FILTER_REGRESSION;
+
 ///////////// clutter_model_width_in_adaptive_filter //
 //
 // Width of clutter, in model used by adaptive filter (m/s).
@@ -1904,106 +2196,93 @@ apply_residue_correction_in_adaptive_filter = TRUE;
 
 min_snr_db_for_residue_correction = 75;
 
-///////////// use_polynomial_regression_clutter_filter 
+///////////// regression_filter_determine_order_from_cnr 
 //
-// Option to apply a regression clutter filter.
+// Option to determine the polynomial order from the 
+//   Clutter-to-Noise-Ratio (CNR).
 //
-// For the regression filter, a polynomial fit is performed on the I and 
-//   Q data individually. The filtered time series is computed as the 
-//   original minus the regression fit. If true, this takes preference 
-//   over the notch filter.
+// If TRUE, we compute the CNR from the 3 central spectral points. Then, 
+//   we compute the order using CNR, antenna speed etc.
 //
 //
 // Type: boolean
 //
 
-use_polynomial_regression_clutter_filter = FALSE;
+regression_filter_determine_order_from_cnr = TRUE;
 
-///////////// regression_filter_polynomial_order //////
+///////////// regression_filter_specified_polynomial_order 
 //
 // Order of the polynomial fit for the regression filter.
+//
+// Used if regression_filter_determine_order_from_cnr is false.
 //
 //
 // Type: int
 //
 
-regression_filter_polynomial_order = 5;
+regression_filter_specified_polynomial_order = 5;
 
-///////////// regression_filter_determine_order_from_CSR 
+///////////// regression_filter_clutter_width_factor //
 //
-// Option to determine the polynomial order from the 
-//   Clutter-to-Signal-Ratio (CSR).
+// Width factor used when automatically computing polynomial order.
 //
-// If TRUE, we compute the CSR from the 3 central spectral points. Then, 
-//   using a lookup-table based on CSR, we determine the appropriate order 
-//   of the polynomial fit.
-//
-//
-// Type: boolean
-//
-
-regression_filter_determine_order_from_CSR = FALSE;
-
-///////////// regression_filter_notch_edge_power_ratio_threshold_db 
-//
-// Power ratio threshold to determine the edge of the filtered notch 
-//   (dB).
-//
-// After the initial application of the regression filter, a notch is 
-//   formed around 0. In order to determine the width of this notch, we 
-//   compute the ratio of the filtered power to the original unfiltered 
-//   power. This is the threshold used to determine where the edge of the 
-//   notch occurs.
+// Applies if regression_filter_determine_order_from_cnr it true. 
+//   Default is 1. If less than 1, order will decrease. If more than 1, 
+//   order will increase.
 //
 //
 // Type: double
 //
 
-regression_filter_notch_edge_power_ratio_threshold_db = -45;
+regression_filter_clutter_width_factor = 1;
 
-///////////// regression_filter_min_csr_db ////////////
+///////////// regression_filter_cnr_exponent //////////
 //
-// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
-//   (dB).
+// CNR exponent used when automatically computing polynomial order.
 //
-// As a first step, we compute the CSR using a 3rd order regression fit. 
-//   If the CSR is below this threshold, we do not apply the filter at 
-//   all, and simply return the unfiltered spectrum.
+// Applies if regression_filter_determine_order_from_cnr it true. 
+//   Default is 2/3. If less than 2/3, order will decrease. If more than 
+//   2/3, order will increase.
 //
 //
 // Type: double
 //
 
-regression_filter_min_csr_db = -5;
+regression_filter_cnr_exponent = 0.666667;
 
-///////////// regression_filter_interp_across_notch ///
+///////////// regression_filter_min_cnr_db ////////////
+//
+// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
+//   (dB).
+//
+// As a first step, we compute the CNR the central 3 spectral points. If 
+//   the CNR is below this threshold, we do not apply the filter at all, 
+//   and simply return the unfiltered spectrum.
+//
+//
+// Type: double
+//
+
+regression_filter_min_cnr_db = -5;
+
+///////////// regression_filter_notch_interp_method ///
 //
 // For the regression filter, option to interpolate power across the 
 //   notch.
 //
-// If true, the spectral power in the notch created by the filter will 
-//   be interpolated using values to each side of the notch.
+// If NONE, no interpolation is performed. If LINEAR, a linear 
+//   interpolation is performed across the notch. If GAUSSIAN, an 
+//   iterative Gaussian interpolation is performed across the notch.
 //
 //
-// Type: boolean
-//
-
-regression_filter_interp_across_notch = TRUE;
-
-///////////// use_simple_notch_clutter_filter /////////
-//
-// Option to use a simple notch for clutter filtering.
-//
-// If false, spectral adaptive clutter filtering is used. If true, a 
-//   simple notch is used instead. The width is specified in 
-//   notch_filter_width_mps. The depth of the notch is down to the 
-//   calibrated noise floor.
-//
-//
-// Type: boolean
+// Type: enum
+// Options:
+//     INTERP_METHOD_NONE
+//     INTERP_METHOD_LINEAR
+//     INTERP_METHOD_GAUSSIAN
 //
 
-use_simple_notch_clutter_filter = FALSE;
+regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN;
 
 ///////////// simple_notch_filter_width_mps ///////////
 //
@@ -2789,6 +3068,23 @@ censoring_snr_threshold = -1;
 //
 
 censoring_ncp_threshold = 0.15;
+
+///////////// censoring_min_valid_run /////////////////
+//
+// Minimum valid run of non-censored gates.
+//
+// Only active if set to 2 or greater. A check is made to remove short 
+//   runs of noise. Looking along the radial, we compute the number of 
+//   contiguous gates (a 'run') with uncensored data. For the gates in 
+//   this run to be accepted the length of the run must exceed 
+//   censoring_min_valid_run. If the number of gates in a run is less than 
+//   this, then all gates in the run are censored.
+//
+//
+// Type: int
+//
+
+censoring_min_valid_run = 3;
 
 //======================================================================
 //
@@ -3612,7 +3908,8 @@ phidp_sdev_interest_weight = 1;
 // If clutter is present the RHOHV value should increase after 
 //   application of the clutter filter. We can use a RHOHV test to locate 
 //   gates at which CMD fails to identify weak clutter. This allows us to 
-//   improve clutter identification in cases with low CSR.
+//   improve clutter identification in cases with low clutter-to-noise 
+//   ratio.
 //
 //======================================================================
  
@@ -3671,19 +3968,32 @@ rhohv_improvement_factor_threshold = 4;
 
 //======================================================================
 //
-// OUTPUT TO DSRADAR FMQ.
+// OUTPUT TO MOMENTS FMQ.
 //
 //======================================================================
  
 ///////////// output_fmq_url //////////////////////////
 //
-// Output URL for DsRadar data via FMQ.
+// Output URL for moments data via FMQ.
 //
 //
 // Type: string
 //
 
 output_fmq_url = "/tmp/fmq/kddc/shmem_44200";
+
+///////////// output_moments_in_radx_format ///////////
+//
+// Write output moments in Radx format.
+//
+// If TRUE moments are written as Radx messages. If FALSE moments are 
+//   written as DsRadar messages. .
+//
+//
+// Type: boolean
+//
+
+output_moments_in_radx_format = FALSE;
 
 ///////////// output_fmq_size /////////////////////////
 //
@@ -3890,8 +4200,12 @@ beam_wait_msecs = 0;
 //          CLUT_2_WX_RATIO
 //          SPECTRAL_NOISE
 //          SPECTRAL_SNR
+//          REGR_FILT_POLY_ORDER
+//          REGR_FILT_CNR_DB
 //          NOISE_FLAG
+//          NOISE_INTEREST
 //          SIGNAL_FLAG
+//          SIGNAL_INTEREST
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC
@@ -3955,10 +4269,16 @@ beam_wait_msecs = 0;
 //          PRT
 //          NUM_PULSES
 //          TEST
+//          TEST0
+//          TEST1
 //          TEST2
 //          TEST3
 //          TEST4
 //          TEST5
+//          TEST6
+//          TEST7
+//          TEST8
+//          TEST9
 //      string name;
 //      string units;
 //      double scale;

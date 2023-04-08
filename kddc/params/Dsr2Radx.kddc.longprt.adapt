@@ -35,7 +35,7 @@ debug = DEBUG_NORM;
 // Type: string
 //
 
-instance = "kddc.longprt";
+instance = "kddc.longprt.adapt";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -1329,7 +1329,7 @@ write_end_of_vol_when_data_stops = TRUE;
 // Type: int
 //
 
-nsecs_no_data_for_end_of_vol = 5;
+nsecs_no_data_for_end_of_vol = 2;
 
 ///////////// nsecs_per_volume ////////////////////////
 //
@@ -1984,7 +1984,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/sprite/cfradial/kddc.longprt",
+    output_dir = "$(HOME)/data/nexrad/cfradial/kddc.longprt.adapt",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
