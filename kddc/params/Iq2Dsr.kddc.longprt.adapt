@@ -973,7 +973,7 @@ moments_params = {
     antenna_rate_lower_limit = 0,
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_N_SAMPLES,
-    beam_n_samples = 16,
+    beam_n_samples = 32,
     beam_angle_deg = 1,
     index_the_beams = TRUE,
     indexed_resolution = 0.5,
@@ -1519,7 +1519,7 @@ override_cal_zdr_correction = TRUE;
 // Type: double
 //
 
-zdr_correction_db = -0.4;
+zdr_correction_db = 0.1;
 
 ///////////// threshold_zdr_using_snr /////////////////
 //
