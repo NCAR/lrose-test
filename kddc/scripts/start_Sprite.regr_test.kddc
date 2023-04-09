@@ -1,8 +1,0 @@
-#! /bin/csh
-
-# start Sprite
-
-cd $HOME/bomb_snowstorm/params
-
-Sprite -params ../params/Sprite.regr_test.spol >& /dev/null &
-
