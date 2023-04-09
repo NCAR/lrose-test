@@ -1,0 +1,9 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/kddc/params
+
+Iq2Dsr -params Iq2Dsr.kddc.longprt.regr -debug -f ~/data/nexrad/time_series/kddc/20200525/KDDC.20200525.055112.064.vcp212.1.H+V.460
+
+#Iq2Dsr -params Iq2Dsr.kddc.longprt.regr -debug -f ~/data/nexrad/time_series/kddc/20200525/KDDC.20200525.024712.373.vcp212.1.H+V.460

@@ -407,6 +407,42 @@ fields = {
   }
   ,
   {
+    label = "CPA",
+    raw_name = "CPA",
+    filtered_name = "",
+    units = "",
+    color_map = "fraction.colors",
+    shortcut = "q"
+  }
+  ,
+  {
+    label = "CFLAG",
+    raw_name = "CMD_FLAG",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd_flag2.colors",
+    shortcut = "r"
+  }
+  ,
+  {
+    label = "TDBZ",
+    raw_name = "TDBZ",
+    filtered_name = "",
+    units = "dBZsq",
+    color_map = "tdbz.colors",
+    shortcut = "s"
+  }
+  ,
+  {
+    label = "SPIN",
+    raw_name = "SPIN",
+    filtered_name = "",
+    units = "%",
+    color_map = "percent.colors",
+    shortcut = "t"
+  }
+  ,
+  {
     label = "REGR_CPA",
     raw_name = "REGR_CPA",
     filtered_name = "",

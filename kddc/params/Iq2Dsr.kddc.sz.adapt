@@ -3377,7 +3377,7 @@ cpa_compute_using_alternative = TRUE;
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0;
+cmd_threshold_for_clutter = 0.5;
 
 ///////////// cmd_check_for_offzero_weather ///////////
 //
@@ -3737,7 +3737,7 @@ tdbz_interest_map = {
 // Type: double
 //
 
-tdbz_interest_weight = 0;
+tdbz_interest_weight = 1;
 
 ///////////// spin_interest_map ///////////////////////
 //
@@ -3776,7 +3776,7 @@ spin_interest_map = {
 // Type: double
 //
 
-spin_interest_weight = 0;
+spin_interest_weight = 1;
 
 ///////////// max_of_tdbz_and_spin_interest_weight ////
 //
@@ -3863,7 +3863,7 @@ zdr_sdev_interest_map = {
 // Type: double
 //
 
-zdr_sdev_interest_weight = 1;
+zdr_sdev_interest_weight = 0;
 
 ///////////// phidp_sdev_interest_map /////////////////
 //
@@ -3899,7 +3899,7 @@ phidp_sdev_interest_map = {
 // Type: double
 //
 
-phidp_sdev_interest_weight = 1;
+phidp_sdev_interest_weight = 0;
 
 //======================================================================
 //
