@@ -1,0 +1,8 @@
+#! /bin/csh
+
+# start Sprite
+
+cd $HOME/git/lrose-test/nexrad/kddc/params
+
+Sprite -params Sprite.kddc.sz >& /dev/null &
+

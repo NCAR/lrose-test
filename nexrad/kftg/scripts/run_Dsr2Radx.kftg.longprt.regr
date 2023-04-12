@@ -1,0 +1,9 @@
+#! /bin/csh -f
+
+# Run Dsr2Radx for adaptive filter
+
+cd $HOME/git/lrose-test/nexrad/kddc/params
+
+Dsr2Radx -params Dsr2Radx.kddc.longprt.regr -debug
+
+
