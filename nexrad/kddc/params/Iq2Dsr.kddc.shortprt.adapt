@@ -1345,7 +1345,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 // Type: string
 //
 
-startup_cal_file = "$(HOME)/git/lrose-test/kddc/params/kddc_cal.xml";
+startup_cal_file = "$(HOME)/git/lrose-test/nexrad/kddc/params/kddc_cal.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //

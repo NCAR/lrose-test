@@ -2,7 +2,7 @@
 
 # Run Iq2Dsr, writing moments data to fmq
 
-cd $HOME/git/lrose-test/kddc/params
+cd $HOME/git/lrose-test/nexrad/kddc/params
 
 Iq2Dsr -debug -params Iq2Dsr.kddc.sz.adapt -f ~/data/nexrad/time_series/kddc/20200525/KDDC.20200525.055130.323.vcp212.2.H+V.460
 
