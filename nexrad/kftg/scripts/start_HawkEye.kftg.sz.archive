@@ -2,7 +2,7 @@
 
 # start HawkEye
 
-cd $HOME/git/lrose-test/nexrad/kddc/params
+cd $HOME/git/lrose-test/nexrad/kftg/params
 
-HawkEye -params HawkEye.kddc.sz -f ${HOME}/data/nexrad/cfradial/kddc.sz.adapt/20200525/cfrad.20200525_055130.382_to_20200525_055150.706_KDDC_SUR.nc >& /dev/null &
+HawkEye -params HawkEye.kftg.sz -f ${HOME}/data/nexrad/cfradial/kftg.sz.adapt/20200525/cfrad.20200525_055130.382_to_20200525_055150.706_KFTG_SUR.nc >& /dev/null &
 

@@ -2002,7 +2002,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/nexrad/cfradial/kftg.longprt.regr",
+    output_dir = "/scr/cirrus1/rsfdata/projects/nexrad/cfradial/kftg.longprt.regr",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };

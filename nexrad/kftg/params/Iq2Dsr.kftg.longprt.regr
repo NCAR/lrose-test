@@ -618,7 +618,7 @@ override_radar_location = TRUE;
 // Type: double
 //
 
-radar_latitude_deg = 37.7608;
+radar_latitude_deg = 39.7866;
 
 ///////////// radar_longitude_deg /////////////////////
 //
@@ -630,7 +630,7 @@ radar_latitude_deg = 37.7608;
 // Type: double
 //
 
-radar_longitude_deg = -99.9689;
+radar_longitude_deg = -104.546;
 
 ///////////// radar_altitude_meters ///////////////////
 //
@@ -642,7 +642,7 @@ radar_longitude_deg = -99.9689;
 // Type: double
 //
 
-radar_altitude_meters = 813;
+radar_altitude_meters = 1709;
 
 ///////////// override_gate_geometry //////////////////
 //

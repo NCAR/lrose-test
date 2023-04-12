@@ -2,9 +2,9 @@
 
 # Run Dsr2Radx for adaptive filter
 
-cd $HOME/git/lrose-test/nexrad/kddc/params
+cd $HOME/git/lrose-test/nexrad/kftg/params
 
-Dsr2Radx -params Dsr2Radx.kddc.sz.adapt -debug
+Dsr2Radx -params Dsr2Radx.kftg.sz.adapt -debug
 
 
 

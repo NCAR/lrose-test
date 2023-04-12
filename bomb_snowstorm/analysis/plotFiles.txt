@@ -2,4 +2,5 @@
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/cfradial/spol_regr/sur/20190313/cfrad.20190313_220622.994_to_20190313_220707.946_SUR.nc spol_20190313_220622_regrCpp -150 150 -150 150 -30 150 -100 120 nc bs
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/cfradial/spol_regr_128samples/sur/20190313/cfrad.20190313_220622.994_to_20190313_220707.820_SUR.nc spol_20190313_220622_regrCpp128samples -150 150 -150 150 -30 150 -100 120 nc bs
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL_ALLfilt_GAUS_VELh20190313_220622_0.01_116.93INDEXED.txt spol_20190313_220622_regrFortran -150 150 -150 150 -30 150 -100 120 table bs
-/scr/cirrus1/rsfdata/projects/nexrad/tables/KDDC_SZ_20200525_053516_0.53_133.27_O37.txt kddc_20200525_053516_regrFortran_sz -150 150 -150 150 -60 15 -10 65 table kddc
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KDDC_SZ_20200525_053516_0.53_133.27_O37.txt kddc_20200525_053516_regrFortran_sz -300 300 -300 300 -60 15 -10 65 table kddc
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KDDC_SZ2_20200525_055130_0.44_317.02_O37.txt kddc_20200525_055130_regrFortran_sz2 -300 300 -300 300 -60 15 -10 65 table kddc

@@ -25,7 +25,7 @@ xset fp= /usr/X11R6/lib/X11/fonts/misc/,/usr/X11R6/lib/X11/fonts/75dpi/,/usr/X11
 
 # start CIDD
 
-cd $HOME/git/lrose-test/nexrad/kddc/params
+cd $HOME/git/lrose-test/nexrad/kftg/params
 
-CIDD -font fixed -p CIDD.regr_test.kddc >& /dev/null &
+CIDD -font fixed -p CIDD.regr_test.kftg >& /dev/null &
 
