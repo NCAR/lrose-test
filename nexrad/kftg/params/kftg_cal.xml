@@ -52,7 +52,7 @@
   <couplerForwardLossDbH>36.9</couplerForwardLossDbH>
   <couplerForwardLossDbV>36.7</couplerForwardLossDbV>
   <dbzCorrection>0</dbzCorrection>
-  <zdrCorrectionDb>0.5</zdrCorrectionDb>
+  <zdrCorrectionDb>0.2</zdrCorrectionDb>
   <ldrCorrectionDbH>0</ldrCorrectionDbH>
   <ldrCorrectionDbV>0</ldrCorrectionDbV>
   <systemPhidpDeg>0</systemPhidpDeg>

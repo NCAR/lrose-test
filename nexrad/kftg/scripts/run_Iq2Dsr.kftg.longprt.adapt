@@ -6,3 +6,7 @@ cd $HOME/git/lrose-test/nexrad/kftg/params
 
 Iq2Dsr -params Iq2Dsr.kftg.longprt.adapt -debug -f /scr/sleet2/rsfdata/projects/eolbase/time_series/kftg/20220329/KFTG.20220329.175333.272.vcp215.1.H+V.460
 
+# Iq2Dsr -params Iq2Dsr.kftg.longprt.adapt -debug -f /scr/sleet2/rsfdata/projects/eolbase/time_series/kftg/20220329/KFTG.20220329.205740.141.vcp215.1.H+V.460
+
+# Iq2Dsr -params Iq2Dsr.kftg.longprt.adapt -debug -f /scr/sleet2/rsfdata/projects/eolbase/time_series/kftg/20220329/KFTG.20220329.222250.354.vcp215.1.H+V.460
+
