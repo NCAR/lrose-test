@@ -3041,7 +3041,7 @@ interest_threshold_for_signal = 0.51;
 //     CENSORING_BY_SNR_AND_NCP
 //
 
-censoring_mode = CENSORING_NONE;
+censoring_mode = CENSORING_BY_SNR_AND_NCP;
 
 ///////////// censoring_snr_threshold /////////////////
 //
@@ -3054,7 +3054,7 @@ censoring_mode = CENSORING_NONE;
 // Type: double
 //
 
-censoring_snr_threshold = -1;
+censoring_snr_threshold = 3;
 
 ///////////// censoring_ncp_threshold /////////////////
 //

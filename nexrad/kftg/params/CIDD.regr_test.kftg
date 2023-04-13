@@ -315,12 +315,12 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:  12
+cidd.starting_movie_frames:  20
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
 # oldest movie frame and creating and drawing a new one.
-cidd.time_interval:  5
+cidd.time_interval:  15
 
 # This parameter sets the maximum number of hours in the future a user can select
 # from the quick forecast menu. See SHOW_FORECAST_MENU menu bar button
