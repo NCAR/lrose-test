@@ -7,16 +7,19 @@ addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
 maxRange=[];
 
+showPlot='on';
+
 %% Loop through cases
 
 fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=5:size(inAll{1,1},1)
+for aa=10:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
+    disp(['File ',num2str(aa), ' of ',num2str(size(inAll{1,1},1))]);
     disp(infile{:});
 
     inst=inAll{1,12}(aa);
@@ -40,7 +43,7 @@ for aa=5:size(inAll{1,1},1)
         data.PHIDP_F=[];
         data.RHOHV_NNC_F=[];
         data.REGR_ORDER=[];
-        data.CMD=[];
+        data.CMD_FLAG=[];
 
         data=read_spol(infile{:},data);
     elseif strcmp(fileType{:},'table')
@@ -72,7 +75,7 @@ for aa=5:size(inAll{1,1},1)
     %% Z
     close all
 
-    figure('Position',[200 500 2800 1200],'DefaultAxesFontSize',12);
+    figure('Position',[200 500 2800 1200],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(2,4,1);
     surf(XX,YY,data.DBZ_F,'edgecolor','none');
@@ -121,18 +124,20 @@ for aa=5:size(inAll{1,1},1)
     %% ORDER
 
     s4=subplot(2,4,4);
-    h=surf(XX,YY,data.REGR_ORDER,'edgecolor','none');
-    view(2);
-    title('ORDER')
-    xlabel('km');
-    ylabel('km');
+    if isfield(data,'REGR_ORDER')
+        h=surf(XX,YY,data.REGR_ORDER,'edgecolor','none');
+        view(2);
+        title('ORDER')
+        xlabel('km');
+        ylabel('km');
 
-    s4.Colormap=turbo(12);
-    caxis([0,12]);
-    colorbar;
+        s4.Colormap=turbo(12);
+        caxis([0,12]);
+        colorbar;
 
-    grid on
-    box on
+        grid on
+        box on
+    end
 
     %% PHIDP
 
@@ -140,7 +145,11 @@ for aa=5:size(inAll{1,1},1)
     surf(XX,YY,data.PHIDP_F,'edgecolor','none');
     view(2);
     colorbar
-    caxis([-60,92]);
+    if strcmp(inst{:},'bs')
+        caxis([-60,92]);
+    else
+        caxis([-180,180]);
+    end
     title('PHIDP (deg)')
     xlabel('km');
     ylabel('km');
@@ -179,12 +188,12 @@ for aa=5:size(inAll{1,1},1)
     grid on
     box on
 
-    %% CMD
+    %% CMD FLAG
 
     s8=subplot(2,4,8);
-    h=surf(XX,YY,data.CMD,'edgecolor','none');
+    h=surf(XX,YY,data.CMD_FLAG,'edgecolor','none');
     view(2);
-    title('CMD')
+    title('CMD FLAG')
     xlabel('km');
     ylabel('km');
 
@@ -238,7 +247,7 @@ for aa=5:size(inAll{1,1},1)
     %% Make TRIP plot
 
     if isfield(data,'TRIP')
-        figure('Position',[200 500 600 500],'DefaultAxesFontSize',12);
+        figure('Position',[200 500 600 500],'DefaultAxesFontSize',12,'visible',showPlot);
 
         s1=subplot(1,1,1);
         surf(XX,YY,data.TRIP,'edgecolor','none');

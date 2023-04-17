@@ -11,7 +11,7 @@ data.PHIDP_F=[];
 data.RHOHV_NNC_F=[];
 data.WIDTH_F=[];
 data.REGR_ORDER=[];
-data.CMD=[];
+data.CMD_FLAG=[];
 data.TRIP=[];
 
 fid=fopen(filename,'r');
@@ -47,7 +47,7 @@ for ii=azInd:length(M)
             data.RHOHV_NNC_F=cat(1,data.RHOHV_NNC_F,rayMat(:,6)');
             data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
             data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
-            data.CMD=cat(1,data.CMD,rayMat(:,9)');
+            data.CMD_FLAG=cat(1,data.CMD_FLAG,rayMat(:,9)');
             if size(rayMat,2)==10
                 data.TRIP=cat(1,data.TRIP,rayMat(:,10)');
             end
@@ -67,7 +67,7 @@ data.PHIDP_F=cat(1,data.PHIDP_F,rayMat(:,5)');
 data.RHOHV_NNC_F=cat(1,data.RHOHV_NNC_F,rayMat(:,6)');
 data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
 data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
-data.CMD=cat(1,data.CMD,rayMat(:,9)');
+data.CMD_FLAG=cat(1,data.CMD_FLAG,rayMat(:,9)');
 if size(rayMat,2)==10
     data.TRIP=cat(1,data.TRIP,rayMat(:,10)');
 else

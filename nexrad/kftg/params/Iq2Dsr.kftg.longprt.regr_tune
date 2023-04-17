@@ -2248,7 +2248,7 @@ regression_filter_clutter_width_factor = 1;
 // Type: double
 //
 
-regression_filter_cnr_exponent = 0.666667;
+regression_filter_cnr_exponent = 0.6;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //

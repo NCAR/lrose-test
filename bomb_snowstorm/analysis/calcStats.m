@@ -7,20 +7,20 @@ addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
 minMaxRange=[]; % Range interval [min,max] or leave empty
 minMaxAz=[]; % Azimuth interval [min,max] or leave empty
-kernel=[9,5];
+kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
 
-figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/statsCompare/'];
-
 %% Loop through cases
 
 fileID = fopen('compareFiles.txt');
-inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s');
+inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s');
 fclose(fileID);
 
-for aa=1:size(inAll{1,1},1)
+showPlot='off';
+
+for aa=10:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -28,6 +28,15 @@ for aa=1:size(inAll{1,1},1)
     infile1=inAll{1,1}(aa);
 
     disp(['File 1: ',infile1{:}]);
+
+    inst=inAll{1,14}(aa);
+    if strcmp(inst{:},'bs')
+        figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/statsCompare/'];
+    elseif strcmp(inst{:},'kddc')
+        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kddc/statsCompare/'];
+    elseif strcmp(inst{:},'kftg')
+        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kftg/statsCompare/'];
+    end
 
     fileType=inAll{1,12}(aa);
 
@@ -88,7 +97,7 @@ for aa=1:size(inAll{1,1},1)
 
     %% Match azimuths and nans
 
-    allAz=1:360;
+    allAz=1:(data1in.azimuth(2)-data1in.azimuth(1)):360;
     data1=[];
     if ~isempty(minMaxAz)
         data1in.azimuth(data1in.azimuth<minMaxAz(1) | data1in.azimuth>minMaxAz(2))=nan;
@@ -100,7 +109,10 @@ for aa=1:size(inAll{1,1},1)
     [~,~,ib2]=intersect(allAz,data2in.azimuth);
     data2.range=data2in.range;
 
-    inFields=fields(data1in);
+    inFields1=fields(data1in);
+    inFields2=fields(data2in);
+    inFields=intersect(inFields1,inFields2);
+
     for ii=1:size(inFields,1)
         if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
             data1.(inFields{ii})=nan(length(allAz),size(data1in.(inFields{ii}),2));
@@ -146,7 +158,13 @@ for aa=1:size(inAll{1,1},1)
     YY = (data1.range.*sin(angMat));
 
     %% Loop through fields
-    for jj=5:10
+    for jj=1:length(inFields)
+
+        if strcmp(inFields{jj},'azimuth') | strcmp(inFields{jj},'elevation') | ...
+                strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')
+            continue
+        end
+
         %% Standard deviations
 
         if strcmp(inFields{jj},'VEL_F')
@@ -163,12 +181,16 @@ for aa=1:size(inAll{1,1},1)
         %% Plot
         close all
 
-        figure('Position',[200 500 2200 1200],'DefaultAxesFontSize',12);
+        f1=figure('Position',[200 500 2700 1200],'DefaultAxesFontSize',12,'visible',showPlot);
         colormap('jet');
 
-        s1=subplot(2,3,1);
+        s1=subplot(2,4,1);
         pBottom=prctile(data1.(inFields{jj}),1,'all');
         pTop=prctile(data1.(inFields{jj}),99,'all');
+        if pTop==pBottom
+            pBottom=pBottom-0.1;
+            pTop=pTop+0.1;
+        end
         surf(XX,YY,data1.(inFields{jj}),'edgecolor','none');
         view(2);
         caxis([pBottom,pTop]);
@@ -180,7 +202,7 @@ for aa=1:size(inAll{1,1},1)
         grid on
         box on
 
-        s2=subplot(2,3,2);
+        s2=subplot(2,4,2);
         surf(XX,YY,data2.(inFields{jj}),'edgecolor','none');
         view(2);
         caxis([pBottom,pTop]);
@@ -192,11 +214,14 @@ for aa=1:size(inAll{1,1},1)
         grid on
         box on
 
-        s3=subplot(2,3,3);
+        s3=subplot(2,4,3);
         diffField=data2.(inFields{jj})-data1.(inFields{jj});
         pBottom=prctile(diffField,1,'all');
         pTop=prctile(diffField,99,'all');
         lim=max(abs([pTop,pBottom]));
+        if lim==0
+            lim=0.1;
+        end
         surf(XX,YY,diffField,'edgecolor','none');
         view(2);
         caxis([-lim,lim]);
@@ -209,7 +234,7 @@ for aa=1:size(inAll{1,1},1)
         grid on
         box on
 
-        s4=subplot(2,3,4);
+        s5=subplot(2,4,5);
         pBottom=prctile(stdVar1,10,'all');
         pTop=prctile(stdVar1,90,'all');
         surf(XX,YY,stdVar1,'edgecolor','none');
@@ -223,7 +248,7 @@ for aa=1:size(inAll{1,1},1)
         grid on
         box on
 
-        s5=subplot(2,3,5);
+        s6=subplot(2,4,6);
         surf(XX,YY,stdVar2,'edgecolor','none');
         view(2);
         caxis([pBottom,pTop]);
@@ -235,15 +260,18 @@ for aa=1:size(inAll{1,1},1)
         grid on
         box on
 
-        s6=subplot(2,3,6);
+        s7=subplot(2,4,7);
         diffField=stdVar2-stdVar1;
         pBottom=prctile(diffField,1,'all');
         pTop=prctile(diffField,99,'all');
         lim=max(abs([pTop,pBottom]));
+        if lim==0
+            lim=0.1;
+        end
         surf(XX,YY,diffField,'edgecolor','none');
         view(2);
         caxis([-lim,lim]);
-        s6.Colormap=velCols;
+        s7.Colormap=velCols;
         colorbar;
         title(['std file 2 - std file 1'],'Interpreter','none');
         xlabel('km');
@@ -255,6 +283,7 @@ for aa=1:size(inAll{1,1},1)
         outstr=inAll{1,3}(aa);
         outstr=outstr{:};
         mtit([outstr],'fontsize',14,'xoff',0,'yoff',0.05,'interpreter','none');
+        f1.Visible=showPlot;
 
         %% Save first zoom
 
@@ -265,9 +294,11 @@ for aa=1:size(inAll{1,1},1)
             outstr=[outstr,'_az',num2str(minMaxAz(1)),'to',num2str(minMaxAz(2))];
         end
 
+        %outstr=[outstr,'_5-3'];
+
         mkdir(figdir,outstr);
 
-        linkaxes([s1,s2,s3,s4,s5,s6],'xy');        
+        linkaxes([s1,s2,s3,s5,s6,s7],'xy');        
 
         xlimits1=[inAll{1,4}(aa),inAll{1,5}(aa)];
         ylimits1=[inAll{1,6}(aa),inAll{1,7}(aa)];
@@ -277,9 +308,33 @@ for aa=1:size(inAll{1,1},1)
         daspect(s1,[1 1 1]);
         daspect(s2,[1 1 1]);
         daspect(s3,[1 1 1]);
-        daspect(s4,[1 1 1]);
         daspect(s5,[1 1 1]);
         daspect(s6,[1 1 1]);
+        daspect(s7,[1 1 1]);
+
+        s8=subplot(2,4,8);
+
+        pBottom2=prctile(diffField,15,'all');
+        pTop2=prctile(diffField,85,'all');
+        lim2=max(abs([pTop2,pBottom2]));
+        if lim2==0
+            lim2=0.1;
+        end
+
+        hold on
+        edges=-lim:lim/60:lim;
+        hc=histcounts(diffField(:),edges);
+        bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc,1)
+        xlim([-lim2,lim2]);
+
+        ylims=s8.YLim;
+        plot([0,0],ylims,'-r','LineWidth',2);
+
+        s8.SortMethod='childorder';
+
+        grid on
+        box on
+        title(['std file 2 - std file 1'],'Interpreter','none');
        
         print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom1.png'],'-dpng','-r0');
 
@@ -288,14 +343,14 @@ for aa=1:size(inAll{1,1},1)
         xlimits2=[inAll{1,8}(aa),inAll{1,9}(aa)];
         ylimits2=[inAll{1,10}(aa),inAll{1,11}(aa)];
 
-        xlim(xlimits2)
-        ylim(ylimits2)
+        s1.XLim=xlimits2;
+        s1.YLim=ylimits2;
         daspect(s1,[1 1 1]);
         daspect(s2,[1 1 1]);
         daspect(s3,[1 1 1]);
-        daspect(s4,[1 1 1]);
         daspect(s5,[1 1 1]);
         daspect(s6,[1 1 1]);
+        daspect(s7,[1 1 1]);
        
         print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom2.png'],'-dpng','-r0');
     end
