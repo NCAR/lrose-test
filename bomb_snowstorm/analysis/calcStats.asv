@@ -10,7 +10,9 @@ minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
+censorOnVEL=1;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
+removeZeros=1;
 
 %% Loop through cases
 
@@ -18,7 +20,9 @@ fileID = fopen('compareFiles.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s');
 fclose(fileID);
 
-for aa=3:size(inAll{1,1},1)
+showPlot='on';
+
+for aa=1:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -127,6 +131,11 @@ for aa=3:size(inAll{1,1},1)
                 data1.(inFields{ii})(isnan(data1.DBZ_F))=nan;
                 data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
             end
+            % Censor on VEL
+            if censorOnVEL & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+                data1.(inFields{ii})(data1.VEL_F>-2 & data1.VEL_F<2)=nan;
+                data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
+            end
             % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
             data2.(inFields{ii})(isnan(data1.(inFields{ii})))=nan;
@@ -179,12 +188,16 @@ for aa=3:size(inAll{1,1},1)
         %% Plot
         close all
 
-        figure('Position',[200 500 2700 1200],'DefaultAxesFontSize',12);
+        f1=figure('Position',[200 500 2700 1200],'DefaultAxesFontSize',12,'visible',showPlot);
         colormap('jet');
 
         s1=subplot(2,4,1);
         pBottom=prctile(data1.(inFields{jj}),1,'all');
         pTop=prctile(data1.(inFields{jj}),99,'all');
+        if pTop==pBottom
+            pBottom=pBottom-0.1;
+            pTop=pTop+0.1;
+        end
         surf(XX,YY,data1.(inFields{jj}),'edgecolor','none');
         view(2);
         caxis([pBottom,pTop]);
@@ -213,6 +226,10 @@ for aa=3:size(inAll{1,1},1)
         pBottom=prctile(diffField,1,'all');
         pTop=prctile(diffField,99,'all');
         lim=max(abs([pTop,pBottom]));
+        if lim==0
+            lim=0.1;
+        end
+        if removeZeros
         surf(XX,YY,diffField,'edgecolor','none');
         view(2);
         caxis([-lim,lim]);
@@ -256,6 +273,9 @@ for aa=3:size(inAll{1,1},1)
         pBottom=prctile(diffField,1,'all');
         pTop=prctile(diffField,99,'all');
         lim=max(abs([pTop,pBottom]));
+        if lim==0
+            lim=0.1;
+        end
         surf(XX,YY,diffField,'edgecolor','none');
         view(2);
         caxis([-lim,lim]);
@@ -271,6 +291,7 @@ for aa=3:size(inAll{1,1},1)
         outstr=inAll{1,3}(aa);
         outstr=outstr{:};
         mtit([outstr],'fontsize',14,'xoff',0,'yoff',0.05,'interpreter','none');
+        f1.Visible=showPlot;
 
         %% Save first zoom
 
@@ -301,12 +322,15 @@ for aa=3:size(inAll{1,1},1)
 
         s8=subplot(2,4,8);
 
-        pBottom2=prctile(diffField,25,'all');
-        pTop2=prctile(diffField,75,'all');
+        pBottom2=prctile(diffField,15,'all');
+        pTop2=prctile(diffField,85,'all');
         lim2=max(abs([pTop2,pBottom2]));
+        if lim2==0
+            lim2=0.1;
+        end
 
         hold on
-        edges=-lim2:lim2/40:lim2;
+        edges=-lim:lim/60:lim;
         hc=histcounts(diffField(:),edges);
         bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc,1)
         xlim([-lim2,lim2]);

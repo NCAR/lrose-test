@@ -10,7 +10,9 @@ minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
+censorOnVEL=1;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
+removeZeros=1;
 
 %% Loop through cases
 
@@ -20,7 +22,7 @@ fclose(fileID);
 
 showPlot='off';
 
-for aa=10:size(inAll{1,1},1)
+for aa=7:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -127,6 +129,11 @@ for aa=10:size(inAll{1,1},1)
             % Censor on DBZ
             if censorOnDBZ & size(data1.(inFields{ii}))==size(data1.DBZ_F)
                 data1.(inFields{ii})(isnan(data1.DBZ_F))=nan;
+                data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
+            end
+            % Censor on VEL
+            if censorOnVEL & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+                data1.(inFields{ii})(data1.VEL_F>-2 & data1.VEL_F<2)=nan;
                 data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
             end
             % Match nans
@@ -313,7 +320,9 @@ for aa=10:size(inAll{1,1},1)
         daspect(s7,[1 1 1]);
 
         s8=subplot(2,4,8);
-
+        if removeZeros
+            diffField(diffField>-lim/100 & diffField<lim/100)=nan;
+        end
         pBottom2=prctile(diffField,15,'all');
         pTop2=prctile(diffField,85,'all');
         lim2=max(abs([pTop2,pBottom2]));
