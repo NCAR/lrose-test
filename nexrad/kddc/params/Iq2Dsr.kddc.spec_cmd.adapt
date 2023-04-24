@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 12;
+n_compute_threads = 4;
 
 //======================================================================
 //
@@ -4213,7 +4213,7 @@ spec_cmd_phidp_sdev_interest_weight = 1;
 // Type: double
 //
 
-spec_cmd_threshold_for_clutter = 0.5;
+spec_cmd_threshold_for_clutter = 0.6;
 
 //======================================================================
 //
@@ -4887,7 +4887,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
