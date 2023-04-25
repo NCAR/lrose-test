@@ -1849,33 +1849,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "WFARM_FLAG",
-    output_name = "WFARM_FLAG",
-    long_name = "wind_farm_flag",
-    standard_name = "wind_farm_flag",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "WFARM_CLUT",
-    output_name = "WFARM_CLUT",
-    long_name = "clutter_power",
-    standard_name = "clutter_power",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "DBZ_WFARM",
-    output_name = "DBZ_WFARM",
-    long_name = "reflectivity",
-    standard_name = "equivalent_reflectivity_factor",
-    output_units = "dBZ",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "CMD",
     output_name = "CMD",
     long_name = "clutter_mitigation_interest",
@@ -1944,6 +1917,42 @@ output_fields = {
     long_name = "spectral_noise_power",
     standard_name = "spectral_noise_power",
     output_units = "dBm",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "WFARM_FLAG0",
+    output_name = "WFARM_FLAG0",
+    long_name = "wind_farm_flag0",
+    standard_name = "wind_farm_flag0",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "WFARM_FLAG",
+    output_name = "WFARM_FLAG",
+    long_name = "wind_farm_flag",
+    standard_name = "wind_farm_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_CMD_MEAN",
+    output_name = "SPEC_CMD_MEAN",
+    long_name = "spectral_clutter_mitigation_interest_mean",
+    standard_name = "spectral_clutter_mitigation_decision",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_CMD_FRAC",
+    output_name = "SPEC_CMD_FRAC",
+    long_name = "spectral_clutter_mitigation_interest_fraction",
+    standard_name = "spectral_clutter_mitigation_decision",
+    output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
   ,

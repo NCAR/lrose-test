@@ -75,7 +75,7 @@ instance = "kddc.spec_cmd.adapt";
 // Type: boolean
 //
 
-use_multiple_threads = FALSE;
+use_multiple_threads = TRUE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 4;
+n_compute_threads = 8;
 
 //======================================================================
 //
@@ -4107,12 +4107,12 @@ spec_cmd_sdev_phidp_kernel_nsamples = 3;
 
 spec_cmd_snr_interest_map = {
   {
-    value = 0,
+    value = 20,
     interest = 0.0001
   }
   ,
   {
-    value = 20,
+    value = 40,
     interest = 1
   }
 };
@@ -4128,7 +4128,7 @@ spec_cmd_snr_interest_map = {
 // Type: double
 //
 
-spec_cmd_snr_interest_weight = 1.5;
+spec_cmd_snr_interest_weight = 1;
 
 ///////////// spec_cmd_tdbz_interest_map //////////////
 //
@@ -4146,12 +4146,12 @@ spec_cmd_snr_interest_weight = 1.5;
 
 spec_cmd_tdbz_interest_map = {
   {
-    value = 25,
+    value = 27,
     interest = 0.0001
   }
   ,
   {
-    value = 36,
+    value = 33,
     interest = 1
   }
 };
@@ -4185,12 +4185,12 @@ spec_cmd_tdbz_interest_weight = 1;
 
 spec_cmd_zdr_sdev_interest_map = {
   {
-    value = 2.5,
+    value = 3,
     interest = 0.0001
   }
   ,
   {
-    value = 5,
+    value = 4,
     interest = 1
   }
 };
@@ -4221,12 +4221,12 @@ spec_cmd_zdr_sdev_interest_weight = 1;
 
 spec_cmd_phidp_sdev_interest_map = {
   {
-    value = 25,
+    value = 28,
     interest = 0.0001
   }
   ,
   {
-    value = 35,
+    value = 32,
     interest = 1
   }
 };
@@ -4252,7 +4252,7 @@ spec_cmd_phidp_sdev_interest_weight = 1;
 // Type: double
 //
 
-spec_cmd_threshold_for_detection = 0.9;
+spec_cmd_threshold_for_detection = 0.75;
 
 ///////////// spec_cmd_threshold_for_moments //////////
 //
@@ -4265,7 +4265,7 @@ spec_cmd_threshold_for_detection = 0.9;
 // Type: double
 //
 
-spec_cmd_threshold_for_moments = 0.7;
+spec_cmd_threshold_for_moments = 0.33;
 
 ///////////// spec_cmd_fraction_threshold_for_wind_turbine 
 //
@@ -4279,7 +4279,7 @@ spec_cmd_threshold_for_moments = 0.7;
 // Type: double
 //
 
-spec_cmd_fraction_threshold_for_wind_turbine = 0.7;
+spec_cmd_fraction_threshold_for_wind_turbine = 0.66;
 
 ///////////// cmd_threshold_for_moments ///////////////
 //
@@ -4940,7 +4940,17 @@ output_fields = {
   }
   ,
   {
-    id = TEST2,
+    id = TEST0,
+    name = "WFARM_FLAG0",
+    units = "",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST1,
     name = "WFARM_FLAG",
     units = "",
     scale = 0.01,
@@ -4950,11 +4960,21 @@ output_fields = {
   }
   ,
   {
+    id = TEST2,
+    name = "SPEC_CMD_MEAN",
+    units = "",
+    scale = 0.001,
+    bias = -32,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
     id = TEST3,
-    name = "WFARM_CLUT",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
+    name = "SPEC_CMD_FRAC",
+    units = "",
+    scale = 0.001,
+    bias = -32,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
@@ -4965,7 +4985,7 @@ output_fields = {
     units = "dBZ",
     scale = 0.01,
     bias = -320,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
   ,
@@ -4975,7 +4995,7 @@ output_fields = {
     units = "m/s",
     scale = 0.01,
     bias = -320,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
   ,
@@ -4985,7 +5005,7 @@ output_fields = {
     units = "m/s",
     scale = 0.001,
     bias = -0.01,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
   ,
@@ -4995,7 +5015,7 @@ output_fields = {
     units = "dB",
     scale = 0.001,
     bias = -32,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
   ,
@@ -5005,7 +5025,7 @@ output_fields = {
     units = "deg",
     scale = 0.06,
     bias = -200,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
   ,
@@ -5015,7 +5035,7 @@ output_fields = {
     units = "",
     scale = 0.0001,
     bias = -1,
-    write_unfiltered = TRUE,
+    write_unfiltered = FALSE,
     write_filtered = TRUE
   }
 };

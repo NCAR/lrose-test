@@ -354,7 +354,7 @@ set_max_range = TRUE;
 // Type: double
 //
 
-max_range_km = 230;
+max_range_km = 300;
 
 //======================================================================
 //
@@ -892,7 +892,7 @@ waterfall_plots = {
   }
   ,
   {
-    plot_type = WATERFALL_HC,
+    plot_type = WATERFALL_DBZ,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     clutter_filter_type = CLUTTER_FILTER_NONE,
@@ -903,7 +903,7 @@ waterfall_plots = {
   }
   ,
   {
-    plot_type = WATERFALL_DBZ,
+    plot_type = WATERFALL_SNR,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     clutter_filter_type = CLUTTER_FILTER_NONE,

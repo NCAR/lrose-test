@@ -398,6 +398,60 @@ fields = {
   }
   ,
   {
+    label = "SNRHC",
+    raw_name = "SNRHC",
+    filtered_name = "SNRHC_F",
+    units = "dB",
+    color_map = "snr.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SNRVC",
+    raw_name = "SNRVC",
+    filtered_name = "SNRVC_F",
+    units = "dB",
+    color_map = "snr.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_CMD_MEAN",
+    raw_name = "SPEC_CMD_MEAN",
+    filtered_name = "SPEC_CMD_MEAN_F",
+    units = "",
+    color_map = "cmd.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_CMD_FRAC",
+    raw_name = "SPEC_CMD_FRAC",
+    filtered_name = "SPEC_CMD_FRAC_F",
+    units = "",
+    color_map = "cmd.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "WFARM_FLAG",
+    raw_name = "WFARM_FLAG",
+    filtered_name = "WFARM_FLAG_F",
+    units = "",
+    color_map = "cmd_flag2.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "WFARM_FLAG0",
+    raw_name = "WFARM_FLAG0",
+    filtered_name = "WFARM_FLAG0_F",
+    units = "",
+    color_map = "cmd_flag3.colors",
+    shortcut = "1"
+  }
+  ,
+  {
     label = "SPEC_DBZ",
     raw_name = "SPEC_DBZ",
     filtered_name = "SPEC_DBZ_F",
