@@ -536,7 +536,7 @@ legends_on = TRUE;
 // Type: int
 //
 
-ascope_n_panels = 1;
+ascope_n_panels = 0;
 
 ///////////// ascope_moments //////////////////////////
 //
@@ -563,7 +563,6 @@ ascope_n_panels = 1;
 //
 
 ascope_moments = {
- DBZ
 };
 
 ///////////// ascope_width ////////////////////////////
