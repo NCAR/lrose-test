@@ -883,7 +883,7 @@ waterfall_plots = {
     plot_type = WATERFALL_HC,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -894,7 +894,7 @@ waterfall_plots = {
     plot_type = WATERFALL_DBZ,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -905,7 +905,7 @@ waterfall_plots = {
     plot_type = WATERFALL_SNR,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -916,7 +916,7 @@ waterfall_plots = {
     plot_type = WATERFALL_TDBZ,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -927,7 +927,7 @@ waterfall_plots = {
     plot_type = WATERFALL_RHOHV,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -938,7 +938,7 @@ waterfall_plots = {
     plot_type = WATERFALL_SDEV_PHIDP,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -949,7 +949,7 @@ waterfall_plots = {
     plot_type = WATERFALL_SDEV_ZDR,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -960,7 +960,7 @@ waterfall_plots = {
     plot_type = WATERFALL_CMD,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -1005,7 +1005,7 @@ waterfall_color_scale_width = 30;
 // Type: int
 //
 
-waterfall_tdbz_kernel_ngates = 5;
+waterfall_tdbz_kernel_ngates = 7;
 
 ///////////// waterfall_tdbz_kernel_nsamples //////////
 //
@@ -1019,7 +1019,7 @@ waterfall_tdbz_kernel_ngates = 5;
 // Type: int
 //
 
-waterfall_tdbz_kernel_nsamples = 3;
+waterfall_tdbz_kernel_nsamples = 1;
 
 ///////////// waterfall_sdev_zdr_kernel_ngates ////////
 //
@@ -2830,7 +2830,7 @@ fft_window = FFT_WINDOW_VONHANN;
 
 snr_interest_map = {
   {
-    value = 20,
+    value = 30,
     interest = 0.0001
   }
   ,
@@ -2869,12 +2869,12 @@ snr_interest_weight = 1;
 
 tdbz_interest_map = {
   {
-    value = 27,
+    value = 24,
     interest = 0.0001
   }
   ,
   {
-    value = 33,
+    value = 30,
     interest = 1
   }
 };
@@ -2913,7 +2913,7 @@ zdr_sdev_interest_map = {
   }
   ,
   {
-    value = 4,
+    value = 5,
     interest = 1
   }
 };
@@ -2944,12 +2944,12 @@ zdr_sdev_interest_weight = 1;
 
 phidp_sdev_interest_map = {
   {
-    value = 28,
+    value = 48,
     interest = 0.0001
   }
   ,
   {
-    value = 32,
+    value = 55,
     interest = 1
   }
 };
