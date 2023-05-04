@@ -2280,8 +2280,7 @@ regression_filter_min_cnr_db = -5;
 // Type: double
 //
 
-// regression_filter_min_csr_db = -5;
-regression_filter_min_csr_db = -150;
+regression_filter_min_csr_db = -5;
 
 ///////////// regression_filter_notch_interp_method ///
 //
