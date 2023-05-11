@@ -204,7 +204,7 @@ for aa=2:size(inAll{1,1},1)
         ylabel('km');
 
         s1.Colormap=turbo(12);
-        caxis([0,12]);
+        caxis([0.5,12.5]);
         colorbar;
 
         grid on

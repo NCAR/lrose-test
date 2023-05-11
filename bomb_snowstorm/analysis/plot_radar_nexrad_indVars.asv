@@ -11,11 +11,11 @@ showPlot='on';
 
 %% Loop through cases
 
-fileID = fopen('plotFiles_indVars.txt');
-inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
+fileID = fopen('plotFiles_nexrad_indVars.txt');
+inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s %f');
 fclose(fileID);
 
-for aa=2:size(inAll{1,1},1)
+for aa=1:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -33,21 +33,34 @@ for aa=2:size(inAll{1,1},1)
 
     fileType=inAll{1,11}(aa);
 
-    if strcmp(fileType{:},'nc')
-        data=[];
+    data=[];
 
-        data.DBZ_F=[];
-        data.VEL_F=[];
-        data.WIDTH_F=[];
-        data.ZDR_F=[];
-        data.PHIDP_F=[];
-        data.RHOHV_NNC_F=[];
-        data.REGR_ORDER=[];
-        data.CMD_FLAG=[];
+    data.REF=[];
+    data.DBZ=[];
+    data.VEL=[];
+    data.SW=[];
+    data.WIDTH=[];
+    data.ZDR=[];
+    data.PHI=[];
+    data.PHIDP=[];
+    data.RHO=[];
+    data.RHOHV=[];
+    
+    data=read_spol(infile{:},data);
 
-        data=read_spol(infile{:},data);
-    elseif strcmp(fileType{:},'table')
-        data=readDataTables(infile{:},' ');
+    data=data(inAll{1,13}(aa));
+
+    if isfield(data,'REF')
+        data.DBZ=data.REF;
+    end
+    if isf(data,'SW')
+        data.WIDTH=data.SW;
+    end
+    if isvar(data,'PHI')
+        data.PHIDP=data.PHI;
+    end
+    if isvar(data,'RHO')
+        data.RHOHV=data.RHO;
     end
 
     %% Cut range
@@ -90,7 +103,7 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    surf(XX,YY,data.DBZ_F,'edgecolor','none');
+    surf(XX,YY,data.DBZ,'edgecolor','none');
     view(2);
     caxis([-10 65])
     title('DBZ (dBZ)')
@@ -125,7 +138,7 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    h=surf(XX,YY,data.ZDR_F,'edgecolor','none');
+    h=surf(XX,YY,data.ZDR,'edgecolor','none');
     view(2);
     title('ZDR (dB)')
     xlabel('km');
@@ -133,7 +146,7 @@ for aa=2:size(inAll{1,1},1)
 
     s1.Colormap=zdr_default;
     colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-    applyColorScale(h,data.ZDR_F,zdr_default,colLims);
+    applyColorScale(h,data.ZDR,zdr_default,colLims);
 
     grid on
     box on
@@ -161,7 +174,7 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    h3=surf(XX,YY,data.VEL_F,'edgecolor','none');
+    h3=surf(XX,YY,data.VEL,'edgecolor','none');
     view(2);
     title('VEL (m s^{-1})')
     xlabel('km');
@@ -171,7 +184,7 @@ for aa=2:size(inAll{1,1},1)
     box on
 
     colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
-    applyColorScale(h3,data.VEL_F,vel_default2,colLims);
+    applyColorScale(h3,data.VEL,vel_default2,colLims);
 
     % Save first zoom
 
@@ -230,8 +243,8 @@ for aa=2:size(inAll{1,1},1)
     %% PHIDP
 
     if strcmp(inst{:},'kddc') & strcmp(fileType{:},'nc')
-        data.PHIDP_F=wrapTo360(data.PHIDP_F);
-        data.PHIDP_F=data.PHIDP_F-90;
+        data.PHIDP=wrapTo360(data.PHIDP);
+        data.PHIDP=data.PHIDP-90;
     end
 
     close all
@@ -239,7 +252,7 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    surf(XX,YY,data.PHIDP_F,'edgecolor','none');
+    surf(XX,YY,data.PHIDP,'edgecolor','none');
     view(2);
     colorbar
     if strcmp(inst{:},'bs')
@@ -278,14 +291,14 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    h=surf(XX,YY,data.RHOHV_NNC_F,'edgecolor','none');
+    h=surf(XX,YY,data.RHOHV,'edgecolor','none');
     view(2);
     title('RHOHV')
     xlabel('km');
     ylabel('km');
 
     colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-    applyColorScale(h,data.RHOHV_NNC_F,rhohv_default,colLims);
+    applyColorScale(h,data.RHOHV,rhohv_default,colLims);
 
     grid on
     box on
@@ -313,14 +326,14 @@ for aa=2:size(inAll{1,1},1)
     figure('Position',[200 500 1000 800],'DefaultAxesFontSize',12,'visible',showPlot);
 
     s1=subplot(1,1,1);
-    h=surf(XX,YY,data.WIDTH_F,'edgecolor','none');
+    h=surf(XX,YY,data.WIDTH,'edgecolor','none');
     view(2);
     title('WIDTH (m s^{-1})')
     xlabel('km');
     ylabel('km');
 
     colLims=[-inf,0,0.5,1,1.5,2,2.5,3,4,5,6,7,8,10,12.5,15,20,25,50,inf];
-    applyColorScale(h,data.WIDTH_F,width_default,colLims);
+    applyColorScale(h,data.WIDTH,width_default,colLims);
 
     grid on
     box on

@@ -1,0 +1,1 @@
+/scr/sleet1/rsfdata/projects/eolbase/cfradial/kftg/moments/20220329/cfrad.20220329_221646.829_to_20220329_222242.984_KFTG_SUR.nc kftg_20220329_221645_nexrad -300 300 -300 300 -120 60 -110 70 nc kftg 1

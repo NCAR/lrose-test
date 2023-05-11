@@ -2252,18 +2252,35 @@ regression_filter_cnr_exponent = 0.666667;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Noise-Ratio - for applying the filter 
 //   (dB).
 //
-// As a first step, we compute the CNR the central 3 spectral points. If 
-//   the CNR is below this threshold, we do not apply the filter at all, 
-//   and simply return the unfiltered spectrum.
+// As a first step, we compute the CNR from the central 3 spectral 
+//   points. If the CNR is below this threshold, and the CSR is below 
+//   min_csr (see below) we do not apply the filter at all, and simply 
+//   return the unfiltered spectrum. This test.
 //
 //
 // Type: double
 //
 
 regression_filter_min_cnr_db = -5;
+
+///////////// regression_filter_min_csr_db ////////////
+//
+// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+//   (dB).
+//
+// As a first step, we compute the CSR from the central 3 spectral 
+//   points. If the CSR is below this threshold, and the CNR is below 
+//   min_cnr (see above) we do not apply the filter at all, and simply 
+//   return the unfiltered spectrum.
+//
+//
+// Type: double
+//
+
+regression_filter_min_csr_db = -15;
 
 ///////////// regression_filter_notch_interp_method ///
 //
@@ -3255,6 +3272,18 @@ sz1_out_of_trip_power_ratio_threshold = 6;
 
 sz1_out_of_trip_power_n_replicas = 3;
 
+///////////// sz1_use_regression_filter ///////////////
+//
+// Option to use regression filter in SZ decoding.
+//
+// If TRUE, a rectangular filter will be applied to SZ decoding.
+//
+//
+// Type: boolean
+//
+
+sz1_use_regression_filter = FALSE;
+
 //======================================================================
 //
 // CMD - CLUTTER MITIGATION DECISION system.
@@ -3377,7 +3406,7 @@ cpa_compute_using_alternative = TRUE;
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0.0;
+cmd_threshold_for_clutter = 0;
 
 ///////////// cmd_check_for_offzero_weather ///////////
 //
@@ -3965,6 +3994,362 @@ rhohv_test_max_rhohv = 0.98;
 //
 
 rhohv_improvement_factor_threshold = 4;
+
+//======================================================================
+//
+// SPECTRAL CMD.
+//
+// You have the option of running the spectral version of CMD, to filter 
+//   difficult targets such as wind farms. The moments from this step will 
+//   be stored in variables specifically named for the purpose.
+//
+//======================================================================
+ 
+///////////// run_spectral_cmd ////////////////////////
+//
+// Run the spectral-CMD filtering step.
+//
+// This computes a version of CMD in the FFT space.
+//
+//
+// Type: boolean
+//
+
+run_spectral_cmd = TRUE;
+
+///////////// spec_cmd_clutter_filter_type ////////////
+//
+// Type of clutter filter to use for spectral CMD.
+//
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+//   polynomial filter with specified interpolation. NOTCH: simple notch 
+//   filter of specified width. NONE: cancels clutter filtering.
+//
+//
+// Type: enum
+// Options:
+//     CLUTTER_FILTER_ADAPTIVE
+//     CLUTTER_FILTER_REGRESSION
+//     CLUTTER_FILTER_NOTCH
+//     CLUTTER_FILTER_NONE
+//
+
+spec_cmd_clutter_filter_type = CLUTTER_FILTER_NONE;
+
+///////////// spec_cmd_window_type ////////////////////
+//
+// Window to use for spectral CMD.
+//
+// VONHANN is recommended.
+//
+//
+// Type: enum
+// Options:
+//     WINDOW_RECT
+//     WINDOW_VONHANN
+//     WINDOW_BLACKMAN
+//     WINDOW_BLACKMAN_NUTTALL
+//     WINDOW_TUKEY_10
+//     WINDOW_TUKEY_20
+//     WINDOW_TUKEY_30
+//     WINDOW_TUKEY_50
+//
+
+spec_cmd_window_type = WINDOW_VONHANN;
+
+///////////// spec_cmd_tdbz_kernel_ngates /////////////
+//
+// Kernal size in range for computing TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the size of 
+//   that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_tdbz_kernel_ngates = 5;
+
+///////////// spec_cmd_tdbz_kernel_nsamples ///////////
+//
+// Kernal size in samples for computing sdev of TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the number of 
+//   samples in the kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_tdbz_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_zdr_kernel_ngates /////////
+//
+// Kernal size in range for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the size of that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_zdr_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_zdr_kernel_nsamples ///////
+//
+// Kernal size in samples for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the number of samples in that kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_zdr_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_phidp_kernel_ngates ///////
+//
+// Kernal size in range for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the size of that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_phidp_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_phidp_kernel_nsamples /////
+//
+// Kernal size in samples for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the number of samples in that kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_phidp_kernel_nsamples = 3;
+
+//======================================================================
+//
+// SPECTRAL CMD INTEREST MAPS and WEIGHTS.
+//
+// Each map should hold at least 2 points. The points should be 
+//   increasing in value, i.e. the value should increase for each 
+//   subsequent point. The various interest values are combined using the 
+//   specified weights in a weighted mean to produce the final CMD value.
+//
+//======================================================================
+ 
+///////////// spec_cmd_snr_interest_map ///////////////
+//
+// Interest mapping for SNR in spectral CMD..
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_snr_interest_map = {
+  {
+    value = 0,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 20,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_snr_interest_weight ////////////
+//
+// Weight for SNR interest.
+//
+// This weight is used for combining snr interest into the final 
+//   spectral CMD interest.
+//
+//
+// Type: double
+//
+
+spec_cmd_snr_interest_weight = 1.5;
+
+///////////// spec_cmd_tdbz_interest_map //////////////
+//
+// Interest mapping for TDBZ.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_tdbz_interest_map = {
+  {
+    value = 30,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 40,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_tdbz_interest_weight ///////////
+//
+// Weight for TDBZ interest.
+//
+// This weight is used for combining tdbz interest into the final CMD 
+//   interest.
+//
+//
+// Type: double
+//
+
+spec_cmd_tdbz_interest_weight = 1;
+
+///////////// spec_cmd_zdr_sdev_interest_map //////////
+//
+// Interest mapping for zdr.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_zdr_sdev_interest_map = {
+  {
+    value = 3,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 4,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_zdr_sdev_interest_weight ///////
+//
+// Weight for standard deviation of zdr.
+//
+//
+// Type: double
+//
+
+spec_cmd_zdr_sdev_interest_weight = 1;
+
+///////////// spec_cmd_phidp_sdev_interest_map ////////
+//
+// Interest mapping for standard deviation of phidp.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_phidp_sdev_interest_map = {
+  {
+    value = 28,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 32,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_phidp_sdev_interest_weight /////
+//
+// Weight for standard deviation of phidp.
+//
+//
+// Type: double
+//
+
+spec_cmd_phidp_sdev_interest_weight = 1;
+
+///////////// spec_cmd_threshold_for_detection ////////
+//
+// Threshold CMD value for detecting clutter.
+//
+// This is aimed mainly at wind turbine clutter. If the CMD value 
+//   exceeds this threshold, clutter is assumed detected at the gate.
+//
+//
+// Type: double
+//
+
+spec_cmd_threshold_for_detection = 0.9;
+
+///////////// spec_cmd_threshold_for_moments //////////
+//
+// Threshold CMD value for computing moments.
+//
+// Spectral points with CMD in excess of this threshold are set to 0, so 
+//   that they are not used in the moments calculations.
+//
+//
+// Type: double
+//
+
+spec_cmd_threshold_for_moments = 0.7;
+
+///////////// spec_cmd_fraction_threshold_for_wind_turbine 
+//
+// Threshold of CMD spectral fraction, for wind turbine detection.
+//
+// If the fraction of the CMD spectrum in excess of 
+//   'spec_cmd_threshold_for_detection' exceeds this, we flag the gate as 
+//   having a wind turbine gate.
+//
+//
+// Type: double
+//
+
+spec_cmd_fraction_threshold_for_wind_turbine = 0.7;
+
+///////////// cmd_threshold_for_moments ///////////////
+//
+// Threshold CMD value for computing moments.
+//
+// Spectral points with CMD in excess of this threshold are set to 0, so 
+//   that they are not used in the moments calculations.
+//
+//
+// Type: double
+//
+
+cmd_threshold_for_moments = 0.7;
 
 //======================================================================
 //

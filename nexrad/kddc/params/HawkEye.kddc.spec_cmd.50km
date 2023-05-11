@@ -522,6 +522,15 @@ fields = {
     color_map = "rhohv.colors",
     shortcut = "8"
   }
+  ,
+  {
+    label = "DBZ_WFARM",
+    raw_name = "DBZ_WFARM",
+    filtered_name = "",
+    units = "dBZ",
+    color_map = "dbz.colors",
+    shortcut = "1"
+  }
 };
 
 ///////////// background_render_mins //////////////////

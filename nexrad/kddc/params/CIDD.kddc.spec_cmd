@@ -165,6 +165,12 @@ REGR_ORDER     REGR_ORDER     $(HOME)/data/nexrad/cfradial/kddc.spec_cmd.regr&RE
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
+WFARM_FLAG   WFARM_FLAG   $(HOME)/data/nexrad/cfradial/kddc.spec_cmd.regr&WFARM_FLAG   cmd_flag.colors   dBZ -5 80 5 radial 1 0
+WFARM_CLUT   WFARM_CLUT   $(HOME)/data/nexrad/cfradial/kddc.spec_cmd.regr&WFARM_CLUT   dbz.colors   dBZ -5 80 5 radial 1 0
+WFARM_DBZ    WFARM_DBZ    $(HOME)/data/nexrad/cfradial/kddc.spec_cmd.regr&DBZ_WFARM    dbz.colors   dBZ -5 80 5 radial 1 0
+======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
