@@ -509,8 +509,8 @@ fields = {
   {
     label = "NOISE_DBM_SDEV",
     raw_name = "NOISE_DBM_SDEV",
-    filtered_name = "dB",
-    units = "unitless",
+    filtered_name = "",
+    units = "dB",
     color_map = "sdev_dbm.colors",
     shortcut = "8"
   }
