@@ -457,7 +457,7 @@ fields = {
     raw_name = "NOISE_FLAG",
     filtered_name = "",
     units = "unitless",
-    color_map = "noise_flag.colors",
+    color_map = "noise_flag2.colors",
     shortcut = "8"
   }
   ,
@@ -466,7 +466,7 @@ fields = {
     raw_name = "SIGNAL_FLAG",
     filtered_name = "",
     units = "unitless",
-    color_map = "signal_flag.colors",
+    color_map = "signal_flag2.colors",
     shortcut = "8"
   }
   ,
@@ -511,7 +511,7 @@ fields = {
     raw_name = "NOISE_DBM_SDEV",
     filtered_name = "dB",
     units = "unitless",
-    color_map = "noise_dbm.sband.colors",
+    color_map = "sdev_dbm.colors",
     shortcut = "8"
   }
   ,
