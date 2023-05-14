@@ -1,0 +1,8 @@
+#! /bin/csh
+
+# start HawkEye
+
+cd $HOME/bomb_snowstorm/params
+
+HawkEye -params ../params/HawkEye.spol_noise >& /dev/null &
+
