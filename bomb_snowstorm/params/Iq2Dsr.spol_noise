@@ -2904,12 +2904,12 @@ dbm_sdev_for_noise_interest_weight = 1;
 
 ncp_mean_for_noise_interest_map = {
   {
-    value = 0.27,
+    value = 0.1,
     interest = 1
   }
   ,
   {
-    value = 0.30,
+    value = 0.2,
     interest = 0.001
   }
 };
