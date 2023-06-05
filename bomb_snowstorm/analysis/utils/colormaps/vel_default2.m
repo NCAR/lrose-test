@@ -1,6 +1,6 @@
 %Default colormap for reflectivity values
 
-function x = zdr_default(n);
+function x = vel_default2(n);
 
 
 if nargin==1 & isempty(n)

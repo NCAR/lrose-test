@@ -3,8 +3,6 @@
 clear all;
 close all;
 
-addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
-
 % Input file
 infile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KDDC_LPRT_SR_20200525_030738_12pt.txt';
 
