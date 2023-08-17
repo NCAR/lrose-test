@@ -1,0 +1,8 @@
+#! /bin/csh
+
+# start HawkEye
+
+cd $HOME/git/lrose-test/nexrad/kddc/params
+
+HawkEye -params ../params/HawkEye.kddc.wcl_detect >& /dev/null &
+
