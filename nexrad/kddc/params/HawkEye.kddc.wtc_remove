@@ -70,7 +70,7 @@ register_with_procmap = FALSE;
 // Type: string
 //
 
-instance = "sprite";
+instance = "HawkEye.kddc.wtc_remove";
 
 //======================================================================
 //
@@ -178,7 +178,7 @@ beam_queue_size = 400;
 // Type: boolean
 //
 
-begin_in_archive_mode = FALSE;
+begin_in_archive_mode = TRUE;
 
 ///////////// archive_start_time //////////////////////
 //
@@ -190,7 +190,7 @@ begin_in_archive_mode = FALSE;
 // Type: string
 //
 
-archive_start_time = "2020 05 25 03 00 00";
+archive_start_time = "2020 05 25 03 01 17";
 
 ///////////// archive_time_span_secs //////////////////
 //
@@ -214,7 +214,7 @@ archive_time_span_secs = 3600;
 // Type: string
 //
 
-archive_data_url = "$(HOME)/data/nexrad/cfradial/kddc_all_sweeps";
+archive_data_url = "$(HOME)/data/nexrad/cfradial/kddc.shortprt.wtc_remove";
 
 //======================================================================
 //
@@ -448,6 +448,96 @@ fields = {
     filtered_name = "",
     units = "dB",
     color_map = "interp_ratio.colors",
+    shortcut = "8"
+  }
+  ,
+  {
+    label = "SPEC_CMD_MEAN",
+    raw_name = "SPEC_CMD_MEAN",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_CMD_FRAC",
+    raw_name = "SPEC_CMD_FRAC",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "WFARM_FLAG",
+    raw_name = "WFARM_FLAG",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd_flag2.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "WFARM_FLAG0",
+    raw_name = "WFARM_FLAG0",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd_flag3.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_DBZ",
+    raw_name = "SPEC_DBZ",
+    filtered_name = "SPEC_DBZ_F",
+    units = "dBZ",
+    color_map = "dbz.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_VEL",
+    raw_name = "SPEC_VEL",
+    filtered_name = "SPEC_VEL_F",
+    units = "m/s",
+    color_map = "vel.colors",
+    shortcut = "3"
+  }
+  ,
+  {
+    label = "SPEC_WIDTH",
+    raw_name = "SPEC_WIDTH",
+    filtered_name = "SPEC_WIDTH_F",
+    units = "m/s",
+    color_map = "width.colors",
+    shortcut = "4"
+  }
+  ,
+  {
+    label = "SPEC_ZDR",
+    raw_name = "SPEC_ZDR",
+    filtered_name = "SPEC_ZDR_F",
+    units = "dB",
+    color_map = "zdr.colors",
+    shortcut = "6"
+  }
+  ,
+  {
+    label = "SPEC_PHIDP",
+    raw_name = "SPEC_PHIDP",
+    filtered_name = "SPEC_PHIDP_F",
+    units = "deg",
+    color_map = "phidp.colors",
+    shortcut = "7"
+  }
+  ,
+  {
+    label = "SPEC_RHOHV",
+    raw_name = "SPEC_RHOHV",
+    filtered_name = "SPEC_RHOHV_F",
+    units = "unitless",
+    color_map = "rhohv.colors",
     shortcut = "8"
   }
 };
@@ -2131,5 +2221,5 @@ sim_gate_spacing_km = 0.15;
 // Type: string
 //
 
-click_point_fmq_url = "/tmp/fmq/click_point/kddc.wcl_detect";
+click_point_fmq_url = "/tmp/fmq/click_point/kddc.wtc_shortprt";
 

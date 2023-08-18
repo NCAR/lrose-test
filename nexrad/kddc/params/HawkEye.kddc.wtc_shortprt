@@ -178,7 +178,7 @@ beam_queue_size = 400;
 // Type: boolean
 //
 
-begin_in_archive_mode = FALSE;
+begin_in_archive_mode = TRUE;
 
 ///////////// archive_start_time //////////////////////
 //
@@ -190,7 +190,7 @@ begin_in_archive_mode = FALSE;
 // Type: string
 //
 
-archive_start_time = "2020 05 25 03 00 00";
+archive_start_time = "2020 05 25 03 01 17";
 
 ///////////// archive_time_span_secs //////////////////
 //
@@ -214,7 +214,7 @@ archive_time_span_secs = 3600;
 // Type: string
 //
 
-archive_data_url = "$(HOME)/data/nexrad/cfradial/kddc_all_sweeps";
+archive_data_url = "$(HOME)/data/nexrad/cfradial/kddc.shortprt.adapt";
 
 //======================================================================
 //
@@ -2131,5 +2131,5 @@ sim_gate_spacing_km = 0.15;
 // Type: string
 //
 
-click_point_fmq_url = "/tmp/fmq/click_point/kddc.wcl_detect";
+click_point_fmq_url = "/tmp/fmq/click_point/kddc.wtc_shortprt";
 
