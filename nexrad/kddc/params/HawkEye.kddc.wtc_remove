@@ -461,6 +461,15 @@ fields = {
   }
   ,
   {
+    label = "SPEC_CMD_FLAG",
+    raw_name = "SPEC_CMD_MEAN",
+    filtered_name = "",
+    units = "",
+    color_map = "spec_cmd_flag.colors",
+    shortcut = "1"
+  }
+  ,
+  {
     label = "SPEC_CMD_FRAC",
     raw_name = "SPEC_CMD_FRAC",
     filtered_name = "",

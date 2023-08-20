@@ -416,6 +416,60 @@ fields = {
   }
   ,
   {
+    label = "CPA",
+    raw_name = "CPA",
+    filtered_name = "",
+    units = "",
+    color_map = "fraction.colors",
+    shortcut = "q"
+  }
+  ,
+  {
+    label = "CFLAG",
+    raw_name = "CMD_FLAG",
+    filtered_name = "",
+    units = "",
+    color_map = "cmd_flag2.colors",
+    shortcut = "r"
+  }
+  ,
+  {
+    label = "TDBZ",
+    raw_name = "TDBZ",
+    filtered_name = "",
+    units = "dBZsq",
+    color_map = "tdbz.colors",
+    shortcut = "s"
+  }
+  ,
+  {
+    label = "SPIN",
+    raw_name = "SPIN",
+    filtered_name = "",
+    units = "%",
+    color_map = "percent.colors",
+    shortcut = "t"
+  }
+  ,
+  {
+    label = "ZDR_SDEV",
+    raw_name = "ZDR_SDEV",
+    filtered_name = "",
+    units = "dB",
+    color_map = "sdzdr.colors",
+    shortcut = "t"
+  }
+  ,
+  {
+    label = "PHIDP_SDEV",
+    raw_name = "PHIDP_SDEV",
+    filtered_name = "",
+    units = "deg",
+    color_map = "sdphidp.colors",
+    shortcut = "t"
+  }
+  ,
+  {
     label = "CMD",
     raw_name = "CMD",
     filtered_name = "",
