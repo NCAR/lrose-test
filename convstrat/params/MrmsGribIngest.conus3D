@@ -94,7 +94,7 @@ mode = FILELIST;
 // Type: string
 //
 
-input_dir = "/scr/sleet1/rsfdata/projects/eolbase/raw/mrms/MergedDbzQC";
+input_dir = "/scr/cirrus2/rsfdata/projects/nexrad-mrms/MergedDbzQC";
 
 ///////////// input_extension /////////////////////////
 //
@@ -287,7 +287,7 @@ field_rename = {
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrms3D/conus3D";
+output_url = "/scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv";
 
 ///////////// data_set_info ///////////////////////////
 //

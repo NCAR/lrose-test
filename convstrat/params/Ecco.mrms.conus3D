@@ -98,7 +98,7 @@ use_multiple_threads = TRUE;
 // Type: string
 //
 
-input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/mosaic";
+input_url = "/scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv";
 
 ///////////// dbz_field_name //////////////////////////
 //

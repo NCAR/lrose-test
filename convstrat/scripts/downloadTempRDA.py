@@ -1,32 +1,47 @@
 import rdams_client as rc
 import time
 
-dsid = 'ds633.0'
+# Function to keep checking if a request is ready. (Used below.)
+def check_ready(rqst_id, wait_interval=300): # Check every 300s=5min
+    for i in range(288): # 288 is arbitrary. Total wait time for request is 24 hours (300s*288)
+        res = rc.get_status(rqst_id)
+        request_status = res['result']['status']
+        if request_status == 'Completed':
+            return True
+        print(request_status)
+        print('Not yet available. Waiting ' + str(wait_interval) + ' seconds.' )
+        time.sleep(wait_interval)
+    return False
 
-metadata_response = rc.query(['-get_metadata', dsid])
-# List of dicts representing a variable
-_vars = metadata_response['result']['data']
+# Control dict for subsetting. Describes which data is being downloaded.
+control = { 
+    'dataset' : 'ds633.0', # Dataset ID from the RDA website
+    'date':'202011010000/to/202011302359', # Start and end date
+    'datetype':'init',
+    'param':'T/R/Z', # Variables. Temperature (T), relative humidity (R), geopotential height (Z).
+    # The levels below are named in a strange way. These are pressure levels.
+    #The first number is the RDA level ID and the second number is the pressure level in hPa.
+    #I.e., we are downloading all levels from 100 hPa to 1000 hPa.
+    'level':'2652:100;2653:125;2654:150;2655:175;2656:200;2657:225;2658:250;2659:300;2660:350;2661:400;2662:450;2663:500;2664:550;2665:600;2666:650;2667:700;2668:750;2669:775;2670:800;2671:825;2672:850;2673:875;2674:900;2675:925;2676:950;2677:975;2678:1000',
+    'oformat':'netCDF', # Output format
+    'nlat':50, # North latitude
+    'slat':24, # South latitude
+    'elon':-58, # East longitude
+    'wlon':-126, # West longitude
+    'product':'Analysis',
+    'group_index':26 # 26 is the index for the pressure level reanalysis.
+}
 
-# Just get temperature variables
-TMP_variables = list(filter(lambda v: v['param'] == 'T',_vars)) 
+# Submit a request and check if it went through without an error.
+response = rc.submit_json(control)
+assert response['status'] == 'ok'
+rqst_id = response['result']['request_id']
 
-# Let's say we're only interested in 2010
-TMP_2010_variables = list(filter(
-        lambda v: v['start_date'] < 201001010000 and v['end_date'] > 201101010000 ,TMP_variables
-        )) 
+print(response)
 
-# We only should have 1 variable
-assert len(TMP_2010_variables) == 1
-my_var = TMP_2010_variables[0]
+# Checks if a requst is ready. When it is, it will start to download the files. (Uses function from the top.)
+check_ready(rqst_id)
+rc.download(rqst_id)
 
-# Now let's look at the levels available:
-for lev in my_var['levels']:
-    print('{:6} {:10} {}'.format(lev['level'], lev['level_value'],lev['level_description']))
-
-# But let's say I only want Isobaric surfaces between 100 and 500Hpa. 
-ISBL_levels = set()
-for lev in my_var['levels']:
-    if lev['level_description'] == 'Isobaric surface' \
-            and float(lev['level_value']) >= 100 \
-            and float(lev['level_value']) <= 500:
-        ISBL_levels.add(lev['level_value'])
+# Purge request
+rc.purge_request(rqst_id)
