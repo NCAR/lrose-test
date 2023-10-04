@@ -16,7 +16,7 @@ def check_ready(rqst_id, wait_interval=300): # Check every 300s=5min
 # Control dict for subsetting. Describes which data is being downloaded.
 control = { 
     'dataset' : 'ds633.0', # Dataset ID from the RDA website
-    'date':'202102010000/to/202102282359', # Start and end date
+    'date':'202306010000/to/202306302359', # Start and end date
     'datetype':'init',
     # Variables. Geopotential height (Z), U wind (U), V wind (V), vertical wind (W)
     # divergence (D), spec hum (Q), rel hum (R), temperature (T).
@@ -26,10 +26,10 @@ control = {
     #I.e., we are downloading all levels from 100 hPa to 1000 hPa.
     'level':'2652:100;2653:125;2654:150;2655:175;2656:200;2657:225;2658:250;2659:300;2660:350;2661:400;2662:450;2663:500;2664:550;2665:600;2666:650;2667:700;2668:750;2669:775;2670:800;2671:825;2672:850;2673:875;2674:900;2675:925;2676:950;2677:975;2678:1000',
     'oformat':'netCDF', # Output format
-    'nlat':50, # North latitude
-    'slat':24, # South latitude
-    'elon':-58, # East longitude
-    'wlon':-126, # West longitude
+    'nlat':55, # North latitude
+    'slat':20, # South latitude
+    'elon':-60, # East longitude
+    'wlon':-130, # West longitude
     'product':'Analysis',
     'group_index':26 # 26 is the index for the pressure level reanalysis.
 }

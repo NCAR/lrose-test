@@ -1,13 +1,13 @@
 #! /bin/csh -f
 
 # Input directory. This is the directory where the downloaded data is.
-set IN_DIR="/scr/cirrus2/rsfdata/projects/nexrad-mrms/ERA5/tarFiles"
+set IN_DIR="/scr/cirrus2/rsfdata/projects/nexrad-mrms/ERA5/tarFiles3"
 # Output directory. The files are moved to this directory after they are untared and renamed.
 set OUT_DIR="/scr/cirrus2/rsfdata/projects/nexrad-mrms/ERA5/levelFiles"
 
 # Process one month at a time. (Not more.)
-set YEAR="2020"
-set MONTH="12"
+set YEAR="2023"
+set MONTH="05"
 
 # Go to input directory
 cd $IN_DIR
