@@ -1,1 +1,2 @@
 /scr/sleet1/rsfdata/projects/eolbase/cfradial/kddc/20200525/cfrad.20200525_053141.803_to_20200525_053827.750_KDDC_SUR.nc kddc_20200525_053141_nexrad -300 300 -300 300 -100 100 -100 100 nc kddc 9
+/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kftg/20220329/cfrad.20220329_190500.493_to_20220329_191029.825_KFTG_SUR.nc kftg_20220329_191029_nexrad_jane -300 300 -300 300 -100 100 -100 100 nc kftg 9

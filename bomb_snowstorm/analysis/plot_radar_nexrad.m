@@ -16,7 +16,7 @@ fileID = fopen('plotFiles_nexrad.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s %f');
 fclose(fileID);
 
-for aa=1:size(inAll{1,1},1)
+for aa=2:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 

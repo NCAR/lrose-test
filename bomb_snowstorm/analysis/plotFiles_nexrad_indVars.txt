@@ -1,1 +1,5 @@
 /scr/sleet1/rsfdata/projects/eolbase/cfradial/kftg/moments/20220329/cfrad.20220329_221646.829_to_20220329_222242.984_KFTG_SUR.nc kftg_20220329_221645_nexrad -300 300 -300 300 -120 60 -110 70 nc kftg 1
+/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kftg/20220329/cfrad.20220329_190500.493_to_20220329_191029.825_KFTG_SUR.nc kftg_20220329_191029_nexrad_jane -300 300 -300 300 -120 60 -110 70 nc kftg 1
+/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kddc/20200525/cfrad.20200525_051303.384_to_20200525_051904.931_KDDC_SUR.nc kddc_20200525_051303_nexrad_jane -300 300 -300 300 -100 100 -100 100 nc kddc 1
+/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kddc/20200525/cfrad.20200525_053141.803_to_20200525_053827.750_KDDC_SUR.nc kddc_20200525_053141_nexrad_jane -300 300 -300 300 -100 100 -100 100 nc kddc 1
+/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kddc/20200525/cfrad.20200525_054444.348_to_20200525_055104.933_KDDC_SUR.nc kddc_20200525_054444_nexrad_jane -300 300 -300 300 -100 100 -100 100 nc kddc 1
