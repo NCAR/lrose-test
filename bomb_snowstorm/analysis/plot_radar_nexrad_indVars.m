@@ -45,6 +45,7 @@ for aa=2:size(inAll{1,1},1)
     data.PHIDP=[];
     data.RHO=[];
     data.RHOHV=[];
+    data.PURPLE_HAZE=[];
     
     data=read_spol(infile{:},data);
 
@@ -76,6 +77,17 @@ for aa=2:size(inAll{1,1},1)
         end
     end
 
+%% Add purple haze if exists
+
+    if isfield(data,'PURPLE_HAZE')
+        inFields=fields(data);
+        for ii=1:size(inFields,1)
+            if ~(strcmp(inFields{ii},'azimuth') | strcmp(inFields{ii},'elevation') | strcmp(inFields{ii},'time') ...
+                    | strcmp(inFields{ii},'range') | strcmp(inFields{ii},'PURPLE_HAZE'))
+                data.(inFields{ii})(data.PURPLE_HAZE==1)=99999;
+            end
+        end
+    end
     %% Plot preparation
 
     ang_p = deg2rad(90-data.azimuth);
@@ -97,6 +109,7 @@ for aa=2:size(inAll{1,1},1)
     xlimits2=[inAll{1,7}(aa),inAll{1,8}(aa)];
     ylimits2=[inAll{1,9}(aa),inAll{1,10}(aa)];
 
+  
     %% Z
     close all
 
