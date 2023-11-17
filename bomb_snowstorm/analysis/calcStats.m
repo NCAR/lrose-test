@@ -11,8 +11,11 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 censorOnVEL=0;
-censorOnCMD=0;
-halfNyquist=1; % In some files the nyquist needs to be divided by 2
+censorOnCMD=1;
+%%%%%%%%%%%%%%
+censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+%%%%%%%%%%%%%%
+halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
 
 %% Loop through cases
@@ -23,7 +26,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=18:size(inAll{1,1},1)
+for aa=20:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -82,6 +85,8 @@ for aa=18:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
         data1in.azimuth=round(data1in.azimuth);
+        data1in.SNR=data1in.TRIP;
+        data1in=rmfield(data1in,'TRIP');
     end
 
     %% Read file 2
@@ -130,6 +135,8 @@ for aa=18:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
         %data2in.azimuth=round(data2in.azimuth);
+        data2in.SNR=data2in.TRIP;
+        data2in=rmfield(data2in,'TRIP');
     elseif strcmp(fileType{:},'mat')
         load(infile2{:});
         addnan=nan(size(data.REF,1),8);
@@ -242,6 +249,22 @@ for aa=18:size(inAll{1,1},1)
         end
     end
 
+    % SNR
+    if ~isempty(censorOnSNR)
+        snr=[];
+        if isfield(data1in,'SNR')
+            data1in.SNR=data1in.SNR(:,goodInds1);
+            snr=data1in.SNR(ib1,:);
+        elseif isfield(data2in,'SNR')
+            data2in.SNR=data2in.SNR(:,goodInds2);
+            snr=data2in.SNR(ib2,:);
+        end
+        if isempty(snr)
+            censorOnSNR=0;
+            disp('No SNR found.')
+        end
+    end
+
     for ii=1:size(inFields,1)
         if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
             % Censor on DBZ
@@ -258,6 +281,11 @@ for aa=18:size(inAll{1,1},1)
             if censorOnCMD & size(data1.(inFields{ii}))==size(data1.DBZ_F)
                 data1.(inFields{ii})(cmd==0)=nan;
                 data2.(inFields{ii})(cmd==0)=nan;
+            end
+            % Censor on SNR
+            if ~isempty(censorOnSNR) & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+                data1.(inFields{ii})(snr<censorOnSNR)=nan;
+                data2.(inFields{ii})(snr<censorOnSNR)=nan;
             end
             % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
@@ -415,6 +443,9 @@ for aa=18:size(inAll{1,1},1)
         end
         if censorOnCMD
             outstr=[outstr,'_CMDcensor'];
+        end
+        if ~isempty(censorOnSNR)
+            outstr=[outstr,'_SNRcensor'];
         end
 
         %outstr=[outstr,'_5-3'];
