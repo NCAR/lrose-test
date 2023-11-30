@@ -12,3 +12,5 @@
 /scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_16ptFlt32pt-NC.txt kftg_20220329_221645_regrFortran_lprt_sr_16pts_flt32pt_NC -300 300 -300 300 -120 60 -110 70 table kftg
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_REG.txt spol_20190313_220622_regrFortran_INDX_CMD_RHV_GAUSS -150 150 -150 150 -30 150 -100 120 table bs
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN.txt spol_20190313_220622_wnFortran_INDX_CMD_RHV_GAUSS -150 150 -150 150 -30 150 -100 120 table bs
+/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_REG_V2.txt spol_20190313_220622_regrFortran_INDX_CMD_RHV_GAUSS_V2 -150 150 -150 150 -20 100 -20 100 table bs
+/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN_V2.txt spol_20190313_220622_wnFortran_INDX_CMD_RHV_GAUSS_V2 -150 150 -150 150 -20 100 -20 100 table bs
