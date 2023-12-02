@@ -15,7 +15,7 @@ fileID = fopen('plotFiles_indVars.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=17:size(inAll{1,1},1)
+for aa=18:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
