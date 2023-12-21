@@ -2,6 +2,24 @@
 
 cd ~/git/lrose-test/convstrat/params
 
-MrmsGribIngest -params MrmsGribIngest.conus3D -start "2021 01 01 00 00 00"  -end "2021 02 01 00 00 00" -debug
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 02 01 00 00 00"  -end "2021 02 28 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202102.log &
 
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 03 01 00 00 00"  -end "2021 03 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202103.log &
 
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 04 01 00 00 00"  -end "2021 04 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202104.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 05 01 00 00 00"  -end "2021 05 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202105.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 06 01 00 00 00"  -end "2021 06 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202106.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 07 01 00 00 00"  -end "2021 07 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202107.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 08 01 00 00 00"  -end "2021 08 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202108.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 09 01 00 00 00"  -end "2021 09 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202109.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 10 01 00 00 00"  -end "2021 10 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202110.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 11 01 00 00 00"  -end "2021 11 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202111.log &
+
+MrmsGribIngest -params MrmsGribIngest.conus3D -debug -start "2021 12 01 00 00 00"  -end "2021 12 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/mdv/gridMRMS.202112.log &
