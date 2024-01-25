@@ -5,14 +5,10 @@ close all;
 
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
-infile1='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN_V3_1.txt';
-
-infile2='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_REG_V3.txt';
-
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024/';
 
-xlimits1=[-20,100];
-ylimits1=[-20,100];
+xlimits1=[-120,60];
+ylimits1=[-110,70];
 
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
@@ -24,13 +20,36 @@ halfNyquist=0; % In some files the nyquist needs to be divided by 2
 
 %% Read data
 
+infile1='/scr/sleet1/rsfdata/projects/eolbase/cfradial/kftg/moments/20220329/cfrad.20220329_221646.829_to_20220329_222242.984_KFTG_SUR.nc';
 
-data1in=readDataTables(infile1,' ');
+data1in=[];
+
+data1in.DBZ=[];
+data1in.VEL=[];
+data1in.WIDTH=[];
+data1in.ZDR=[];
+data1in.PHIDP=[];
+data1in.RHOHV=[];
+
+data1in=read_spol(infile1,data1in);
+nyquist=ncread(infile1,'nyquist_velocity');
+
+data1in=data1in(1);
+
+data1in.DBZ_F=data1in.DBZ;
+data1in.VEL_F=data1in.VEL;
+data1in.WIDTH_F=data1in.WIDTH;
+data1in.ZDR_F=data1in.ZDR;
+data1in.PHIDP_F=data1in.PHIDP;
+data1in.RHOHV_NNC_F=data1in.RHOHV;
+
 data1in.azimuth=round(data1in.azimuth);
 if isfield(data1in,'TRIP')
     data1in.SNR=data1in.TRIP;
     data1in=rmfield(data1in,'TRIP');
 end
+
+infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-NC-V3.txt';
 
 data2in=readDataTables(infile2,' ');
 %data2in.azimuth=round(data2in.azimuth);
@@ -39,15 +58,18 @@ if isfield(data2in,'TRIP')
     data2in=rmfield(data2in,'TRIP');
 end
 
-nyquist=26.675;
-
-
 %% Cut range
 inFields1=fields(data1in);
 inFields2=fields(data2in);
 inFields=intersect(inFields1,inFields2);
 
-minMaxRange=[min(data1in.range),max(data1in.range)];
+minMaxRangeOrig=[];
+if isempty(minMaxRangeOrig)
+    minMaxRange=max([data1in.range(1),data2in.range(1)]);
+    minMaxRange=[minMaxRange,min([data1in.range(end),data2in.range(end)])];
+else
+    minMaxRange=minMaxRangeOrig;
+end
 
 goodInds1=find(data1in.range>=minMaxRange(1)-0.001 & data1in.range<=minMaxRange(2)+0.001);
 goodInds2=find(data2in.range>=minMaxRange(1)-0.001 & data2in.range<=minMaxRange(2)+0.001);
@@ -108,10 +130,8 @@ for ii=1:size(inFields,1)
         data2.(inFields{ii})(ibAll,:)=data2in.(inFields{ii})(ib2,:);
     end
 end
-
-% CMD
 if censorOnCMD
-    cmd=zeros(size(data1.DBZ_F));
+    cmd=zeros(size(data2.DBZ_F));
     if isfield(data1in,'CMD_FLAG')
         data1in.CMD_FLAG=data1in.CMD_FLAG(:,goodInds1);
         cmd(ibAll,:)=data1in.CMD_FLAG(ib1,:);
@@ -124,7 +144,6 @@ if censorOnCMD
         disp('No CMD flag found.')
     end
 end
-
 
 for ii=1:size(inFields,1)
     if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
@@ -212,7 +231,7 @@ s3=nexttile(3);
 diffField=stdVar2-stdVar1;
 surf(XX,YY,diffField,'edgecolor','none');
 view(2);
-clim([-3,3]);
+clim([-10,10]);
 s3.Colormap=velCols;
 colorbar;
 title('(c) St. dev. Regression - st. dev. WN (dB)');
@@ -250,4 +269,4 @@ title('(d) St. dev. Regression - st. dev. WN (dB)')
 grid on
 box on
 
-print([figdir,'figure16.png'],'-dpng','-r0');
+print([figdir,'figure24.png'],'-dpng','-r0');
