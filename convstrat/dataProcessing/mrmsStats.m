@@ -22,7 +22,7 @@ lon=ncread(flist{1},'x0');
 lat=ncread(flist{1},'y0');
 %alt=ncread(flist{1},'z2');
 
-echoType2D.sl=int8(nan(length(lat),length(lon),24));
+echoType2D.sl=int8(zeros(length(lat),length(lon),24));
 echoType2D.sm=echoType2D.sl;
 echoType2D.sh=echoType2D.sl;
 echoType2D.m=echoType2D.sl;
@@ -42,7 +42,15 @@ for ii = 1:length(flist)
     time=timeBase+seconds(timeIn);
 
     mst=time+minutes(lon.*4);
+    mstHour=hour(mst);
+    mstHour=repmat(mstHour',length(lat),1);
 
-    echoType2Din=ncread(file,'EchoTypeComp');
+    echoType2Din=(ncread(file,'EchoTypeComp'))';
+
+    % Loop through hours
+    for jj=1:24
+        addMat=echoType2Din==14 & mstHour==jj;
+        echoType2D.sl(:,:,jj)=echoType2D.sl(:,:,jj)+int8(addMat);
+    end
 
 end
