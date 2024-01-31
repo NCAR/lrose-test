@@ -2,38 +2,8 @@
 
 cd ~/git/lrose-test/convstrat/params
 
-Ecco -params Ecco.mrms.conus3D -debug -start "2020 11 01 00 00 00"  -end "2020 12 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202011-12.log &
+Ecco -params Ecco.mrms.conus3D -debug -start "2023 02 01 00 00 00"  -end "2023 02 09 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202301-02.log &
 
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 01 01 00 00 00"  -end "2021 02 28 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202101-02.log &
+Ecco -params Ecco.mrms.conus3D -debug -start "2023 02 10 00 00 00"  -end "2023 02 19 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202301-02.log &
 
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 03 01 00 00 00"  -end "2021 04 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202103-04.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 05 01 00 00 00"  -end "2021 06 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202105-06.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 07 01 00 00 00"  -end "2021 08 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202107-08.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 09 01 00 00 00"  -end "2021 10 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202109-10.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2021 11 01 00 00 00"  -end "2021 12 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202111-12.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 01 01 00 00 00"  -end "2022 02 28 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202201-02.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 03 01 00 00 00"  -end "2022 04 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202203-04.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 05 01 00 00 00"  -end "2022 06 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202205-06.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 07 01 00 00 00"  -end "2022 08 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202207-08.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 09 01 00 00 00"  -end "2022 10 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202209-10.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2022 11 01 00 00 00"  -end "2022 12 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202211-12.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2023 01 01 00 00 00"  -end "2023 02 28 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202301-02.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2023 03 01 00 00 00"  -end "2023 04 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202303-04.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2023 05 01 00 00 00"  -end "2023 06 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202305-06.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2023 07 01 00 00 00"  -end "2023 08 31 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202307-08.log &
-
-Ecco -params Ecco.mrms.conus3D -debug -start "2023 09 01 00 00 00"  -end "2023 09 30 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202309.log &
+Ecco -params Ecco.mrms.conus3D -debug -start "2023 02 20 00 00 00"  -end "2023 02 28 23 59 59" >& /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus/logDir/ecco.202301-02.log &
