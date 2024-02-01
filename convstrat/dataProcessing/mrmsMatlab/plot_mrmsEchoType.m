@@ -10,7 +10,10 @@ showPlot=1;
 indir=['/scr/cirrus2/rsfdata/projects/nexrad-mrms/statMats/'];
 figdir=['/scr/cirrus2/rsfdata/projects/nexrad-mrms/figures/eccoStats/'];
 
-load([indir,'mrmsStats_20220502_to_20220507.mat']);
+infile='mrmsStats_20220501_to_20220601.mat';
+load([indir,infile]);
+
+stringDate=infile(end-23:end-4);
 
 %% Plot
 
@@ -37,7 +40,7 @@ colormap('jet');
 
 for ii=1:length(cats)
     catTot=sum(echoType2D.(cats{ii}),3);
-    countTot=sum(echoType2Dcount,3);
+    countTot=sum(countAll,3);
     catPerc=catTot./countTot*100;
     catPerc(catPerc==0)=nan;
 
@@ -68,12 +71,12 @@ for ii=1:length(cats)
 end
 
 set(gcf,'PaperPositionMode','auto')
-print(f1,[figdir,'echoTypeTot_',datestr(startTime,'yyyymmdd'),'_to_',datestr(endTime,'yyyymmdd'),'.png'],'-dpng','-r0');
+print(f1,[figdir,'echoTypeTot_',stringDate,'.png'],'-dpng','-r0');
 
 %% Per hour 0 to 12
 for ii=1:length(cats)
     catMat=echoType2D.(cats{ii});
-    catPercAll=double(catMat)./double(echoType2Dcount)*100;
+    catPercAll=double(catMat)./double(countAll)*100;
     catPercAll(catPercAll==0)=nan;
 
     close all
@@ -115,13 +118,13 @@ for ii=1:length(cats)
     end
 
     set(gcf,'PaperPositionMode','auto')
-    print(f1,[figdir,'echoType_',cats{ii},'_00-12ST_',datestr(startTime,'yyyymmdd'),'_to_',datestr(endTime,'yyyymmdd'),'.png'],'-dpng','-r0');
+    print(f1,[figdir,'echoType_',cats{ii},'_00-12ST_',stringDate,'.png'],'-dpng','-r0');
 
 end
 % Per hour 12 to 00
 for ii=1:length(cats)
     catMat=echoType2D.(cats{ii});
-    catPercAll=double(catMat)./double(echoType2Dcount)*100;
+    catPercAll=double(catMat)./double(countAll)*100;
     catPercAll(catPercAll==0)=nan;
 
     close all
@@ -163,6 +166,6 @@ for ii=1:length(cats)
     end
 
     set(gcf,'PaperPositionMode','auto')
-    print(f1,[figdir,'echoType_',cats{ii},'_12-00ST_',datestr(startTime,'yyyymmdd'),'_to_',datestr(endTime,'yyyymmdd'),'.png'],'-dpng','-r0');
+    print(f1,[figdir,'echoType_',cats{ii},'_12-00ST_',stringDate,'.png'],'-dpng','-r0');
 
 end
