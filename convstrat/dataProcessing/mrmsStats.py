@@ -71,17 +71,52 @@ def main():
     
     # Read data
     
-    timeBase=datetime(1970,1,1)
+    timeBase=datetime.datetime(1970,1,1)
     
     readThis=nc.Dataset(fileList[0],'r')
-    lon=readThis.variables('x0');
-    lat=readThis.variables('y0');
-        
+    lon=readThis.variables['x0'][:]
+    lat=readThis.variables['y0'][:]
+    
+    initArray=np.zeros((len(lat),len(lon),24))
+    echoType2D=dict(StratLow=initArray, StratMid=initArray, StratHigh=initArray, Mixed=initArray,
+                    ConvElev=initArray, ConvShallow=initArray, ConvMid=initArray, ConvDeep=initArray)
+    
+    countAll=np.full((len(lat),len(lon)),0)
+            
     for readFile in fileList:
+        print(readFile)
         readThis=nc.Dataset(readFile,'r')
         
-        lon=readThis.variables('x0');
-        lat=readThis.variables('y0');
+        readThis=nc.Dataset(readFile,'r')
+        timeIn=readThis.variables['time'][:]
+        time=timeBase+datetime.timedelta(seconds=timeIn[0])
+        
+        # Mean solar time
+        mst=np.empty(len(lon), dtype='datetime64[s]')
+        mstHours=np.empty([1,len(lon)]).astype('float64')
+        for ii in range(0,len(lon)):
+            mst[ii]=time+datetime.timedelta(minutes=lon[ii]*4)
+            mstHours[0,ii]=mst[ii].astype(object).hour
+            
+        mstHours2D=np.repeat(mstHours,len(lat),0)
+        
+        echoType2Din=np.squeeze(readThis.variables['EchoTypeComp'][:])
+        echoType2Din=echoType2Din.filled(fill_value=np.nan)
+        
+        for ii in range(0,23):
+            echoType2D['StratLow'][:,:,ii][(echoType2Din==14) & (mstHours2D==ii)]=echoType2D['StratLow'][:,:,ii][(echoType2Din==14) & (mstHours2D==ii)]+1
+            echoType2D['StratMid'][:,:,ii][(echoType2Din==16) & (mstHours2D==ii)]=echoType2D['StratMid'][:,:,ii][(echoType2Din==16) & (mstHours2D==ii)]+1
+            echoType2D['StratHigh'][:,:,ii][(echoType2Din==18) & (mstHours2D==ii)]=echoType2D['StratHigh'][:,:,ii][(echoType2Din==18) & (mstHours2D==ii)]+1
+            echoType2D['Mixed'][:,:,ii][(echoType2Din==25) & (mstHours2D==ii)]=echoType2D['Mixed'][:,:,ii][(echoType2Din==25) & (mstHours2D==ii)]+1
+            echoType2D['ConvElev'][:,:,ii][(echoType2Din==32) & (mstHours2D==ii)]=echoType2D['ConvElev'][:,:,ii][(echoType2Din==32) & (mstHours2D==ii)]+1
+            echoType2D['ConvShallow'][:,:,ii][(echoType2Din==34) & (mstHours2D==ii)]=echoType2D['ConvShallow'][:,:,ii][(echoType2Din==34) & (mstHours2D==ii)]+1
+            echoType2D['ConvMid'][:,:,ii][(echoType2Din==36) & (mstHours2D==ii)]=echoType2D['ConvMid'][:,:,ii][(echoType2Din==36) & (mstHours2D==ii)]+1
+            echoType2D['ConvDeep'][:,:,ii][(echoType2Din==38) & (mstHours2D==ii)]=echoType2D['ConvDeep'][:,:,ii][(echoType2Din==38) & (mstHours2D==ii)]+1
+            
+            countAll[(mstHours2D==ii)]=countAll[(mstHours2D==ii)]+1;
+    pause=1
+                
+        
                     
     # Calculate test pulse ratios
     monShort['TestPulseRatioVcHc2']=(monShort['TestPulsePowerDbVc']-monShort['TestPulsePowerDbHc'])*2

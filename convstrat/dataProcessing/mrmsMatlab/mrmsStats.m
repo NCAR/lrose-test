@@ -70,8 +70,8 @@ for ii = 1:length(flist)
         echoType2D.ConvDeep(:,:,jj)=echoType2D.ConvDeep(:,:,jj)+int8(addMat);
 
         % Convective stratiform echo type count
-        addMat=mstHour==jj;
-        countAll(:,:,jj)=countAll(:,:,jj)+int8(addMat);
+        addMat=mstHour==jj-1;
+        countAll=countAll+int8(addMat);
     end
 end
 
