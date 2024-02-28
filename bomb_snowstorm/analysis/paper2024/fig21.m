@@ -26,7 +26,7 @@ dataWN=read_spol(infileWN,dataWN);
 
 dataWN=dataWN(1);
 
-infileR='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-NC-V3.txt';
+infileR='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-V4.txt';
 dataR=readDataTables(infileR,' ');
 
 %% Plot preparation

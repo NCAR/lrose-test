@@ -14,7 +14,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnCMD=1;
 %%%%%%%%%%%%%%
-censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=4; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 
@@ -49,7 +49,7 @@ if isfield(data1in,'TRIP')
     data1in=rmfield(data1in,'TRIP');
 end
 
-infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-NC-V3.txt';
+infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-V4.txt';
 
 data2in=readDataTables(infile2,' ');
 %data2in.azimuth=round(data2in.azimuth);
@@ -230,16 +230,16 @@ t = tiledlayout(3,1,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-spacing=0.025;
-edges=-0.4:spacing:0.4;
+spacing=0.1;
+edges=-1.5:spacing:1.5;
 hc=histcounts(diffField.ZDR_F(:),edges);
 bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
-xlim([-0.4,0.4]);
+xlim([-1.5,1.5]);
 
 xlabel('St. dev. Reg. - st. dev. Level2 (dB)');
 ylabel('Percent of data points (%)');
 
-xticks(-2:0.1:2);
+xticks(-2:0.5:2);
 xtickangle(0);
 
 ylims=s1.YLim;
@@ -254,17 +254,18 @@ box on
 
 s2=nexttile(2);
 hold on
-spacing=0.2;
-edges=-3:spacing:3;
+spacing=0.6;
+edges=-9:spacing:9;
 hc=histcounts(diffField.PHIDP_F(:),edges);
 bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
-xlim([-3,3]);
+xlim([-9,9]);
 
 xlabel(['St. dev. Reg. - st. dev. Level2 (',char(176),')']);
 ylabel('Percent of data points (%)');
 
-xticks(-3:3);
+xticks(-10:2:10);
 xtickangle(0);
+ylim([0,12]);
 
 ylims=s2.YLim;
 plot([0,0],ylims+[0,1],'-r','LineWidth',2);
@@ -277,16 +278,16 @@ box on
 
 s3=nexttile(3);
 hold on
-spacing=0.001;
-edges=-0.015:spacing:0.015;
+spacing=0.004;
+edges=-0.06:spacing:0.06;
 hc=histcounts(diffField.RHOHV_NNC_F(:),edges);
 bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
-xlim([-0.015,0.015]);
+xlim([-0.06,0.06]);
 
 xlabel('St. dev. Reg. - st. dev. Level2');
 ylabel('Percent of data points (%)');
 
-xticks(-1:0.005:1);
+xticks(-1:0.02:1);
 xtickangle(0);
 
 ylims=s3.YLim;

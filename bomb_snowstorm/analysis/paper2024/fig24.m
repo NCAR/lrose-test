@@ -14,7 +14,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnCMD=1;
 %%%%%%%%%%%%%%
-censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=4; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 
@@ -49,7 +49,7 @@ if isfield(data1in,'TRIP')
     data1in=rmfield(data1in,'TRIP');
 end
 
-infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-NC-V3.txt';
+infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-V4.txt';
 
 data2in=readDataTables(infile2,' ');
 %data2in.azimuth=round(data2in.azimuth);
