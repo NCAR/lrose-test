@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for Dsr2Radx
+ * TDRP PARAMS FOR DSR2RADX
  **********************************************************************/
 
 //======================================================================
@@ -8,50 +8,50 @@
 //
 //======================================================================
  
-///////////// debug ///////////////////////////////////
+///////////// DEBUG ///////////////////////////////////
 //
-// Debug option.
+// DEBUG OPTION.
 //
-// If set, debug messages will be printed appropriately.
+// IF SET, DEBUG MESSAGES WILL BE PRINTED APPROPRIATELY.
 //
 //
-// Type: enum
-// Options:
+// TYPE: ENUM
+// OPTIONS:
 //     DEBUG_OFF
 //     DEBUG_NORM
 //     DEBUG_VERBOSE
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_OFF;
+DEBUG = DEBUG_OFF;
 
-///////////// instance ////////////////////////////////
+///////////// INSTANCE ////////////////////////////////
 //
-// Process instance.
+// PROCESS INSTANCE.
 //
-// Used for registration with procmap.
-//
-//
-// Type: string
-//
-
-instance = "fop1.longprt.adapt";
-
-///////////// procmap_register_interval ///////////////
-//
-// Interval at which regsitration occurs with procmap (secs).
-//
-// The auto_restart script expects registration at this interval. If 
-//   registration does not occur in twice this time, the process is killed 
-//   and restarted. Therefore, if writing the output files takes longer 
-//   than 60 seconds because the files are large and compressed, then 
-//   increase this interval, to say 120 secs.
+// USED FOR REGISTRATION WITH PROCMAP.
 //
 //
-// Type: int
+// TYPE: STRING
 //
 
-procmap_register_interval = 60;
+INSTANCE = "FOP1.LONGPRT.ADAPT";
+
+///////////// PROCMAP_REGISTER_INTERVAL ///////////////
+//
+// INTERVAL AT WHICH REGSITRATION OCCURS WITH PROCMAP (SECS).
+//
+// THE AUTO_RESTART SCRIPT EXPECTS REGISTRATION AT THIS INTERVAL. IF 
+//   REGISTRATION DOES NOT OCCUR IN TWICE THIS TIME, THE PROCESS IS KILLED 
+//   AND RESTARTED. THEREFORE, IF WRITING THE OUTPUT FILES TAKES LONGER 
+//   THAN 60 SECONDS BECAUSE THE FILES ARE LARGE AND COMPRESSED, THEN 
+//   INCREASE THIS INTERVAL, TO SAY 120 SECS.
+//
+//
+// TYPE: INT
+//
+
+PROCMAP_REGISTER_INTERVAL = 60;
 
 //======================================================================
 //
@@ -59,48 +59,48 @@ procmap_register_interval = 60;
 //
 //======================================================================
  
-///////////// input_fmq_url ///////////////////////////
+///////////// INPUT_FMQ_URL ///////////////////////////
 //
-// Input URL for DsRadar data via FMQ.
+// INPUT URL FOR DSRADAR DATA VIA FMQ.
 //
 //
-// Type: string
+// TYPE: STRING
 //
 
-input_fmq_url = "/tmp/fmq/fop1/shmem_44200";
+INPUT_FMQ_URL = "/TMP/FMQ/FOP1/SHMEM_44200";
 
-///////////// seek_to_end_of_input ////////////////////
+///////////// SEEK_TO_END_OF_INPUT ////////////////////
 //
-// Option to seek to the end of the input FMQ.
+// OPTION TO SEEK TO THE END OF THE INPUT FMQ.
 //
-// If TRUE, the program will seek to the end of the fmq and only read in 
-//   new data. If FALSE, it will start reading from the beginning of the 
+// IF TRUE, THE PROGRAM WILL SEEK TO THE END OF THE FMQ AND ONLY READ IN 
+//   NEW DATA. IF FALSE, IT WILL START READING FROM THE BEGINNING OF THE 
 //   FMQ.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-seek_to_end_of_input = TRUE;
+SEEK_TO_END_OF_INPUT = TRUE;
 
-///////////// use_input_scan_mode /////////////////////
+///////////// USE_INPUT_SCAN_MODE /////////////////////
 //
-// Option to use the scan_mode in the input data.
+// OPTION TO USE THE SCAN_MODE IN THE INPUT DATA.
 //
-// The scan_mode indicates whether the scan is of type SURVEILLANCE/PPI 
-//   RHI. The scan_mode is optionally included in the ray data. If 
-//   available, it makes sense to use the scan mode to determine whether 
-//   to save the data as a SURVEILLANCE/PPI or RHI. Dsr2Radx treats 
-//   SURVEILLANCE and PPI data in the same manner. However, RHIs are saved 
-//   in a different way. If the input scan_mode is NOT used, Dsr2Radx uses 
-//   the antenna angle changes to determine whether the scan is in PPI or 
-//   RHI mode.
+// THE SCAN_MODE INDICATES WHETHER THE SCAN IS OF TYPE SURVEILLANCE/PPI 
+//   RHI. THE SCAN_MODE IS OPTIONALLY INCLUDED IN THE RAY DATA. IF 
+//   AVAILABLE, IT MAKES SENSE TO USE THE SCAN MODE TO DETERMINE WHETHER 
+//   TO SAVE THE DATA AS A SURVEILLANCE/PPI OR RHI. DSR2RADX TREATS 
+//   SURVEILLANCE AND PPI DATA IN THE SAME MANNER. HOWEVER, RHIS ARE SAVED 
+//   IN A DIFFERENT WAY. IF THE INPUT SCAN_MODE IS NOT USED, DSR2RADX USES 
+//   THE ANTENNA ANGLE CHANGES TO DETERMINE WHETHER THE SCAN IS IN PPI OR 
+//   RHI MODE.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-use_input_scan_mode = TRUE;
+USE_INPUT_SCAN_MODE = TRUE;
 
 //======================================================================
 //
@@ -108,205 +108,205 @@ use_input_scan_mode = TRUE;
 //
 //======================================================================
  
-///////////// site_name ///////////////////////////////
+///////////// SITE_NAME ///////////////////////////////
 //
-// Name of radar site.
+// NAME OF RADAR SITE.
 //
-// Stored in netCDF file.
-//
-//
-// Type: string
-//
-
-site_name = "FOP1";
-
-///////////// override_radar_name /////////////////////
-//
-// Option to override radar name.
-//
-// If TRUE, we will use the parameter 'radar_name' instead of the name 
-//   in the data stream.
+// STORED IN NETCDF FILE.
 //
 //
-// Type: boolean
+// TYPE: STRING
 //
 
-override_radar_name = TRUE;
+SITE_NAME = "FOP1";
 
-///////////// radar_name //////////////////////////////
+///////////// OVERRIDE_RADAR_NAME /////////////////////
 //
-// Name of radar site - if overridden.
+// OPTION TO OVERRIDE RADAR NAME.
 //
-//
-// Type: string
-//
-
-radar_name = "FOP1";
-
-///////////// override_radar_location /////////////////
-//
-// Option to override radar location.
-//
-// If TRUE, the program will use location specified in the 
-//   'radar_location' parameter.
+// IF TRUE, WE WILL USE THE PARAMETER 'RADAR_NAME' INSTEAD OF THE NAME 
+//   IN THE DATA STREAM.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-override_radar_location = FALSE;
+OVERRIDE_RADAR_NAME = TRUE;
 
-///////////// radar_location //////////////////////////
+///////////// RADAR_NAME //////////////////////////////
 //
-// Radar location if override is set true.
-//
-// The radar_location is only used if 'override_radar_location' is set 
-//   true. Otherwise the information in the input data stream is used. 
-//   Note that the altitude is in meters MSL.
+// NAME OF RADAR SITE - IF OVERRIDDEN.
 //
 //
-// Type: struct
-//   typedef struct {
-//      double latitudeDeg;
-//      double longitudeDeg;
-//      double altitudeKm;
+// TYPE: STRING
+//
+
+RADAR_NAME = "FOP1";
+
+///////////// OVERRIDE_RADAR_LOCATION /////////////////
+//
+// OPTION TO OVERRIDE RADAR LOCATION.
+//
+// IF TRUE, THE PROGRAM WILL USE LOCATION SPECIFIED IN THE 
+//   'RADAR_LOCATION' PARAMETER.
+//
+//
+// TYPE: BOOLEAN
+//
+
+OVERRIDE_RADAR_LOCATION = FALSE;
+
+///////////// RADAR_LOCATION //////////////////////////
+//
+// RADAR LOCATION IF OVERRIDE IS SET TRUE.
+//
+// THE RADAR_LOCATION IS ONLY USED IF 'OVERRIDE_RADAR_LOCATION' IS SET 
+//   TRUE. OTHERWISE THE INFORMATION IN THE INPUT DATA STREAM IS USED. 
+//   NOTE THAT THE ALTITUDE IS IN METERS MSL.
+//
+//
+// TYPE: STRUCT
+//   TYPEDEF STRUCT {
+//      DOUBLE LATITUDEDEG;
+//      DOUBLE LONGITUDEDEG;
+//      DOUBLE ALTITUDEKM;
 //   }
 //
 //
 
-radar_location = {
-    latitudeDeg = 35.238333,
-    longitudeDeg = -97.460000,
-    altitudeKm = 0.407
+RADAR_LOCATION = {
+    LATITUDEDEG = 35.238333,
+    LONGITUDEDEG = -97.460000,
+    ALTITUDEKM = 0.407
 };
 
-///////////// apply_azimuth_offset ////////////////////
+///////////// APPLY_AZIMUTH_OFFSET ////////////////////
 //
-// Option to apply an offset to the azimuth values.
+// OPTION TO APPLY AN OFFSET TO THE AZIMUTH VALUES.
 //
-// If TRUE, this offset will be ADDED to the measured azimuth angles. 
-//   This is useful, for example, in the case of a mobile platform which 
-//   is not set up oriented to true north. Suppose you have a truck (like 
-//   the DOWs) which is oriented off true north. Then if you add in the 
-//   truck HEADING relative to true north, the measured azimuth angles 
-//   will be adjusted by the heading, to give azimuth relative to TRUE 
-//   north. The offset is applied as the rays are read in - i.e. all other 
-//   operations use the updated azimuths.
-//
-//
-// Type: boolean
-//
-
-apply_azimuth_offset = FALSE;
-
-///////////// azimuth_offset //////////////////////////
-//
-// Azimuth offset (degrees).
-//
-// See 'apply_azimuth_offset'. This value will be ADDED to the measured 
-//   azimuths.
+// IF TRUE, THIS OFFSET WILL BE ADDED TO THE MEASURED AZIMUTH ANGLES. 
+//   THIS IS USEFUL, FOR EXAMPLE, IN THE CASE OF A MOBILE PLATFORM WHICH 
+//   IS NOT SET UP ORIENTED TO TRUE NORTH. SUPPOSE YOU HAVE A TRUCK (LIKE 
+//   THE DOWS) WHICH IS ORIENTED OFF TRUE NORTH. THEN IF YOU ADD IN THE 
+//   TRUCK HEADING RELATIVE TO TRUE NORTH, THE MEASURED AZIMUTH ANGLES 
+//   WILL BE ADJUSTED BY THE HEADING, TO GIVE AZIMUTH RELATIVE TO TRUE 
+//   NORTH. THE OFFSET IS APPLIED AS THE RAYS ARE READ IN - I.E. ALL OTHER 
+//   OPERATIONS USE THE UPDATED AZIMUTHS.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-azimuth_offset = 0;
+APPLY_AZIMUTH_OFFSET = FALSE;
 
-///////////// apply_elevation_offset //////////////////
+///////////// AZIMUTH_OFFSET //////////////////////////
 //
-// Option to apply an offset to the elevation values.
+// AZIMUTH OFFSET (DEGREES).
 //
-// If TRUE, this offset will be ADDED to the measured elevation angles. 
-//   This is useful to correct for a systematic bias in measured elevation 
-//   angles. The offset is applied as the rays are read in - i.e. all 
-//   other operations use the updated elevations.
+// SEE 'APPLY_AZIMUTH_OFFSET'. THIS VALUE WILL BE ADDED TO THE MEASURED 
+//   AZIMUTHS.
 //
 //
-// Type: boolean
+// TYPE: DOUBLE
 //
 
-apply_elevation_offset = FALSE;
+AZIMUTH_OFFSET = 0;
 
-///////////// elevation_offset ////////////////////////
+///////////// APPLY_ELEVATION_OFFSET //////////////////
 //
-// Elevation offset (degrees).
+// OPTION TO APPLY AN OFFSET TO THE ELEVATION VALUES.
 //
-// See 'apply_elevation_offset'. This value will be ADDED to the 
-//   measured elevations.
+// IF TRUE, THIS OFFSET WILL BE ADDED TO THE MEASURED ELEVATION ANGLES. 
+//   THIS IS USEFUL TO CORRECT FOR A SYSTEMATIC BIAS IN MEASURED ELEVATION 
+//   ANGLES. THE OFFSET IS APPLIED AS THE RAYS ARE READ IN - I.E. ALL 
+//   OTHER OPERATIONS USE THE UPDATED ELEVATIONS.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-elevation_offset = 0;
+APPLY_ELEVATION_OFFSET = FALSE;
+
+///////////// ELEVATION_OFFSET ////////////////////////
+//
+// ELEVATION OFFSET (DEGREES).
+//
+// SEE 'APPLY_ELEVATION_OFFSET'. THIS VALUE WILL BE ADDED TO THE 
+//   MEASURED ELEVATIONS.
+//
+//
+// TYPE: DOUBLE
+//
+
+ELEVATION_OFFSET = 0;
 
 //======================================================================
 //
 // OPTION TO OVERRIDE INSTRUMENT TYPE, PLATFORM TYPE AND PRIMARY AXIS.
 //
-// This applies to read operations.
+// THIS APPLIES TO READ OPERATIONS.
 //
 //======================================================================
  
-///////////// override_instrument_type ////////////////
+///////////// OVERRIDE_INSTRUMENT_TYPE ////////////////
 //
-// Option to override instrument type on read.
+// OPTION TO OVERRIDE INSTRUMENT TYPE ON READ.
 //
-// If true, the file will be read in, the instrument type will be 
-//   changed, and then any post-read processing will be performed.
+// IF TRUE, THE FILE WILL BE READ IN, THE INSTRUMENT TYPE WILL BE 
+//   CHANGED, AND THEN ANY POST-READ PROCESSING WILL BE PERFORMED.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-override_instrument_type = FALSE;
+OVERRIDE_INSTRUMENT_TYPE = FALSE;
 
-///////////// instrument_type /////////////////////////
+///////////// INSTRUMENT_TYPE /////////////////////////
 //
-// Specify the instrument type. See override_instrument_type.
+// SPECIFY THE INSTRUMENT TYPE. SEE OVERRIDE_INSTRUMENT_TYPE.
 //
 //
-// Type: enum
-// Options:
+// TYPE: ENUM
+// OPTIONS:
 //     INSTRUMENT_RADAR
 //     INSTRUMENT_LIDAR
 //
 
-instrument_type = INSTRUMENT_RADAR;
+INSTRUMENT_TYPE = INSTRUMENT_RADAR;
 
-///////////// override_platform_type //////////////////
+///////////// OVERRIDE_PLATFORM_TYPE //////////////////
 //
-// Option to override platform type on read. If true, the file will be 
-//   read in, the platform type will be changed, and then any post-read 
-//   processing will be performed.
+// OPTION TO OVERRIDE PLATFORM TYPE ON READ. IF TRUE, THE FILE WILL BE 
+//   READ IN, THE PLATFORM TYPE WILL BE CHANGED, AND THEN ANY POST-READ 
+//   PROCESSING WILL BE PERFORMED.
 //
-// 	PLATFORM_FIXED  - radar is in a fixed location
-// 	PLATFORM_VEHICLE -  radar is mounted on a land vehicle
-// 	PLATFORM_SHIP - radar is mounted on a ship
-// 	PLATFORM_AIRCRAFT_FORE - forward-looking on aircraft
-// 	PLATFORM_AIRCRAFT_AFT - backward-looking on aircraft
-// 	PLATFORM_AIRCRAFT_TAIL - tail - e.g. ELDORA
-// 	PLATFORM_AIRCRAFT_BELLY -  belly radar on aircraft
-// 	PLATFORM_AIRCRAFT_ROOF - roof radar on aircraft
-// 	PLATFORM_AIRCRAFT_NOSE - radar in nose radome on aircraft
-// 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
-// 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
+// 	PLATFORM_FIXED  - RADAR IS IN A FIXED LOCATION
+// 	PLATFORM_VEHICLE -  RADAR IS MOUNTED ON A LAND VEHICLE
+// 	PLATFORM_SHIP - RADAR IS MOUNTED ON A SHIP
+// 	PLATFORM_AIRCRAFT_FORE - FORWARD-LOOKING ON AIRCRAFT
+// 	PLATFORM_AIRCRAFT_AFT - BACKWARD-LOOKING ON AIRCRAFT
+// 	PLATFORM_AIRCRAFT_TAIL - TAIL - E.G. ELDORA
+// 	PLATFORM_AIRCRAFT_BELLY -  BELLY RADAR ON AIRCRAFT
+// 	PLATFORM_AIRCRAFT_ROOF - ROOF RADAR ON AIRCRAFT
+// 	PLATFORM_AIRCRAFT_NOSE - RADAR IN NOSE RADOME ON AIRCRAFT
+// 	PLATFORM_SATELLITE_ORBIT - ORBITING SATELLITE
+// 	PLATFORM_SATELLITE_GEOSTAT - GEOSTATIONARY SATELLITE.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-override_platform_type = FALSE;
+OVERRIDE_PLATFORM_TYPE = FALSE;
 
-///////////// platform_type ///////////////////////////
+///////////// PLATFORM_TYPE ///////////////////////////
 //
-// Platform type.
+// PLATFORM TYPE.
 //
-// See override_platform_type.
+// SEE OVERRIDE_PLATFORM_TYPE.
 //
 //
-// Type: enum
-// Options:
+// TYPE: ENUM
+// OPTIONS:
 //     PLATFORM_FIXED
 //     PLATFORM_VEHICLE
 //     PLATFORM_SHIP
@@ -320,36 +320,36 @@ override_platform_type = FALSE;
 //     PLATFORM_SATELLITE_GEOSTAT
 //
 
-platform_type = PLATFORM_FIXED;
+PLATFORM_TYPE = PLATFORM_FIXED;
 
-///////////// override_primary_axis ///////////////////
+///////////// OVERRIDE_PRIMARY_AXIS ///////////////////
 //
-// Option to override primary axis on read. If true, the file will be 
-//   read in, the primary axis will be changed, and then any post-read 
-//   processing will be performed.
+// OPTION TO OVERRIDE PRIMARY AXIS ON READ. IF TRUE, THE FILE WILL BE 
+//   READ IN, THE PRIMARY AXIS WILL BE CHANGED, AND THEN ANY POST-READ 
+//   PROCESSING WILL BE PERFORMED.
 //
-// 	PRIMARY_AXIS_Z - vertical
-// 	PRIMARY_AXIS_Y - longitudinal axis of platform
-// 	PRIMARY_AXIS_X - lateral axis of platform
-// 	PRIMARY_AXIS_Z_PRIME - inverted vertical
-// 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
-// 	PRIMARY_AXIS_X_PRIME - translated lateral.
+// 	PRIMARY_AXIS_Z - VERTICAL
+// 	PRIMARY_AXIS_Y - LONGITUDINAL AXIS OF PLATFORM
+// 	PRIMARY_AXIS_X - LATERAL AXIS OF PLATFORM
+// 	PRIMARY_AXIS_Z_PRIME - INVERTED VERTICAL
+// 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD TAIL
+// 	PRIMARY_AXIS_X_PRIME - TRANSLATED LATERAL.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-override_primary_axis = FALSE;
+OVERRIDE_PRIMARY_AXIS = FALSE;
 
-///////////// primary_axis ////////////////////////////
+///////////// PRIMARY_AXIS ////////////////////////////
 //
-// Platform type.
+// PLATFORM TYPE.
 //
-// See override_primary_axis.
+// SEE OVERRIDE_PRIMARY_AXIS.
 //
 //
-// Type: enum
-// Options:
+// TYPE: ENUM
+// OPTIONS:
 //     PRIMARY_AXIS_Z
 //     PRIMARY_AXIS_Y
 //     PRIMARY_AXIS_X
@@ -358,115 +358,115 @@ override_primary_axis = FALSE;
 //     PRIMARY_AXIS_X_PRIME
 //
 
-primary_axis = PRIMARY_AXIS_Z;
+PRIMARY_AXIS = PRIMARY_AXIS_Z;
 
-///////////// apply_georeference_corrections //////////
+///////////// APPLY_GEOREFERENCE_CORRECTIONS //////////
 //
-// Option to apply the georeference info for moving platforms.
+// OPTION TO APPLY THE GEOREFERENCE INFO FOR MOVING PLATFORMS.
 //
-// For moving platforms, measured georeference information is sometimes 
-//   available. If this is set to true, the georeference data is applied 
-//   and appropriate corrections made. If possible, Earth-centric azimuth 
-//   and elevation angles will be computed.
+// FOR MOVING PLATFORMS, MEASURED GEOREFERENCE INFORMATION IS SOMETIMES 
+//   AVAILABLE. IF THIS IS SET TO TRUE, THE GEOREFERENCE DATA IS APPLIED 
+//   AND APPROPRIATE CORRECTIONS MADE. IF POSSIBLE, EARTH-CENTRIC AZIMUTH 
+//   AND ELEVATION ANGLES WILL BE COMPUTED.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-apply_georeference_corrections = FALSE;
+APPLY_GEOREFERENCE_CORRECTIONS = FALSE;
 
 //======================================================================
 //
 // CENSORING OUTPUT FIELDS.
 //
-// You have the option of censoring the output data fields - i.e. 
-//   setting the fields to missing values - at gates which meet certain 
-//   criteria. If this is done correctly, it allows you to preserve the 
-//   valid data and discard the noise, thereby improving compression. This 
-//   leads to smaller data files.
+// YOU HAVE THE OPTION OF CENSORING THE OUTPUT DATA FIELDS - I.E. 
+//   SETTING THE FIELDS TO MISSING VALUES - AT GATES WHICH MEET CERTAIN 
+//   CRITERIA. IF THIS IS DONE CORRECTLY, IT ALLOWS YOU TO PRESERVE THE 
+//   VALID DATA AND DISCARD THE NOISE, THEREBY IMPROVING COMPRESSION. THIS 
+//   LEADS TO SMALLER DATA FILES.
 //
 //======================================================================
  
-///////////// apply_censoring /////////////////////////
+///////////// APPLY_CENSORING /////////////////////////
 //
-// Apply censoring based on field values and thresholds.
+// APPLY CENSORING BASED ON FIELD VALUES AND THRESHOLDS.
 //
-// If TRUE, censoring will be performed. See 'censoring_fields' for 
-//   details on how the censoring is applied.
+// IF TRUE, CENSORING WILL BE PERFORMED. SEE 'CENSORING_FIELDS' FOR 
+//   DETAILS ON HOW THE CENSORING IS APPLIED.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-apply_censoring = FALSE;
+APPLY_CENSORING = FALSE;
 
-///////////// censoring_fields ////////////////////////
+///////////// CENSORING_FIELDS ////////////////////////
 //
-// Fields to be used for censoring.
+// FIELDS TO BE USED FOR CENSORING.
 //
-// Specify the fields to be used to determine whether a gate should be 
-//   censored. The name refers to the input data fields. Valid field 
-//   values lie in the range from min_valid_value to max_valid_value 
-//   inclusive. If the value of a field at a gate lies within this range, 
-//   it is considered valid. Each specified field is examined at each 
-//   gate, and is flagged as valid if its value lies in the valid range. 
-//   These field flags are then combined as follows: first, all of the 
-//   LOGICAL_OR flags are combined, yielding a single combined_or flag 
-//   which is true if any of the LOGICAL_OR fields is true. The 
-//   combined_or flag is then combined with all of the LOGICAL_AND fields, 
-//   yielding a true value only if the combined_or flag and the 
-//   LOGICAL_AND fields are all true. If this final flag is true, then the 
-//   data at the gate is regarded as valid and is retained. If the final 
-//   flag is false, the data at the gate is censored, and all of the 
-//   fields at the gate are set to missing.
+// SPECIFY THE FIELDS TO BE USED TO DETERMINE WHETHER A GATE SHOULD BE 
+//   CENSORED. THE NAME REFERS TO THE INPUT DATA FIELDS. VALID FIELD 
+//   VALUES LIE IN THE RANGE FROM MIN_VALID_VALUE TO MAX_VALID_VALUE 
+//   INCLUSIVE. IF THE VALUE OF A FIELD AT A GATE LIES WITHIN THIS RANGE, 
+//   IT IS CONSIDERED VALID. EACH SPECIFIED FIELD IS EXAMINED AT EACH 
+//   GATE, AND IS FLAGGED AS VALID IF ITS VALUE LIES IN THE VALID RANGE. 
+//   THESE FIELD FLAGS ARE THEN COMBINED AS FOLLOWS: FIRST, ALL OF THE 
+//   LOGICAL_OR FLAGS ARE COMBINED, YIELDING A SINGLE COMBINED_OR FLAG 
+//   WHICH IS TRUE IF ANY OF THE LOGICAL_OR FIELDS IS TRUE. THE 
+//   COMBINED_OR FLAG IS THEN COMBINED WITH ALL OF THE LOGICAL_AND FIELDS, 
+//   YIELDING A TRUE VALUE ONLY IF THE COMBINED_OR FLAG AND THE 
+//   LOGICAL_AND FIELDS ARE ALL TRUE. IF THIS FINAL FLAG IS TRUE, THEN THE 
+//   DATA AT THE GATE IS REGARDED AS VALID AND IS RETAINED. IF THE FINAL 
+//   FLAG IS FALSE, THE DATA AT THE GATE IS CENSORED, AND ALL OF THE 
+//   FIELDS AT THE GATE ARE SET TO MISSING.
 //
 //
-// Type: struct
-//   typedef struct {
-//      string name;
-//      double min_valid_value;
-//      double max_valid_value;
-//      logical_t combination_method;
-//        Options:
+// TYPE: STRUCT
+//   TYPEDEF STRUCT {
+//      STRING NAME;
+//      DOUBLE MIN_VALID_VALUE;
+//      DOUBLE MAX_VALID_VALUE;
+//      LOGICAL_T COMBINATION_METHOD;
+//        OPTIONS:
 //          LOGICAL_AND
 //          LOGICAL_OR
 //   }
 //
-// 1D array - variable length.
+// 1D ARRAY - VARIABLE LENGTH.
 //
 
-censoring_fields = {
+CENSORING_FIELDS = {
   {
-    name = "SNRHC",
-    min_valid_value = 0,
-    max_valid_value = 1000,
-    combination_method = LOGICAL_OR
+    NAME = "SNRHC",
+    MIN_VALID_VALUE = 0,
+    MAX_VALID_VALUE = 1000,
+    COMBINATION_METHOD = LOGICAL_OR
   }
   ,
   {
-    name = "NCP",
-    min_valid_value = 0.1,
-    max_valid_value = 1000,
-    combination_method = LOGICAL_OR
+    NAME = "NCP",
+    MIN_VALID_VALUE = 0.1,
+    MAX_VALID_VALUE = 1000,
+    COMBINATION_METHOD = LOGICAL_OR
   }
 };
 
-///////////// censoring_min_valid_run /////////////////
+///////////// CENSORING_MIN_VALID_RUN /////////////////
 //
-// Minimum valid run of non-censored gates.
+// MINIMUM VALID RUN OF NON-CENSORED GATES.
 //
-// Only active if set to 2 or greater. A check is made to remove short 
-//   runs of noise. Looking along the radial, we compute the number of 
-//   contiguous gates (a 'run') with uncensored data. For the gates in 
-//   this run to be accepted the length of the run must exceed 
-//   censoring_min_valid_run. If the number of gates in a run is less than 
-//   this, then all gates in the run are censored.
+// ONLY ACTIVE IF SET TO 2 OR GREATER. A CHECK IS MADE TO REMOVE SHORT 
+//   RUNS OF NOISE. LOOKING ALONG THE RADIAL, WE COMPUTE THE NUMBER OF 
+//   CONTIGUOUS GATES (A 'RUN') WITH UNCENSORED DATA. FOR THE GATES IN 
+//   THIS RUN TO BE ACCEPTED THE LENGTH OF THE RUN MUST EXCEED 
+//   CENSORING_MIN_VALID_RUN. IF THE NUMBER OF GATES IN A RUN IS LESS THAN 
+//   THIS, THEN ALL GATES IN THE RUN ARE CENSORED.
 //
 //
-// Type: int
+// TYPE: INT
 //
 
-censoring_min_valid_run = 3;
+CENSORING_MIN_VALID_RUN = 3;
 
 //======================================================================
 //
@@ -474,163 +474,163 @@ censoring_min_valid_run = 3;
 //
 //======================================================================
  
-///////////// filter_using_gate_spacing ///////////////
+///////////// FILTER_USING_GATE_SPACING ///////////////
 //
-// Option to filter data based on gate spacing.
+// OPTION TO FILTER DATA BASED ON GATE SPACING.
 //
-// If TRUE, the program will use only ray data which matches the 
-//   'keep_gate_spacing' parameter.
-//
-//
-// Type: boolean
-//
-
-filter_using_gate_spacing = FALSE;
-
-///////////// specified_gate_spacing //////////////////
-//
-// Desired radar gate spacing (km).
-//
-// The specified gate spacing is only used if 'filter_gate_spacing' is 
-//   set true. Otherwise all gate spacings in the input data stream are 
-//   used.
+// IF TRUE, THE PROGRAM WILL USE ONLY RAY DATA WHICH MATCHES THE 
+//   'KEEP_GATE_SPACING' PARAMETER.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-specified_gate_spacing = 0.25;
+FILTER_USING_GATE_SPACING = FALSE;
 
-///////////// filter_using_start_range ////////////////
+///////////// SPECIFIED_GATE_SPACING //////////////////
 //
-// Option to filter data based on start range.
+// DESIRED RADAR GATE SPACING (KM).
 //
-// If TRUE, the program will use only ray data which matches the 'keep 
-//   _start_range' parameter.
-//
-//
-// Type: boolean
-//
-
-filter_using_start_range = FALSE;
-
-///////////// specified_start_range ///////////////////
-//
-// Desired radar start range (km).
-//
-// The specified start range is only used if 'filter_start_range' is set 
-//   true. Otherwise all start ranges in the input data stream are used.
+// THE SPECIFIED GATE SPACING IS ONLY USED IF 'FILTER_GATE_SPACING' IS 
+//   SET TRUE. OTHERWISE ALL GATE SPACINGS IN THE INPUT DATA STREAM ARE 
+//   USED.
 //
 //
-// Type: double
+// TYPE: DOUBLE
 //
 
-specified_start_range = 0;
+SPECIFIED_GATE_SPACING = 0.25;
 
-///////////// filter_using_elev ///////////////////////
+///////////// FILTER_USING_START_RANGE ////////////////
 //
-// Option to filter data based on elevation angle.
+// OPTION TO FILTER DATA BASED ON START RANGE.
 //
-// If TRUE, the program will use only ray data with elevations between 
-//   the given limits.
-//
-//
-// Type: boolean
-//
-
-filter_using_elev = FALSE;
-
-///////////// specified_min_elev //////////////////////
-//
-// Minimum valid elevation for rays (deg).
-//
-// If the elevation is below this value, the ray is ignored. Applies 
-//   only if filter_using_elev is true.
+// IF TRUE, THE PROGRAM WILL USE ONLY RAY DATA WHICH MATCHES THE 'KEEP 
+//   _START_RANGE' PARAMETER.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-specified_min_elev = -10;
+FILTER_USING_START_RANGE = FALSE;
 
-///////////// specified_max_elev //////////////////////
+///////////// SPECIFIED_START_RANGE ///////////////////
 //
-// Maximum valid elevation for rays (deg).
+// DESIRED RADAR START RANGE (KM).
 //
-// If the elevation is above this value, the ray is ignored. Applies 
-//   only if filter_using_elev is true.
-//
-//
-// Type: double
-//
-
-specified_max_elev = 180;
-
-///////////// filter_using_sweep_number ///////////////
-//
-// Option to filter data based on the sweep number.
-//
-// If TRUE, the program will use only ray data with a sweep numbers 
-//   between the given limits.
+// THE SPECIFIED START RANGE IS ONLY USED IF 'FILTER_START_RANGE' IS SET 
+//   TRUE. OTHERWISE ALL START RANGES IN THE INPUT DATA STREAM ARE USED.
 //
 //
-// Type: boolean
+// TYPE: DOUBLE
 //
 
-filter_using_sweep_number = FALSE;
+SPECIFIED_START_RANGE = 0;
 
-///////////// specified_min_sweep_number //////////////
+///////////// FILTER_USING_ELEV ///////////////////////
 //
-// Minimum valid sweep number for rays.
+// OPTION TO FILTER DATA BASED ON ELEVATION ANGLE.
 //
-// If the sweep number is below this value, the ray is ignored. Applies 
-//   only if filter_using_sweep_number is true.
-//
-//
-// Type: int
-//
-
-specified_min_sweep_number = 0;
-
-///////////// specified_max_sweep_number //////////////
-//
-// Maximum valid sweep number for rays.
-//
-// If the sweep number is above this value, the ray is ignored. Applies 
-//   only if filter_using_sweep_number is true.
+// IF TRUE, THE PROGRAM WILL USE ONLY RAY DATA WITH ELEVATIONS BETWEEN 
+//   THE GIVEN LIMITS.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-specified_max_sweep_number = 999;
+FILTER_USING_ELEV = FALSE;
 
-///////////// filter_using_sweep_number_list //////////
+///////////// SPECIFIED_MIN_ELEV //////////////////////
 //
-// Option to filter data based on sweep numbers in the list.
+// MINIMUM VALID ELEVATION FOR RAYS (DEG).
 //
-// If TRUE, the program will use only ray data with a sweep number that 
-//   is in the specified list.
-//
-//
-// Type: boolean
-//
-
-filter_using_sweep_number_list = FALSE;
-
-///////////// specified_sweep_number_list /////////////
-//
-// List of valid sweep numbers.
-//
-// If the sweep number is not in this list, the ray is ignored. Applies 
-//   only if filter_using_sweep_number_list is true.
+// IF THE ELEVATION IS BELOW THIS VALUE, THE RAY IS IGNORED. APPLIES 
+//   ONLY IF FILTER_USING_ELEV IS TRUE.
 //
 //
-// Type: int
-// 1D array - variable length.
+// TYPE: DOUBLE
 //
 
-specified_sweep_number_list = {
+SPECIFIED_MIN_ELEV = -10;
+
+///////////// SPECIFIED_MAX_ELEV //////////////////////
+//
+// MAXIMUM VALID ELEVATION FOR RAYS (DEG).
+//
+// IF THE ELEVATION IS ABOVE THIS VALUE, THE RAY IS IGNORED. APPLIES 
+//   ONLY IF FILTER_USING_ELEV IS TRUE.
+//
+//
+// TYPE: DOUBLE
+//
+
+SPECIFIED_MAX_ELEV = 180;
+
+///////////// FILTER_USING_SWEEP_NUMBER ///////////////
+//
+// OPTION TO FILTER DATA BASED ON THE SWEEP NUMBER.
+//
+// IF TRUE, THE PROGRAM WILL USE ONLY RAY DATA WITH A SWEEP NUMBERS 
+//   BETWEEN THE GIVEN LIMITS.
+//
+//
+// TYPE: BOOLEAN
+//
+
+FILTER_USING_SWEEP_NUMBER = FALSE;
+
+///////////// SPECIFIED_MIN_SWEEP_NUMBER //////////////
+//
+// MINIMUM VALID SWEEP NUMBER FOR RAYS.
+//
+// IF THE SWEEP NUMBER IS BELOW THIS VALUE, THE RAY IS IGNORED. APPLIES 
+//   ONLY IF FILTER_USING_SWEEP_NUMBER IS TRUE.
+//
+//
+// TYPE: INT
+//
+
+SPECIFIED_MIN_SWEEP_NUMBER = 0;
+
+///////////// SPECIFIED_MAX_SWEEP_NUMBER //////////////
+//
+// MAXIMUM VALID SWEEP NUMBER FOR RAYS.
+//
+// IF THE SWEEP NUMBER IS ABOVE THIS VALUE, THE RAY IS IGNORED. APPLIES 
+//   ONLY IF FILTER_USING_SWEEP_NUMBER IS TRUE.
+//
+//
+// TYPE: INT
+//
+
+SPECIFIED_MAX_SWEEP_NUMBER = 999;
+
+///////////// FILTER_USING_SWEEP_NUMBER_LIST //////////
+//
+// OPTION TO FILTER DATA BASED ON SWEEP NUMBERS IN THE LIST.
+//
+// IF TRUE, THE PROGRAM WILL USE ONLY RAY DATA WITH A SWEEP NUMBER THAT 
+//   IS IN THE SPECIFIED LIST.
+//
+//
+// TYPE: BOOLEAN
+//
+
+FILTER_USING_SWEEP_NUMBER_LIST = FALSE;
+
+///////////// SPECIFIED_SWEEP_NUMBER_LIST /////////////
+//
+// LIST OF VALID SWEEP NUMBERS.
+//
+// IF THE SWEEP NUMBER IS NOT IN THIS LIST, THE RAY IS IGNORED. APPLIES 
+//   ONLY IF FILTER_USING_SWEEP_NUMBER_LIST IS TRUE.
+//
+//
+// TYPE: INT
+// 1D ARRAY - VARIABLE LENGTH.
+//
+
+SPECIFIED_SWEEP_NUMBER_LIST = {
  0,
  1,
  2
@@ -638,246 +638,246 @@ specified_sweep_number_list = {
 
 //======================================================================
 //
-// FILTER DATA BASED ON ANTENNA or SCAN STATE.
+// FILTER DATA BASED ON ANTENNA OR SCAN STATE.
 //
 //======================================================================
  
-///////////// filter_antenna_stationary ///////////////
+///////////// FILTER_ANTENNA_STATIONARY ///////////////
 //
-// Option to not ingest data when the antenna is stationary.
+// OPTION TO NOT INGEST DATA WHEN THE ANTENNA IS STATIONARY.
 //
-// If true, rays will only be stored if the antenna is moving. If the 
-//   antenna stops, rays will be ignored.
-//
-//
-// Type: boolean
-//
-
-filter_antenna_stationary = FALSE;
-
-///////////// min_angle_change_for_moving_antenna /////
-//
-// Minimun angle change ray-to-ray for antenna to be moving (deg).
-//
-// For the antenna to be considered moving. the antenna much move by 
-//   this amount from one ray to the next. The angle check is made in both 
-//   azimuth and elevation.
+// IF TRUE, RAYS WILL ONLY BE STORED IF THE ANTENNA IS MOVING. IF THE 
+//   ANTENNA STOPS, RAYS WILL BE IGNORED.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-min_angle_change_for_moving_antenna = 0.05;
+FILTER_ANTENNA_STATIONARY = FALSE;
 
-///////////// clear_transition_flag_on_all_rays ///////
+///////////// MIN_ANGLE_CHANGE_FOR_MOVING_ANTENNA /////
 //
-// Option to clear the transition flag on all rays.
+// MINIMUN ANGLE CHANGE RAY-TO-RAY FOR ANTENNA TO BE MOVING (DEG).
 //
-// If true, for all rays on which the transition flag is set, this flag 
-//   will be removed, so that all rays are considered to be NOT in 
-//   transition.
-//
-//
-// Type: boolean
-//
-
-clear_transition_flag_on_all_rays = TRUE;
-
-///////////// filter_antenna_transitions //////////////
-//
-// Option to ignore rays for which the transition flag is set.
-//
-// If TRUE, the program will filter out rays which are computed when the 
-//   antenna is moving from one sweep to the next, or one volume to the 
-//   next.
+// FOR THE ANTENNA TO BE CONSIDERED MOVING. THE ANTENNA MUCH MOVE BY 
+//   THIS AMOUNT FROM ONE RAY TO THE NEXT. THE ANGLE CHECK IS MADE IN BOTH 
+//   AZIMUTH AND ELEVATION.
 //
 //
-// Type: boolean
+// TYPE: DOUBLE
 //
 
-filter_antenna_transitions = FALSE;
+MIN_ANGLE_CHANGE_FOR_MOVING_ANTENNA = 0.05;
 
-///////////// filter_when_scan_idle ///////////////////
+///////////// CLEAR_TRANSITION_FLAG_ON_ALL_RAYS ///////
 //
-// Option to filter rays when scan mode is IDLE.
+// OPTION TO CLEAR THE TRANSITION FLAG ON ALL RAYS.
 //
-// If TRUE, the program will filter out all rays for which the scan mode 
-//   is IDLE.
-//
-//
-// Type: boolean
-//
-
-filter_when_scan_idle = FALSE;
-
-///////////// filter_when_scan_pointing ///////////////
-//
-// Option to filter rays when scan mode is POINT.
-//
-// If TRUE, the program will filter out all rays for which the scan mode 
-//   is POINTING.
+// IF TRUE, FOR ALL RAYS ON WHICH THE TRANSITION FLAG IS SET, THIS FLAG 
+//   WILL BE REMOVED, SO THAT ALL RAYS ARE CONSIDERED TO BE NOT IN 
+//   TRANSITION.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-filter_when_scan_pointing = FALSE;
+CLEAR_TRANSITION_FLAG_ON_ALL_RAYS = TRUE;
+
+///////////// FILTER_ANTENNA_TRANSITIONS //////////////
+//
+// OPTION TO IGNORE RAYS FOR WHICH THE TRANSITION FLAG IS SET.
+//
+// IF TRUE, THE PROGRAM WILL FILTER OUT RAYS WHICH ARE COMPUTED WHEN THE 
+//   ANTENNA IS MOVING FROM ONE SWEEP TO THE NEXT, OR ONE VOLUME TO THE 
+//   NEXT.
+//
+//
+// TYPE: BOOLEAN
+//
+
+FILTER_ANTENNA_TRANSITIONS = FALSE;
+
+///////////// FILTER_WHEN_SCAN_IDLE ///////////////////
+//
+// OPTION TO FILTER RAYS WHEN SCAN MODE IS IDLE.
+//
+// IF TRUE, THE PROGRAM WILL FILTER OUT ALL RAYS FOR WHICH THE SCAN MODE 
+//   IS IDLE.
+//
+//
+// TYPE: BOOLEAN
+//
+
+FILTER_WHEN_SCAN_IDLE = FALSE;
+
+///////////// FILTER_WHEN_SCAN_POINTING ///////////////
+//
+// OPTION TO FILTER RAYS WHEN SCAN MODE IS POINT.
+//
+// IF TRUE, THE PROGRAM WILL FILTER OUT ALL RAYS FOR WHICH THE SCAN MODE 
+//   IS POINTING.
+//
+//
+// TYPE: BOOLEAN
+//
+
+FILTER_WHEN_SCAN_POINTING = FALSE;
 
 //======================================================================
 //
 // OUTPUT GATE GEOMETRY.
 //
-// You can only choose one range geometry remapping option. If none are 
-//   picked, all rays which do not match the predominant geometry will be 
-//   discarded.
+// YOU CAN ONLY CHOOSE ONE RANGE GEOMETRY REMAPPING OPTION. IF NONE ARE 
+//   PICKED, ALL RAYS WHICH DO NOT MATCH THE PREDOMINANT GEOMETRY WILL BE 
+//   DISCARDED.
 //
 //======================================================================
  
-///////////// convert_to_predominant_gate_geometry ////
+///////////// CONVERT_TO_PREDOMINANT_GATE_GEOMETRY ////
 //
-// Option to convert all rays to predominant geometry.
+// OPTION TO CONVERT ALL RAYS TO PREDOMINANT GEOMETRY.
 //
-// If true, all rays will be converted to the predominant gate geometry 
-//   - i.e. start_range and gate_spacing.
-//
-//
-// Type: boolean
-//
-
-convert_to_predominant_gate_geometry = FALSE;
-
-///////////// convert_to_finest_gate_geometry /////////
-//
-// Option to convert all rays to finest range gate spacing.
-//
-// If true, all rays will be converted to the finest gate spacing.
+// IF TRUE, ALL RAYS WILL BE CONVERTED TO THE PREDOMINANT GATE GEOMETRY 
+//   - I.E. START_RANGE AND GATE_SPACING.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-convert_to_finest_gate_geometry = FALSE;
+CONVERT_TO_PREDOMINANT_GATE_GEOMETRY = FALSE;
 
-///////////// convert_to_specified_output_gate_geometry 
+///////////// CONVERT_TO_FINEST_GATE_GEOMETRY /////////
 //
-// Option to convert all rays to a specified gate geometry.
+// OPTION TO CONVERT ALL RAYS TO FINEST RANGE GATE SPACING.
 //
-// See 'specified_start_range_k', 'specified_gate_spacing_km' and 
-//   'interpolate_to_specified_gate_geometry'.
-//
-//
-// Type: boolean
-//
-
-convert_to_specified_output_gate_geometry = FALSE;
-
-///////////// output_start_range_km ///////////////////
-//
-// Start range for specified remapping (km).
-//
-// See 'convert_to_specified_gate_geometry'.
+// IF TRUE, ALL RAYS WILL BE CONVERTED TO THE FINEST GATE SPACING.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-output_start_range_km = 0.1;
+CONVERT_TO_FINEST_GATE_GEOMETRY = FALSE;
 
-///////////// output_gate_spacing_km //////////////////
+///////////// CONVERT_TO_SPECIFIED_OUTPUT_GATE_GEOMETRY 
 //
-// Gate spacing for specified remapping (km).
+// OPTION TO CONVERT ALL RAYS TO A SPECIFIED GATE GEOMETRY.
 //
-// See 'convert_to_specified_gate_geometry'.
-//
-//
-// Type: double
-//
-
-output_gate_spacing_km = 0.2;
-
-///////////// interpolate_to_output_gate_geometry /////
-//
-// Option to use interpolation when converting to the specified gate 
-//   geometry.
-//
-// If false, nearest neighbor mapping is used. See 
-//   'convert_to_specified_gate_geometry'.
+// SEE 'SPECIFIED_START_RANGE_K', 'SPECIFIED_GATE_SPACING_KM' AND 
+//   'INTERPOLATE_TO_SPECIFIED_GATE_GEOMETRY'.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-interpolate_to_output_gate_geometry = FALSE;
+CONVERT_TO_SPECIFIED_OUTPUT_GATE_GEOMETRY = FALSE;
+
+///////////// OUTPUT_START_RANGE_KM ///////////////////
+//
+// START RANGE FOR SPECIFIED REMAPPING (KM).
+//
+// SEE 'CONVERT_TO_SPECIFIED_GATE_GEOMETRY'.
+//
+//
+// TYPE: DOUBLE
+//
+
+OUTPUT_START_RANGE_KM = 0.1;
+
+///////////// OUTPUT_GATE_SPACING_KM //////////////////
+//
+// GATE SPACING FOR SPECIFIED REMAPPING (KM).
+//
+// SEE 'CONVERT_TO_SPECIFIED_GATE_GEOMETRY'.
+//
+//
+// TYPE: DOUBLE
+//
+
+OUTPUT_GATE_SPACING_KM = 0.2;
+
+///////////// INTERPOLATE_TO_OUTPUT_GATE_GEOMETRY /////
+//
+// OPTION TO USE INTERPOLATION WHEN CONVERTING TO THE SPECIFIED GATE 
+//   GEOMETRY.
+//
+// IF FALSE, NEAREST NEIGHBOR MAPPING IS USED. SEE 
+//   'CONVERT_TO_SPECIFIED_GATE_GEOMETRY'.
+//
+//
+// TYPE: BOOLEAN
+//
+
+INTERPOLATE_TO_OUTPUT_GATE_GEOMETRY = FALSE;
 
 //======================================================================
 //
 // COMPUTING THE SWEEP ANGLE HISTOGRAM.
 //
-// Normally we use the sweep numbers in the input data to logically 
-//   separate the sweeps. Optionally, however, if the scan information is 
-//   not available in the data, we can use a histogram technique to 
-//   determine the sweep information instead.
+// NORMALLY WE USE THE SWEEP NUMBERS IN THE INPUT DATA TO LOGICALLY 
+//   SEPARATE THE SWEEPS. OPTIONALLY, HOWEVER, IF THE SCAN INFORMATION IS 
+//   NOT AVAILABLE IN THE DATA, WE CAN USE A HISTOGRAM TECHNIQUE TO 
+//   DETERMINE THE SWEEP INFORMATION INSTEAD.
 //
 //======================================================================
  
-///////////// find_sweep_numbers_using_histogram //////
+///////////// FIND_SWEEP_NUMBERS_USING_HISTOGRAM //////
 //
-// Option to use histogram to determine sweep numbers.
+// OPTION TO USE HISTOGRAM TO DETERMINE SWEEP NUMBERS.
 //
-// If FALSE, the sweep numbers in the ray data will be used directly to 
-//   group the rays into sweeps. If FALSE, the antenna angles will be 
-//   analysed using a histogram technique to determine the sweep numbers.
-//
-//
-// Type: boolean
-//
-
-find_sweep_numbers_using_histogram = FALSE;
-
-///////////// use_target_angles_for_hist //////////////
-//
-// Option to use target angles instead of actual angles to compute the 
-//   histogram.
-//
-// If TRUE, the target angles will be used to compute the histograms. If 
-//   FALSE, the measured angles will be used.
+// IF FALSE, THE SWEEP NUMBERS IN THE RAY DATA WILL BE USED DIRECTLY TO 
+//   GROUP THE RAYS INTO SWEEPS. IF FALSE, THE ANTENNA ANGLES WILL BE 
+//   ANALYSED USING A HISTOGRAM TECHNIQUE TO DETERMINE THE SWEEP NUMBERS.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-use_target_angles_for_hist = FALSE;
+FIND_SWEEP_NUMBERS_USING_HISTOGRAM = FALSE;
 
-///////////// hist_angle_resolution ///////////////////
+///////////// USE_TARGET_ANGLES_FOR_HIST //////////////
 //
-// Resolution of histogram (deg).
+// OPTION TO USE TARGET ANGLES INSTEAD OF ACTUAL ANGLES TO COMPUTE THE 
+//   HISTOGRAM.
 //
-// The angle data is binned at this resolution. If the scan strategy has 
-//   angles very close together you may need to use a fine resolution.
+// IF TRUE, THE TARGET ANGLES WILL BE USED TO COMPUTE THE HISTOGRAMS. IF 
+//   FALSE, THE MEASURED ANGLES WILL BE USED.
 //
 //
-// Type: double
-//
-
-hist_angle_resolution = 0.1;
-
-///////////// hist_search_width ///////////////////////
-//
-// The width of the search in looking for peaks in the histogram.
-//
-// When looking for peaks, the program searches by this number of bins 
-//   on either side of the search bin. For example, if the 
-//   hist_angle_resolution is 0.1 and the hist_angle_search_width is 3, 
-//   the program will search 3 bins, or 0.3 degrees, on either side of the 
-//   search bin. It looks for a peak with values equal to or below the 
-//   peak in the adjacent bins and less than the peak in bins further out.
-//
-// Minimum val: 1
-//
-// Type: int
+// TYPE: BOOLEAN
 //
 
-hist_search_width = 3;
+USE_TARGET_ANGLES_FOR_HIST = FALSE;
+
+///////////// HIST_ANGLE_RESOLUTION ///////////////////
+//
+// RESOLUTION OF HISTOGRAM (DEG).
+//
+// THE ANGLE DATA IS BINNED AT THIS RESOLUTION. IF THE SCAN STRATEGY HAS 
+//   ANGLES VERY CLOSE TOGETHER YOU MAY NEED TO USE A FINE RESOLUTION.
+//
+//
+// TYPE: DOUBLE
+//
+
+HIST_ANGLE_RESOLUTION = 0.1;
+
+///////////// HIST_SEARCH_WIDTH ///////////////////////
+//
+// THE WIDTH OF THE SEARCH IN LOOKING FOR PEAKS IN THE HISTOGRAM.
+//
+// WHEN LOOKING FOR PEAKS, THE PROGRAM SEARCHES BY THIS NUMBER OF BINS 
+//   ON EITHER SIDE OF THE SEARCH BIN. FOR EXAMPLE, IF THE 
+//   HIST_ANGLE_RESOLUTION IS 0.1 AND THE HIST_ANGLE_SEARCH_WIDTH IS 3, 
+//   THE PROGRAM WILL SEARCH 3 BINS, OR 0.3 DEGREES, ON EITHER SIDE OF THE 
+//   SEARCH BIN. IT LOOKS FOR A PEAK WITH VALUES EQUAL TO OR BELOW THE 
+//   PEAK IN THE ADJACENT BINS AND LESS THAN THE PEAK IN BINS FURTHER OUT.
+//
+// MINIMUM VAL: 1
+//
+// TYPE: INT
+//
+
+HIST_SEARCH_WIDTH = 3;
 
 //======================================================================
 //
@@ -885,30 +885,30 @@ hist_search_width = 3;
 //
 //======================================================================
  
-///////////// crop_above_max_height ///////////////////
+///////////// CROP_ABOVE_MAX_HEIGHT ///////////////////
 //
-// Option to crop all gates above a selectted maximum height.
+// OPTION TO CROP ALL GATES ABOVE A SELECTTED MAXIMUM HEIGHT.
 //
-// Normally all gates are processed. If this is set to true, gates above 
-//   the selected height will be removed from the processing.
-//
-//
-// Type: boolean
-//
-
-crop_above_max_height = FALSE;
-
-///////////// max_height_km_msl ///////////////////////
-//
-// Height MSL for cropping (km).
-//
-// Only gates below this height will be processed.
+// NORMALLY ALL GATES ARE PROCESSED. IF THIS IS SET TO TRUE, GATES ABOVE 
+//   THE SELECTED HEIGHT WILL BE REMOVED FROM THE PROCESSING.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-max_height_km_msl = 23;
+CROP_ABOVE_MAX_HEIGHT = FALSE;
+
+///////////// MAX_HEIGHT_KM_MSL ///////////////////////
+//
+// HEIGHT MSL FOR CROPPING (KM).
+//
+// ONLY GATES BELOW THIS HEIGHT WILL BE PROCESSED.
+//
+//
+// TYPE: DOUBLE
+//
+
+MAX_HEIGHT_KM_MSL = 23;
 
 //======================================================================
 //
@@ -916,164 +916,164 @@ max_height_km_msl = 23;
 //
 //======================================================================
  
-///////////// remove_test_pulse ///////////////////////
+///////////// REMOVE_TEST_PULSE ///////////////////////
 //
-// Option to remove the test pulse data.
+// OPTION TO REMOVE THE TEST PULSE DATA.
 //
-// If true, the test pulse data will be removed from the end of the ray. 
-//   The test pulse data generally lies in the last few gates in the ray. 
-//   If true, the number of gates will be reduced by 'ngates_test_pulse'.
-//
-//
-// Type: boolean
-//
-
-remove_test_pulse = FALSE;
-
-///////////// ngates_test_pulse ///////////////////////
-//
-// Number of gates to remove to get rid of test pulse.
-//
-// See 'remove_test_pulse'.
+// IF TRUE, THE TEST PULSE DATA WILL BE REMOVED FROM THE END OF THE RAY. 
+//   THE TEST PULSE DATA GENERALLY LIES IN THE LAST FEW GATES IN THE RAY. 
+//   IF TRUE, THE NUMBER OF GATES WILL BE REDUCED BY 'NGATES_TEST_PULSE'.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-ngates_test_pulse = 20;
+REMOVE_TEST_PULSE = FALSE;
+
+///////////// NGATES_TEST_PULSE ///////////////////////
+//
+// NUMBER OF GATES TO REMOVE TO GET RID OF TEST PULSE.
+//
+// SEE 'REMOVE_TEST_PULSE'.
+//
+//
+// TYPE: INT
+//
+
+NGATES_TEST_PULSE = 20;
 
 //======================================================================
 //
 // CHECKING SWEEP DATA.
 //
-// Checking whether sweeps should be included.
+// CHECKING WHETHER SWEEPS SHOULD BE INCLUDED.
 //
 //======================================================================
  
-///////////// check_min_rays_in_sweep /////////////////
+///////////// CHECK_MIN_RAYS_IN_SWEEP /////////////////
 //
-// Option to check the number of rays in a sweep.
+// OPTION TO CHECK THE NUMBER OF RAYS IN A SWEEP.
 //
-// If TRUE, a sweep is only considered valid if the number of rays 
-//   exceeds 'min_rays_in_sweep'.
-//
-//
-// Type: boolean
-//
-
-check_min_rays_in_sweep = FALSE;
-
-///////////// min_rays_in_sweep ///////////////////////
-//
-// The min number of rays for a sweep to be valid.
-//
-// See 'check_min_rays_in_sweep'.
+// IF TRUE, A SWEEP IS ONLY CONSIDERED VALID IF THE NUMBER OF RAYS 
+//   EXCEEDS 'MIN_RAYS_IN_SWEEP'.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-min_rays_in_sweep = 60;
+CHECK_MIN_RAYS_IN_SWEEP = FALSE;
 
-///////////// check_min_rays_in_ppi_sweep /////////////
+///////////// MIN_RAYS_IN_SWEEP ///////////////////////
 //
-// Option to check the number of rays in a PPI sweep.
+// THE MIN NUMBER OF RAYS FOR A SWEEP TO BE VALID.
 //
-// If TRUE, a PPI sweep is only considered valid if the number of rays 
-//   exceeds 'min_rays_in_ppi_sweep'.
-//
-//
-// Type: boolean
-//
-
-check_min_rays_in_ppi_sweep = TRUE;
-
-///////////// min_rays_in_ppi_sweep ///////////////////
-//
-// The min number of rays for a PPI sweep to be valid.
-//
-// See 'check_min_rays_in_ppi_sweep'.
+// SEE 'CHECK_MIN_RAYS_IN_SWEEP'.
 //
 //
-// Type: int
+// TYPE: INT
 //
 
-min_rays_in_ppi_sweep = 60;
+MIN_RAYS_IN_SWEEP = 60;
 
-///////////// check_min_rays_in_rhi_sweep /////////////
+///////////// CHECK_MIN_RAYS_IN_PPI_SWEEP /////////////
 //
-// Option to check the number of rays in a RHI sweep.
+// OPTION TO CHECK THE NUMBER OF RAYS IN A PPI SWEEP.
 //
-// If TRUE, a RHI sweep is only considered valid if the number of rays 
-//   exceeds 'min_rays_in_rhi_sweep'.
-//
-//
-// Type: boolean
-//
-
-check_min_rays_in_rhi_sweep = TRUE;
-
-///////////// min_rays_in_rhi_sweep ///////////////////
-//
-// The min number of rays for a RHI sweep to be valid.
-//
-// See 'check_min_rays_in_rhi_sweep'.
+// IF TRUE, A PPI SWEEP IS ONLY CONSIDERED VALID IF THE NUMBER OF RAYS 
+//   EXCEEDS 'MIN_RAYS_IN_PPI_SWEEP'.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-min_rays_in_rhi_sweep = 45;
+CHECK_MIN_RAYS_IN_PPI_SWEEP = TRUE;
+
+///////////// MIN_RAYS_IN_PPI_SWEEP ///////////////////
+//
+// THE MIN NUMBER OF RAYS FOR A PPI SWEEP TO BE VALID.
+//
+// SEE 'CHECK_MIN_RAYS_IN_PPI_SWEEP'.
+//
+//
+// TYPE: INT
+//
+
+MIN_RAYS_IN_PPI_SWEEP = 60;
+
+///////////// CHECK_MIN_RAYS_IN_RHI_SWEEP /////////////
+//
+// OPTION TO CHECK THE NUMBER OF RAYS IN A RHI SWEEP.
+//
+// IF TRUE, A RHI SWEEP IS ONLY CONSIDERED VALID IF THE NUMBER OF RAYS 
+//   EXCEEDS 'MIN_RAYS_IN_RHI_SWEEP'.
+//
+//
+// TYPE: BOOLEAN
+//
+
+CHECK_MIN_RAYS_IN_RHI_SWEEP = TRUE;
+
+///////////// MIN_RAYS_IN_RHI_SWEEP ///////////////////
+//
+// THE MIN NUMBER OF RAYS FOR A RHI SWEEP TO BE VALID.
+//
+// SEE 'CHECK_MIN_RAYS_IN_RHI_SWEEP'.
+//
+//
+// TYPE: INT
+//
+
+MIN_RAYS_IN_RHI_SWEEP = 45;
 
 //======================================================================
 //
 // COMPUTING FIXED ANGLES FROM RAYS.
 //
-// NOTE: if the antenna control system does not point the antenna 
-//   correctly, there will be an offset between the fixed (commanded) 
-//   angles and the measured antenna angles. This option allows you to 
-//   re-compute the fixed angles so that they are derived from the 
-//   measured angles.
+// NOTE: IF THE ANTENNA CONTROL SYSTEM DOES NOT POINT THE ANTENNA 
+//   CORRECTLY, THERE WILL BE AN OFFSET BETWEEN THE FIXED (COMMANDED) 
+//   ANGLES AND THE MEASURED ANTENNA ANGLES. THIS OPTION ALLOWS YOU TO 
+//   RE-COMPUTE THE FIXED ANGLES SO THAT THEY ARE DERIVED FROM THE 
+//   MEASURED ANGLES.
 //
 //======================================================================
  
-///////////// compute_ppi_fixed_angles_from_measured_elevation 
+///////////// COMPUTE_PPI_FIXED_ANGLES_FROM_MEASURED_ELEVATION 
 //
-// Option to recompute the fixed angles from the measured angles for PPI 
-//   sweeps - i.e. surveillance and sector mode.
+// OPTION TO RECOMPUTE THE FIXED ANGLES FROM THE MEASURED ANGLES FOR PPI 
+//   SWEEPS - I.E. SURVEILLANCE AND SECTOR MODE.
 //
-// See NOTE above.
-//
-//
-// Type: boolean
-//
-
-compute_ppi_fixed_angles_from_measured_elevation = TRUE;
-
-///////////// compute_rhi_fixed_angles_from_measured_azimuth 
-//
-// Option to recompute the fixed angles from the measured angles for RHI 
-//   sweeps.
-//
-// See NOTE above.
+// SEE NOTE ABOVE.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-compute_rhi_fixed_angles_from_measured_azimuth = FALSE;
+COMPUTE_PPI_FIXED_ANGLES_FROM_MEASURED_ELEVATION = TRUE;
 
-///////////// use_mean_to_compute_fixed_angles ////////
+///////////// COMPUTE_RHI_FIXED_ANGLES_FROM_MEASURED_AZIMUTH 
 //
-// Option to use mean to compute the fixed angles. This is the default.
+// OPTION TO RECOMPUTE THE FIXED ANGLES FROM THE MEASURED ANGLES FOR RHI 
+//   SWEEPS.
 //
-// If false, uses the median.
+// SEE NOTE ABOVE.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-use_mean_to_compute_fixed_angles = TRUE;
+COMPUTE_RHI_FIXED_ANGLES_FROM_MEASURED_AZIMUTH = FALSE;
+
+///////////// USE_MEAN_TO_COMPUTE_FIXED_ANGLES ////////
+//
+// OPTION TO USE MEAN TO COMPUTE THE FIXED ANGLES. THIS IS THE DEFAULT.
+//
+// IF FALSE, USES THE MEDIAN.
+//
+//
+// TYPE: BOOLEAN
+//
+
+USE_MEAN_TO_COMPUTE_FIXED_ANGLES = TRUE;
 
 //======================================================================
 //
@@ -1081,91 +1081,91 @@ use_mean_to_compute_fixed_angles = TRUE;
 //
 //======================================================================
  
-///////////// increment_sweep_num_when_pol_mode_changes 
+///////////// INCREMENT_SWEEP_NUM_WHEN_POL_MODE_CHANGES 
 //
-// Option to increment the sweep number on a ray when the polarization 
-//   mode changes.
+// OPTION TO INCREMENT THE SWEEP NUMBER ON A RAY WHEN THE POLARIZATION 
+//   MODE CHANGES.
 //
-// This operation is performed before writing the data out. We search 
-//   through the rays, and if a polarization mode change occurs in the 
-//   middle of a sweep, the sweep number is incremented to break up the 
-//   sweep into multiple parts.
-//
-//
-// Type: boolean
-//
-
-increment_sweep_num_when_pol_mode_changes = FALSE;
-
-///////////// increment_sweep_num_when_prt_mode_changes 
-//
-// Option to increment the sweep number on a ray when the prt mode 
-//   changes.
-//
-// This operation is performed before writing the data out. We search 
-//   through the rays, and if a prt mode change occurs in the middle of a 
-//   sweep, the sweep number is incremented to break up the sweep into 
-//   multiple parts.
+// THIS OPERATION IS PERFORMED BEFORE WRITING THE DATA OUT. WE SEARCH 
+//   THROUGH THE RAYS, AND IF A POLARIZATION MODE CHANGE OCCURS IN THE 
+//   MIDDLE OF A SWEEP, THE SWEEP NUMBER IS INCREMENTED TO BREAK UP THE 
+//   SWEEP INTO MULTIPLE PARTS.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-increment_sweep_num_when_prt_mode_changes = FALSE;
+INCREMENT_SWEEP_NUM_WHEN_POL_MODE_CHANGES = FALSE;
+
+///////////// INCREMENT_SWEEP_NUM_WHEN_PRT_MODE_CHANGES 
+//
+// OPTION TO INCREMENT THE SWEEP NUMBER ON A RAY WHEN THE PRT MODE 
+//   CHANGES.
+//
+// THIS OPERATION IS PERFORMED BEFORE WRITING THE DATA OUT. WE SEARCH 
+//   THROUGH THE RAYS, AND IF A PRT MODE CHANGE OCCURS IN THE MIDDLE OF A 
+//   SWEEP, THE SWEEP NUMBER IS INCREMENTED TO BREAK UP THE SWEEP INTO 
+//   MULTIPLE PARTS.
+//
+//
+// TYPE: BOOLEAN
+//
+
+INCREMENT_SWEEP_NUM_WHEN_PRT_MODE_CHANGES = FALSE;
 
 //======================================================================
 //
 // OPTION TO ADJUST SWEEP LIMITS USING FIXED AND MEASURED ANGLES.
 //
-// Sometimes the transitions from one fixed angle to another are not 
-//   accurately described by the scan flags, and as a result rays are not 
-//   correctly assigned to the sweeps. This option goes through the volume 
-//   in ray order, and adjusts the way rays are associated with each 
-//   sweep. It does this by comparing the actual angle with the fixed 
-//   angle, and minimizes the angular difference at the transition from 
-//   one sweep to the next. If you use this section, then 
-//   'filter_antenna_transitions' should be set to FALSE.
+// SOMETIMES THE TRANSITIONS FROM ONE FIXED ANGLE TO ANOTHER ARE NOT 
+//   ACCURATELY DESCRIBED BY THE SCAN FLAGS, AND AS A RESULT RAYS ARE NOT 
+//   CORRECTLY ASSIGNED TO THE SWEEPS. THIS OPTION GOES THROUGH THE VOLUME 
+//   IN RAY ORDER, AND ADJUSTS THE WAY RAYS ARE ASSOCIATED WITH EACH 
+//   SWEEP. IT DOES THIS BY COMPARING THE ACTUAL ANGLE WITH THE FIXED 
+//   ANGLE, AND MINIMIZES THE ANGULAR DIFFERENCE AT THE TRANSITION FROM 
+//   ONE SWEEP TO THE NEXT. IF YOU USE THIS SECTION, THEN 
+//   'FILTER_ANTENNA_TRANSITIONS' SHOULD BE SET TO FALSE.
 //
 //======================================================================
  
-///////////// adjust_sur_sweep_limits_using_angles ////
+///////////// ADJUST_SUR_SWEEP_LIMITS_USING_ANGLES ////
 //
-// Adjust the limits of sweeps in surveillance mode.
+// ADJUST THE LIMITS OF SWEEPS IN SURVEILLANCE MODE.
 //
-// We compare the actual angle with the fixed angle, and minimize the 
-//   angular difference at the transition from one sweep to the next.
-//
-//
-// Type: boolean
-//
-
-adjust_sur_sweep_limits_using_angles = TRUE;
-
-///////////// adjust_sector_sweep_limits_using_angles /
-//
-// Adjust the limits of sweeps in sector mode.
-//
-// We compare the actual angle with the fixed angle, and minimize the 
-//   angular difference at the transition from one sweep to the next.
+// WE COMPARE THE ACTUAL ANGLE WITH THE FIXED ANGLE, AND MINIMIZE THE 
+//   ANGULAR DIFFERENCE AT THE TRANSITION FROM ONE SWEEP TO THE NEXT.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-adjust_sector_sweep_limits_using_angles = TRUE;
+ADJUST_SUR_SWEEP_LIMITS_USING_ANGLES = TRUE;
 
-///////////// adjust_rhi_sweep_limits_using_angles ////
+///////////// ADJUST_SECTOR_SWEEP_LIMITS_USING_ANGLES /
 //
-// Adjust the limits of sweeps in RHI mode.
+// ADJUST THE LIMITS OF SWEEPS IN SECTOR MODE.
 //
-// We compare the actual angle with the fixed angle, and minimize the 
-//   angular difference at the transition from one sweep to the next.
+// WE COMPARE THE ACTUAL ANGLE WITH THE FIXED ANGLE, AND MINIMIZE THE 
+//   ANGULAR DIFFERENCE AT THE TRANSITION FROM ONE SWEEP TO THE NEXT.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-adjust_rhi_sweep_limits_using_angles = TRUE;
+ADJUST_SECTOR_SWEEP_LIMITS_USING_ANGLES = TRUE;
+
+///////////// ADJUST_RHI_SWEEP_LIMITS_USING_ANGLES ////
+//
+// ADJUST THE LIMITS OF SWEEPS IN RHI MODE.
+//
+// WE COMPARE THE ACTUAL ANGLE WITH THE FIXED ANGLE, AND MINIMIZE THE 
+//   ANGULAR DIFFERENCE AT THE TRANSITION FROM ONE SWEEP TO THE NEXT.
+//
+//
+// TYPE: BOOLEAN
+//
+
+ADJUST_RHI_SWEEP_LIMITS_USING_ANGLES = TRUE;
 
 //======================================================================
 //
@@ -1174,40 +1174,40 @@ adjust_rhi_sweep_limits_using_angles = TRUE;
 //
 //======================================================================
  
-///////////// force_sur_sweep_transitions_at_fixed_azimuth 
+///////////// FORCE_SUR_SWEEP_TRANSITIONS_AT_FIXED_AZIMUTH 
 //
-// Adjust the limits of surveillance sweeps, changing the sweep number 
-//   when the azimuth crosses the specified value.
+// ADJUST THE LIMITS OF SURVEILLANCE SWEEPS, CHANGING THE SWEEP NUMBER 
+//   WHEN THE AZIMUTH CROSSES THE SPECIFIED VALUE.
 //
-// Sometimes the transitions from one fixed angle to another are not 
-//   accurately described by the scan flags, and as a result rays are not 
-//   correctly assigned to the sweeps. This option goes through a 
-//   surveillance volume in ray order, and adjusts the way rays are 
-//   associated with each sweep. It forces a change in sweep when the 
-//   azimuth transitions across 'sur_sweep_transitions_azimuth_deg'.
+// SOMETIMES THE TRANSITIONS FROM ONE FIXED ANGLE TO ANOTHER ARE NOT 
+//   ACCURATELY DESCRIBED BY THE SCAN FLAGS, AND AS A RESULT RAYS ARE NOT 
+//   CORRECTLY ASSIGNED TO THE SWEEPS. THIS OPTION GOES THROUGH A 
+//   SURVEILLANCE VOLUME IN RAY ORDER, AND ADJUSTS THE WAY RAYS ARE 
+//   ASSOCIATED WITH EACH SWEEP. IT FORCES A CHANGE IN SWEEP WHEN THE 
+//   AZIMUTH TRANSITIONS ACROSS 'SUR_SWEEP_TRANSITIONS_AZIMUTH_DEG'.
 //
-// NOTE: this applies in surveillance mode only, and will override 
-//   'adjust_sur_sweep_limits_using_angles' if both are set to TRUE. It 
-//   has no effect on sweeps from RHI or SECTOR modes.
-//
-//
-// Type: boolean
-//
-
-force_sur_sweep_transitions_at_fixed_azimuth = FALSE;
-
-///////////// sur_sweep_transitions_azimuth_deg ///////
-//
-// Azimuth to be used for forcing surveillance sweep transitions (deg).
-//
-// See 'adjust_sur_sweep_limits_to_fixed_azimuth'. Any azimuth_offset 
-//   will be applied before this check.
+// NOTE: THIS APPLIES IN SURVEILLANCE MODE ONLY, AND WILL OVERRIDE 
+//   'ADJUST_SUR_SWEEP_LIMITS_USING_ANGLES' IF BOTH ARE SET TO TRUE. IT 
+//   HAS NO EFFECT ON SWEEPS FROM RHI OR SECTOR MODES.
 //
 //
-// Type: double
+// TYPE: BOOLEAN
 //
 
-sur_sweep_transitions_azimuth_deg = 0;
+FORCE_SUR_SWEEP_TRANSITIONS_AT_FIXED_AZIMUTH = FALSE;
+
+///////////// SUR_SWEEP_TRANSITIONS_AZIMUTH_DEG ///////
+//
+// AZIMUTH TO BE USED FOR FORCING SURVEILLANCE SWEEP TRANSITIONS (DEG).
+//
+// SEE 'ADJUST_SUR_SWEEP_LIMITS_TO_FIXED_AZIMUTH'. ANY AZIMUTH_OFFSET 
+//   WILL BE APPLIED BEFORE THIS CHECK.
+//
+//
+// TYPE: DOUBLE
+//
+
+SUR_SWEEP_TRANSITIONS_AZIMUTH_DEG = 0;
 
 //======================================================================
 //
@@ -1215,23 +1215,23 @@ sur_sweep_transitions_azimuth_deg = 0;
 //
 //======================================================================
  
-///////////// trim_surveillance_sweeps_to_360deg //////
+///////////// TRIM_SURVEILLANCE_SWEEPS_TO_360DEG //////
 //
-// Option to trip surveillance sweeps so that they only cover 360 
-//   degrees.
+// OPTION TO TRIP SURVEILLANCE SWEEPS SO THAT THEY ONLY COVER 360 
+//   DEGREES.
 //
-// Some sweeps will have rays which cover more than a 360-degree 
-//   rotation. Often these include antenna transitions. If this is set to 
-//   true, rays are trimmed off either end of the sweep to limit the 
-//   coverage to 360 degrees. The median elevation angle is computed and 
-//   the end ray which deviates from the median in elevation is trimmed 
-//   first.
+// SOME SWEEPS WILL HAVE RAYS WHICH COVER MORE THAN A 360-DEGREE 
+//   ROTATION. OFTEN THESE INCLUDE ANTENNA TRANSITIONS. IF THIS IS SET TO 
+//   TRUE, RAYS ARE TRIMMED OFF EITHER END OF THE SWEEP TO LIMIT THE 
+//   COVERAGE TO 360 DEGREES. THE MEDIAN ELEVATION ANGLE IS COMPUTED AND 
+//   THE END RAY WHICH DEVIATES FROM THE MEDIAN IN ELEVATION IS TRIMMED 
+//   FIRST.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-trim_surveillance_sweeps_to_360deg = TRUE;
+TRIM_SURVEILLANCE_SWEEPS_TO_360DEG = TRUE;
 
 //======================================================================
 //
@@ -1239,39 +1239,39 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 //
 //======================================================================
  
-///////////// end_of_vol_decision /////////////////////
+///////////// END_OF_VOL_DECISION /////////////////////
 //
-// Decision type for end-of-volume.
+// DECISION TYPE FOR END-OF-VOLUME.
 //
 
-// END_OF_VOL_FLAG: the end-of-volume flag in the data will be used to 
-//   trigger the end of volume.
+// END_OF_VOL_FLAG: THE END-OF-VOLUME FLAG IN THE DATA WILL BE USED TO 
+//   TRIGGER THE END OF VOLUME.
 //
-// CHANGE_IN_VOL_NUM: an end of volume will be assumed when the volume 
-//   number changes from one ray to the next.
+// CHANGE_IN_VOL_NUM: AN END OF VOLUME WILL BE ASSUMED WHEN THE VOLUME 
+//   NUMBER CHANGES FROM ONE RAY TO THE NEXT.
 //
-// CHANGE_IN_SWEEP_NUM: each sweep will be written out as a separate 
-//   volume.
+// CHANGE_IN_SWEEP_NUM: EACH SWEEP WILL BE WRITTEN OUT AS A SEPARATE 
+//   VOLUME.
 //
-// CHANGE_IN_SWEEP_MODE: triggers and end of vol if the sweep mode 
-//   changes, for example from SUR to RHI.
+// CHANGE_IN_SWEEP_MODE: TRIGGERS AND END OF VOL IF THE SWEEP MODE 
+//   CHANGES, FOR EXAMPLE FROM SUR TO RHI.
 //
-// EVERY_360_DEG: the volume will end after every 360 degree sweep. The 
-//   azimuth at which the vol changes is specified by 
-//   az_for_end_of_vol_360.
+// EVERY_360_DEG: THE VOLUME WILL END AFTER EVERY 360 DEGREE SWEEP. THE 
+//   AZIMUTH AT WHICH THE VOL CHANGES IS SPECIFIED BY 
+//   AZ_FOR_END_OF_VOL_360.
 //
-// LAST_SWEEP_IN_VOL: the end of the sweep number given by 
-//   'last_sweep_in_vol' will be used  to trigger the end-of-volume.
+// LAST_SWEEP_IN_VOL: THE END OF THE SWEEP NUMBER GIVEN BY 
+//   'LAST_SWEEP_IN_VOL' WILL BE USED  TO TRIGGER THE END-OF-VOLUME.
 //
-// AUTOMATIC: end-of-volume condition will be determined from the 
-//   antenna-angle information.
+// AUTOMATIC: END-OF-VOLUME CONDITION WILL BE DETERMINED FROM THE 
+//   ANTENNA-ANGLE INFORMATION.
 //
-// ELAPSED_TIME: an end-of-volume will be triggered after 
-//   'nsecs_per_volume' seconds.
+// ELAPSED_TIME: AN END-OF-VOLUME WILL BE TRIGGERED AFTER 
+//   'NSECS_PER_VOLUME' SECONDS.
 //
 //
-// Type: enum
-// Options:
+// TYPE: ENUM
+// OPTIONS:
 //     END_OF_VOL_FLAG
 //     CHANGE_IN_VOL_NUM
 //     CHANGE_IN_SWEEP_NUM
@@ -1282,256 +1282,256 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 //     ELAPSED_TIME
 //
 
-end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
+END_OF_VOL_DECISION = CHANGE_IN_SWEEP_NUM;
 
-///////////// last_sweep_in_vol ///////////////////////
+///////////// LAST_SWEEP_IN_VOL ///////////////////////
 //
-// The sweep number used to end the volume.
+// THE SWEEP NUMBER USED TO END THE VOLUME.
 //
-// Only applies if 'end_of_vol_decision' is set to LAST_SWEEP_IN_VOL.
-//
-//
-// Type: int
-//
-
-last_sweep_in_vol = 0;
-
-///////////// az_for_end_of_vol_360 ///////////////////
-//
-// Azimuth at which the volume changes.
-//
-// An end-of-vol is triggered every time the antenna moves across this 
-//   azimuth.
+// ONLY APPLIES IF 'END_OF_VOL_DECISION' IS SET TO LAST_SWEEP_IN_VOL.
 //
 //
-// Type: double
+// TYPE: INT
 //
 
-az_for_end_of_vol_360 = 0;
+LAST_SWEEP_IN_VOL = 0;
 
-///////////// write_end_of_vol_when_data_stops ////////
+///////////// AZ_FOR_END_OF_VOL_360 ///////////////////
 //
-// Write end of vol event when data stops.
+// AZIMUTH AT WHICH THE VOLUME CHANGES.
 //
-//
-// Type: boolean
-//
-
-write_end_of_vol_when_data_stops = TRUE;
-
-///////////// nsecs_no_data_for_end_of_vol ////////////
-//
-// Number of secs before writing end of vol.
-//
-// See 'write_end_of_vol_when_data_stops'.
+// AN END-OF-VOL IS TRIGGERED EVERY TIME THE ANTENNA MOVES ACROSS THIS 
+//   AZIMUTH.
 //
 //
-// Type: int
+// TYPE: DOUBLE
 //
 
-nsecs_no_data_for_end_of_vol = 2;
+AZ_FOR_END_OF_VOL_360 = 0;
 
-///////////// nsecs_per_volume ////////////////////////
+///////////// WRITE_END_OF_VOL_WHEN_DATA_STOPS ////////
 //
-// Number of secs in a volume.
-//
-// Applies to ELAPSED_TIME mode - see 'end_of_volume_decision'.
+// WRITE END OF VOL EVENT WHEN DATA STOPS.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-nsecs_per_volume = 60;
+WRITE_END_OF_VOL_WHEN_DATA_STOPS = TRUE;
 
-///////////// min_rays_per_ppi_vol ////////////////////
+///////////// NSECS_NO_DATA_FOR_END_OF_VOL ////////////
 //
-// Min number of non-transition rays per PPI volume.
+// NUMBER OF SECS BEFORE WRITING END OF VOL.
 //
-// Used to prevent end-of-volume conditions being determined during 
-//   antenna transition to the start of the next volume.
-//
-//
-// Type: int
-//
-
-min_rays_per_ppi_vol = 180;
-
-///////////// min_rays_per_rhi_vol ////////////////////
-//
-// Min number of non-transition rays per RHI volume.
-//
-// Used to prevent end-of-volume conditions being determined during 
-//   antenna transition to the start of the next volume.
+// SEE 'WRITE_END_OF_VOL_WHEN_DATA_STOPS'.
 //
 //
-// Type: int
+// TYPE: INT
 //
 
-min_rays_per_rhi_vol = 60;
+NSECS_NO_DATA_FOR_END_OF_VOL = 2;
 
-///////////// max_rays_in_vol /////////////////////////
+///////////// NSECS_PER_VOLUME ////////////////////////
 //
-// The maximum number of rays in a volume.
+// NUMBER OF SECS IN A VOLUME.
 //
-// This prevents memory from filling up if no end-of-volume is found.
+// APPLIES TO ELAPSED_TIME MODE - SEE 'END_OF_VOLUME_DECISION'.
 //
 //
-// Type: int
+// TYPE: INT
 //
 
-max_rays_in_vol = 20000;
+NSECS_PER_VOLUME = 60;
+
+///////////// MIN_RAYS_PER_PPI_VOL ////////////////////
+//
+// MIN NUMBER OF NON-TRANSITION RAYS PER PPI VOLUME.
+//
+// USED TO PREVENT END-OF-VOLUME CONDITIONS BEING DETERMINED DURING 
+//   ANTENNA TRANSITION TO THE START OF THE NEXT VOLUME.
+//
+//
+// TYPE: INT
+//
+
+MIN_RAYS_PER_PPI_VOL = 180;
+
+///////////// MIN_RAYS_PER_RHI_VOL ////////////////////
+//
+// MIN NUMBER OF NON-TRANSITION RAYS PER RHI VOLUME.
+//
+// USED TO PREVENT END-OF-VOLUME CONDITIONS BEING DETERMINED DURING 
+//   ANTENNA TRANSITION TO THE START OF THE NEXT VOLUME.
+//
+//
+// TYPE: INT
+//
+
+MIN_RAYS_PER_RHI_VOL = 60;
+
+///////////// MAX_RAYS_IN_VOL /////////////////////////
+//
+// THE MAXIMUM NUMBER OF RAYS IN A VOLUME.
+//
+// THIS PREVENTS MEMORY FROM FILLING UP IF NO END-OF-VOLUME IS FOUND.
+//
+//
+// TYPE: INT
+//
+
+MAX_RAYS_IN_VOL = 20000;
 
 //======================================================================
 //
 // AUTOMATIC END-OF-VOLUME DETECTION.
 //
-// These parameters are used if end_of_volume_decision is set to 
-//   AUTOMATIC. This assumes a simple bottom-up or top-down scan strategy. 
-//   No attempt will be made to search for RHIs, or other complicattions 
-//   in the SCAN strategy.
+// THESE PARAMETERS ARE USED IF END_OF_VOLUME_DECISION IS SET TO 
+//   AUTOMATIC. THIS ASSUMES A SIMPLE BOTTOM-UP OR TOP-DOWN SCAN STRATEGY. 
+//   NO ATTEMPT WILL BE MADE TO SEARCH FOR RHIS, OR OTHER COMPLICATTIONS 
+//   IN THE SCAN STRATEGY.
 //
 //======================================================================
  
-///////////// set_end_of_vol_from_elev_change /////////
+///////////// SET_END_OF_VOL_FROM_ELEV_CHANGE /////////
 //
-// Option to set the end of vol flag based on change in elevation angle.
+// OPTION TO SET THE END OF VOL FLAG BASED ON CHANGE IN ELEVATION ANGLE.
 //
-// If true, the program will look for changes in elevation angle to 
-//   compute the end of volume. Only this test, and the test for prf 
-//   change, will be used to identify the end of volume condition.
-//
-//
-// Type: boolean
-//
-
-set_end_of_vol_from_elev_change = FALSE;
-
-///////////// vol_starts_at_bottom ////////////////////
-//
-// Flag to indicate that elevation angles increase in the volume.
-//
-// If the volume starts at the top, i.e. elevations decrease during the 
-//   volume, set this to FALSE.
+// IF TRUE, THE PROGRAM WILL LOOK FOR CHANGES IN ELEVATION ANGLE TO 
+//   COMPUTE THE END OF VOLUME. ONLY THIS TEST, AND THE TEST FOR PRF 
+//   CHANGE, WILL BE USED TO IDENTIFY THE END OF VOLUME CONDITION.
 //
 //
-// Type: boolean
+// TYPE: BOOLEAN
 //
 
-vol_starts_at_bottom = TRUE;
+SET_END_OF_VOL_FROM_ELEV_CHANGE = FALSE;
 
-///////////// elev_change_for_end_of_vol //////////////
+///////////// VOL_STARTS_AT_BOTTOM ////////////////////
 //
-// Change in elevation which triggers and end of volume.
+// FLAG TO INDICATE THAT ELEVATION ANGLES INCREASE IN THE VOLUME.
 //
-// If the elevation angle changes by this amount, and end of volume flag 
-//   will be set.
-//
-// Minimum val: 0.1
-//
-// Type: double
-//
-
-elev_change_for_end_of_vol = 1.5;
-
-///////////// nrays_history ///////////////////////////
-//
-// Number of rays in history list.
-//
-// This is the number of rays stored in the history list. The list is 
-//   used for determining the status of the antenna. The antenna algorithm 
-//   checks o see if either the elevation angle is stable (PPI mode) or 
-//   the azimuth angle is stable (RHI mode). The el_accuracy and 
-//   az_accuracy parameters are used to detect whether el or az are 
-//   stable.
+// IF THE VOLUME STARTS AT THE TOP, I.E. ELEVATIONS DECREASE DURING THE 
+//   VOLUME, SET THIS TO FALSE.
 //
 //
-// Type: int
+// TYPE: BOOLEAN
 //
 
-nrays_history = 16;
+VOL_STARTS_AT_BOTTOM = TRUE;
 
-///////////// el_accuracy /////////////////////////////
+///////////// ELEV_CHANGE_FOR_END_OF_VOL //////////////
 //
-// Accuracy of antenna controller in elevation (deg).
+// CHANGE IN ELEVATION WHICH TRIGGERS AND END OF VOLUME.
 //
-// Used to determine if antenna is stationary in elevation, i.e. is it 
-//   in PPI mode? If the cumulative elevation change during the history 
-//   period is less than this value, the antenna is assumed to be in PPI 
-//   mode.
+// IF THE ELEVATION ANGLE CHANGES BY THIS AMOUNT, AND END OF VOLUME FLAG 
+//   WILL BE SET.
 //
+// MINIMUM VAL: 0.1
 //
-// Type: double
-//
-
-el_accuracy = 0.25;
-
-///////////// az_accuracy /////////////////////////////
-//
-// Accuracy of antenna controller in azimuth (deg).
-//
-// Used to determine if antenna is stationary in azimuth, i.e. is it in 
-//   RHI mode? If the cumulative azimuth change during the history period 
-//   is less than this value, the antenna is assumed to be in RHI mode.
-//
-//
-// Type: double
+// TYPE: DOUBLE
 //
 
-az_accuracy = 0.25;
+ELEV_CHANGE_FOR_END_OF_VOL = 1.5;
 
-///////////// min_az_change_ppi ///////////////////////
+///////////// NRAYS_HISTORY ///////////////////////////
 //
-// Min azimuth change for PPI (deg).
+// NUMBER OF RAYS IN HISTORY LIST.
 //
-// For a valid PPI, the azimuth must change by at least this amount 
-//   during nrays_history, while the elevation is not changing.
-//
-//
-// Type: double
-//
-
-min_az_change_ppi = 4;
-
-///////////// min_el_change_rhi ///////////////////////
-//
-// Min elevation change for RHI (deg).
-//
-// For a valid RHI, the elevation must change by at least this amount 
-//   during nrays_history, while the azimuth is not changing.
+// THIS IS THE NUMBER OF RAYS STORED IN THE HISTORY LIST. THE LIST IS 
+//   USED FOR DETERMINING THE STATUS OF THE ANTENNA. THE ANTENNA ALGORITHM 
+//   CHECKS O SEE IF EITHER THE ELEVATION ANGLE IS STABLE (PPI MODE) OR 
+//   THE AZIMUTH ANGLE IS STABLE (RHI MODE). THE EL_ACCURACY AND 
+//   AZ_ACCURACY PARAMETERS ARE USED TO DETECT WHETHER EL OR AZ ARE 
+//   STABLE.
 //
 //
-// Type: double
+// TYPE: INT
 //
 
-min_el_change_rhi = 4;
+NRAYS_HISTORY = 16;
 
-///////////// max_az_change_per_sweep /////////////////
+///////////// EL_ACCURACY /////////////////////////////
 //
-// Maximum azimuth change per sweep (deg).
+// ACCURACY OF ANTENNA CONTROLLER IN ELEVATION (DEG).
 //
-// If the sweep elevation has not changed by the time the azimuth has 
-//   changed by this number of degrees, an end-of-volume condition is 
-//   triggered. This is used to handle the single-elevation surveillance 
-//   case in which the antenna scans in PPI at a single elevation angle.
-//
-//
-// Type: int
-//
-
-max_az_change_per_sweep = 540;
-
-///////////// debug_auto_detection ////////////////////
-//
-// Flag for debugging auto end-of-vol detection.
-//
-// If set, messages will be printed to stderr on how the auto-detection 
-//   algorithm is making decisions.
+// USED TO DETERMINE IF ANTENNA IS STATIONARY IN ELEVATION, I.E. IS IT 
+//   IN PPI MODE? IF THE CUMULATIVE ELEVATION CHANGE DURING THE HISTORY 
+//   PERIOD IS LESS THAN THIS VALUE, THE ANTENNA IS ASSUMED TO BE IN PPI 
+//   MODE.
 //
 //
-// Type: boolean
+// TYPE: DOUBLE
 //
 
-debug_auto_detection = FALSE;
+EL_ACCURACY = 0.25;
+
+///////////// AZ_ACCURACY /////////////////////////////
+//
+// ACCURACY OF ANTENNA CONTROLLER IN AZIMUTH (DEG).
+//
+// USED TO DETERMINE IF ANTENNA IS STATIONARY IN AZIMUTH, I.E. IS IT IN 
+//   RHI MODE? IF THE CUMULATIVE AZIMUTH CHANGE DURING THE HISTORY PERIOD 
+//   IS LESS THAN THIS VALUE, THE ANTENNA IS ASSUMED TO BE IN RHI MODE.
+//
+//
+// TYPE: DOUBLE
+//
+
+AZ_ACCURACY = 0.25;
+
+///////////// MIN_AZ_CHANGE_PPI ///////////////////////
+//
+// MIN AZIMUTH CHANGE FOR PPI (DEG).
+//
+// FOR A VALID PPI, THE AZIMUTH MUST CHANGE BY AT LEAST THIS AMOUNT 
+//   DURING NRAYS_HISTORY, WHILE THE ELEVATION IS NOT CHANGING.
+//
+//
+// TYPE: DOUBLE
+//
+
+MIN_AZ_CHANGE_PPI = 4;
+
+///////////// MIN_EL_CHANGE_RHI ///////////////////////
+//
+// MIN ELEVATION CHANGE FOR RHI (DEG).
+//
+// FOR A VALID RHI, THE ELEVATION MUST CHANGE BY AT LEAST THIS AMOUNT 
+//   DURING NRAYS_HISTORY, WHILE THE AZIMUTH IS NOT CHANGING.
+//
+//
+// TYPE: DOUBLE
+//
+
+MIN_EL_CHANGE_RHI = 4;
+
+///////////// MAX_AZ_CHANGE_PER_SWEEP /////////////////
+//
+// MAXIMUM AZIMUTH CHANGE PER SWEEP (DEG).
+//
+// IF THE SWEEP ELEVATION HAS NOT CHANGED BY THE TIME THE AZIMUTH HAS 
+//   CHANGED BY THIS NUMBER OF DEGREES, AN END-OF-VOLUME CONDITION IS 
+//   TRIGGERED. THIS IS USED TO HANDLE THE SINGLE-ELEVATION SURVEILLANCE 
+//   CASE IN WHICH THE ANTENNA SCANS IN PPI AT A SINGLE ELEVATION ANGLE.
+//
+//
+// TYPE: INT
+//
+
+MAX_AZ_CHANGE_PER_SWEEP = 540;
+
+///////////// DEBUG_AUTO_DETECTION ////////////////////
+//
+// FLAG FOR DEBUGGING AUTO END-OF-VOL DETECTION.
+//
+// IF SET, MESSAGES WILL BE PRINTED TO STDERR ON HOW THE AUTO-DETECTION 
+//   ALGORITHM IS MAKING DECISIONS.
+//
+//
+// TYPE: BOOLEAN
+//
+
+DEBUG_AUTO_DETECTION = FALSE;
 
 //======================================================================
 //
@@ -1539,421 +1539,421 @@ debug_auto_detection = FALSE;
 //
 //======================================================================
  
-///////////// output_fields ///////////////////////////
+///////////// OUTPUT_FIELDS ///////////////////////////
 //
-// Array of output fields.
+// ARRAY OF OUTPUT FIELDS.
 //
-// The program will only output these fields. The dsr_name is the field 
-//   name in the dsr data. If the output_name is an empty string, the 
-//   output name will be set to the dsr_name. If output_name is non-empty, 
-//   this will be used. Likewise for the units. long_name and 
-//   standard_name are netCDF conventions. Set the output encoding type to 
-//   select the resolution of the output data.
+// THE PROGRAM WILL ONLY OUTPUT THESE FIELDS. THE DSR_NAME IS THE FIELD 
+//   NAME IN THE DSR DATA. IF THE OUTPUT_NAME IS AN EMPTY STRING, THE 
+//   OUTPUT NAME WILL BE SET TO THE DSR_NAME. IF OUTPUT_NAME IS NON-EMPTY, 
+//   THIS WILL BE USED. LIKEWISE FOR THE UNITS. LONG_NAME AND 
+//   STANDARD_NAME ARE NETCDF CONVENTIONS. SET THE OUTPUT ENCODING TYPE TO 
+//   SELECT THE RESOLUTION OF THE OUTPUT DATA.
 //
 //
-// Type: struct
-//   typedef struct {
-//      string dsr_name;
-//      string output_name;
-//      string long_name;
-//      string standard_name;
-//      string output_units;
-//      output_encoding_t output_encoding;
-//        Options:
+// TYPE: STRUCT
+//   TYPEDEF STRUCT {
+//      STRING DSR_NAME;
+//      STRING OUTPUT_NAME;
+//      STRING LONG_NAME;
+//      STRING STANDARD_NAME;
+//      STRING OUTPUT_UNITS;
+//      OUTPUT_ENCODING_T OUTPUT_ENCODING;
+//        OPTIONS:
 //          OUTPUT_FLOAT
 //          OUTPUT_SHORT
 //          OUTPUT_BYTE
 //   }
 //
-// 1D array - variable length.
+// 1D ARRAY - VARIABLE LENGTH.
 //
 
-output_fields = {
+OUTPUT_FIELDS = {
   {
-    dsr_name = "DBZ",
-    output_name = "DBZ",
-    long_name = "reflectivity",
-    standard_name = "equivalent_reflectivity_factor",
-    output_units = "dBZ",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBZ",
+    OUTPUT_NAME = "DBZ",
+    LONG_NAME = "REFLECTIVITY",
+    STANDARD_NAME = "EQUIVALENT_REFLECTIVITY_FACTOR",
+    OUTPUT_UNITS = "DBZ",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZ_F",
-    output_name = "DBZ_F",
-    long_name = "reflectivity",
-    standard_name = "equivalent_reflectivity_factor",
-    output_units = "dBZ",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBZ_F",
+    OUTPUT_NAME = "DBZ_F",
+    LONG_NAME = "REFLECTIVITY",
+    STANDARD_NAME = "EQUIVALENT_REFLECTIVITY_FACTOR",
+    OUTPUT_UNITS = "DBZ",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "VEL",
-    output_name = "VEL",
-    long_name = "doppler_velocity",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "VEL",
+    OUTPUT_NAME = "VEL",
+    LONG_NAME = "DOPPLER_VELOCITY",
+    STANDARD_NAME = "RADIAL_VELOCITY_OF_SCATTERERS_AWAY_FROM_INSTRUMENT",
+    OUTPUT_UNITS = "M/S",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "VEL_F",
-    output_name = "VEL_F",
-    long_name = "doppler_velocity_filtered",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "VEL_F",
+    OUTPUT_NAME = "VEL_F",
+    LONG_NAME = "DOPPLER_VELOCITY_FILTERED",
+    STANDARD_NAME = "RADIAL_VELOCITY_OF_SCATTERERS_AWAY_FROM_INSTRUMENT",
+    OUTPUT_UNITS = "M/S",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "WIDTH",
-    output_name = "WIDTH",
-    long_name = "spectrum_width",
-    standard_name = "doppler_spectrum_width",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "WIDTH",
+    OUTPUT_NAME = "WIDTH",
+    LONG_NAME = "SPECTRUM_WIDTH",
+    STANDARD_NAME = "DOPPLER_SPECTRUM_WIDTH",
+    OUTPUT_UNITS = "M/S",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "WIDTH_F",
-    output_name = "WIDTH_F",
-    long_name = "spectrum_width_filtered",
-    standard_name = "doppler_spectrum_width",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "WIDTH_F",
+    OUTPUT_NAME = "WIDTH_F",
+    LONG_NAME = "SPECTRUM_WIDTH_FILTERED",
+    STANDARD_NAME = "DOPPLER_SPECTRUM_WIDTH",
+    OUTPUT_UNITS = "M/S",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "CLUT",
-    output_name = "CLUT",
-    long_name = "clutter_power",
-    standard_name = "clutter_power",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "CLUT",
+    OUTPUT_NAME = "CLUT",
+    LONG_NAME = "CLUTTER_POWER",
+    STANDARD_NAME = "CLUTTER_POWER",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDR",
-    output_name = "ZDR",
-    long_name = "differential_reflectivity",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "ZDR",
+    OUTPUT_NAME = "ZDR",
+    LONG_NAME = "DIFFERENTIAL_REFLECTIVITY",
+    STANDARD_NAME = "LOG_DIFFERENTIAL_REFLECTIVITY_HV",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDR_F",
-    output_name = "ZDR_F",
-    long_name = "differential_reflectivity_filtered",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "ZDR_F",
+    OUTPUT_NAME = "ZDR_F",
+    LONG_NAME = "DIFFERENTIAL_REFLECTIVITY_FILTERED",
+    STANDARD_NAME = "LOG_DIFFERENTIAL_REFLECTIVITY_HV",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV",
-    output_name = "RHOHV",
-    long_name = "cross_correlation_ratio",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "RHOHV",
+    OUTPUT_NAME = "RHOHV",
+    LONG_NAME = "CROSS_CORRELATION_RATIO",
+    STANDARD_NAME = "CROSS_CORRELATION_RATIO_HV",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV_F",
-    output_name = "RHOHV_F",
-    long_name = "cross_correlation_ratio_filtered",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "RHOHV_F",
+    OUTPUT_NAME = "RHOHV_F",
+    LONG_NAME = "CROSS_CORRELATION_RATIO_FILTERED",
+    STANDARD_NAME = "CROSS_CORRELATION_RATIO_HV",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV_NNC",
-    output_name = "RHOHV_NNC",
-    long_name = "cross_correlation_ratio",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "RHOHV_NNC",
+    OUTPUT_NAME = "RHOHV_NNC",
+    LONG_NAME = "CROSS_CORRELATION_RATIO",
+    STANDARD_NAME = "CROSS_CORRELATION_RATIO_HV",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV_NNC_F",
-    output_name = "RHOHV_NNC_F",
-    long_name = "cross_correlation_ratio_filtered",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "RHOHV_NNC_F",
+    OUTPUT_NAME = "RHOHV_NNC_F",
+    LONG_NAME = "CROSS_CORRELATION_RATIO_FILTERED",
+    STANDARD_NAME = "CROSS_CORRELATION_RATIO_HV",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "PHIDP",
-    output_name = "PHIDP",
-    long_name = "differential_phase",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "PHIDP",
+    OUTPUT_NAME = "PHIDP",
+    LONG_NAME = "DIFFERENTIAL_PHASE",
+    STANDARD_NAME = "DIFFERENTIAL_PHASE_HV",
+    OUTPUT_UNITS = "DEG",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "PHIDP_F",
-    output_name = "PHIDP_F",
-    long_name = "differential_phase_filtered",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "PHIDP_F",
+    OUTPUT_NAME = "PHIDP_F",
+    LONG_NAME = "DIFFERENTIAL_PHASE_FILTERED",
+    STANDARD_NAME = "DIFFERENTIAL_PHASE_HV",
+    OUTPUT_UNITS = "DEG",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "PHIDP0",
-    output_name = "PHIDP0",
-    long_name = "system_differential_phase",
-    standard_name = "system_differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "PHIDP0",
+    OUTPUT_NAME = "PHIDP0",
+    LONG_NAME = "SYSTEM_DIFFERENTIAL_PHASE",
+    STANDARD_NAME = "SYSTEM_DIFFERENTIAL_PHASE_HV",
+    OUTPUT_UNITS = "DEG",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "KDP",
-    output_name = "KDP",
-    long_name = "specific_differential_phase",
-    standard_name = "specific_differential_phase_hv",
-    output_units = "deg/km",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "KDP",
+    OUTPUT_NAME = "KDP",
+    LONG_NAME = "SPECIFIC_DIFFERENTIAL_PHASE",
+    STANDARD_NAME = "SPECIFIC_DIFFERENTIAL_PHASE_HV",
+    OUTPUT_UNITS = "DEG/KM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "KDP_F",
-    output_name = "KDP_F",
-    long_name = "specific_differential_phase_filtered",
-    standard_name = "specific_differential_phase_hv",
-    output_units = "deg/km",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "KDP_F",
+    OUTPUT_NAME = "KDP_F",
+    LONG_NAME = "SPECIFIC_DIFFERENTIAL_PHASE_FILTERED",
+    STANDARD_NAME = "SPECIFIC_DIFFERENTIAL_PHASE_HV",
+    OUTPUT_UNITS = "DEG/KM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC",
-    output_name = "DBMHC",
-    long_name = "log_power_co_polar_h",
-    standard_name = "log_power_co_polar_h",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBMHC",
+    OUTPUT_NAME = "DBMHC",
+    LONG_NAME = "LOG_POWER_CO_POLAR_H",
+    STANDARD_NAME = "LOG_POWER_CO_POLAR_H",
+    OUTPUT_UNITS = "DBM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC_F",
-    output_name = "DBMHC_F",
-    long_name = "log_power_co_polar_h_filtered",
-    standard_name = "log_power_co_polar_h",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBMHC_F",
+    OUTPUT_NAME = "DBMHC_F",
+    LONG_NAME = "LOG_POWER_CO_POLAR_H_FILTERED",
+    STANDARD_NAME = "LOG_POWER_CO_POLAR_H",
+    OUTPUT_UNITS = "DBM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC",
-    output_name = "DBMVC",
-    long_name = "log_power_co_polar_v",
-    standard_name = "log_power_co_polar_v",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBMVC",
+    OUTPUT_NAME = "DBMVC",
+    LONG_NAME = "LOG_POWER_CO_POLAR_V",
+    STANDARD_NAME = "LOG_POWER_CO_POLAR_V",
+    OUTPUT_UNITS = "DBM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC_F",
-    output_name = "DBMVC_F",
-    long_name = "log_power_co_polar_v_filtered",
-    standard_name = "log_power_co_polar_v",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "DBMVC_F",
+    OUTPUT_NAME = "DBMVC_F",
+    LONG_NAME = "LOG_POWER_CO_POLAR_V_FILTERED",
+    STANDARD_NAME = "LOG_POWER_CO_POLAR_V",
+    OUTPUT_UNITS = "DBM",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRHC",
-    output_name = "SNRHC",
-    long_name = "signal_to_noise_ratio_co_polar_h",
-    standard_name = "signal_to_noise_ratio_co_polar_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SNRHC",
+    OUTPUT_NAME = "SNRHC",
+    LONG_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_H",
+    STANDARD_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_H",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRHC_F",
-    output_name = "SNRHC_F",
-    long_name = "signal_to_noise_ratio_co_polar_h_filtered",
-    standard_name = "signal_to_noise_ratio_co_polar_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SNRHC_F",
+    OUTPUT_NAME = "SNRHC_F",
+    LONG_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_H_FILTERED",
+    STANDARD_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_H",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC",
-    output_name = "SNRVC",
-    long_name = "signal_to_noise_ratio_co_polar_v",
-    standard_name = "signal_to_noise_ratio_co_polar_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SNRVC",
+    OUTPUT_NAME = "SNRVC",
+    LONG_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_V",
+    STANDARD_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_V",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC_F",
-    output_name = "SNRVC_F",
-    long_name = "signal_to_noise_ratio_co_polar_v_filtered",
-    standard_name = "signal_to_noise_ratio_co_polar_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SNRVC_F",
+    OUTPUT_NAME = "SNRVC_F",
+    LONG_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_V_FILTERED",
+    STANDARD_NAME = "SIGNAL_TO_NOISE_RATIO_CO_POLAR_V",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "NCP",
-    output_name = "NCP",
-    long_name = "normalized_coherent_power",
-    standard_name = "normalized_coherent_power",
-    output_units = "",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "NCP",
+    OUTPUT_NAME = "NCP",
+    LONG_NAME = "NORMALIZED_COHERENT_POWER",
+    STANDARD_NAME = "NORMALIZED_COHERENT_POWER",
+    OUTPUT_UNITS = "",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "NCP_F",
-    output_name = "NCP_F",
-    long_name = "normalized_coherent_power_filtered",
-    standard_name = "normalized_coherent_power",
-    output_units = "",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "NCP_F",
+    OUTPUT_NAME = "NCP_F",
+    LONG_NAME = "NORMALIZED_COHERENT_POWER_FILTERED",
+    STANDARD_NAME = "NORMALIZED_COHERENT_POWER",
+    OUTPUT_UNITS = "",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "CPA",
-    output_name = "CPA",
-    long_name = "clutter_phase_alignment",
-    standard_name = "clutter_phase_alignment",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "CPA",
+    OUTPUT_NAME = "CPA",
+    LONG_NAME = "CLUTTER_PHASE_ALIGNMENT",
+    STANDARD_NAME = "CLUTTER_PHASE_ALIGNMENT",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "CSR",
-    output_name = "CSR",
-    long_name = "clutter_to_signal_ratio",
-    standard_name = "clutter_to_signal_ratio",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "CSR",
+    OUTPUT_NAME = "CSR",
+    LONG_NAME = "CLUTTER_TO_SIGNAL_RATIO",
+    STANDARD_NAME = "CLUTTER_TO_SIGNAL_RATIO",
+    OUTPUT_UNITS = "DB",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "CMD",
-    output_name = "CMD",
-    long_name = "clutter_mitigation_interest",
-    standard_name = "clutter_mitigation_decision",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "CMD",
+    OUTPUT_NAME = "CMD",
+    LONG_NAME = "CLUTTER_MITIGATION_INTEREST",
+    STANDARD_NAME = "CLUTTER_MITIGATION_DECISION",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "CMD_FLAG",
-    output_name = "CMD_FLAG",
-    long_name = "clutter_mitigation_interest_flag",
-    standard_name = "clutter_mitigation_decision_flag",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "CMD_FLAG",
+    OUTPUT_NAME = "CMD_FLAG",
+    LONG_NAME = "CLUTTER_MITIGATION_INTEREST_FLAG",
+    STANDARD_NAME = "CLUTTER_MITIGATION_DECISION_FLAG",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "TDBZ",
-    output_name = "TDBZ",
-    long_name = "texture_of_reflectivity",
-    standard_name = "texture_of_reflectivity",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "TDBZ",
+    OUTPUT_NAME = "TDBZ",
+    LONG_NAME = "TEXTURE_OF_REFLECTIVITY",
+    STANDARD_NAME = "TEXTURE_OF_REFLECTIVITY",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SPIN",
-    output_name = "SPIN",
-    long_name = "spin_of_reflectivity",
-    standard_name = "spin_of_reflectivity",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SPIN",
+    OUTPUT_NAME = "SPIN",
+    LONG_NAME = "SPIN_OF_REFLECTIVITY",
+    STANDARD_NAME = "SPIN_OF_REFLECTIVITY",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDR_SDEV",
-    output_name = "ZDR_SDEV",
-    long_name = "standard_deviation_of_zdr",
-    standard_name = "standard_deviation_of_zdr",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "ZDR_SDEV",
+    OUTPUT_NAME = "ZDR_SDEV",
+    LONG_NAME = "STANDARD_DEVIATION_OF_ZDR",
+    STANDARD_NAME = "STANDARD_DEVIATION_OF_ZDR",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "PHIDP_SDEV",
-    output_name = "PHIDP_SDEV",
-    long_name = "standard_deviation_of_phidp",
-    standard_name = "standard_deviation_of_phidp",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "PHIDP_SDEV",
+    OUTPUT_NAME = "PHIDP_SDEV",
+    LONG_NAME = "STANDARD_DEVIATION_OF_PHIDP",
+    STANDARD_NAME = "STANDARD_DEVIATION_OF_PHIDP",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "TDBZ_INTEREST",
-    output_name = "TDBZ_INTEREST",
-    long_name = "texture_of_reflectivity",
-    standard_name = "texture_of_reflectivity",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "TDBZ_INTEREST",
+    OUTPUT_NAME = "TDBZ_INTEREST",
+    LONG_NAME = "TEXTURE_OF_REFLECTIVITY",
+    STANDARD_NAME = "TEXTURE_OF_REFLECTIVITY",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SPIN_INTEREST",
-    output_name = "SPIN_INTEREST",
-    long_name = "spin_of_reflectivity",
-    standard_name = "spin_of_reflectivity",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "SPIN_INTEREST",
+    OUTPUT_NAME = "SPIN_INTEREST",
+    LONG_NAME = "SPIN_OF_REFLECTIVITY",
+    STANDARD_NAME = "SPIN_OF_REFLECTIVITY",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "MAX_TDBZ_SPIN",
-    output_name = "MAX_TDBZ_SPIN",
-    long_name = "max_interest_from_tdbz_and_spin",
-    standard_name = "max_interest_from_tdbz_and_spin",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "MAX_TDBZ_SPIN",
+    OUTPUT_NAME = "MAX_TDBZ_SPIN",
+    LONG_NAME = "MAX_INTEREST_FROM_TDBZ_AND_SPIN",
+    STANDARD_NAME = "MAX_INTEREST_FROM_TDBZ_AND_SPIN",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDR_SDEV_INTEREST",
-    output_name = "ZDR_SDEV_INTEREST",
-    long_name = "standard_deviation_of_zdr",
-    standard_name = "standard_deviation_of_zdr",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "ZDR_SDEV_INTEREST",
+    OUTPUT_NAME = "ZDR_SDEV_INTEREST",
+    LONG_NAME = "STANDARD_DEVIATION_OF_ZDR",
+    STANDARD_NAME = "STANDARD_DEVIATION_OF_ZDR",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "PHIDP_SDEV_INTEREST",
-    output_name = "PHIDP_SDEV_INTEREST",
-    long_name = "standard_deviation_of_phidp",
-    standard_name = "standard_deviation_of_phidp",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    DSR_NAME = "PHIDP_SDEV_INTEREST",
+    OUTPUT_NAME = "PHIDP_SDEV_INTEREST",
+    LONG_NAME = "STANDARD_DEVIATION_OF_PHIDP",
+    STANDARD_NAME = "STANDARD_DEVIATION_OF_PHIDP",
+    OUTPUT_UNITS = "NONE",
+    OUTPUT_ENCODING = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV_TEST_UNFILT",
-    output_name = "RHOHV_TEST_UNFILT",
-    long_name = "rhohv_test_unfiltered",
-    standard_name = "rhohv_test_unfiltered",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+   dsr_name = "RHOHV_TEST_UNFILT",
+   output_name = "RHOHV_TEST_UNFILT",
+   long_name = "rhohv_test_unfiltered",
+   standard_name = "rhohv_test_unfiltered",
+   output_units = "none",
+   output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "RHOHV_TEST_UNUNFILT",
-    output_name = "RHOHV_TEST_UNUNFILT",
-    long_name = "rhohv_test_ununfiltered",
-    standard_name = "rhohv_test_ununfiltered",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+   dsr_name = "RHOHV_TEST_FILT",
+   output_name = "RHOHV_TEST_FILT",
+   long_name = "rhohv_test_filtered",
+   standard_name = "rhohv_test_filtered",
+   output_units = "none",
+   output_encoding = OUTPUT_SHORT
   }
   ,
   {

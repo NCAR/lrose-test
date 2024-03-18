@@ -1195,7 +1195,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 //
 // Type: string
 
-startup_cal_file = "$(HOME)/git/lrose-test/nexrad/cmd/params/fop1_cal.xml";
+startup_cal_file = "$(HOME)/git/lrose-test/nexrad/cmd_adapt/params/fop1_cal.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //
@@ -4384,26 +4384,6 @@ output_fields = {
   }
   ,
   {
-    id = DBZ_DIFF_SQ,
-    name = "DBZ_DIFF_SQ",
-    units = "dBzSq",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = FALSE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = DBZ_SPIN_CHANGE,
-    name = "DBZ_SPIN_CHANGE",
-    units = "",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = FALSE,
-    write_filtered = FALSE
-  }
-  ,
-  {
     id = TDBZ_INTEREST,
     name = "TDBZ_INTEREST",
     units = "",
@@ -4457,26 +4437,28 @@ output_fields = {
     id = RHOHV_TEST_UNFILT,
     name = "RHOHV_TEST_UNFILT",
     units = "",
-    scale = 0.0001,
-    bias = -1,
+    scale = 0.001,
+    bias = -0.01,
     write_unfiltered = FALSE,
     write_filtered = FALSE
   }
+  ,
   {
     id = RHOHV_TEST_FILT,
     name = "RHOHV_TEST_FILT",
     units = "",
-    scale = 0.0001,
-    bias = -1,
+    scale = 0.001,
+    bias = -0.01,
     write_unfiltered = FALSE,
     write_filtered = FALSE
   }
+  ,
   {
     id = RHOHV_TEST_IMPROV,
     name = "RHOHV_TEST_IMPROV",
     units = "",
-    scale = 0.0001,
-    bias = -1,
+    scale = 0.001,
+    bias = -0.01,
     write_unfiltered = FALSE,
     write_filtered = FALSE
   }
