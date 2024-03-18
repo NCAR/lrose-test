@@ -1,0 +1,8 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+Iq2Dsr -params Iq2Dsr.fop1.longprt.adapt -debug -f /scr/cirrus1/rsfdata/projects/nexrad/time_series/fop1/FOP1_RVP.20120530.020343.931.vcp12.1.H+V.460
+

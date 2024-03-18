@@ -1,0 +1,8 @@
+#! /bin/csh
+
+# start HawkEye
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+HawkEye -params ../params/HawkEye.fop1.longprt.adapt >& /dev/null &
+
