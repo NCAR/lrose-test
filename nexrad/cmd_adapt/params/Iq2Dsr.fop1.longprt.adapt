@@ -4439,7 +4439,7 @@ output_fields = {
     units = "",
     scale = 0.001,
     bias = -0.01,
-    write_unfiltered = FALSE,
+    write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
@@ -4449,7 +4449,7 @@ output_fields = {
     units = "",
     scale = 0.001,
     bias = -0.01,
-    write_unfiltered = FALSE,
+    write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
@@ -4459,7 +4459,7 @@ output_fields = {
     units = "",
     scale = 0.001,
     bias = -0.01,
-    write_unfiltered = FALSE,
+    write_unfiltered = TRUE,
     write_filtered = FALSE
   }
 };
