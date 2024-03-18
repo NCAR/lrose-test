@@ -1,0 +1,11 @@
+#! /bin/csh -f
+
+# Run Dsr2Radx for adaptive filter
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+Dsr2Radx -params Dsr2Radx.fop1.longprt.adapt.all_bins -debug
+
+
+
+

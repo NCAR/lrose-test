@@ -4,5 +4,5 @@
 
 cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
 
-HawkEye -params ../params/HawkEye.fop1.longprt.adapt.all_bins >& /dev/null &
+HawkEye -params HawkEye.fop1.longprt.adapt.all_bins >& /dev/null &
 
