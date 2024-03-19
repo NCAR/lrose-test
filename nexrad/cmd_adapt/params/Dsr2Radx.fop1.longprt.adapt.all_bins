@@ -4,6 +4,15 @@
 
 //======================================================================
 //
+// Dsr2Radx program.
+//
+// Dsr2Radx reads radial radar data from an input FMQ, and writes the 
+//   data to files in formats supported by Radx.
+//
+//======================================================================
+ 
+//======================================================================
+//
 // DEBUGGING AND PROCESS CONTROL.
 //
 //======================================================================
@@ -14,14 +23,12 @@
 //
 // If set, debug messages will be printed appropriately.
 //
-//
 // Type: enum
 // Options:
 //     DEBUG_OFF
 //     DEBUG_NORM
 //     DEBUG_VERBOSE
 //     DEBUG_EXTRA
-//
 
 debug = DEBUG_OFF;
 
@@ -31,9 +38,7 @@ debug = DEBUG_OFF;
 //
 // Used for registration with procmap.
 //
-//
 // Type: string
-//
 
 instance = "fop1.longprt.adapt.all_bins";
 
@@ -47,9 +52,7 @@ instance = "fop1.longprt.adapt.all_bins";
 //   than 60 seconds because the files are large and compressed, then 
 //   increase this interval, to say 120 secs.
 //
-//
 // Type: int
-//
 
 procmap_register_interval = 60;
 
@@ -63,9 +66,7 @@ procmap_register_interval = 60;
 //
 // Input URL for DsRadar data via FMQ.
 //
-//
 // Type: string
-//
 
 input_fmq_url = "/tmp/fmq/fop1/shmem_44200";
 
@@ -77,9 +78,7 @@ input_fmq_url = "/tmp/fmq/fop1/shmem_44200";
 //   new data. If FALSE, it will start reading from the beginning of the 
 //   FMQ.
 //
-//
 // Type: boolean
-//
 
 seek_to_end_of_input = TRUE;
 
@@ -96,9 +95,7 @@ seek_to_end_of_input = TRUE;
 //   the antenna angle changes to determine whether the scan is in PPI or 
 //   RHI mode.
 //
-//
 // Type: boolean
-//
 
 use_input_scan_mode = TRUE;
 
@@ -114,9 +111,7 @@ use_input_scan_mode = TRUE;
 //
 // Stored in netCDF file.
 //
-//
 // Type: string
-//
 
 site_name = "FOP1";
 
@@ -127,9 +122,7 @@ site_name = "FOP1";
 // If TRUE, we will use the parameter 'radar_name' instead of the name 
 //   in the data stream.
 //
-//
 // Type: boolean
-//
 
 override_radar_name = TRUE;
 
@@ -137,9 +130,7 @@ override_radar_name = TRUE;
 //
 // Name of radar site - if overridden.
 //
-//
 // Type: string
-//
 
 radar_name = "FOP1";
 
@@ -150,9 +141,7 @@ radar_name = "FOP1";
 // If TRUE, the program will use location specified in the 
 //   'radar_location' parameter.
 //
-//
 // Type: boolean
-//
 
 override_radar_location = FALSE;
 
@@ -164,7 +153,6 @@ override_radar_location = FALSE;
 //   true. Otherwise the information in the input data stream is used. 
 //   Note that the altitude is in meters MSL.
 //
-//
 // Type: struct
 //   typedef struct {
 //      double latitudeDeg;
@@ -172,11 +160,10 @@ override_radar_location = FALSE;
 //      double altitudeKm;
 //   }
 //
-//
 
 radar_location = {
-    latitudeDeg = 35.238333,
-    longitudeDeg = -97.460000,
+    latitudeDeg = 35.2383,
+    longitudeDeg = -97.46,
     altitudeKm = 0.407
 };
 
@@ -193,9 +180,7 @@ radar_location = {
 //   north. The offset is applied as the rays are read in - i.e. all other 
 //   operations use the updated azimuths.
 //
-//
 // Type: boolean
-//
 
 apply_azimuth_offset = FALSE;
 
@@ -206,9 +191,7 @@ apply_azimuth_offset = FALSE;
 // See 'apply_azimuth_offset'. This value will be ADDED to the measured 
 //   azimuths.
 //
-//
 // Type: double
-//
 
 azimuth_offset = 0;
 
@@ -221,9 +204,7 @@ azimuth_offset = 0;
 //   angles. The offset is applied as the rays are read in - i.e. all 
 //   other operations use the updated elevations.
 //
-//
 // Type: boolean
-//
 
 apply_elevation_offset = FALSE;
 
@@ -234,9 +215,7 @@ apply_elevation_offset = FALSE;
 // See 'apply_elevation_offset'. This value will be ADDED to the 
 //   measured elevations.
 //
-//
 // Type: double
-//
 
 elevation_offset = 0;
 
@@ -255,9 +234,7 @@ elevation_offset = 0;
 // If true, the file will be read in, the instrument type will be 
 //   changed, and then any post-read processing will be performed.
 //
-//
 // Type: boolean
-//
 
 override_instrument_type = FALSE;
 
@@ -265,12 +242,10 @@ override_instrument_type = FALSE;
 //
 // Specify the instrument type. See override_instrument_type.
 //
-//
 // Type: enum
 // Options:
 //     INSTRUMENT_RADAR
 //     INSTRUMENT_LIDAR
-//
 
 instrument_type = INSTRUMENT_RADAR;
 
@@ -292,9 +267,7 @@ instrument_type = INSTRUMENT_RADAR;
 // 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
 // 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
 //
-//
 // Type: boolean
-//
 
 override_platform_type = FALSE;
 
@@ -303,7 +276,6 @@ override_platform_type = FALSE;
 // Platform type.
 //
 // See override_platform_type.
-//
 //
 // Type: enum
 // Options:
@@ -318,7 +290,6 @@ override_platform_type = FALSE;
 //     PLATFORM_AIRCRAFT_NOSE
 //     PLATFORM_SATELLITE_ORBIT
 //     PLATFORM_SATELLITE_GEOSTAT
-//
 
 platform_type = PLATFORM_FIXED;
 
@@ -335,18 +306,15 @@ platform_type = PLATFORM_FIXED;
 // 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
 // 	PRIMARY_AXIS_X_PRIME - translated lateral.
 //
-//
 // Type: boolean
-//
 
 override_primary_axis = FALSE;
 
 ///////////// primary_axis ////////////////////////////
 //
-// Platform type.
+// Primary axis.
 //
 // See override_primary_axis.
-//
 //
 // Type: enum
 // Options:
@@ -356,7 +324,6 @@ override_primary_axis = FALSE;
 //     PRIMARY_AXIS_Z_PRIME
 //     PRIMARY_AXIS_Y_PRIME
 //     PRIMARY_AXIS_X_PRIME
-//
 
 primary_axis = PRIMARY_AXIS_Z;
 
@@ -369,9 +336,7 @@ primary_axis = PRIMARY_AXIS_Z;
 //   and appropriate corrections made. If possible, Earth-centric azimuth 
 //   and elevation angles will be computed.
 //
-//
 // Type: boolean
-//
 
 apply_georeference_corrections = FALSE;
 
@@ -394,9 +359,7 @@ apply_georeference_corrections = FALSE;
 // If TRUE, censoring will be performed. See 'censoring_fields' for 
 //   details on how the censoring is applied.
 //
-//
 // Type: boolean
-//
 
 apply_censoring = FALSE;
 
@@ -420,7 +383,6 @@ apply_censoring = FALSE;
 //   flag is false, the data at the gate is censored, and all of the 
 //   fields at the gate are set to missing.
 //
-//
 // Type: struct
 //   typedef struct {
 //      string name;
@@ -433,7 +395,6 @@ apply_censoring = FALSE;
 //   }
 //
 // 1D array - variable length.
-//
 
 censoring_fields = {
   {
@@ -462,9 +423,7 @@ censoring_fields = {
 //   censoring_min_valid_run. If the number of gates in a run is less than 
 //   this, then all gates in the run are censored.
 //
-//
 // Type: int
-//
 
 censoring_min_valid_run = 3;
 
@@ -481,9 +440,7 @@ censoring_min_valid_run = 3;
 // If TRUE, the program will use only ray data which matches the 
 //   'keep_gate_spacing' parameter.
 //
-//
 // Type: boolean
-//
 
 filter_using_gate_spacing = FALSE;
 
@@ -495,9 +452,7 @@ filter_using_gate_spacing = FALSE;
 //   set true. Otherwise all gate spacings in the input data stream are 
 //   used.
 //
-//
 // Type: double
-//
 
 specified_gate_spacing = 0.25;
 
@@ -508,9 +463,7 @@ specified_gate_spacing = 0.25;
 // If TRUE, the program will use only ray data which matches the 'keep 
 //   _start_range' parameter.
 //
-//
 // Type: boolean
-//
 
 filter_using_start_range = FALSE;
 
@@ -521,9 +474,7 @@ filter_using_start_range = FALSE;
 // The specified start range is only used if 'filter_start_range' is set 
 //   true. Otherwise all start ranges in the input data stream are used.
 //
-//
 // Type: double
-//
 
 specified_start_range = 0;
 
@@ -534,9 +485,7 @@ specified_start_range = 0;
 // If TRUE, the program will use only ray data with elevations between 
 //   the given limits.
 //
-//
 // Type: boolean
-//
 
 filter_using_elev = FALSE;
 
@@ -547,9 +496,7 @@ filter_using_elev = FALSE;
 // If the elevation is below this value, the ray is ignored. Applies 
 //   only if filter_using_elev is true.
 //
-//
 // Type: double
-//
 
 specified_min_elev = -10;
 
@@ -560,9 +507,7 @@ specified_min_elev = -10;
 // If the elevation is above this value, the ray is ignored. Applies 
 //   only if filter_using_elev is true.
 //
-//
 // Type: double
-//
 
 specified_max_elev = 180;
 
@@ -573,9 +518,7 @@ specified_max_elev = 180;
 // If TRUE, the program will use only ray data with a sweep numbers 
 //   between the given limits.
 //
-//
 // Type: boolean
-//
 
 filter_using_sweep_number = FALSE;
 
@@ -586,9 +529,7 @@ filter_using_sweep_number = FALSE;
 // If the sweep number is below this value, the ray is ignored. Applies 
 //   only if filter_using_sweep_number is true.
 //
-//
 // Type: int
-//
 
 specified_min_sweep_number = 0;
 
@@ -599,9 +540,7 @@ specified_min_sweep_number = 0;
 // If the sweep number is above this value, the ray is ignored. Applies 
 //   only if filter_using_sweep_number is true.
 //
-//
 // Type: int
-//
 
 specified_max_sweep_number = 999;
 
@@ -612,9 +551,7 @@ specified_max_sweep_number = 999;
 // If TRUE, the program will use only ray data with a sweep number that 
 //   is in the specified list.
 //
-//
 // Type: boolean
-//
 
 filter_using_sweep_number_list = FALSE;
 
@@ -625,10 +562,8 @@ filter_using_sweep_number_list = FALSE;
 // If the sweep number is not in this list, the ray is ignored. Applies 
 //   only if filter_using_sweep_number_list is true.
 //
-//
 // Type: int
 // 1D array - variable length.
-//
 
 specified_sweep_number_list = {
  0,
@@ -649,9 +584,7 @@ specified_sweep_number_list = {
 // If true, rays will only be stored if the antenna is moving. If the 
 //   antenna stops, rays will be ignored.
 //
-//
 // Type: boolean
-//
 
 filter_antenna_stationary = FALSE;
 
@@ -663,9 +596,7 @@ filter_antenna_stationary = FALSE;
 //   this amount from one ray to the next. The angle check is made in both 
 //   azimuth and elevation.
 //
-//
 // Type: double
-//
 
 min_angle_change_for_moving_antenna = 0.05;
 
@@ -677,9 +608,7 @@ min_angle_change_for_moving_antenna = 0.05;
 //   will be removed, so that all rays are considered to be NOT in 
 //   transition.
 //
-//
 // Type: boolean
-//
 
 clear_transition_flag_on_all_rays = TRUE;
 
@@ -691,9 +620,7 @@ clear_transition_flag_on_all_rays = TRUE;
 //   antenna is moving from one sweep to the next, or one volume to the 
 //   next.
 //
-//
 // Type: boolean
-//
 
 filter_antenna_transitions = FALSE;
 
@@ -704,9 +631,7 @@ filter_antenna_transitions = FALSE;
 // If TRUE, the program will filter out all rays for which the scan mode 
 //   is IDLE.
 //
-//
 // Type: boolean
-//
 
 filter_when_scan_idle = FALSE;
 
@@ -717,9 +642,7 @@ filter_when_scan_idle = FALSE;
 // If TRUE, the program will filter out all rays for which the scan mode 
 //   is POINTING.
 //
-//
 // Type: boolean
-//
 
 filter_when_scan_pointing = FALSE;
 
@@ -740,9 +663,7 @@ filter_when_scan_pointing = FALSE;
 // If true, all rays will be converted to the predominant gate geometry 
 //   - i.e. start_range and gate_spacing.
 //
-//
 // Type: boolean
-//
 
 convert_to_predominant_gate_geometry = FALSE;
 
@@ -752,9 +673,7 @@ convert_to_predominant_gate_geometry = FALSE;
 //
 // If true, all rays will be converted to the finest gate spacing.
 //
-//
 // Type: boolean
-//
 
 convert_to_finest_gate_geometry = FALSE;
 
@@ -765,9 +684,7 @@ convert_to_finest_gate_geometry = FALSE;
 // See 'specified_start_range_k', 'specified_gate_spacing_km' and 
 //   'interpolate_to_specified_gate_geometry'.
 //
-//
 // Type: boolean
-//
 
 convert_to_specified_output_gate_geometry = FALSE;
 
@@ -777,9 +694,7 @@ convert_to_specified_output_gate_geometry = FALSE;
 //
 // See 'convert_to_specified_gate_geometry'.
 //
-//
 // Type: double
-//
 
 output_start_range_km = 0.1;
 
@@ -789,9 +704,7 @@ output_start_range_km = 0.1;
 //
 // See 'convert_to_specified_gate_geometry'.
 //
-//
 // Type: double
-//
 
 output_gate_spacing_km = 0.2;
 
@@ -803,9 +716,7 @@ output_gate_spacing_km = 0.2;
 // If false, nearest neighbor mapping is used. See 
 //   'convert_to_specified_gate_geometry'.
 //
-//
 // Type: boolean
-//
 
 interpolate_to_output_gate_geometry = FALSE;
 
@@ -828,9 +739,7 @@ interpolate_to_output_gate_geometry = FALSE;
 //   group the rays into sweeps. If FALSE, the antenna angles will be 
 //   analysed using a histogram technique to determine the sweep numbers.
 //
-//
 // Type: boolean
-//
 
 find_sweep_numbers_using_histogram = FALSE;
 
@@ -842,9 +751,7 @@ find_sweep_numbers_using_histogram = FALSE;
 // If TRUE, the target angles will be used to compute the histograms. If 
 //   FALSE, the measured angles will be used.
 //
-//
 // Type: boolean
-//
 
 use_target_angles_for_hist = FALSE;
 
@@ -855,9 +762,7 @@ use_target_angles_for_hist = FALSE;
 // The angle data is binned at this resolution. If the scan strategy has 
 //   angles very close together you may need to use a fine resolution.
 //
-//
 // Type: double
-//
 
 hist_angle_resolution = 0.1;
 
@@ -875,7 +780,6 @@ hist_angle_resolution = 0.1;
 // Minimum val: 1
 //
 // Type: int
-//
 
 hist_search_width = 3;
 
@@ -892,9 +796,7 @@ hist_search_width = 3;
 // Normally all gates are processed. If this is set to true, gates above 
 //   the selected height will be removed from the processing.
 //
-//
 // Type: boolean
-//
 
 crop_above_max_height = FALSE;
 
@@ -904,9 +806,7 @@ crop_above_max_height = FALSE;
 //
 // Only gates below this height will be processed.
 //
-//
 // Type: double
-//
 
 max_height_km_msl = 23;
 
@@ -924,9 +824,7 @@ max_height_km_msl = 23;
 //   The test pulse data generally lies in the last few gates in the ray. 
 //   If true, the number of gates will be reduced by 'ngates_test_pulse'.
 //
-//
 // Type: boolean
-//
 
 remove_test_pulse = FALSE;
 
@@ -936,9 +834,7 @@ remove_test_pulse = FALSE;
 //
 // See 'remove_test_pulse'.
 //
-//
 // Type: int
-//
 
 ngates_test_pulse = 20;
 
@@ -957,9 +853,7 @@ ngates_test_pulse = 20;
 // If TRUE, a sweep is only considered valid if the number of rays 
 //   exceeds 'min_rays_in_sweep'.
 //
-//
 // Type: boolean
-//
 
 check_min_rays_in_sweep = FALSE;
 
@@ -969,9 +863,7 @@ check_min_rays_in_sweep = FALSE;
 //
 // See 'check_min_rays_in_sweep'.
 //
-//
 // Type: int
-//
 
 min_rays_in_sweep = 60;
 
@@ -982,9 +874,7 @@ min_rays_in_sweep = 60;
 // If TRUE, a PPI sweep is only considered valid if the number of rays 
 //   exceeds 'min_rays_in_ppi_sweep'.
 //
-//
 // Type: boolean
-//
 
 check_min_rays_in_ppi_sweep = TRUE;
 
@@ -994,9 +884,7 @@ check_min_rays_in_ppi_sweep = TRUE;
 //
 // See 'check_min_rays_in_ppi_sweep'.
 //
-//
 // Type: int
-//
 
 min_rays_in_ppi_sweep = 60;
 
@@ -1007,9 +895,7 @@ min_rays_in_ppi_sweep = 60;
 // If TRUE, a RHI sweep is only considered valid if the number of rays 
 //   exceeds 'min_rays_in_rhi_sweep'.
 //
-//
 // Type: boolean
-//
 
 check_min_rays_in_rhi_sweep = TRUE;
 
@@ -1019,9 +905,7 @@ check_min_rays_in_rhi_sweep = TRUE;
 //
 // See 'check_min_rays_in_rhi_sweep'.
 //
-//
 // Type: int
-//
 
 min_rays_in_rhi_sweep = 45;
 
@@ -1044,9 +928,7 @@ min_rays_in_rhi_sweep = 45;
 //
 // See NOTE above.
 //
-//
 // Type: boolean
-//
 
 compute_ppi_fixed_angles_from_measured_elevation = TRUE;
 
@@ -1057,9 +939,7 @@ compute_ppi_fixed_angles_from_measured_elevation = TRUE;
 //
 // See NOTE above.
 //
-//
 // Type: boolean
-//
 
 compute_rhi_fixed_angles_from_measured_azimuth = FALSE;
 
@@ -1069,9 +949,7 @@ compute_rhi_fixed_angles_from_measured_azimuth = FALSE;
 //
 // If false, uses the median.
 //
-//
 // Type: boolean
-//
 
 use_mean_to_compute_fixed_angles = TRUE;
 
@@ -1091,9 +969,7 @@ use_mean_to_compute_fixed_angles = TRUE;
 //   middle of a sweep, the sweep number is incremented to break up the 
 //   sweep into multiple parts.
 //
-//
 // Type: boolean
-//
 
 increment_sweep_num_when_pol_mode_changes = FALSE;
 
@@ -1107,9 +983,7 @@ increment_sweep_num_when_pol_mode_changes = FALSE;
 //   sweep, the sweep number is incremented to break up the sweep into 
 //   multiple parts.
 //
-//
 // Type: boolean
-//
 
 increment_sweep_num_when_prt_mode_changes = FALSE;
 
@@ -1135,11 +1009,20 @@ increment_sweep_num_when_prt_mode_changes = FALSE;
 // We compare the actual angle with the fixed angle, and minimize the 
 //   angular difference at the transition from one sweep to the next.
 //
-//
 // Type: boolean
-//
 
 adjust_sur_sweep_limits_using_angles = TRUE;
+
+///////////// adjust_sur_sweep_max_angle_error ////////
+//
+// Max angle error to be used when adjusting sur sweep limits (deg).
+//
+// See 'adjust_sur_sweep_limits_using angles'. We only adjust sweeps for 
+//   which the elevation error is less than this.
+//
+// Type: double
+
+adjust_sur_sweep_max_angle_error = 2;
 
 ///////////// adjust_sector_sweep_limits_using_angles /
 //
@@ -1148,9 +1031,7 @@ adjust_sur_sweep_limits_using_angles = TRUE;
 // We compare the actual angle with the fixed angle, and minimize the 
 //   angular difference at the transition from one sweep to the next.
 //
-//
 // Type: boolean
-//
 
 adjust_sector_sweep_limits_using_angles = TRUE;
 
@@ -1161,9 +1042,7 @@ adjust_sector_sweep_limits_using_angles = TRUE;
 // We compare the actual angle with the fixed angle, and minimize the 
 //   angular difference at the transition from one sweep to the next.
 //
-//
 // Type: boolean
-//
 
 adjust_rhi_sweep_limits_using_angles = TRUE;
 
@@ -1190,9 +1069,7 @@ adjust_rhi_sweep_limits_using_angles = TRUE;
 //   'adjust_sur_sweep_limits_using_angles' if both are set to TRUE. It 
 //   has no effect on sweeps from RHI or SECTOR modes.
 //
-//
 // Type: boolean
-//
 
 force_sur_sweep_transitions_at_fixed_azimuth = FALSE;
 
@@ -1203,9 +1080,7 @@ force_sur_sweep_transitions_at_fixed_azimuth = FALSE;
 // See 'adjust_sur_sweep_limits_to_fixed_azimuth'. Any azimuth_offset 
 //   will be applied before this check.
 //
-//
 // Type: double
-//
 
 sur_sweep_transitions_azimuth_deg = 0;
 
@@ -1227,9 +1102,7 @@ sur_sweep_transitions_azimuth_deg = 0;
 //   the end ray which deviates from the median in elevation is trimmed 
 //   first.
 //
-//
 // Type: boolean
-//
 
 trim_surveillance_sweeps_to_360deg = TRUE;
 
@@ -1269,7 +1142,6 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 // ELAPSED_TIME: an end-of-volume will be triggered after 
 //   'nsecs_per_volume' seconds.
 //
-//
 // Type: enum
 // Options:
 //     END_OF_VOL_FLAG
@@ -1280,7 +1152,6 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 //     LAST_SWEEP_IN_VOL
 //     AUTOMATIC
 //     ELAPSED_TIME
-//
 
 end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
 
@@ -1290,9 +1161,7 @@ end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
 //
 // Only applies if 'end_of_vol_decision' is set to LAST_SWEEP_IN_VOL.
 //
-//
 // Type: int
-//
 
 last_sweep_in_vol = 0;
 
@@ -1303,9 +1172,7 @@ last_sweep_in_vol = 0;
 // An end-of-vol is triggered every time the antenna moves across this 
 //   azimuth.
 //
-//
 // Type: double
-//
 
 az_for_end_of_vol_360 = 0;
 
@@ -1313,9 +1180,7 @@ az_for_end_of_vol_360 = 0;
 //
 // Write end of vol event when data stops.
 //
-//
 // Type: boolean
-//
 
 write_end_of_vol_when_data_stops = TRUE;
 
@@ -1325,9 +1190,7 @@ write_end_of_vol_when_data_stops = TRUE;
 //
 // See 'write_end_of_vol_when_data_stops'.
 //
-//
 // Type: int
-//
 
 nsecs_no_data_for_end_of_vol = 2;
 
@@ -1337,9 +1200,7 @@ nsecs_no_data_for_end_of_vol = 2;
 //
 // Applies to ELAPSED_TIME mode - see 'end_of_volume_decision'.
 //
-//
 // Type: int
-//
 
 nsecs_per_volume = 60;
 
@@ -1350,9 +1211,7 @@ nsecs_per_volume = 60;
 // Used to prevent end-of-volume conditions being determined during 
 //   antenna transition to the start of the next volume.
 //
-//
 // Type: int
-//
 
 min_rays_per_ppi_vol = 180;
 
@@ -1363,9 +1222,7 @@ min_rays_per_ppi_vol = 180;
 // Used to prevent end-of-volume conditions being determined during 
 //   antenna transition to the start of the next volume.
 //
-//
 // Type: int
-//
 
 min_rays_per_rhi_vol = 60;
 
@@ -1375,9 +1232,7 @@ min_rays_per_rhi_vol = 60;
 //
 // This prevents memory from filling up if no end-of-volume is found.
 //
-//
 // Type: int
-//
 
 max_rays_in_vol = 20000;
 
@@ -1400,9 +1255,7 @@ max_rays_in_vol = 20000;
 //   compute the end of volume. Only this test, and the test for prf 
 //   change, will be used to identify the end of volume condition.
 //
-//
 // Type: boolean
-//
 
 set_end_of_vol_from_elev_change = FALSE;
 
@@ -1413,9 +1266,7 @@ set_end_of_vol_from_elev_change = FALSE;
 // If the volume starts at the top, i.e. elevations decrease during the 
 //   volume, set this to FALSE.
 //
-//
 // Type: boolean
-//
 
 vol_starts_at_bottom = TRUE;
 
@@ -1429,7 +1280,6 @@ vol_starts_at_bottom = TRUE;
 // Minimum val: 0.1
 //
 // Type: double
-//
 
 elev_change_for_end_of_vol = 1.5;
 
@@ -1444,9 +1294,7 @@ elev_change_for_end_of_vol = 1.5;
 //   az_accuracy parameters are used to detect whether el or az are 
 //   stable.
 //
-//
 // Type: int
-//
 
 nrays_history = 16;
 
@@ -1459,9 +1307,7 @@ nrays_history = 16;
 //   period is less than this value, the antenna is assumed to be in PPI 
 //   mode.
 //
-//
 // Type: double
-//
 
 el_accuracy = 0.25;
 
@@ -1473,9 +1319,7 @@ el_accuracy = 0.25;
 //   RHI mode? If the cumulative azimuth change during the history period 
 //   is less than this value, the antenna is assumed to be in RHI mode.
 //
-//
 // Type: double
-//
 
 az_accuracy = 0.25;
 
@@ -1486,9 +1330,7 @@ az_accuracy = 0.25;
 // For a valid PPI, the azimuth must change by at least this amount 
 //   during nrays_history, while the elevation is not changing.
 //
-//
 // Type: double
-//
 
 min_az_change_ppi = 4;
 
@@ -1499,9 +1341,7 @@ min_az_change_ppi = 4;
 // For a valid RHI, the elevation must change by at least this amount 
 //   during nrays_history, while the azimuth is not changing.
 //
-//
 // Type: double
-//
 
 min_el_change_rhi = 4;
 
@@ -1514,9 +1354,7 @@ min_el_change_rhi = 4;
 //   triggered. This is used to handle the single-elevation surveillance 
 //   case in which the antenna scans in PPI at a single elevation angle.
 //
-//
 // Type: int
-//
 
 max_az_change_per_sweep = 540;
 
@@ -1527,9 +1365,7 @@ max_az_change_per_sweep = 540;
 // If set, messages will be printed to stderr on how the auto-detection 
 //   algorithm is making decisions.
 //
-//
 // Type: boolean
-//
 
 debug_auto_detection = FALSE;
 
@@ -1550,7 +1386,6 @@ debug_auto_detection = FALSE;
 //   standard_name are netCDF conventions. Set the output encoding type to 
 //   select the resolution of the output data.
 //
-//
 // Type: struct
 //   typedef struct {
 //      string dsr_name;
@@ -1566,7 +1401,6 @@ debug_auto_detection = FALSE;
 //   }
 //
 // 1D array - variable length.
-//
 
 output_fields = {
   {
@@ -1985,7 +1819,6 @@ output_fields = {
 //   from the start or end time of the volume. For DORADE files, the start 
 //   time is always used, since this is the convention for DORADE.
 //
-//
 // Type: struct
 //   typedef struct {
 //      string output_dir;
@@ -1998,7 +1831,6 @@ output_fields = {
 //   }
 //
 // 1D array - variable length.
-//
 
 output_data_set = {
   {
@@ -2015,13 +1847,11 @@ output_data_set = {
 //   START_TIME_ONLY: include only start time in file name. END_TIME_ONLY: 
 //   include only end time in file name.
 //
-//
 // Type: enum
 // Options:
 //     START_AND_END_TIMES
 //     START_TIME_ONLY
 //     END_TIME_ONLY
-//
 
 output_filename_mode = START_AND_END_TIMES;
 
@@ -2037,9 +1867,7 @@ output_filename_mode = START_AND_END_TIMES;
 //
 // Path will be dir/yyyymmdd/filename.
 //
-//
 // Type: boolean
-//
 
 append_day_dir_to_output_dir = TRUE;
 
@@ -2049,9 +1877,7 @@ append_day_dir_to_output_dir = TRUE;
 //
 // Path will be dir/yyyy/yyyymmdd/filename.
 //
-//
 // Type: boolean
-//
 
 append_year_dir_to_output_dir = FALSE;
 
@@ -2070,9 +1896,7 @@ append_year_dir_to_output_dir = FALSE;
 //   true, the files will be separated into subdirectories based on scan 
 //   type.
 //
-//
 // Type: boolean
-//
 
 separate_output_dirs_by_scan_type = FALSE;
 
@@ -2082,9 +1906,7 @@ separate_output_dirs_by_scan_type = FALSE;
 //
 // Only applies if 'separate_output_dirs_by_scan_type' is true.
 //
-//
 // Type: boolean
-//
 
 write_surveillance_files = TRUE;
 
@@ -2095,9 +1917,7 @@ write_surveillance_files = TRUE;
 // See 'separate_output_dirs_by_scan_type'. If the scan mode is 
 //   surveillance, this subdirectory will be created under the ouput dir.
 //
-//
 // Type: string
-//
 
 surveillance_subdir = "sur";
 
@@ -2107,9 +1927,7 @@ surveillance_subdir = "sur";
 //
 // Only applies if 'separate_output_dirs_by_scan_type' is true.
 //
-//
 // Type: boolean
-//
 
 write_sector_files = FALSE;
 
@@ -2120,9 +1938,7 @@ write_sector_files = FALSE;
 // See 'separate_output_dirs_by_scan_type'. If the scan mode is sector, 
 //   this subdirectory will be created under the ouput dir.
 //
-//
 // Type: string
-//
 
 sector_subdir = "sec";
 
@@ -2132,9 +1948,7 @@ sector_subdir = "sec";
 //
 // Only applies if 'separate_output_dirs_by_scan_type' is true.
 //
-//
 // Type: boolean
-//
 
 write_rhi_files = FALSE;
 
@@ -2145,9 +1959,7 @@ write_rhi_files = FALSE;
 // See 'separate_output_dirs_by_scan_type'. If the scan mode is rhi, 
 //   this subdirectory will be created under the ouput dir.
 //
-//
 // Type: string
-//
 
 rhi_subdir = "rhi";
 
@@ -2157,9 +1969,7 @@ rhi_subdir = "rhi";
 //
 // Only applies if 'separate_output_dirs_by_scan_type' is true.
 //
-//
 // Type: boolean
-//
 
 write_vert_files = FALSE;
 
@@ -2170,9 +1980,7 @@ write_vert_files = FALSE;
 // See 'separate_output_dirs_by_scan_type'. If the scan mode is vert, 
 //   this subdirectory will be created under the ouput dir.
 //
-//
 // Type: string
-//
 
 vert_subdir = "vert";
 
@@ -2185,9 +1993,7 @@ vert_subdir = "vert";
 //   excess of this angle, the volume will be considered to be from 
 //   vertically-pointing operations.
 //
-//
 // Type: double
-//
 
 min_elevation_for_vert_files = 55;
 
@@ -2200,9 +2006,7 @@ min_elevation_for_vert_files = 55;
 //   min_elevation exceeds this fraction,  the volume will be considered 
 //   to be from vertically-pointing operations.
 //
-//
 // Type: double
-//
 
 min_vert_fraction_for_vert_files = 0.9;
 
@@ -2212,9 +2016,7 @@ min_vert_fraction_for_vert_files = 0.9;
 //
 // Only applies if 'separate_output_dirs_by_scan_type' is true.
 //
-//
 // Type: boolean
-//
 
 write_sun_files = FALSE;
 
@@ -2225,9 +2027,7 @@ write_sun_files = FALSE;
 // See 'separate_output_dirs_by_scan_type'. If the scan mode is sun, 
 //   this subdirectory will be created under the ouput dir.
 //
-//
 // Type: string
-//
 
 sun_subdir = "sunscan";
 
@@ -2238,9 +2038,7 @@ sun_subdir = "sunscan";
 // If the scan name from the antenna controller matches this string, it 
 //   will be assumed that this is a solar scan.
 //
-//
 // Type: string
-//
 
 solar_scan_name = "Solar";
 
@@ -2256,9 +2054,7 @@ solar_scan_name = "Solar";
 //
 // If empty, the standard prefix will be used.
 //
-//
 // Type: string
-//
 
 output_filename_prefix = "";
 
@@ -2270,9 +2066,7 @@ output_filename_prefix = "";
 //   instrument name will be included just before the volume number in the 
 //   output file name.
 //
-//
 // Type: boolean
-//
 
 include_instrument_name_in_file_name = TRUE;
 
@@ -2283,9 +2077,7 @@ include_instrument_name_in_file_name = TRUE;
 // Only applies to CfRadial files. If true, the site name will be 
 //   included just before the volume number in the output file name.
 //
-//
 // Type: boolean
-//
 
 include_site_name_in_file_name = FALSE;
 
@@ -2297,9 +2089,7 @@ include_site_name_in_file_name = FALSE;
 //   millisecs of the start and end time will be included in the file 
 //   name.
 //
-//
 // Type: boolean
-//
 
 include_subsecs_in_file_name = TRUE;
 
@@ -2310,11 +2100,20 @@ include_subsecs_in_file_name = TRUE;
 // Default is true. Only applies to CfRadial files. If true, the scan 
 //   type (SUR, SEC, RHI, VER etc) will be included in the file name.
 //
-//
 // Type: boolean
-//
 
 include_scan_type_in_file_name = TRUE;
+
+///////////// include_scan_name_in_file_name //////////
+//
+// Option to include the scan name in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   name will be included in the file name.
+//
+// Type: boolean
+
+include_scan_name_in_file_name = FALSE;
 
 ///////////// include_vol_num_in_file_name ////////////
 //
@@ -2323,11 +2122,21 @@ include_scan_type_in_file_name = TRUE;
 // Default is false. Only applies to CfRadial files. If true, the volume 
 //   number is included in the file name, preceded by '_v'.
 //
-//
 // Type: boolean
-//
 
 include_vol_num_in_file_name = FALSE;
+
+///////////// include_mean_fixed_angle_in_file_name ///
+//
+// Option to include the mean fixed angle of the volume in the file 
+//   name.
+//
+// Default is false. Only applies to CfRadial files. If true, the mean 
+//   fixed angle is included in the file name, preceded by '_v'.
+//
+// Type: boolean
+
+include_mean_fixed_angle_in_file_name = TRUE;
 
 ///////////// use_hyphen_in_file_name_datetime_part ///
 //
@@ -2336,9 +2145,7 @@ include_vol_num_in_file_name = FALSE;
 // Default is false. Only applies to CfRadial files. Normally an 
 //   underscore is used.
 //
-//
 // Type: boolean
-//
 
 use_hyphen_in_file_name_datetime_part = FALSE;
 
@@ -2358,9 +2165,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 //   i.e. the output directory. This allows the system monitor to stay 
 //   current, no matter which scan type is active.
 //
-//
 // Type: boolean
-//
 
 write_master_ldata_info = TRUE;
 
@@ -2373,9 +2178,7 @@ write_master_ldata_info = TRUE;
 //   appropriate. If write_master_ldata_info is true, you may consider 
 //   turning this off.
 //
-//
 // Type: boolean
-//
 
 write_individual_ldata_info = FALSE;
 
@@ -2386,9 +2189,7 @@ write_individual_ldata_info = FALSE;
 // If true, contacts the DataMapper using TCP, to update the latest time 
 //   for this data set.
 //
-//
 // Type: boolean
-//
 
 register_with_data_mapper = FALSE;
 
@@ -2407,14 +2208,12 @@ register_with_data_mapper = FALSE;
 // netCDF classic format, netCDF 64-bit offset format, netCDF4 using 
 //   HDF5 format, netCDF4 using HDF5 format but only netCDF3 calls.
 //
-//
 // Type: enum
 // Options:
 //     CLASSIC
 //     OFFSET_64BIT
 //     NETCDF4_CLASSIC
 //     NETCDF4
-//
 
 netcdf_style = NETCDF4;
 
@@ -2434,9 +2233,7 @@ netcdf_style = NETCDF4;
 // If false, data will be byte-swapped on output. Only applies to UF and 
 //   Dorade file formats.
 //
-//
 // Type: boolean
-//
 
 output_native_byte_order = FALSE;
 
@@ -2446,9 +2243,7 @@ output_native_byte_order = FALSE;
 //
 // Applies to CfRadial netCDF and Dorade.
 //
-//
 // Type: boolean
-//
 
 output_compressed = TRUE;
 
@@ -2463,7 +2258,6 @@ output_compressed = TRUE;
 // Maximum val: 9
 //
 // Type: int
-//
 
 output_compression_level = 4;
 
@@ -2480,9 +2274,7 @@ output_compression_level = 4;
 //
 // Title string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_title = "FOP1 radar data - CMD adaptive project";
 
@@ -2490,9 +2282,7 @@ ncf_title = "FOP1 radar data - CMD adaptive project";
 //
 // Institution string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_institution = "NEXRAD";
 
@@ -2500,9 +2290,7 @@ ncf_institution = "NEXRAD";
 //
 // References string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_references = "ROC";
 
@@ -2510,9 +2298,7 @@ ncf_references = "ROC";
 //
 // Source string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_source = "FOP1 NEXRAD S-band radar";
 
@@ -2520,9 +2306,7 @@ ncf_source = "FOP1 NEXRAD S-band radar";
 //
 // History string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_history = "";
 
@@ -2530,9 +2314,7 @@ ncf_history = "";
 //
 // Comment string for netCDF file.
 //
-//
 // Type: string
-//
 
 ncf_comment = "";
 
@@ -2566,9 +2348,7 @@ ncf_comment = "";
 //
 // See following parameter options.
 //
-//
 // Type: boolean
-//
 
 override_missing_metadata_values = FALSE;
 
@@ -2578,9 +2358,7 @@ override_missing_metadata_values = FALSE;
 //
 // Only applies if override_missing_metadata_values is TRUE.
 //
-//
 // Type: double
-//
 
 missing_metadata_double = -9999;
 
@@ -2590,9 +2368,7 @@ missing_metadata_double = -9999;
 //
 // Only applies if override_missing_metadata_values is TRUE.
 //
-//
 // Type: float
-//
 
 missing_metadata_float = -9999;
 
@@ -2602,9 +2378,7 @@ missing_metadata_float = -9999;
 //
 // Only applies if override_missing_metadata_values is TRUE.
 //
-//
 // Type: int
-//
 
 missing_metadata_int = -9999;
 
@@ -2614,9 +2388,7 @@ missing_metadata_int = -9999;
 //
 // Only applies if override_missing_metadata_values is TRUE.
 //
-//
 // Type: int
-//
 
 missing_metadata_char = -128;
 
@@ -2626,9 +2398,7 @@ missing_metadata_char = -128;
 //
 // See following parameter options.
 //
-//
 // Type: boolean
-//
 
 override_missing_field_values = FALSE;
 
@@ -2638,9 +2408,7 @@ override_missing_field_values = FALSE;
 //
 // Only applies if override_missing_field_values is TRUE.
 //
-//
 // Type: double
-//
 
 missing_field_fl64 = -9e+33;
 
@@ -2650,9 +2418,7 @@ missing_field_fl64 = -9e+33;
 //
 // Only applies if override_missing_field_values is TRUE.
 //
-//
 // Type: double
-//
 
 missing_field_fl32 = -9e+33;
 
@@ -2662,9 +2428,7 @@ missing_field_fl32 = -9e+33;
 //
 // Only applies if override_missing_field_values is TRUE.
 //
-//
 // Type: int
-//
 
 missing_field_si32 = -2147483647;
 
@@ -2674,9 +2438,7 @@ missing_field_si32 = -2147483647;
 //
 // Only applies if override_missing_field_values is TRUE.
 //
-//
 // Type: int
-//
 
 missing_field_si16 = -232768;
 
@@ -2686,9 +2448,7 @@ missing_field_si16 = -232768;
 //
 // Only applies if override_missing_field_values is TRUE.
 //
-//
 // Type: int
-//
 
 missing_field_si08 = -128;
 

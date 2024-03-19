@@ -3874,7 +3874,7 @@ output_fmq_size = 1000000000;
 //
 // Type: int
 
-output_fmq_nslots = 7200;
+output_fmq_nslots = 50;
 
 ///////////// output_fmq_compress /////////////////////
 //
