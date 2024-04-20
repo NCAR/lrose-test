@@ -40,7 +40,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "fop1.longprt.adapt";
+instance = "fop1.longprt.adapt.cmd_bins";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -1798,6 +1798,51 @@ output_fields = {
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_FLAG",
+    output_name = "RHOHV_TEST_FLAG",
+    long_name = "rhohv_test_flag",
+    standard_name = "rhohv_test_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_POWER_FLAG",
+    output_name = "RHOHV_POWER_FLAG",
+    long_name = "rhohv_test_power_flag",
+    standard_name = "rhohv_test_power_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_VEL_FLAG",
+    output_name = "RHOHV_VEL_FLAG",
+    long_name = "rhohv_test_vel_flag",
+    standard_name = "rhohv_test_vel_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_PHASE_FLAG",
+    output_name = "RHOHV_PHASE_FLAG",
+    long_name = "rhohv_test_phase_flag",
+    standard_name = "rhohv_test_phase_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_RHO_FLAG",
+    output_name = "RHOHV_RHO_FLAG",
+    long_name = "rhohv_test_rho_flag",
+    standard_name = "rhohv_test_rho_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
 };
 
 //======================================================================
@@ -1834,7 +1879,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "/scr/cirrus1/rsfdata/projects/nexrad/cfradial/fop1.longprt.adapt",
+    output_dir = "/scr/cirrus1/rsfdata/projects/nexrad/cfradial/fop1.longprt.cmd_bins",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };

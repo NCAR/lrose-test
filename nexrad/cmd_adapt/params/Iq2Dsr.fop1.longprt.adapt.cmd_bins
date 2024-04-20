@@ -49,7 +49,7 @@ beam_count_for_debug_print = 30;
 //
 // Type: string
 
-instance = "fop1.longprt.adapt";
+instance = "fop1.longprt.adapt.cmd_bins";
 
 //======================================================================
 //
@@ -872,7 +872,7 @@ moments_params = {
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_ANGLE,
     beam_n_samples = 16,
-    beam_angle_deg = 0.5,
+    beam_angle_deg = 1.0,
     index_the_beams = TRUE,
     indexed_resolution = 0.5,
     min_antenna_rate_for_indexing = 1,
@@ -3501,7 +3501,7 @@ apply_rhohv_test_in_cmd = TRUE;
 //
 // Type: double
 
-rhohv_improv_thresh_for_power = 4;
+rhohv_improv_thresh_for_power = 8;
 
 ///////////// rhohv_improv_thresh_for_vel /////////////
 //
@@ -3512,7 +3512,7 @@ rhohv_improv_thresh_for_power = 4;
 //
 // Type: double
 
-rhohv_improv_thresh_for_vel = 4;
+rhohv_improv_thresh_for_vel = 1.5;
 
 ///////////// rhohv_improv_thresh_for_phase ///////////
 //
@@ -3523,7 +3523,7 @@ rhohv_improv_thresh_for_vel = 4;
 //
 // Type: double
 
-rhohv_improv_thresh_for_phase = 4;
+rhohv_improv_thresh_for_phase = 1.25;
 
 ///////////// rhohv_improv_thresh_for_rho /////////////
 //
@@ -3534,7 +3534,7 @@ rhohv_improv_thresh_for_phase = 4;
 //
 // Type: double
 
-rhohv_improv_thresh_for_rho = 4;
+rhohv_improv_thresh_for_rho = 1.25;
 
 //======================================================================
 //
@@ -4459,6 +4459,56 @@ output_fields = {
     units = "",
     scale = 0.001,
     bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = RHOHV_TEST_FLAG,
+    name = "RHOHV_TEST_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST6,
+    name = "RHOHV_TEST_POWER_FLAG",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST7,
+    name = "RHOHV_TEST_VEL_FLAG",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST8,
+    name = "RHOHV_TEST_PHASE_FLAG",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST9,
+    name = "RHOHV_TEST_RHO_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
