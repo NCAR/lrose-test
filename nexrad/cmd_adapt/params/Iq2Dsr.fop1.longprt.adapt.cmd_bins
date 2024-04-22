@@ -3501,7 +3501,7 @@ apply_rhohv_test_in_cmd = TRUE;
 //
 // Type: double
 
-rhohv_improv_thresh_for_power = 8;
+rhohv_improv_thresh_for_power = 4;
 
 ///////////// rhohv_improv_thresh_for_vel /////////////
 //

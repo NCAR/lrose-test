@@ -12,7 +12,9 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 censorOnDBZ=0;
 censorOnVEL=0;
 censorOnCMD=0;
+censorOnTRIP=1; % Only use weak trip (0).
 %%%%%%%%%%%%%%
+tripToSnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
 censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
@@ -107,7 +109,7 @@ for aa=34:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
         data1in.azimuth=round(data1in.azimuth);
-        if isfield(data1in,'TRIP')
+        if tripToSnr
             data1in.SNR=data1in.TRIP;
             data1in=rmfield(data1in,'TRIP');
         end
@@ -181,7 +183,7 @@ for aa=34:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
         %data2in.azimuth=round(data2in.azimuth);
-        if isfield(data2in,'TRIP')
+        if tripToSnr
             data2in.SNR=data2in.TRIP;
             data2in=rmfield(data2in,'TRIP');
         end
@@ -313,6 +315,22 @@ for aa=34:size(inAll{1,1},1)
         end
     end
 
+    % TRIP
+    if censorOnTRIP
+        trip=zeros(size(data1.DBZ_F));
+        if isfield(data1in,'TRIP')
+            data1in.TRIP=data1in.TRIP(:,goodInds1);
+            trip(ibAll,:)=data1in.TRIP(ib1,:);
+        elseif isfield(data2in,'TRIP')
+            data2in.TRIP=data2in.TRIP(:,goodInds2);
+            trip(ibAll,:)=data2in.TRIP(ib2,:);
+        end
+        if isempty(trip)
+            censorOnTRIP=0;
+            disp('No TRIP flag found.')
+        end
+    end
+
     for ii=1:size(inFields,1)
         if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
             % Censor on DBZ
@@ -334,6 +352,11 @@ for aa=34:size(inAll{1,1},1)
             if ~isempty(censorOnSNR) & size(data1.(inFields{ii}))==size(data1.DBZ_F)
                 data1.(inFields{ii})(snr<censorOnSNR)=nan;
                 data2.(inFields{ii})(snr<censorOnSNR)=nan;
+            end
+            % Censor on TRIP
+            if censorOnTRIP & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+                data1.(inFields{ii})(trip==1)=nan;
+                data2.(inFields{ii})(trip==1)=nan;
             end
             % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
@@ -494,6 +517,9 @@ for aa=34:size(inAll{1,1},1)
         end
         if ~isempty(censorOnSNR)
             outstr=[outstr,'_SNRcensor'];
+        end
+        if censorOnTRIP
+            outstr=[outstr,'_TRIPcensor'];
         end
 
         %outstr=[outstr,'_5-3'];
