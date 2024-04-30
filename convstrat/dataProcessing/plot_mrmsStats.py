@@ -21,11 +21,12 @@ from matplotlib.dates import DateFormatter
 import pandas as pd
 import pickle
 import pyUtils.createFileList
+from mpl_toolkits.basemap import Basemap
 
 def main():
 
     indir='/scr/cirrus2/rsfdata/projects/nexrad-mrms/statMats/'
-    infile='mrmsStats_20220501_to_20220502.pickle'
+    infile='mrmsStats_20220501_to_20220601.pickle'
     
     figdir='/scr/cirrus2/rsfdata/projects/nexrad-mrms/figures/eccoStats/'
     
@@ -37,15 +38,19 @@ def main():
     xlims=[min(echoType2D['lon']),max(echoType2D['lon'])]
     ylims=[min(echoType2D['lat']),max(echoType2D['lat'])]
     
-    bounds = geopandas.read_file('/scr/cirrus2/rsfdata/projects/nexrad-mrms/PoliticalBoundaries_Shapefile/NA_PoliticalDivisions/data/bound_p/boundaries_p_2021_v3.shp')
+   # bounds = geopandas.read_file('/scr/cirrus2/rsfdata/projects/nexrad-mrms/PoliticalBoundaries_Shapefile/NA_PoliticalDivisions/data/bound_p/boundaries_p_2021_v3.shp')
     
-    fig1=plt.figure(figsize=(10,13))
+    fig,ax= plt.subplots(4, 3, figsize=(10,13))
     
     for key,value in echoType2D.items():
-        if key!='lon' and key!='lat' and key!='countAll':
+        m = Basemap(projection='gnom', lat_0=57.3, lon_0=-6.2,
+               width=90000, height=120000, resolution='i', ax=ax[1])
+        m.fillcontinents(color="#FFDDCC", lake_color='#DDEEFF')
+        m.drawmapboundary(fill_color="#DDEEFF")
+        m.drawcoastlines()
+        ax[key].set_title(key);
             
-            ax1 = fig1.add_subplot(8,1,1)
-            bounds.boundary.plot()
+           # bounds.boundary.plot()
             
 ########################################################################
 # Run - entry point

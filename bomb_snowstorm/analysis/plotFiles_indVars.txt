@@ -28,3 +28,7 @@
 /scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_32pts_V3.txt kftg_20220329_190532_regrFortran_sz_o37_32Pts_V3 -300 300 -300 300 -120 200 -200 220 table kftg
 /scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_48pts_V3.txt kftg_20220329_190532_regrFortran_sz_o37_48Pts_V3 -300 300 -300 300 -120 200 -200 220 table kftg
 /scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_64pts_V3.txt kftg_20220329_190532_regrFortran_sz_o37_64Pts_V3 -300 300 -300 300 -120 200 -200 220 table kftg
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_48pts_V5.txt kftg_20220329_190532_regrFortran_sz_o37_48Pts_V5 -300 300 -300 300 -120 200 -200 220 table kftg
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O43_48pts_V5.txt kftg_20220329_190532_regrFortran_sz_o43_48Pts_V5 -300 300 -300 300 -120 200 -200 220 table kftg
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_221718_0.53_286.50_O37_48pts_V5.txt kftg_20220329_221718_regrFortran_sz_o37_48Pts_V5 -300 300 -300 300 -120 200 -200 220 table kftg
+/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_221718_0.53_286.50_O37_64pts_V5.txt kftg_20220329_221718_regrFortran_sz_o37_64Pts_V5 -300 300 -300 300 -120 200 -200 220 table kftg
