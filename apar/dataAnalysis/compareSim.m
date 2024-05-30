@@ -40,6 +40,11 @@ for bb=1:size(fileListSim,1)
     end
 end
 
+dataComp.DBZ=[];
+dataComp.VEL=[];
+dataComp.WIDTH=[];
+dataComp.ZDR=[];
+
 %% Loop through radar files
 for aa=1:size(fileListRad,1)
 
@@ -67,20 +72,20 @@ for aa=1:size(fileListRad,1)
 
     if strcmp(dataR(1).sweepMode,'sector')
         [minDiff,sInd]=min(abs(timeS_PPI-timeR));
-        if minDiff<seconds(1)
+        if minDiff<seconds(5)
             infileS=fileListSim{indS_PPI(sInd)};
         else
             disp('No matching file found.')
             continue
         end
     elseif strcmp(dataR(1).sweepMode,'rhi')
-        [minDiff,sInd]=min(abs(timeS_RHI-timeR));
-        if minDiff<seconds(1)
-            infileS=fileListSim{indS_RHI(sInd)};
-        else
+        % [minDiff,sInd]=min(abs(timeS_RHI-timeR));
+        % if minDiff<seconds(5)
+        %     infileS=fileListSim{indS_RHI(sInd)};
+        % else
             disp('No matching file found.')
             continue
-        end
+        % end
     end
 
     dataS=read_apar(infileS,dataS);
@@ -128,10 +133,20 @@ for aa=1:size(fileListRad,1)
         % Match range and nans
         [bothRange,ia,ib]=intersect(dataRinds.range,dataSinds.range);
         for dd=1:length(dataFields)
-
-            !!!!!!!!!!!!!!!! Add range matching
+            dataRinds.(dataFields{dd})=dataRinds(cc).(dataFields{dd})(:,ia);
+            dataSinds.(dataFields{dd})=dataSinds(cc).(dataFields{dd})(:,ib);
+            
             dataRinds.(dataFields{dd})(isnan(dataSinds.(dataFields{dd})))=nan;
             dataSinds.(dataFields{dd})(isnan(dataRinds.(dataFields{dd})))=nan;
+
+            vecR=dataRinds.(dataFields{dd})(:);
+            vecR(isnan(vecR))=[];
+            vecS=dataSinds.(dataFields{dd})(:);
+            vecS(isnan(vecS))=[];
+
+            vecRS=cat(2,vecR,vecS);
+
+            dataComp.(dataFields{dd})=cat(1,dataComp.(dataFields{dd}),vecRS);
         end
     end
 
@@ -234,3 +249,9 @@ for aa=1:size(fileListRad,1)
     % print([figdir,outstr,'_zoom1.png'],'-dpng','-r0');
 
 end
+
+%% Plot
+scatter(dataComp.DBZ(:,1),dataComp.DBZ(:,2));
+
+scatter(dataComp.ZDR(:,1),dataComp.ZDR(:,2));
+
