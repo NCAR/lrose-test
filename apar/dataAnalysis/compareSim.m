@@ -11,8 +11,8 @@ whichPulse='long'; % long or short
 whichFile='interleaved'; % interleaved or non_interleaved
 
 if strcmp(whichFile,'interleaved')
-    startTime=datetime(2024,5,27,21,31,0);
-    endTime=datetime(2024,5,27,21,33,30);
+    startTime=datetime(2024,5,30,20,28,0);
+    endTime=datetime(2024,5,30,20,35,30);
 elseif strcmp(whichFile,'non_interleaved')
     startTime=datetime(2024,5,27,21,35,0);
     endTime=datetime(2024,5,27,21,40,30);
@@ -54,7 +54,7 @@ dataComp.WIDTH=[];
 dataComp.ZDR=[];
 
 colLims.DBZ=[-10,65];
-colLims.VEL=[-50,50];
+colLims.VEL=[-30,30];
 colLims.WIDTH=[0,5];
 colLims.ZDR=[-5,5];
 
@@ -95,19 +95,23 @@ for aa=1:size(fileListRad,1)
             disp('No matching file found.')
             continue
         end
-    % elseif strcmp(dataR(1).sweepMode,'rhi') & strcmp(whichFile,'non_interleaved')
-    %     [minDiff,sInd]=min(abs(timeS_RHI-timeR));
-    %     if minDiff<seconds(5)
-    %         infileS=fileListSim{indS_RHI(sInd)};
-    %     else
-    %         disp('No matching file found.')
-    %         continue
-    %     end
+    elseif strcmp(dataR(1).sweepMode,'rhi') & strcmp(whichFile,'interleaved')
+        [minDiff,sInd]=min(abs(timeS_RHI-timeR));
+        if minDiff<seconds(5)
+            infileS=fileListSim{indS_RHI(sInd)};
+        else
+            disp('No matching file found.')
+            continue
+        end
     else
         continue
     end
 
     dataS=read_apar(infileS,dataS);
+
+    if ~isequal(size(dataR),size(dataS))
+        continue
+    end
 
     %% Loop through scans
 
@@ -141,16 +145,20 @@ for aa=1:size(fileListRad,1)
 
         for dd=1:length(dataVars)
             if ~strcmp(dataVars{dd},'range') & ~strcmp(dataVars{dd},'sweepMode')
-                dataRinds.(dataVars{dd})=dataR(cc).(dataVars{dd})(ia,:);
-                dataSinds.(dataVars{dd})=dataS(cc).(dataVars{dd})(ib,:);
+                dataRinds(cc).(dataVars{dd})=dataR(cc).(dataVars{dd})(ia,:);
+                dataSinds(cc).(dataVars{dd})=dataS(cc).(dataVars{dd})(ib,:);
             end
         end
 
-        dataRinds.range=dataR.range;
-        dataSinds.range=dataS.range;
+        dataRinds(cc).range=dataR.range;
+        dataSinds(cc).range=dataS.range;
+
+        if min(dataSinds(cc).VEL(:),[],'omitmissing')<-60
+            stopHere=1;
+        end
 
         % Match range and nans
-        [bothRange,ia,ib]=intersect(dataRinds.range,dataSinds.range);
+        [bothRange,ia,ib]=intersect(dataRinds(cc).range,dataSinds(cc).range);
         for dd=1:length(dataFields)
             dataRinds(cc).(dataFields{dd})=dataRinds(cc).(dataFields{dd})(:,ia);
             dataSinds(cc).(dataFields{dd})=dataSinds(cc).(dataFields{dd})(:,ib);
@@ -184,14 +192,16 @@ for aa=1:size(fileListRad,1)
         plotRange=75;
         if strcmp(dataR(1).sweepMode,'sector')
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).azimuth),dataRinds(1).range);
+            xlimits=[-50,50];
+            ylimits=[0,70];
         elseif strcmp(dataR(1).sweepMode,'rhi')
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).elevation),dataRinds(1).range);
+            xlimits=[0,70];
+            ylimits=[0,20];
         end
 
         [X,Y] = pol2cart(phi_plt,r2);
-        xlimits=[floor(min(X(:))),ceil(max(X(:)))];
-        ylimits=[floor(min(Y(:))),ceil(max(Y(:)))];
-
+        
         for dd=1:length(dataFields)
             if all(isnan(dataRinds(1).(dataFields{dd})(:)))
                 continue
@@ -206,7 +216,7 @@ for aa=1:size(fileListRad,1)
             s1=nexttile(1);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})', 'EdgeColor','none');
-            axis('equal')
+            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -226,7 +236,7 @@ for aa=1:size(fileListRad,1)
             s2=nexttile(2);
 
             p=surf(X,Y,dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            axis('equal')
+            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -245,7 +255,7 @@ for aa=1:size(fileListRad,1)
             s3=nexttile(3);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})'-dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            axis('equal')
+            %axis('equal')
             view(2)
 
             xlim(xlimits)
