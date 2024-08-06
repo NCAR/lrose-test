@@ -1,34 +1,53 @@
-% Read and diplay radar data
+% Compare APAR simulated radar data with simulator data
 
 clear all;
 close all;
 
+% This command loads the utilities folder
 addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 
-showPlot='on';
+%% Specify parameters
+% User parameters can be specified in this block. The rest of the script
+% should generally be left alone.
 
-whichPulse='long'; % long or short
-whichFile='interleaved'; % interleaved or non_interleaved
+% Display and save plot or just save it
+showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
 
-if strcmp(whichFile,'interleaved')
-    startTime=datetime(2024,5,30,20,28,0);
-    endTime=datetime(2024,5,30,20,35,30);
-elseif strcmp(whichFile,'non_interleaved')
-    startTime=datetime(2024,5,27,21,35,0);
-    endTime=datetime(2024,5,27,21,40,30);
-end
+% Specify the pulse length of the input data
+whichPulse='long'; % 'long' or 'short'
 
+% Specify the start and end time (yyyy,mm,dd,HH,MM,SS)
+startTime=datetime(2024,5,30,20,28,0);
+endTime=datetime(2024,5,30,20,35,30);
+
+% Specify minimum range (to ignore erroneous data near the radar)
 minRange=6; % Minimum range in km
 
-indirRad=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/',whichFile,'/',whichPulse,'_pulse/'];
-indirSim=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/',whichFile,'/aesa_simulator/'];
+% Data directories for the input data
+indirRad=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved','/',whichPulse,'_pulse/'];
+indirSim=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/aesa_simulator/'];
 
-figdir=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/',whichFile,'/figures/'];
+% Ouptut directory for the figures
+figdir=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/figures/'];
 
+% Specify lower and upper limits of the color scales for each variable
+colLims.DBZ=[-10,65];
+colLims.VEL=[-30,30];
+colLims.WIDTH=[0,5];
+colLims.ZDR=[-5,5];
+
+% Specify plot frequency
+% When running over a long(ish) time period, it is desirable not to plot every
+% single file. The plot frequency can be specified below. E.g. plotFreq=5
+% will plot every 5th file. The overall statistics plot will include all
+% data not matter what is specified here.
+plotFreq=5;
+
+%% List files in input directories
 fileListRad=makeFileList(indirRad,startTime,endTime,'xxxxxx20YYMMDDxhhmmss',1);
 fileListSim=makeFileList(indirSim,startTime,endTime,'xxxxxx20YYMMDDxhhmmss',1);
 
-% Sort Sim files into RHIs and PPIs
+%% Sort Sim files into RHIs and PPIs
 timeS_PPI=[];
 timeS_RHI=[];
 indS_PPI=[];
@@ -48,24 +67,19 @@ for bb=1:size(fileListSim,1)
     end
 end
 
+%% Loop through radar files
+ii=0; % ii keeps track of the files where a match is found
+plotInds=1:plotFreq:size(fileListRad,1);
+
+% Initialize comparison variables
 dataComp.DBZ=[];
 dataComp.VEL=[];
 dataComp.WIDTH=[];
 dataComp.ZDR=[];
 
-colLims.DBZ=[-10,65];
-colLims.VEL=[-30,30];
-colLims.WIDTH=[0,5];
-colLims.ZDR=[-5,5];
+for aa=1:size(fileListRad,1) % Loop through each file
 
-ii=0;
-
-plotInds=1:5:size(fileListRad,1);
-
-%% Loop through radar files
-for aa=1:size(fileListRad,1)
-
-    %% Read radar
+    %% Read radar data
     infileR=fileListRad{aa};
     
     disp(['File ',num2str(aa), ' of ',num2str(size(fileListRad,1))]);
@@ -87,7 +101,7 @@ for aa=1:size(fileListRad,1)
     %% Find matching simulator file
     timeR=dataR(1).time(1);
 
-    if strcmp(dataR(1).sweepMode,'sector')
+    if strcmp(dataR(1).sweepMode,'sector') % PPI
         [minDiff,sInd]=min(abs(timeS_PPI-timeR));
         if minDiff<seconds(5)
             infileS=fileListSim{indS_PPI(sInd)};
@@ -95,7 +109,7 @@ for aa=1:size(fileListRad,1)
             disp('No matching file found.')
             continue
         end
-    elseif strcmp(dataR(1).sweepMode,'rhi') & strcmp(whichFile,'interleaved')
+    elseif strcmp(dataR(1).sweepMode,'rhi') % RHI
         [minDiff,sInd]=min(abs(timeS_RHI-timeR));
         if minDiff<seconds(5)
             infileS=fileListSim{indS_RHI(sInd)};
@@ -107,8 +121,10 @@ for aa=1:size(fileListRad,1)
         continue
     end
 
+    % Read simulator data
     dataS=read_apar(infileS,dataS);
 
+    % Check if the size of the two input data sets match
     if ~isequal(size(dataR),size(dataS))
         continue
     end
@@ -118,11 +134,12 @@ for aa=1:size(fileListRad,1)
     dataVars=fields(dataR);
 
     for cc=1:size(dataR,2)
-        % Round azimuth and elevation
+        % There are some strange files that have only one ray which we
+        % ignore.
         if length(dataR(cc).azimuth)==1
             continue
         end
-        if strcmp(dataR(1).sweepMode,'rhi')
+        if strcmp(dataR(1).sweepMode,'rhi') % For RHIs, check azimuths
             % Check that azimuths match
             if abs(median(dataR(cc).azimuth)-median(dataS(cc).azimuth))>0.1
                 disp('Azimuths do not match')
@@ -130,7 +147,7 @@ for aa=1:size(fileListRad,1)
             end
             angR=round(dataR(cc).elevation,1);
             angS=round(dataS(cc).elevation,1);
-        elseif strcmp(dataR(1).sweepMode,'sector')
+        elseif strcmp(dataR(1).sweepMode,'sector') % For PPIs, check elevations
             % Check that elevations match
             if abs(median(dataR(cc).elevation)-median(dataS(cc).elevation))>0.1
                 disp('Elevations do not match')
@@ -140,9 +157,10 @@ for aa=1:size(fileListRad,1)
             angS=round(dataS(cc).azimuth,1);
         end
 
-        % Find matching azimuth or elevation inds
+        % Find matching azimuth or elevation indices
         [bothAngs,ia,ib]=intersect(angR,angS);
 
+        % Trimm both data sources to matching angles
         for dd=1:length(dataVars)
             if ~strcmp(dataVars{dd},'range') & ~strcmp(dataVars{dd},'sweepMode')
                 dataRinds(cc).(dataVars{dd})=dataR(cc).(dataVars{dd})(ia,:);
@@ -153,11 +171,7 @@ for aa=1:size(fileListRad,1)
         dataRinds(cc).range=dataR.range;
         dataSinds(cc).range=dataS.range;
 
-        if min(dataSinds(cc).VEL(:),[],'omitmissing')<-60
-            stopHere=1;
-        end
-
-        % Match range and nans
+        % Match ranges and missing values
         [bothRange,ia,ib]=intersect(dataRinds(cc).range,dataSinds(cc).range);
         for dd=1:length(dataFields)
             dataRinds(cc).(dataFields{dd})=dataRinds(cc).(dataFields{dd})(:,ia);
@@ -187,9 +201,10 @@ for aa=1:size(fileListRad,1)
 
     ii=ii+1;
 
+    % Plot if part of specified plot frequency
     if ismember(ii,plotInds)
         %% Plot preparation
-        plotRange=75;
+        
         if strcmp(dataR(1).sweepMode,'sector')
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).azimuth),dataRinds(1).range);
             xlimits=[-50,50];
@@ -200,7 +215,7 @@ for aa=1:size(fileListRad,1)
             ylimits=[0,20];
         end
 
-        [X,Y] = pol2cart(phi_plt,r2);
+        [X,Y]=pol2cart(phi_plt,r2);
         
         for dd=1:length(dataFields)
             if all(isnan(dataRinds(1).(dataFields{dd})(:)))
@@ -216,7 +231,6 @@ for aa=1:size(fileListRad,1)
             s1=nexttile(1);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -236,7 +250,6 @@ for aa=1:size(fileListRad,1)
             s2=nexttile(2);
 
             p=surf(X,Y,dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -255,7 +268,6 @@ for aa=1:size(fileListRad,1)
             s3=nexttile(3);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})'-dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
