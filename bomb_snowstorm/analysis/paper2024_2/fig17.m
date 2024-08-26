@@ -3,7 +3,7 @@
 clear all;
 close all;
 
-addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
+addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024_2/';
 
@@ -12,6 +12,7 @@ ylimits1=[-200,220];
 
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
+censorOnDBZ=1;
 censorOnCMD=0;
 %%%%%%%%%%%%%%
 censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
@@ -24,18 +25,32 @@ infile1='/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kftg/202203
 
 data1in=[];
 
+data1in.REF=[];
 data1in.VEL=[];
+data1in.WIDTH=[];
+data1in.ZDR=[];
+data1in.PHIDP=[];
+data1in.RHOHV=[];
 
 data1in=read_spol(infile1,data1in);
 nyquist=ncread(infile1,'nyquist_velocity');
 
 data1in=data1in(1);
 
+data1in.DBZ_F=data1in.REF;
 data1in.VEL_F=data1in.VEL;
+% data1in.WIDTH_F=data1in.WIDTH;
+% data1in.ZDR_F=data1in.ZDR;
+% data1in.PHIDP_F=data1in.PHIDP;
+% data1in.RHOHV_NNC_F=data1in.RHOHV;
 
 data1in.azimuth=round(data1in.azimuth);
+if isfield(data1in,'TRIP')
+    data1in.SNR=data1in.TRIP;
+    data1in=rmfield(data1in,'TRIP');
+end
 
-infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_32pts_V3.txt';
+infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_64pts_V5.txt';
 
 data2in=readDataTables(infile2,' ');
 %data2in.azimuth=round(data2in.azimuth);
@@ -141,7 +156,7 @@ if ~isempty(censorOnSNR)
         data2in.SNR=data2in.SNR(:,goodInds2);
         snr(ibAll,:)=data2in.SNR(ib2,:);
     end
-    if isempty(snr)
+    if max(snr(:),[],1,'includemissing')==0
         censorOnSNR=0;
         disp('No SNR found.')
     end
@@ -165,32 +180,6 @@ for ii=1:size(inFields,1)
     end
 end
 
-%% Loop through fields
-
-jj=1;
-inFields{jj}='VEL_F';
-
-%% Standard deviations
-nyquist=nyquist(1);
-
-if strcmp(inFields{jj},'VEL_F')
-    [stdVar1_1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-    [stdVar2_1,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-elseif strcmp(inFields{jj},'PHIDP_F')
-    [stdVar1_1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-    [stdVar2_1,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-else
-    [stdVar1_1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
-    [stdVar2_1,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
-end
-
-stdVar1_1(isnan(data1.(inFields{jj})))=nan;
-stdVar2_1(isnan(data2.(inFields{jj})))=nan;
-
-stdVar1_1(stdVar1_1==Inf)=nan;
-stdVar2_1(stdVar2_1==Inf)=nan;
-
-
 %% Plot preparation
 
 ang_p = deg2rad(90-data1.azimuth);
@@ -206,6 +195,7 @@ jj=1;
 inFields{jj}='VEL_F';
 
 %% Standard deviations
+nyquist=nyquist(1);
 
 if strcmp(inFields{jj},'VEL_F')
     [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
@@ -224,108 +214,21 @@ stdVar2(isnan(data2.(inFields{jj})))=nan;
 stdVar1(stdVar1==Inf)=nan;
 stdVar2(stdVar2==Inf)=nan;
 
-
 %% Plot
 close all
 
-figure('Position',[200 500 800 1200],'DefaultAxesFontSize',12);
-
-t = tiledlayout(3,2,'TileSpacing','tight','Padding','tight');
+figure('Position',[200 500 850 425],'DefaultAxesFontSize',12);
+colormap('jet');
+t = tiledlayout(1,2,'TileSpacing','tight','Padding','compact');
 
 s1=nexttile(1);
-surf(XX,YY,data1.(inFields{jj}),'edgecolor','none');
+diffField=stdVar2-stdVar1;
+surf(XX,YY,diffField,'edgecolor','none');
 view(2);
-clim([-15,15]);
+clim([-7,7]);
 s1.Colormap=velCols;
 colorbar;
-title('Level 2 VEL (m s^{-1})');
-ylabel('km');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s2=nexttile(2);
-surf(XX,YY,stdVar1,'edgecolor','none');
-view(2);
-clim([0,4]);
-s2.Colormap=jet;
-colorbar;
-title('Level 2 VEL SD (m s^{-1})');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s3=nexttile(3);
-surf(XX,YY,data2.(inFields{jj}),'edgecolor','none');
-view(2);
-clim([-15,15]);
-s3.Colormap=velCols;
-colorbar;
-title(['Regressioin VEL (m s^{-1})']);
-ylabel('km');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s4=nexttile(4);
-surf(XX,YY,stdVar2,'edgecolor','none');
-view(2);
-clim([0,4]);
-s4.Colormap=jet;
-colorbar;
-title('Regressioin VEL (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s5=nexttile(5);
-diffField=data2.(inFields{jj})-data1.(inFields{jj});
-pBottom=prctile(diffField,1,'all');
-pTop=prctile(diffField,99,'all');
-lim=max(abs([pTop,pBottom]));
-if lim==0
-    lim=0.1;
-end
-surf(XX,YY,diffField,'edgecolor','none');
-view(2);
-caxis([-lim,lim]);
-s5.Colormap=velCols;
-colorbar;
-title([inFields{jj},' file 2 - file 1'],'Interpreter','none');
-xlabel('km');
-ylabel('km');
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s6=nexttile(6);
-diffField=stdVar2-stdVar1;
-pBottom=prctile(diffField,1,'all');
-pTop=prctile(diffField,99,'all');
-lim=max(abs([pTop,pBottom]));
-if lim==0
-    lim=0.1;
-end
-surf(XX,YY,diffField,'edgecolor','none');
-view(2);
-caxis([-lim,lim]);
-s6.Colormap=velCols;
-colorbar;
-title(['std file 2 - std file 1'],'Interpreter','none');
+title('(a) Reg. - Lev. 2, 64 pt., VEL SD (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -336,10 +239,27 @@ xlim(xlimits1)
 ylim(ylimits1)
 
 daspect(s1,[1 1 1]);
-daspect(s2,[1 1 1]);
-daspect(s3,[1 1 1]);
-daspect(s4,[1 1 1]);
-daspect(s5,[1 1 1]);
-daspect(s6,[1 1 1]);
 
-print([figdir,'figure12.png'],'-dpng','-r0');
+s2=nexttile(2);
+
+hold on
+spacing=0.1;
+edges=-1.5:spacing:1.5;
+hc=histcounts(diffField(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-0.6,0.6]);
+
+xlabel('Difference (m s^{-1})');
+ylabel('Percent of data points (%)');
+
+ylim([0,28]);
+ylims=s2.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
+
+s2.SortMethod='childorder';
+title('(b) Reg. - Lev. 2, 64 pt., VEL SD (m s^{-1})');
+
+grid on
+box on
+
+print([figdir,'figure17.png'],'-dpng','-r0');
