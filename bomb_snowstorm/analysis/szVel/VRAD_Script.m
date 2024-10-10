@@ -1,6 +1,7 @@
 clc; clear all; close all;
 
 indir='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/';
+figdir='/scr/cirrus1/rsfdata/projects/nexrad/figures/szComp/';
 
 load([indir,'VRAD_KFTG_Case.mat']);
 
@@ -69,3 +70,5 @@ ax_index = length(ax);
 if ax_index > 1
     linkaxes(flipud(ax),'xy');
 end
+
+print([figdir,'VEL_VRAD.png'],'-dpng','-r0');

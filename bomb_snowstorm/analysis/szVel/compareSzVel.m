@@ -23,13 +23,23 @@ dataLev2.VEL=[];
 dataLev2.PURPLE_HAZE=[];
 dataLev2=read_spol(lev2File,dataLev2);
 dataLev2=dataLev2(1);
+nyquist=ncread(lev2File,'nyquist_velocity');
+dataLev2.VEL(dataLev2.PURPLE_HAZE==1)=-99;
 
 load(unfoldedFile);
 
+%% Censor regression
+
+kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
+[stdVel,~]=fast_nd_std(dataReg.VEL_F,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',mode(nyquist));
+
+regVelCensored=dataReg.VEL_F;
+regVelCensored(stdVel>9)=nan;
+
 %% Plot preparation
 
-xlimits1=[-150,210];
-ylimits1=[-170,170];
+xlimits1=[-200,260];
+ylimits1=[-220,220];
 
 %% Plot
 
@@ -90,6 +100,31 @@ daspect(s2,[1 1 1]);
 
 s3=nexttile(3);
 
+ang_p = deg2rad(90-dataReg.azimuth);
+
+angMat=repmat(ang_p,size(dataReg.range,1),1);
+
+XX = (dataReg.range.*cos(angMat));
+YY = (dataReg.range.*sin(angMat));
+
+h1=surf(XX,YY,regVelCensored,'edgecolor','none');
+view(2);
+title('VEL regression censored (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
+applyColorScale(h1,regVelCensored,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s3,[1 1 1]);
+
+s4=nexttile(4);
+
 h1=surf(xx,yy,vrad.*thr,'edgecolor','none');
 view(2);
 title('VEL VRAD (m s^{-1})');
@@ -101,24 +136,6 @@ box on
 
 colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
 applyColorScale(h1,vrad,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s3,[1 1 1]);
-
-s4=nexttile(4);
-
-h1=surf(xx,yy,v1.*thr,'edgecolor','none');
-view(2);
-title('VEL CD (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
-applyColorScale(h1,v1,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
