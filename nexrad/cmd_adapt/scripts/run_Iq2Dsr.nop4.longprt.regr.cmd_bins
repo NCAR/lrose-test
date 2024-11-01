@@ -1,0 +1,12 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+foreach file (/scr/cirrus1/rsfdata/projects/nexrad/time_series/nop4/20130520/NOP4_RVP*)
+  Dsr2Radx -params Dsr2Radx.nop4.longprt.regr.cmd_bins -debug >& /tmp/Dsr2Radx.nop4.longprt.regr.cmd_bins.log &
+  Iq2Dsr -params Iq2Dsr.nop4.longprt.regr.cmd_bins -debug -f $file
+  sleep 11
+  snuff "Dsr2Radx -params Dsr2Radx.nop4.longprt.regr.cmd_bins"
+end
