@@ -1,0 +1,24 @@
+Case list for comparing adaptive vs regression clutter filter
+=============================================================
+
+KOUN, 20110415 at 012240, Thunderstorms with AP in the vicinity of the storms
+
+KOUN, 20110408 at 130533, Widespread AP to the north and west, and southwest of the radar
+
+KRIW, 20170124 around 1630, Volumes of data with mountainous terrain clutter: Perhaps focus on the time frame when snow is also over/between the mountain ranges, around 04 UTC
+
+KBUF, 20221117 around 0830, Lake effect snow with ground and wind turbine clutter contamination: Heavier snow moves over wind farm at ~130 degrees in azimuth from
+
+KBUF around 08:11-8:50 UTC
+
+NOP4, 20130520 at 202128, Moore EF5 tornado in close proximity to the radar
+
+KIWA, 20110531 at 111309, Clear air with mountainous terrain clutter: Clear air bloom blossoms by 05 UTC and the windfarm to the NW becomes visible, bloom returns to typical coverage around 13 UTC and the windfarm remains visible; lots of zeros; mountains to N/NE highlighted throughout.
+
+KMHX, 20110626 at 095845, Sea clutter and AP over land with precipitation over the ocean
+
+KOUN 20110524 at 211431, tornadic storm in Piedmont
+
+KOUN 20100417 at 183535, stratiform rain across the area
+
+KTBW 20220928 around 1555, Hurricane Ian nears landfall (Non-SZ2 only)
