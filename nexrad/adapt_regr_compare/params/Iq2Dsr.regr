@@ -3851,7 +3851,7 @@ output_fmq_url = "/tmp/fmq/regr/shmem_44300";
 //
 // Type: boolean
 
-output_moments_in_radx_format = FALSE;
+output_moments_in_radx_format = TRUE;
 
 ///////////// output_fmq_size /////////////////////////
 //
@@ -4477,8 +4477,8 @@ output_fields = {
     id = REGR_FILT_POLY_ORDER,
     name = "REGR_FILT_POLY_ORDER",
     units = "",
-    scale = 0.001,
-    bias = -0.01,
+    scale = 1,
+    bias = -255,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
