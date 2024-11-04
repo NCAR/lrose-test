@@ -1,0 +1,14 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/nexrad/adapt_regr_compare/params
+
+setenv radar_name kbuf
+setenv RADAR_NAME KBUF
+setenv CASE_DATE 20221118
+setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+
+snuff "Dsr2Radx -params Dsr2Radx.regr"
+Dsr2Radx -params Dsr2Radx.regr -debug >& /tmp/Dsr2Radx.regr.${radar_name}.${CASE_DATE}.log &
+Iq2Dsr -params Iq2Dsr.regr -debug -f ${DATA_DIR}/time_series/kbuf/20221118/KBUF.20221118.082103.486.vcp215.1.H+V.460
