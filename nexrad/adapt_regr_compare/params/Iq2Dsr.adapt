@@ -1195,7 +1195,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 //
 // Type: string
 
-startup_cal_file = "$(HOME)/git/lrose-test/nexrad/cmd_adapt/params/$(radar_name)_cal.$(CASE_DATE).xml";
+startup_cal_file = "$(HOME)/git/lrose-test/nexrad/adapt_regr_compare/calib/$(radar_name)_cal.$(CASE_DATE).xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //

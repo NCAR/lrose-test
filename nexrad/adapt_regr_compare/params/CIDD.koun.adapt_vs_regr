@@ -75,188 +75,125 @@
 # Front Range
 #
 
-CMD_ADAPT_DBZ_F   CMD_ADAPT_DBZ_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-CMD_ADAPT_DBZ     CMD_ADAPT_DBZ     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+ADAPT_DBZ_F   ADAPT_DBZ_F   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT_DBZ     ADAPT_DBZ     $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-CMD_ADAPT_VEL_F    CMD_ADAPT_VEL_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-CMD_ADAPT_VEL      CMD_ADAPT_VEL     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&VEL     vel.colors   m/s -5 80 5 radial 1 0
-CMD_ADAPT_WIDTH_F  CMD_ADAPT_WIDTH_F mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-CMD_ADAPT_WIDTH    CMD_ADAPT_WIDTH   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&WIDTH    width.colors m/s -5 80 5 radial 1 0
+ADAPT_VEL_F    ADAPT_VEL_F   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ADAPT_VEL      ADAPT_VEL     $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&VEL     vel.colors   m/s -5 80 5 radial 1 0
+ADAPT_WIDTH_F  ADAPT_WIDTH_F $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+ADAPT_WIDTH    ADAPT_WIDTH   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-CMD_ADAPT_ZDR_F    CMD_ADAPT_ZDR_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-CMD_ADAPT_ZDR      CMD_ADAPT_ZDR      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&ZDR zdr.colors   dB  -5 80 5 radial 1 0
-CMD_ADAPT_PHIDP_F  CMD_ADAPT_PHIDP_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-CMD_ADAPT_PHIDP    CMD_ADAPT_PHIDP    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&PHIDP phidp.colors deg -5 80 5 radial 1 0
+ADAPT_ZDR_F    ADAPT_ZDR_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT_ZDR      ADAPT_ZDR      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT_PHIDP_F  ADAPT_PHIDP_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+ADAPT_PHIDP    ADAPT_PHIDP    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&PHIDP phidp.colors deg -5 80 5 radial 1 0
 
-CMD_ADAPT_KDP_F    CMD_ADAPT_KDP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-CMD_ADAPT_KDP      CMD_ADAPT_KDP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-CMD_ADAPT_NCP_F    CMD_ADAPT_NCP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
-CMD_ADAPT_NCP      CMD_ADAPT_NCP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+ADAPT_KDP_F    ADAPT_KDP_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+ADAPT_KDP      ADAPT_KDP      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+ADAPT_NCP_F    ADAPT_NCP_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+ADAPT_NCP      ADAPT_NCP      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&NCP  ncp.colors  dB   -5   80  5  radial   1 0
 
-CMD_ADAPT_RHOHV_F     CMD_ADAPT_RHOHV_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV       CMD_ADAPT_RHOHV    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_NNC_F CMD_ADAPT_RHOHV_NNC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_NNC   CMD_ADAPT_RHOHV_NNC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV_F     ADAPT_RHOHV_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV       ADAPT_RHOHV    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV_NNC_F ADAPT_RHOHV_NNC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV_NNC   ADAPT_RHOHV_NNC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
 
-CMD_ADAPT_SNRHC_F   CMD_ADAPT_SNRHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-CMD_ADAPT_SNRHC     CMD_ADAPT_SNRHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-CMD_ADAPT_SNRVC_F   CMD_ADAPT_SNRVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-CMD_ADAPT_SNRVC     CMD_ADAPT_SNRVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRHC_F   ADAPT_SNRHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRHC     ADAPT_SNRHC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRVC_F   ADAPT_SNRVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRVC     ADAPT_SNRVC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
 
-CMD_ADAPT_DBMHC_F   CMD_ADAPT_DBMHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_ADAPT_DBMHC     CMD_ADAPT_DBMHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_ADAPT_DBMVC_F   CMD_ADAPT_DBMVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_ADAPT_DBMVC     CMD_ADAPT_DBMVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMHC_F   ADAPT_DBMHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMHC     ADAPT_DBMHC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMVC_F   ADAPT_DBMVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMVC     ADAPT_DBMVC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
 
-CMD_ADAPT_CPA        CMD_ADAPT_CPA      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&CPA               cpa.colors  - -5 80 5 radial 1 0
-CMD_ADAPT_ZDR_SDEV   CMD_ADAPT_ZDR_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
-CMD_ADAPT_PHIDP_SDEV CMD_ADAPT_PHIDP_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+ADAPT_CPA        ADAPT_CPA      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&CPA               cpa.colors  - -5 80 5 radial 1 0
+ADAPT_ZDR_SDEV   ADAPT_ZDR_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
+ADAPT_PHIDP_SDEV ADAPT_PHIDP_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-CMD_ADAPT_RHOHV_TEST_UNFILT  CMD_ADAPT_RHOHV_TEST_UNFILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_TEST_FILT    CMD_ADAPT_RHOHV_TEST_FILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
-CMD_ADAPT_RHOHV_TEST_IMPROV  CMD_ADAPT_RHOHV_TEST_IMPROV mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_TEST_FLAG    CMD_ADAPT_RHOHV_TEST_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_TEST_UNFILT  ADAPT_RHOHV_TEST_UNFILT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
+ADAPT_RHOHV_TEST_FILT    ADAPT_RHOHV_TEST_FILT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
+ADAPT_RHOHV_TEST_IMPROV  ADAPT_RHOHV_TEST_IMPROV $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
+ADAPT_RHOHV_TEST_FLAG    ADAPT_RHOHV_TEST_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 
-CMD_ADAPT_RHOHV_POWER_FLAG   CMD_ADAPT_RHOHV_POWER_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_VEL_FLAG     CMD_ADAPT_RHOHV_VEL_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_PHASE_FLAG   CMD_ADAPT_RHOHV_PHASE_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_ADAPT_RHOHV_RHO_FLAG     CMD_ADAPT_RHOHV_RHO_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_POWER_FLAG   ADAPT_RHOHV_POWER_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_VEL_FLAG     ADAPT_RHOHV_VEL_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_PHASE_FLAG   ADAPT_RHOHV_PHASE_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_RHO_FLAG     ADAPT_RHOHV_RHO_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 
-CMD_ADAPT_CMD      CMD_ADAPT_CMD mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&CMD cmd.colors  none -5 80 5 radial 1 0
-CMD_ADAPT_CMD_FLAG CMD_ADAPT_CMD_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_ADAPT_CLUT     CMD_ADAPT_CLUT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.cmd_bins&CLUT  dbz.colors dB -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+ADAPT_CMD      ADAPT_CMD $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&CMD cmd.colors  none -5 80 5 radial 1 0
+ADAPT_CMD_FLAG ADAPT_CMD_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_CLUT     ADAPT_CLUT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.adapt&CLUT  dbz.colors dB -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
+REGR_DBZ_F   REGR_DBZ_F   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_DBZ     REGR_DBZ     $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-ALL_ADAPT_DBZ_F   ALL_ADAPT_DBZ_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-ALL_ADAPT_DBZ     ALL_ADAPT_DBZ     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+REGR_VEL_F    REGR_VEL_F   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR_VEL      REGR_VEL     $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR_WIDTH_F  REGR_WIDTH_F $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR_WIDTH    REGR_WIDTH   $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-ALL_ADAPT_VEL_F    ALL_ADAPT_VEL_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-ALL_ADAPT_VEL      ALL_ADAPT_VEL     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&VEL     vel.colors   m/s -5 80 5 radial 1 0
-ALL_ADAPT_WIDTH_F  ALL_ADAPT_WIDTH_F mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-ALL_ADAPT_WIDTH    ALL_ADAPT_WIDTH   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR_ZDR_F    REGR_ZDR_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR_ZDR      REGR_ZDR      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+REGR_PHIDP_F  REGR_PHIDP_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR_PHIDP    REGR_PHIDP    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&PHIDP phidp.colors deg -5 80 5 radial 1 0
 
-ALL_ADAPT_ZDR_F    ALL_ADAPT_ZDR_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-ALL_ADAPT_ZDR      ALL_ADAPT_ZDR      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&ZDR zdr.colors   dB  -5 80 5 radial 1 0
-ALL_ADAPT_PHIDP_F  ALL_ADAPT_PHIDP_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-ALL_ADAPT_PHIDP    ALL_ADAPT_PHIDP    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&PHIDP phidp.colors deg -5 80 5 radial 1 0
+REGR_KDP_F    REGR_KDP_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_KDP      REGR_KDP      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_NCP_F    REGR_NCP_F    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+REGR_NCP      REGR_NCP      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&NCP  ncp.colors  dB   -5   80  5  radial   1 0
 
-ALL_ADAPT_KDP_F    ALL_ADAPT_KDP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-ALL_ADAPT_KDP      ALL_ADAPT_KDP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-ALL_ADAPT_NCP_F    ALL_ADAPT_NCP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
-ALL_ADAPT_NCP      ALL_ADAPT_NCP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR_RHOHV_F     REGR_RHOHV_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV       REGR_RHOHV    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV_NNC_F REGR_RHOHV_NNC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV_NNC   REGR_RHOHV_NNC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
 
-ALL_ADAPT_RHOHV_F     ALL_ADAPT_RHOHV_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV       ALL_ADAPT_RHOHV    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_NNC_F ALL_ADAPT_RHOHV_NNC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_NNC   ALL_ADAPT_RHOHV_NNC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
+REGR_SNRHC_F   REGR_SNRHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRHC     REGR_SNRHC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRVC_F   REGR_SNRVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRVC     REGR_SNRVC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
 
-ALL_ADAPT_SNRHC_F   ALL_ADAPT_SNRHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-ALL_ADAPT_SNRHC     ALL_ADAPT_SNRHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-ALL_ADAPT_SNRVC_F   ALL_ADAPT_SNRVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-ALL_ADAPT_SNRVC     ALL_ADAPT_SNRVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+REGR_DBMHC_F   REGR_DBMHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMHC     REGR_DBMHC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMVC_F   REGR_DBMVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMVC     REGR_DBMVC    $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
 
-ALL_ADAPT_DBMHC_F   ALL_ADAPT_DBMHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-ALL_ADAPT_DBMHC     ALL_ADAPT_DBMHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-ALL_ADAPT_DBMVC_F   ALL_ADAPT_DBMVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-ALL_ADAPT_DBMVC     ALL_ADAPT_DBMVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_CPA        REGR_CPA      $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&CPA               cpa.colors  - -5 80 5 radial 1 0
+REGR_ZDR_SDEV   REGR_ZDR_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
+REGR_PHIDP_SDEV REGR_PHIDP_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-ALL_ADAPT_CPA        ALL_ADAPT_CPA      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&CPA               cpa.colors  - -5 80 5 radial 1 0
-ALL_ADAPT_ZDR_SDEV   ALL_ADAPT_ZDR_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
-ALL_ADAPT_PHIDP_SDEV ALL_ADAPT_PHIDP_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
+REGR_RHOHV_TEST_UNFILT  REGR_RHOHV_TEST_UNFILT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
+REGR_RHOHV_TEST_FILT    REGR_RHOHV_TEST_FILT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
+REGR_RHOHV_TEST_IMPROV  REGR_RHOHV_TEST_IMPROV $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
+REGR_RHOHV_TEST_FLAG    REGR_RHOHV_TEST_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 
-ALL_ADAPT_RHOHV_TEST_UNFILT  ALL_ADAPT_RHOHV_TEST_UNFILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_TEST_FILT    ALL_ADAPT_RHOHV_TEST_FILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
-ALL_ADAPT_RHOHV_TEST_IMPROV  ALL_ADAPT_RHOHV_TEST_IMPROV mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_TEST_FLAG    ALL_ADAPT_RHOHV_TEST_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_POWER_FLAG   REGR_RHOHV_POWER_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_VEL_FLAG     REGR_RHOHV_VEL_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_PHASE_FLAG   REGR_RHOHV_PHASE_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_RHO_FLAG     REGR_RHOHV_RHO_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 
-ALL_ADAPT_RHOHV_POWER_FLAG   ALL_ADAPT_RHOHV_POWER_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_VEL_FLAG     ALL_ADAPT_RHOHV_VEL_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_PHASE_FLAG   ALL_ADAPT_RHOHV_PHASE_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ALL_ADAPT_RHOHV_RHO_FLAG     ALL_ADAPT_RHOHV_RHO_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_CMD      REGR_CMD $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&CMD cmd.colors  none -5 80 5 radial 1 0
+REGR_CMD_FLAG REGR_CMD_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_CLUT     REGR_CLUT $(DATA_DIR)/cfradial/adapt_vs_regr/koun.regr&CLUT  dbz.colors dB -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
-ALL_ADAPT_CMD      ALL_ADAPT_CMD mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&CMD cmd.colors  none -5 80 5 radial 1 0
-ALL_ADAPT_CMD_FLAG ALL_ADAPT_CMD_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ALL_ADAPT_CLUT     ALL_ADAPT_CLUT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.adapt.all_bins&CLUT  dbz.colors dB -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-
-CMD_REGR_DBZ_F   CMD_REGR_DBZ_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-CMD_REGR_DBZ     CMD_REGR_DBZ     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-CMD_REGR_VEL_F    CMD_REGR_VEL_F   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-CMD_REGR_VEL      CMD_REGR_VEL     mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&VEL     vel.colors   m/s -5 80 5 radial 1 0
-CMD_REGR_WIDTH_F  CMD_REGR_WIDTH_F mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-CMD_REGR_WIDTH    CMD_REGR_WIDTH   mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&WIDTH    width.colors m/s -5 80 5 radial 1 0
-
-CMD_REGR_ZDR_F    CMD_REGR_ZDR_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-CMD_REGR_ZDR      CMD_REGR_ZDR      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&ZDR zdr.colors   dB  -5 80 5 radial 1 0
-CMD_REGR_PHIDP_F  CMD_REGR_PHIDP_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-CMD_REGR_PHIDP    CMD_REGR_PHIDP    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&PHIDP phidp.colors deg -5 80 5 radial 1 0
-
-CMD_REGR_KDP_F    CMD_REGR_KDP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-CMD_REGR_KDP      CMD_REGR_KDP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-CMD_REGR_NCP_F    CMD_REGR_NCP_F    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
-CMD_REGR_NCP      CMD_REGR_NCP      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-
-CMD_REGR_RHOHV_F     CMD_REGR_RHOHV_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-CMD_REGR_RHOHV       CMD_REGR_RHOHV    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
-CMD_REGR_RHOHV_NNC_F CMD_REGR_RHOHV_NNC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
-CMD_REGR_RHOHV_NNC   CMD_REGR_RHOHV_NNC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
-
-CMD_REGR_SNRHC_F   CMD_REGR_SNRHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-CMD_REGR_SNRHC     CMD_REGR_SNRHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-CMD_REGR_SNRVC_F   CMD_REGR_SNRVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-CMD_REGR_SNRVC     CMD_REGR_SNRVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
-
-CMD_REGR_DBMHC_F   CMD_REGR_DBMHC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_REGR_DBMHC     CMD_REGR_DBMHC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_REGR_DBMVC_F   CMD_REGR_DBMVC_F  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-CMD_REGR_DBMVC     CMD_REGR_DBMVC    mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
-
-CMD_REGR_CPA        CMD_REGR_CPA      mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&CPA               cpa.colors  - -5 80 5 radial 1 0
-CMD_REGR_ZDR_SDEV   CMD_REGR_ZDR_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
-CMD_REGR_PHIDP_SDEV CMD_REGR_PHIDP_SDEV  mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-CMD_REGR_RHOHV_TEST_UNFILT  CMD_REGR_RHOHV_TEST_UNFILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
-CMD_REGR_RHOHV_TEST_FILT    CMD_REGR_RHOHV_TEST_FILT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
-CMD_REGR_RHOHV_TEST_IMPROV  CMD_REGR_RHOHV_TEST_IMPROV mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
-CMD_REGR_RHOHV_TEST_FLAG    CMD_REGR_RHOHV_TEST_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-
-CMD_REGR_RHOHV_POWER_FLAG   CMD_REGR_RHOHV_POWER_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_REGR_RHOHV_VEL_FLAG     CMD_REGR_RHOHV_VEL_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_REGR_RHOHV_PHASE_FLAG   CMD_REGR_RHOHV_PHASE_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_REGR_RHOHV_RHO_FLAG     CMD_REGR_RHOHV_RHO_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-
-CMD_REGR_CMD      CMD_REGR_CMD mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&CMD cmd.colors  none -5 80 5 radial 1 0
-CMD_REGR_CMD_FLAG CMD_REGR_CMD_FLAG mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CMD_REGR_CLUT     CMD_REGR_CLUT mdvp:://localhost::/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nop4.longprt.regr.cmd_bins&CLUT  dbz.colors dB -5 80 5 radial 1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
@@ -360,7 +297,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  20:10 05/20/2013
+cidd.demo_time:  01:20 04/15/2011
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1

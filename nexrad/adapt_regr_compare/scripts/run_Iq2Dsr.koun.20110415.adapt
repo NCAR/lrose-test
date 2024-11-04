@@ -7,8 +7,8 @@ cd $HOME/git/lrose-test/nexrad/adapt_regr_compare/params
 setenv radar_name koun
 setenv RADAR_NAME KOUN
 setenv CASE_DATE 20110415
-setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad/time_series
+setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
 
 snuff "Dsr2Radx -params Dsr2Radx.adapt"
-Dsr2Radx -params Dsr2Radx.adapt >& /tmp/Dsr2Radx.adapt.$(radar_name).${CASE_DATE}.log &
-Iq2Dsr -params Iq2Dsr.adapt -debug -f ${DATA_DIR}/koun/20110415/KOUN_RVP.20110415.012238.964.vcp12.1.H+V.460
+Dsr2Radx -params Dsr2Radx.adapt -debug >& /tmp/Dsr2Radx.adapt.${radar_name}.${CASE_DATE}.log &
+Iq2Dsr -params Iq2Dsr.adapt -debug -f ${DATA_DIR}/time_series/koun/20110415/KOUN_RVP.20110415.012238.964.vcp12.1.H+V.460

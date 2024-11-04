@@ -1879,7 +1879,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "/scr/cirrus1/rsfdata/projects/nexrad/cfradial/adapt_vs_regr/$(radar_name).adapt",
+    output_dir = "$(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).adapt",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
