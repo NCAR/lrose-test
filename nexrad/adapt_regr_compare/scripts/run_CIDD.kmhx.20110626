@@ -1,0 +1,15 @@
+#! /bin/csh -f
+
+# Run CIDD
+
+cd $HOME/git/lrose-test/nexrad/adapt_regr_compare/params
+
+setenv radar_name kmhx
+setenv RADAR_NAME KMHX
+setenv CASE_DATE 20110626
+setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+
+CIDD -p CIDD.adapt_vs_regr -t 20110626100000
+
+
+
