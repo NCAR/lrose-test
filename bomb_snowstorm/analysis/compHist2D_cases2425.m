@@ -26,7 +26,7 @@ fileID = fopen('compareFiles_cases2425.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s %f');
 fclose(fileID);
 
-showPlot='off';
+showPlot='on';
 
 for aa=1:size(inAll{1,1},1)
 
@@ -37,7 +37,7 @@ for aa=1:size(inAll{1,1},1)
 
     disp(['File 1: ',infile1{:}]);
 
-    figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/cases2425/stdCompare/'];    
+    figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/cases2425/hist2D/'];    
 
     fileType=inAll{1,12}(aa);
 
@@ -384,244 +384,65 @@ for aa=1:size(inAll{1,1},1)
     outDots=strsplit(outstr,'.');
     outParts=strsplit(outDots{1},'VS');
 
-     for jj=1:length(inFields)
+    edges.DBZ_F=[-60:1:60];
+    edges.VEL_F=[-50:1:50];
+    edges.WIDTH_F=[0:0.2:15];
+    edges.PHIDP_F=[0:5:360];
+    edges.RHOHV_F=[0.9:0.001:1.1];
+    edges.ZDR_F=[-10:0.1:10];
+
+    close all
+    f1 = figure('Position',[200 500 1200 750],'DefaultAxesFontSize',12);
+    t = tiledlayout(2,3,'TileSpacing','tight','Padding','tight');
+    colormap('jet');
+
+    tile=1;
+
+    for jj=1:length(inFields)
 
         if strcmp(inFields{jj},'azimuth') | strcmp(inFields{jj},'elevation') | ...
-                strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')
+                strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')  | strcmp(inFields{jj},'CMD_FLAG')
             continue
         end
 
-        %% Standard deviations
+        thisName=inFields{jj};
+        xyData=cat(2,data1.(thisName)(:),data2.(thisName)(:));
+        xyData(any(isnan(xyData),2),:)=[];
+        [N,~,~]=histcounts2(xyData(:,1),xyData(:,2),edges.(thisName),edges.(thisName));
+        % N=cat(1,N,N(end,:));
+        % N=cat(2,N,N(:,end));
 
-        if strcmp(inFields{jj},'VEL_F')
-            [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-            [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-        elseif strcmp(inFields{jj},'PHIDP_F')
-            [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-            [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-        else
-            [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
-            [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
-        end
+        xyData(any(xyData<edges.(thisName)(1),2),:)=[];
+        xyData(any(xyData>edges.(thisName)(end),2),:)=[];
 
-        stdVar1(isnan(data1.(inFields{jj})))=nan;
-        stdVar2(isnan(data2.(inFields{jj})))=nan;
 
-        %% Plot
-        close all
+        plotCoords=edges.(thisName)(1:end-1)+(edges.(thisName)(2:end)-edges.(thisName)(1:end-1))/2;
+        %plotCoords=cat(2,plotCoords,plotCoords(end)+1);
 
-        f1 = figure('Position',[200 500 1800 750],'DefaultAxesFontSize',12,'visible',showPlot);
-        t = tiledlayout(2,4,'TileSpacing','tight','Padding','compact');
-        colormap('jet');
-       
-        s1=nexttile(1);
-        pBottom=prctile(data1.(inFields{jj}),1,'all');
-        pTop=prctile(data1.(inFields{jj}),99,'all');
-        if pTop==pBottom
-            pBottom=pBottom-0.1;
-            pTop=pTop+0.1;
-        end
-        surf(XX,YY,data1.(inFields{jj}),'edgecolor','none');
-        view(2);
-        caxis([pBottom,pTop]);
-        colorbar;
-        title([inFields{jj},' ',outParts{1}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        s2=nexttile(2);
-        surf(XX,YY,data2.(inFields{jj}),'edgecolor','none');
-        view(2);
-        caxis([pBottom,pTop]);
-        colorbar;
-        title([inFields{jj},' ',outParts{2}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        s3=nexttile(3);
-        diffField=data2.(inFields{jj})-data1.(inFields{jj});
-        pBottom=prctile(diffField,1,'all');
-        pTop=prctile(diffField,99,'all');
-        lim=max(abs([pTop,pBottom]));
-        if lim==0
-            lim=0.1;
-        end
-        surf(XX,YY,diffField,'edgecolor','none');
-        view(2);
-        caxis([-lim,lim]);
-        s3.Colormap=velCols;
-        colorbar;
-        title([inFields{jj},' ',outParts{2},' - ',outParts{1}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        diffFieldKeep=diffField;
-        limKeep=lim;
-
-        s5=nexttile(5);
-        pBottom=prctile(stdVar1,10,'all');
-        pTop=prctile(stdVar1,90,'all');
-        surf(XX,YY,stdVar1,'edgecolor','none');
-        view(2);
-        caxis([pBottom,pTop]);
-        colorbar;
-        title(['std ',outParts{1}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        s6=nexttile(6);
-        surf(XX,YY,stdVar2,'edgecolor','none');
-        view(2);
-        caxis([pBottom,pTop]);
-        colorbar;
-        title(['std ',outParts{2}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        s7=nexttile(7);
-        diffField=stdVar2-stdVar1;
-        pBottom=prctile(diffField,1,'all');
-        pTop=prctile(diffField,99,'all');
-        lim=max(abs([pTop,pBottom]));
-        if lim==0
-            lim=0.1;
-        end
-        surf(XX,YY,diffField,'edgecolor','none');
-        view(2);
-        caxis([-lim,lim]);
-        s7.Colormap=velCols;
-        colorbar;
-        title(['std ',outParts{2},' - std ',outParts{1}],'Interpreter','none');
-        xlabel('km');
-        ylabel('km');
-
-        grid on
-        box on
-
-        outstr=inAll{1,3}(aa);
-        outstr=outstr{:};
-        mtit([outstr],'fontsize',14,'xoff',0,'yoff',0.05,'interpreter','none');
-        f1.Visible=showPlot;
-
-        %% Save first zoom
-
-        if ~isnan(minMaxRangeOrig)
-            outstr=[outstr,'_range',num2str(minMaxRange(1)),'to',num2str(minMaxRange(2))];
-        end
-        if ~isnan(minMaxAz)
-            outstr=[outstr,'_az',num2str(minMaxAz(1)),'to',num2str(minMaxAz(2))];
-        end
-        if censorOnCMD
-            outstr=[outstr,'_CMDcensor'];
-        end
-        if ~isempty(censorOnSNR)
-            outstr=[outstr,'_SNRcensor'];
-        end
-        if censorOnTRIP
-            outstr=[outstr,'_TRIPcensor'];
-        end
-
-        %outstr=[outstr,'_5-3'];
-
-        mkdir(figdir,outstr);
-
-        linkaxes([s1,s2,s3,s5,s6,s7],'xy');
-
-        xlimits1=[inAll{1,4}(aa),inAll{1,5}(aa)];
-        ylimits1=[inAll{1,6}(aa),inAll{1,7}(aa)];
-
-        xlim(xlimits1)
-        ylim(ylimits1)
-        daspect(s1,[1 1 1]);
-        daspect(s2,[1 1 1]);
-        daspect(s3,[1 1 1]);
-        daspect(s5,[1 1 1]);
-        daspect(s6,[1 1 1]);
-        daspect(s7,[1 1 1]);
-
-        s4=nexttile(4);
-        if removeZeros
-            diffFieldKeep(diffFieldKeep>-limKeep/100 & diffField<limKeep/100)=nan;
-        end
-        pBottom2=prctile(diffFieldKeep,15,'all');
-        pTop2=prctile(diffFieldKeep,85,'all');
-        lim2=max(abs([pTop2,pBottom2]));
-        if lim2==0
-            lim2=0.1;
-        end
-
+        s1=nexttile(tile);
         hold on
-        edges=-limKeep:limKeep/60:limKeep;
-        hc=histcounts(diffFieldKeep(:),edges);
-        bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc,1)
-        xlim([-lim2,lim2]);
-
-        ylims=s4.YLim;
-        plot([0,0],ylims,'-r','LineWidth',2);
-
-        s4.SortMethod='childorder';
-
-        grid on
-        box on
-        title([inFields{jj},' ',outParts{2},' - ',outParts{1}],'Interpreter','none');
-
-        s8=nexttile(8);
-        if removeZeros
-            diffField(diffField>-lim/100 & diffField<lim/100)=nan;
+        if sum(N,'all')>0
+            surf(plotCoords,plotCoords,log(N),'edgecolor','none');
+            view(2)
+            %shading('flat');
+            colorbar
+            floorAx=prctile(xyData(:,1),1);
+            ceilAx=prctile(xyData(:,1),99);
+            xlim([floorAx,ceilAx]);
+            ylim([floorAx,ceilAx]);
+            box on
+            xlabel(outParts{2})
+            ylabel(outParts{1})
+            set(gca,'layer','top')
+            xlims=s1.XLim;
+            ylims=s1.YLim;
+            plot(xlims,ylims,'-k','LineWidth',2);
+            s1.SortMethod='childorder';
         end
-        pBottom2=prctile(diffField,15,'all');
-        pTop2=prctile(diffField,85,'all');
-        lim2=max(abs([pTop2,pBottom2]));
-        if lim2==0
-            lim2=0.1;
-        end
+        title([thisName],'Interpreter','none');
+        tile=tile+1;
+    end
+    set(gcf,'PaperPositionMode','auto')
+    print([figdir,outstr,'_2Dhist.png'],'-dpng','-r0');
 
-        hold on
-        edges=-lim:lim/60:lim;
-        hc=histcounts(diffField(:),edges);
-        bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc,1)
-        xlim([-lim2,lim2]);
-
-        ylims=s8.YLim;
-        plot([0,0],ylims,'-r','LineWidth',2);
-
-        s8.SortMethod='childorder';
-
-        grid on
-        box on
-        title(['std ',outParts{2},' - std ',outParts{1}],'Interpreter','none');
-
-        print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom1.png'],'-dpng','-r0');
-
-        %% Save second zoom
-
-        xlimits2=[inAll{1,8}(aa),inAll{1,9}(aa)];
-        ylimits2=[inAll{1,10}(aa),inAll{1,11}(aa)];
-
-        s1.XLim=xlimits2;
-        s1.YLim=ylimits2;
-        daspect(s1,[1 1 1]);
-        daspect(s2,[1 1 1]);
-        daspect(s3,[1 1 1]);
-        daspect(s5,[1 1 1]);
-        daspect(s6,[1 1 1]);
-        daspect(s7,[1 1 1]);
-
-        print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom2.png'],'-dpng','-r0');
-     end
 end
