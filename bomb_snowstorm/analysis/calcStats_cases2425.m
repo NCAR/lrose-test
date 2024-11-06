@@ -26,9 +26,9 @@ fileID = fopen('compareFiles_cases2425.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s %f');
 fclose(fileID);
 
-showPlot='off';
+showPlot='on';
 
-for aa=1:size(inAll{1,1},1)
+for aa=12:size(inAll{1,1},1)
 
     nyquist=[];
 

@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=1:size(inAll{1,1},1)
+for aa=12:size(inAll{1,1},1)
 
     nyquist=[];
 
