@@ -901,7 +901,7 @@ moments_params = {
 //
 // Type: int
 
-min_n_samples = 16;
+min_n_samples = 8;
 
 ///////////// max_n_samples ///////////////////////////
 //
