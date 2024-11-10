@@ -1,0 +1,15 @@
+#! /bin/csh -f
+
+# Run CIDD
+
+cd $HOME/git/lrose-test/nexrad/adapt_regr_compare/params
+
+setenv radar_name kpdt
+setenv RADAR_NAME KPDT
+setenv CASE_DATE 20120423
+setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+setenv CIDD_ORIGIN_LON -118.853
+setenv CIDD_ORIGIN_LAT 45.6906
+
+CIDD -p CIDD.adapt_vs_regr -t 20120423200000
+
