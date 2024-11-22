@@ -7,9 +7,7 @@ addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 showPlot='on';
 %radar='KFTG';
-%radar='KLWX';
-%radar='KDDC1';
-radar='KDDC2';
+radar='KLWX';
 
 figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/szComp/',radar,'/'];
 
@@ -19,6 +17,7 @@ nyquist=25.7428;
 if strcmp(radar,'KFTG')
     regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_64pts_V5.txt';
     regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KFTG_Regression_and_VRAD_Filt_13.mat';
+    vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KFTG_VRAD_Legacy.mat';
     xlimits1=[-200,260];
     ylimits1=[-220,220];
     xlimits2=[50,150];
@@ -27,26 +26,11 @@ if strcmp(radar,'KFTG')
 elseif strcmp(radar,'KLWX')
     regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/DOPklwx20230807_220627.txt';
     regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KLWX_Regression_and_VRAD_Filt_12.mat';
+    vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KLWX_VRAD_Legacy.mat';
     xlimits1=[-260,200];
     ylimits1=[-170,270];
     xlimits2=[50,170];
     ylimits2=[60,180];
-    censThreshStd=7;
-elseif strcmp(radar,'KDDC1')
-    regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/DOPPLER20200525_051615VD6.txt';
-    regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KDDC_Scan1_Regression_and_VRAD.mat';
-    xlimits1=[-230,230];
-    ylimits1=[-230,230];
-    xlimits2=[-150,150];
-    ylimits2=[-150,150];
-    censThreshStd=7;
-elseif strcmp(radar,'KDDC2')
-    regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/DOPPLER20200525_053516VD6.txt';
-    regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KDDC_Scan2_Regression_and_VRAD.mat';
-    xlimits1=[-300,300];
-    ylimits1=[-300,300];
-    xlimits2=[-200,200];
-    ylimits2=[-200,200];
     censThreshStd=7;
 end
 
@@ -58,6 +42,7 @@ regIn=readDataTables(regFile,' ');
 %% Read mat files
 
 regVradIn=load(regVradFile);
+vradLegIn=load(vradLegFile);
 
 %% Match azimuths
 
@@ -75,13 +60,16 @@ azRes=round((regIn.azimuth(2)-regIn.azimuth(1))*10)/10;
 
 ib1=[];
 ib2=[];
+ib3=[];
 ibAll=[];
 for kk=1:length(allAz)
     [minDiff1,minInd1]=min(abs(regIn.azimuth-allAz(kk)));
     [minDiff2,minInd2]=min(abs(regVradIn.az-allAz(kk)));
+    [minDiff3,minInd3]=min(abs(vradLegIn.az-allAz(kk)));
     %if minDiff1<azRes/2+0.01 & minDiff2<azRes/2+0.01
         ib1=cat(1,ib1,minInd1);
         ib2=cat(1,ib2,minInd2);
+        ib3=cat(1,ib3,minInd3);
         ibAll=cat(1,ibAll,kk);
     %end
 end
@@ -103,10 +91,23 @@ regVrad.VEL(ibAll,:)=vradT(ib2,:);
 vradInT=(regVradIn.v1)';
 regInVrad.VEL=nan(length(allAz),size(vradInT,2));
 regInVrad.VEL(ibAll,:)=vradInT(ib2,:);
+% Level 2
+% ovl=flipud(vradLegIn.ovl);
+% ovl(ovl==1)=nan;
+% ovl(ovl==0)=1;
+lev2T=flipud((vradLegIn.v1.*vradLegIn.thr)');
+lev2.VEL=nan(length(allAz),size(lev2T,2));
+lev2.VEL(ibAll,:)=lev2T(ib3,:);
+lev2.VEL(isinf(lev2.VEL))=nan;
+% VRAD legacy
+vradLegIn.vt=flipud((vradLegIn.vrad.*vradLegIn.thr)');
+vradLeg.VEL=nan(length(allAz),size(vradLegIn.vt,2));
+vradLeg.VEL(ibAll,:)=vradLegIn.vt(ib3,:);
+vradLeg.VEL(isinf(vradLeg.VEL))=nan;
 
 %% Cut off range
-maxRange=min([regIn.range(end),regVradIn.range_km(end)]);
-minRange=max([regIn.range(1),regVradIn.range_km(1)]);
+maxRange=min([regIn.range(end),regVradIn.range_km(end),vradLegIn.range_km(end)]);
+minRange=max([regIn.range(1),regVradIn.range_km(1),vradLegIn.range_km(1)]);
 
 ri1=find(reg.range>=minRange & reg.range<=maxRange);
 reg.VEL=reg.VEL(:,ri1);
@@ -115,6 +116,10 @@ reg.range=reg.range(:,ri1);
 ri2=find(regVradIn.range_km>=minRange & regVradIn.range_km<=maxRange);
 regVrad.VEL=regVrad.VEL(:,ri2);
 regInVrad.VEL=regInVrad.VEL(:,ri2);
+
+ri3=find(vradLegIn.range_km>=minRange & vradLegIn.range_km<=maxRange);
+vradLeg.VEL=vradLeg.VEL(:,ri3);
+lev2.VEL=lev2.VEL(:,ri3);
 
 
 %% Censor regression
@@ -141,13 +146,31 @@ YY = (reg.range.*sin(angMat));
 %% Plot
 
 close all
-f1 = figure('Position',[200 500 1200 1000],'DefaultAxesFontSize',12,'visible',showPlot);
+f1 = figure('Position',[200 500 1800 1000],'DefaultAxesFontSize',12,'visible',showPlot);
 colLims=[-inf,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
 
-t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
+t = tiledlayout(2,3,'TileSpacing','tight','Padding','tight');
+
+% NEXRAD level 2
+s1=nexttile(1);
+
+h1=surf(XX,YY,lev2.VEL,'edgecolor','none');
+view(2);
+title('VEL NEXRAD level 2 (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,lev2.VEL,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s1,[1 1 1]);
 
 % Regression original
-s1=nexttile(1);
+s2=nexttile(2);
 
 h1=surf(XX,YY,reg.VEL,'edgecolor','none');
 view(2);
@@ -162,14 +185,14 @@ applyColorScale(h1,reg.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s1,[1 1 1]);
+daspect(s2,[1 1 1]);
 
 % Regression censored
-s2=nexttile(2);
+s3=nexttile(3);
 regCensoredVRAD=regInVrad.VEL;
 h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
 view(2);
-title('VEL regression VRAD input (m s^{-1})');
+title('VEL regression censored (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -180,10 +203,28 @@ applyColorScale(h1,regCensoredVRAD,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s2,[1 1 1]);
+daspect(s3,[1 1 1]);
+
+% VRAD legacy
+s4=nexttile(4);
+
+h1=surf(XX,YY,vradLeg.VEL,'edgecolor','none');
+view(2);
+title('VEL VRAD NEXRAD level 2 (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,vradLeg.VEL,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s4,[1 1 1]);
 
 % VRAD and regression
-s3=nexttile(3);
+s5=nexttile(5);
 
 h1=surf(XX,YY,regVrad.VEL,'edgecolor','none');
 view(2);
@@ -198,10 +239,10 @@ applyColorScale(h1,regVrad.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s3,[1 1 1]);
+daspect(s5,[1 1 1]);
 
 % VRAD and regression filled
-s4=nexttile(4);
+s6=nexttile(6);
 
 h1=surf(XX,YY,regVradFilled,'edgecolor','none');
 view(2);
@@ -216,9 +257,9 @@ applyColorScale(h1,regVradFilled,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s4,[1 1 1]);
+daspect(s6,[1 1 1]);
 
-linkaxes([s1,s2,s3,s4],'xy');
+linkaxes([s1,s2,s3,s4,s5,s6],'xy');
 
 print([figdir,radar,'_PPIs.png'],'-dpng','-r0');
 
@@ -229,10 +270,11 @@ daspect(s1,[1 1 1]);
 daspect(s2,[1 1 1]);
 daspect(s3,[1 1 1]);
 daspect(s4,[1 1 1]);
+daspect(s5,[1 1 1]);
+daspect(s6,[1 1 1]);
 
 print([figdir,radar,'_PPIs_zoom.png'],'-dpng','-r0');
 
-<<<<<<< HEAD
 %% Area coverage
 
 pixNum=[sum(~isnan(lev2.VEL(:))),sum(~isnan(vradLeg.VEL(:))),sum(~isnan(regVradFilled(:)))];
@@ -312,7 +354,7 @@ view(2);
 s2.Colormap=velCols;
 clim(diffLims);
 colorbar
-title('St. dev. VRAD/lev. 2 - St. dev. level 2 (m s^{-1})');
+title('St. dev. VRAD - St. dev. level 2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -341,7 +383,7 @@ s3.SortMethod='childorder';
 
 grid on
 box on
-title('St. dev. VRAD/lev. 2 - St. dev. level 2 (m s^{-1})');
+title('St. dev. VRAD - St. dev. level 2 (m s^{-1})');
 
 % VRAD
 s4=nexttile(4);
@@ -351,7 +393,7 @@ view(2);
 s4.Colormap=jet;
 clim(stdLims);
 colorbar
-title('St. dev. VRAD/lev. 2 (m s^{-1})');
+title('St. dev. VRAD (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -370,7 +412,7 @@ view(2);
 s5.Colormap=velCols;
 clim(diffLims);
 colorbar
-title('St. dev. VRAD/REGR - St. dev. VRAD/lev. 2 (m s^{-1})');
+title('St. dev. VRAD/REGR - St. dev. VRAD (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -399,7 +441,7 @@ s6.SortMethod='childorder';
 
 grid on
 box on
-title('St. dev. VRAD/REGR - St. dev. VRAD/lev. 2 (m s^{-1})');
+title('St. dev. VRAD/REGR - St. dev. VRAD (m s^{-1})');
 
 % VRAD Regr
 s7=nexttile(7);
@@ -409,7 +451,7 @@ view(2);
 s7.Colormap=jet;
 clim(stdLims);
 colorbar
-title('St. dev. VRAD/REGR (m s^{-1})');
+title('St. dev. VRAD/REGR 2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -474,140 +516,3 @@ daspect(s7,[1 1 1]);
 daspect(s8,[1 1 1]);
 
 print([figdir,radar,'_stDev_zoom.png'],'-dpng','-r0');
-
-%% Histograms
-
-phPix=isnan(lev2.VEL) & ~isnan(vradLeg.VEL);
-
-vradPH=vradLeg.VEL(phPix==1);
-regPH=reg.VEL(phPix==1);
-regVradPH=regVradFilled(phPix==1);
-
-% Plot
-
-f1 = figure('Position',[200 500 700 1100],'DefaultAxesFontSize',12,'visible',showPlot);
-t = tiledlayout(3,1,'TileSpacing','tight','Padding','compact');
-s1=nexttile(1);
-
-hold on
-edges=-20.25:0.5:20.25;
-hc=histcounts(regPH-vradPH,edges);
-bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
-xlim([-20,20]);
-
-title('Regression minus VRAD/level 2')
-
-xlabel('Velocity (m s^{-1})')
-ylabel('Percent (%)')
-
-grid on
-box on
-
-s2=nexttile(2);
-
-hold on
-edges=-20.25:0.5:20.25;
-hc=histcounts(regVradPH-vradPH,edges);
-bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
-xlim([-20,20]);
-
-title('Regression/VRAD minus VRAD/level 2')
-
-xlabel('Velocity (m s^{-1})')
-ylabel('Percent (%)')
-
-grid on
-box on
-
-s3=nexttile(3);
-hold on
-edges=-20.25:0.5:20.25;
-hc1=histcounts(regPH-vradPH,edges);
-stairs(edges(1:end-1)+(edges(2)-edges(1))/2,hc1,'LineWidth',2)
-hc2=histcounts(regVradPH-vradPH,edges);
-stairs(edges(1:end-1)+(edges(2)-edges(1))/2,hc2,'LineWidth',2)
-xlim([-20,20]);
-
-legend({'Regression - VRAD/level 2','Regression/VRAD - VRAD/level 2'},'Orientation','horizontal','Location','northoutside');
-
-xlabel('Velocity (m s^{-1})')
-ylabel('Count')
-
-grid on
-box on
-
-print([figdir,radar,'_histPurpleHaze.png'],'-dpng','-r0');
-<<<<<<< HEAD
-
-%% Plot purple haze
-
-vradPHsurf=vradLeg.VEL;
-vradPHsurf(phPix==0)=nan;
-regPHsurf=reg.VEL;
-regPHsurf(phPix==0)=nan;
-regVradPHsurf=regVradFilled;
-regVradPHsurf(phPix==0)=nan;
-
-f1 = figure('Position',[200 500 500 1200],'DefaultAxesFontSize',12,'visible',showPlot);
-t = tiledlayout(3,1,'TileSpacing','tight','Padding','compact');
-s1=nexttile(1);
-
-h1=surf(XX,YY,vradPHsurf,'edgecolor','none');
-view(2);
-view(2);
-title('VRAD/level 2 (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,vradPHsurf,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s1,[1 1 1]);
-
-s2=nexttile(2);
-
-h1=surf(XX,YY,regPHsurf,'edgecolor','none');
-view(2);
-view(2);
-title('Regression (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,regPHsurf,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s2,[1 1 1]);
-
-s3=nexttile(3);
-
-h1=surf(XX,YY,regVradPHsurf,'edgecolor','none');
-view(2);
-view(2);
-title('Regression/VRAD (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,regVradPHsurf,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s3,[1 1 1]);
-
-linkaxes([s1,s2,s3],'xy');
-
-print([figdir,radar,'_purpleHaze.png'],'-dpng','-r0');
-=======
-=======
->>>>>>> f09191c (Adding allSteps_withLegacy.m)
->>>>>>> 2323c7e (Adding allSteps_withLegacy.m)
