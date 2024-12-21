@@ -10,12 +10,12 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 % User parameters can be specified in this block. The rest of the script
 % should generally be left alone.
 
-%event='hurricane';
+event='hurricane';
 %event='squall_line';
-event='supercell';
+%event='supercell';
 
 % Display and save plot or just save it
-showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
+showPlot='off'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
 
 % Specify minimum range (to ignore erroneous data near the radar)
 minRange=0; % Minimum range in km
@@ -273,7 +273,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             colorbar
 
-            title([(dataFields{dd}),' sim ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
+            title([(dataFields{dd}),' truth ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
 
             grid on
             box on
@@ -289,9 +289,10 @@ for aa=1:size(fileListRad,1) % Loop through each file
             xlabel('Distance (km)');
             ylabel('Distance, (km)');
 
+            s3.Colormap=redblue;
             colorbar
 
-            title([(dataFields{dd}),' radar-sim ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
+            title([(dataFields{dd}),' radar-truth ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
 
             grid on
             box on
@@ -303,9 +304,9 @@ for aa=1:size(fileListRad,1) % Loop through each file
             axis('equal')
 
             xlabel('Radar');
-            ylabel('Sim');
+            ylabel('Truth');
 
-            title([(dataFields{dd}),' radar vs sim ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
+            title([(dataFields{dd}),' radar vs truth ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
 
             grid on
             box on
@@ -385,7 +386,7 @@ for dd=1:length(dataFields)
     colorbar
 
     xlabel('Radar');
-    ylabel('Sim');
+    ylabel('Truth');
 
     legend({'Orthogonal fit','1:1'},'Location','northwest');
 
