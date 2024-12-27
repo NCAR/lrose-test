@@ -10,8 +10,8 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 % User parameters can be specified in this block. The rest of the script
 % should generally be left alone.
 
-event='hurricane';
-%event='squall_line';
+%event='hurricane';
+event='squall_line';
 %event='supercell';
 
 % Display and save plot or just save it
@@ -32,6 +32,9 @@ colLims.DBZ=[-10,65];
 colLims.VEL=[-30,30];
 colLims.WIDTH=[0,5];
 colLims.ZDR=[-5,5];
+colLims.PHIDP=[60,120];
+colLims.RHOHV=[0.8,1.1];
+colLims.KDP=[-20,20];
 
 % Specify plot frequency
 % When running over a long(ish) time period, it is desirable not to plot every
@@ -73,6 +76,9 @@ dataComp.DBZ=[];
 dataComp.VEL=[];
 dataComp.WIDTH=[];
 dataComp.ZDR=[];
+dataComp.PHIDP=[];
+dataComp.RHOHV=[];
+dataComp.KDP=[];
 
 for aa=1:size(fileListRad,1) % Loop through each file
 
@@ -88,6 +94,9 @@ for aa=1:size(fileListRad,1) % Loop through each file
     dataR.VEL=[];
     dataR.WIDTH=[];
     dataR.ZDR=[];
+    dataR.PHIDP=[];
+    dataR.RHOHV=[];
+    dataR.KDP=[];
 
     dataFields=fields(dataR);
 
@@ -96,6 +105,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
     try
         dataR=read_apar(infileR,dataR);
     catch
+        warning('Cannot read variables.')
         continue
     end
 
@@ -107,7 +117,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
         if minDiff<seconds(5)
             infileS=[indirSim,fileListSim(indS_PPI(sInd)).name];
         else
-            disp('No matching file found.')
+            warning('No matching truth file found within time range.')
             continue
         end
         for kk=1:size(dataR,2)
@@ -121,7 +131,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
         if minDiff<seconds(5)
             infileS=[indirSim,fileListSim(indS_RHI(sInd)).name];
         else
-            disp('No matching file found.')
+            warning('No matching truth file found within time range.')
             continue
         end
         for kk=1:size(dataR,2)
@@ -131,6 +141,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
             end
         end
     else
+        warning('Sweep mode must be rhi or sector.')
         continue
     end
 
@@ -139,23 +150,29 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
     % Check if the size of the two input data sets match
     if ~isequal(size(dataR),size(dataS))
+        warning('Sizes of fieles do not match.')
         continue
     end
 
     %% Loop through scans
 
     dataVars=fields(dataR);
+    dataRinds=[];
+    dataSinds=[];
 
     for cc=1:size(dataR,2)
+        dataS(cc).PHIDP=dataS(cc).PHIDP+70;
+        dataR(cc).PHIDP(dataR(cc).PHIDP<0)=dataR(cc).PHIDP(dataR(cc).PHIDP<0)+180;
         % There are some strange files that have only one ray which we
         % ignore.
         if length(dataR(cc).azimuth)==1
+            warning('Only one ray in sweep.')
             continue
         end
         if strcmp(dataR(1).sweepMode,'rhi') % For RHIs, check azimuths
             % Check that azimuths match
             if abs(median(dataR(cc).azimuth)-median(dataS(cc).azimuth))>0.1
-                disp('Azimuths do not match')
+                warning('Azimuths do not match')
                 continue
             end
             angR=round(dataR(cc).elevation,1);
@@ -163,7 +180,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
         elseif strcmp(dataR(1).sweepMode,'sector') % For PPIs, check elevations
             % Check that elevations match
             if abs(median(dataR(cc).elevation)-median(dataS(cc).elevation))>0.1
-                disp('Elevations do not match')
+                warning('Elevations do not match')
                 continue
             end
             angR=round(dataR(cc).azimuth,1);
@@ -217,21 +234,22 @@ for aa=1:size(fileListRad,1) % Loop through each file
     % Plot if part of specified plot frequency
     if ismember(ii,plotInds)
         %% Plot preparation
-        
-        if strcmp(dataR(1).sweepMode,'sector')
-            [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).azimuth),dataRinds(1).range);
+         for ee=1:size(dataRinds,2)
+        if strcmp(dataR(ee).sweepMode,'sector')
+            [phi_plt,r2] = meshgrid(deg2rad(dataRinds(ee).azimuth),dataRinds(ee).range);
             xlimits=[-50,50];
             ylimits=[0,70];
-        elseif strcmp(dataR(1).sweepMode,'rhi')
-            [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).elevation),dataRinds(1).range);
+        elseif strcmp(dataR(ee).sweepMode,'rhi')
+            [phi_plt,r2] = meshgrid(deg2rad(dataRinds(ee).elevation),dataRinds(ee).range);
             xlimits=[0,70];
             ylimits=[0,20];
         end
 
         [X,Y]=pol2cart(phi_plt,r2);
-        
+       
         for dd=1:length(dataFields)
-            if all(isnan(dataRinds(1).(dataFields{dd})(:)))
+            if all(isnan(dataRinds(ee).(dataFields{dd})(:)))
+                warning(['Variable ',dataFields{dd},' is empty.'])
                 continue
             end
             close all
@@ -243,7 +261,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             s1=nexttile(1);
 
-            p=surf(X,Y,dataRinds(1).(dataFields{dd})', 'EdgeColor','none');
+            p=surf(X,Y,dataRinds(ee).(dataFields{dd})', 'EdgeColor','none');
             view(2)
 
             xlim(xlimits)
@@ -254,7 +272,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             colorbar
 
-            fileTime=mean(dataRinds(1).time);
+            fileTime=mean(dataRinds(ee).time);
             title([(dataFields{dd}),' radar ',datestr(fileTime,'yyyy-mm-dd HH:MM:SS')]);
 
             grid on
@@ -262,7 +280,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             s2=nexttile(2);
 
-            p=surf(X,Y,dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
+            p=surf(X,Y,dataSinds(ee).(dataFields{dd})', 'EdgeColor','none');
             view(2)
 
             xlim(xlimits)
@@ -280,12 +298,18 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             s3=nexttile(3);
 
-            p=surf(X,Y,dataRinds(1).(dataFields{dd})'-dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
+            p=surf(X,Y,dataRinds(ee).(dataFields{dd})'-dataSinds(ee).(dataFields{dd})', 'EdgeColor','none');
             view(2)
 
             xlim(xlimits)
             ylim(ylimits)
-            clim([-10,10]);
+            if strcmp(dataFields{dd},'RHOHV')
+                clim([-0.1,0.1]);
+            elseif strcmp(dataFields{dd},'ZDR')
+                clim([-2,2]);
+            else
+                clim([-10,10]);
+            end
             xlabel('Distance (km)');
             ylabel('Distance, (km)');
 
@@ -300,7 +324,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s4=nexttile(4);
 
             hold on
-            scatter(dataRinds(1).(dataFields{dd})(:),dataSinds(1).(dataFields{dd})(:));
+            scatter(dataRinds(ee).(dataFields{dd})(:),dataSinds(ee).(dataFields{dd})(:));
             axis('equal')
 
             xlabel('Radar');
@@ -324,6 +348,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
             print([figdir,'vars/',(dataFields{dd}),'_',datestr(fileTime,'yyyymmdd_HHMMSS'),'.png'],'-dpng','-r0');
         end
+        end
     end
 end
 
@@ -332,30 +357,30 @@ disp([num2str(ii),' valid files processed.']);
 %% Plot statistics
 
 close all
-
-if isempty(dataComp.VEL)
-    figure('Position',[200 500 1200 600],'DefaultAxesFontSize',12,'visible',showPlot);
-    colormap('jet');
-    t = tiledlayout(1,2,'TileSpacing','tight','Padding','tight');
-else
-    figure('Position',[200 500 1200 1200],'DefaultAxesFontSize',12,'visible',showPlot);
-    colormap('jet');
-    t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
+numCols=length(dataFields);
+for dd=1:length(dataFields)
+    if isempty(dataComp.(dataFields{dd}))
+        numCols=numCols-1;
+    end
 end
+numCols=ceil(numCols/2);
 
-ss=1;
+figure('Position',[200 500 600*numCols 1200],'DefaultAxesFontSize',12,'visible',showPlot);
+colormap('jet');
+t = tiledlayout(2,numCols,'TileSpacing','tight','Padding','tight','TileIndexing', 'columnmajor');
+
 for dd=1:length(dataFields)
     if isempty(dataComp.(dataFields{dd}))
         continue
     end
 
     % Histcounts
-    minField=min(dataComp.(dataFields{dd})(:));
-    maxField=max(dataComp.(dataFields{dd})(:));
+    minField=prctile(dataComp.(dataFields{dd})(:),1);
+    maxField=prctile(dataComp.(dataFields{dd})(:),99);
 
     gridSp=(maxField-minField)/100;
 
-    fieldEdges.(dataFields{dd})=floor(minField):gridSp:ceil(maxField);
+    fieldEdges.(dataFields{dd})=minField:gridSp:maxField;
     fieldX.(dataFields{dd})=fieldEdges.(dataFields{dd})(1:end-1)+(fieldEdges.(dataFields{dd})(2)-fieldEdges.(dataFields{dd})(1))/2;
 
     N.(dataFields{dd})=histcounts2(dataComp.(dataFields{dd})(:,1),dataComp.(dataFields{dd})(:,2),fieldEdges.(dataFields{dd}),fieldEdges.(dataFields{dd}));
@@ -369,7 +394,7 @@ for dd=1:length(dataFields)
 
 
     % Plot
-    s=nexttile(ss);
+    s=nexttile(dd);
     hold on
     h=imagesc(fieldX.(dataFields{dd}),fieldX.(dataFields{dd}),N.(dataFields{dd})');
     set(h,'alphadata',~isnan(N.(dataFields{dd})'))
@@ -395,7 +420,6 @@ for dd=1:length(dataFields)
 
     title(dataFields{dd});
 
-    ss=ss+1;
 end
 
 print([figdir,'scatterStats.png'],'-dpng','-r0');
