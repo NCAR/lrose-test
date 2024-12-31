@@ -10,31 +10,34 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 % User parameters can be specified in this block. The rest of the script
 % should generally be left alone.
 
-%event='hurricane';
-event='squall_line';
+event='hurricane';
+%event='squall_line';
 %event='supercell';
 
 % Display and save plot or just save it
 showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
+dualPol=0; % 1 if dual pol vars are available
 
 % Specify minimum range (to ignore erroneous data near the radar)
-minRange=0; % Minimum range in km
+minRange=7; % Minimum range in km
 
 % Data directories for the input data
-indirRad=['/scr/virga1/rsfdata/projects/apar/events/',event,'/sim-ts_thru_rsp_moments/'];
-indirSim=['/scr/virga1/rsfdata/projects/apar/events/',event,'/truth_moments/'];
+indirRad=['/scr/virga1/rsfdata/projects/apar/events/old/',event,'/sim-ts_thru_rsp_moments/'];
+indirSim=['/scr/virga1/rsfdata/projects/apar/events/old/',event,'/truth_moments/'];
 
 % Ouptut directory for the figures
-figdir=['/scr/virga1/rsfdata/projects/apar/events/figures/',event,'/'];
+figdir=['/scr/virga1/rsfdata/projects/apar/events/figures/old/',event,'/'];
 
 % Specify lower and upper limits of the color scales for each variable
 colLims.DBZ=[-10,65];
 colLims.VEL=[-30,30];
 colLims.WIDTH=[0,5];
 colLims.ZDR=[-5,5];
-colLims.PHIDP=[60,120];
-colLims.RHOHV=[0.8,1.1];
-colLims.KDP=[-20,20];
+if dualPol
+    colLims.PHIDP=[60,120];
+    colLims.RHOHV=[0.8,1.1];
+    colLims.KDP=[-20,20];
+end
 
 % Specify plot frequency
 % When running over a long(ish) time period, it is desirable not to plot every
@@ -76,9 +79,13 @@ dataComp.DBZ=[];
 dataComp.VEL=[];
 dataComp.WIDTH=[];
 dataComp.ZDR=[];
-dataComp.PHIDP=[];
-dataComp.RHOHV=[];
-dataComp.KDP=[];
+if dualPol
+    dataComp.PHIDP=[];
+    dataComp.RHOHV=[];
+    dataComp.KDP=[];
+end
+
+diffMedAll=[];
 
 for aa=1:size(fileListRad,1) % Loop through each file
 
@@ -94,9 +101,11 @@ for aa=1:size(fileListRad,1) % Loop through each file
     dataR.VEL=[];
     dataR.WIDTH=[];
     dataR.ZDR=[];
-    dataR.PHIDP=[];
-    dataR.RHOHV=[];
-    dataR.KDP=[];
+    if dualPol
+        dataR.PHIDP=[];
+        dataR.RHOHV=[];
+        dataR.KDP=[];
+    end
 
     dataFields=fields(dataR);
 
@@ -161,8 +170,11 @@ for aa=1:size(fileListRad,1) % Loop through each file
     dataSinds=[];
 
     for cc=1:size(dataR,2)
-        dataS(cc).PHIDP=dataS(cc).PHIDP+70;
-        dataR(cc).PHIDP(dataR(cc).PHIDP<0)=dataR(cc).PHIDP(dataR(cc).PHIDP<0)+180;
+        if dualPol
+            dataS(cc).PHIDP=dataS(cc).PHIDP+70;
+            dataR(cc).PHIDP(dataR(cc).PHIDP<0)=dataR(cc).PHIDP(dataR(cc).PHIDP<0)+180;
+        end
+        dataR(cc).DBZ=dataR(cc).DBZ-3;
         % There are some strange files that have only one ray which we
         % ignore.
         if length(dataR(cc).azimuth)==1
@@ -239,10 +251,12 @@ for aa=1:size(fileListRad,1) % Loop through each file
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(ee).azimuth),dataRinds(ee).range);
             xlimits=[-50,50];
             ylimits=[0,70];
+            figPos=[200 500 1110 800];
         elseif strcmp(dataR(ee).sweepMode,'rhi')
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(ee).elevation),dataRinds(ee).range);
             xlimits=[0,70];
-            ylimits=[0,20];
+            ylimits=[0,14];
+            figPos=[200 500 1110 1000];
         end
 
         [X,Y]=pol2cart(phi_plt,r2);
@@ -254,7 +268,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
             end
             close all
 
-            figure('Position',[200 500 1200 800],'DefaultAxesFontSize',12,'visible',showPlot);
+            figure('Position',figPos,'DefaultAxesFontSize',12,'visible',showPlot);
             colormap('jet');
 
             t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
@@ -278,6 +292,10 @@ for aa=1:size(fileListRad,1) % Loop through each file
             grid on
             box on
 
+            if strcmp(dataR(ee).sweepMode,'sector')
+                axis('equal')
+            end
+
             s2=nexttile(2);
 
             p=surf(X,Y,dataSinds(ee).(dataFields{dd})', 'EdgeColor','none');
@@ -296,9 +314,18 @@ for aa=1:size(fileListRad,1) % Loop through each file
             grid on
             box on
 
-            s3=nexttile(3);
+            if strcmp(dataR(ee).sweepMode,'sector')
+                axis('equal')
+            end
 
-            p=surf(X,Y,dataRinds(ee).(dataFields{dd})'-dataSinds(ee).(dataFields{dd})', 'EdgeColor','none');
+            s3=nexttile(3);
+            diffIn=dataRinds(ee).(dataFields{dd})'-dataSinds(ee).(dataFields{dd})';
+            if strcmp(dataFields{dd},'DBZ')
+                diffMed=median(diffIn(:),'omitmissing');
+                diffMedAll=[diffMedAll,diffMed];
+                disp(['Bias=',num2str(diffMed)]);
+            end
+            p=surf(X,Y,diffIn, 'EdgeColor','none');
             view(2)
 
             xlim(xlimits)
@@ -321,12 +348,15 @@ for aa=1:size(fileListRad,1) % Loop through each file
             grid on
             box on
 
+            if strcmp(dataR(ee).sweepMode,'sector')
+                axis('equal')
+            end
+
             s4=nexttile(4);
 
             hold on
             scatter(dataRinds(ee).(dataFields{dd})(:),dataSinds(ee).(dataFields{dd})(:));
-            axis('equal')
-
+            
             xlabel('Radar');
             ylabel('Truth');
 
@@ -346,6 +376,8 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s4.XLim=xlimG;
             s4.YLim=ylimG;
 
+            axis('equal')
+
             print([figdir,'vars/',(dataFields{dd}),'_',datestr(fileTime,'yyyymmdd_HHMMSS'),'.png'],'-dpng','-r0');
         end
         end
@@ -353,6 +385,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
 end
 
 disp([num2str(ii),' valid files processed.']);
+disp(['Mean bias=',num2str(mean(diffMedAll))]);
 
 %% Plot statistics
 
@@ -400,7 +433,7 @@ for dd=1:length(dataFields)
     set(h,'alphadata',~isnan(N.(dataFields{dd})'))
     set(gca,'YDir','normal');
 
-    plot(fieldEdges.(dataFields{dd}), yFit1,'-r','linewidth',2);
+    %plot(fieldEdges.(dataFields{dd}), yFit1,'-r','linewidth',2);
     plot([fieldEdges.(dataFields{dd})(1),fieldEdges.(dataFields{dd})(end)], ...
         [fieldEdges.(dataFields{dd})(1),fieldEdges.(dataFields{dd})(end)],'-','LineWidth',2,'Color',[0.7,0.7,0.7]);
     
@@ -413,7 +446,8 @@ for dd=1:length(dataFields)
     xlabel('Radar');
     ylabel('Truth');
 
-    legend({'Orthogonal fit','1:1'},'Location','northwest');
+    %legend({'Orthogonal fit','1:1'},'Location','northwest');
+    legend({'1:1'},'Location','northwest');
 
     grid on
     box on
