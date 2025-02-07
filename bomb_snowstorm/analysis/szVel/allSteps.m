@@ -6,10 +6,10 @@ close all;
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 showPlot='on';
-%radar='KFTG';
+radar='KFTG';
 %radar='KLWX';
 %radar='KDDC1';
-radar='KDDC2';
+%radar='KDDC2';
 
 figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/szComp/',radar,'/'];
 
@@ -232,7 +232,6 @@ daspect(s4,[1 1 1]);
 
 print([figdir,radar,'_PPIs_zoom.png'],'-dpng','-r0');
 
-<<<<<<< HEAD
 %% Area coverage
 
 pixNum=[sum(~isnan(lev2.VEL(:))),sum(~isnan(vradLeg.VEL(:))),sum(~isnan(regVradFilled(:)))];
@@ -538,6 +537,7 @@ box on
 
 print([figdir,radar,'_histPurpleHaze.png'],'-dpng','-r0');
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 %% Plot purple haze
 
@@ -611,3 +611,5 @@ print([figdir,radar,'_purpleHaze.png'],'-dpng','-r0');
 =======
 >>>>>>> f09191c (Adding allSteps_withLegacy.m)
 >>>>>>> 2323c7e (Adding allSteps_withLegacy.m)
+=======
+>>>>>>> 48dd00c (Adding figures for VRAD-REG paper)
