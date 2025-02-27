@@ -13,23 +13,27 @@ figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/vradRegPaper/';
 
 %% Infiles
 
-regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_64pts_V5.txt';
-unfoldedFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/VRAD_KFTG_Case.mat';
-lev2File='/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kftg/20220329/cfrad.20220329_190500.493_to_20220329_191029.825_KFTG_SUR.nc';
+regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/DOPPLER20200525_051615VD6.txt';
+lev2File='/scr/cirrus1/rsfdata/projects/nexrad/cfradial/nexrad.level2/kddc/20200525/cfrad.20200525_051303.384_to_20200525_051904.931_KDDC_SUR.nc';
 
 %% Read Data
 
 disp('Loading data ...')
 dataReg=readDataTables(regFile,' ');
 
+dataLev2=[];
 dataLev2.VEL=[];
 dataLev2.PURPLE_HAZE=[];
 dataLev2=read_spol(lev2File,dataLev2);
-dataLev2=dataLev2(1);
+dataLev2=dataLev2(9);
+
+% Cut range
+dataLev2.VEL(:,dataLev2.range>232)=nan;
+dataLev2.PURPLE_HAZE(:,dataLev2.range>232)=nan;
+
+
 nyquist=ncread(lev2File,'nyquist_velocity');
 dataLev2.VEL(dataLev2.PURPLE_HAZE==1)=-99;
-
-%load(unfoldedFile);
 
 %% Censor regression
 
@@ -41,8 +45,8 @@ regVelCensored(stdVel>9)=nan;
 
 %% Plot preparation
 
-xlimits1=[-200,260];
-ylimits1=[-220,220];
+xlimits1=[-235,235];
+ylimits1=[-235,235];
 
 %% Plot
 
@@ -67,6 +71,8 @@ title('(a) Legacy velocity (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
+yticks(-300:100:300);
+
 grid on
 box on
 
@@ -74,9 +80,9 @@ applyColorScale(h1,dataLev2.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s1,[1 1 1]);
 
-ar = annotation("textarrow",[0.4,0.459],[0.92,0.89],'String','1st to 2nd boundary','LineWidth',2);
+ar = annotation("textarrow",[0.44,0.5],[0.9,0.865],'String','1st to 2nd boundary','TextBackgroundColor','w', ...
+    'TextEdgeColor','k','LineWidth',2,'TextLineWidth',1);
 
 s2=nexttile(2);
 
@@ -93,6 +99,8 @@ title('(b) REG velocity (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
+yticks(-300:100:300);
+
 grid on
 box on
 
@@ -100,9 +108,12 @@ applyColorScale(h1,dataReg.VEL_F,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s2,[1 1 1]);
 
-ar = annotation("textarrow",[0.4,0.459],[0.42,0.39], ... 
-    'String','1st to 2nd boundary','TextBackgroundColor','w','Color','w','TextColor','k','LineWidth',2);
+ar = annotation("textarrow",[0.44,0.5],[0.4,0.36], ... 
+    'String','1st to 2nd boundary','TextBackgroundColor','w','TextEdgeColor','k', ...
+    'Color','k','TextColor','k','LineWidth',2,'TextLineWidth',1);
+
+daspect(s2,[1 1 1]);
+daspect(s1,[1 1 1]);
 
 print([figdir,'figure1.png'],'-dpng','-r0');
