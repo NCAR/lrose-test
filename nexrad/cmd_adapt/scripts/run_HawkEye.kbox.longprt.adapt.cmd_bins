@@ -1,0 +1,6 @@
+#! /bin/csh -f
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+HawkEye -params HawkEye.kbox.longprt.adapt.cmd_bins -f /scr/cirrus1/rsfdata/projects/nexrad/cfradial/kbox.longprt.adapt.cmd_bins/20240508/cfrad.20240508*
+

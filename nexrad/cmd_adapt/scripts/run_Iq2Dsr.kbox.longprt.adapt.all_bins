@@ -1,0 +1,17 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+foreach file (/scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.1.* /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.3.* /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.5.*)
+  Dsr2Radx -params Dsr2Radx.kbox.longprt.adapt.all_bins -debug >& /tmp/Dsr2Radx.kbox.longprt.adapt.all_bins.log &
+  Iq2Dsr -params Iq2Dsr.kbox.longprt.adapt.all_bins -debug -f $file
+  sleep 11
+  snuff "Dsr2Radx -params Dsr2Radx.kbox.longprt.adapt.all_bins"
+end
+
+#  Dsr2Radx -params Dsr2Radx.kbox.longprt.adapt.all_bins -debug >& /tmp/Dsr2Radx.kbox.longprt.adapt.all_bins.log &
+#  Iq2Dsr -params Iq2Dsr.kbox.longprt.adapt.all_bins -debug -f /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.1.* /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.3.* /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbox/20240508/KBOX*.5.*
+#  sleep 20
+#  snuff "Dsr2Radx -params Dsr2Radx.kbox.longprt.adapt.all_bins"
