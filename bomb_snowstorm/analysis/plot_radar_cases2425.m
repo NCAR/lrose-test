@@ -15,7 +15,7 @@ fileID = fopen('plotFiles_indVars_cases2425.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=1:size(inAll{1,1},1)
+for aa=24:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 

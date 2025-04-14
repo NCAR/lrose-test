@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=1:size(inAll{1,1},1)
+for aa=13:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -238,12 +238,12 @@ for aa=1:size(inAll{1,1},1)
     if azRes==0.5
         pastDot=data1in.azimuth(1)-floor(data1in.azimuth(1));
         if (pastDot>=0.2 & pastDot<=0.3) | (pastDot>=0.7 & pastDot<=0.8)
-            allAz=0.25:azRes:360;
+            allAz=0:azRes:359.75;
         else
-            allAz=0.5:azRes:360;
+            allAz=0:azRes:359.5;
         end
     else
-        allAz=1:360;
+        allAz=0:359;
     end
 
     if ~isempty(minMaxAz)

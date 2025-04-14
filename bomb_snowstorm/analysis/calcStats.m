@@ -451,6 +451,9 @@ for aa=44:size(inAll{1,1},1)
         grid on
         box on
 
+        diffFieldKeep=diffField;
+        limKeep=lim;
+
         s5=subplot(2,4,5);
         pBottom=prctile(stdVar1,10,'all');
         pTop=prctile(stdVar1,90,'all');
@@ -537,6 +540,32 @@ for aa=44:size(inAll{1,1},1)
         daspect(s5,[1 1 1]);
         daspect(s6,[1 1 1]);
         daspect(s7,[1 1 1]);
+
+        s4=subplot(2,4,4);
+        if removeZeros
+            diffFieldKeep(diffFieldKeep>-limKeep/100 & diffField<limKeep/100)=nan;
+        end
+        pBottom2=prctile(diffFieldKeep,15,'all');
+        pTop2=prctile(diffFieldKeep,85,'all');
+        lim2=max(abs([pTop2,pBottom2]));
+        if lim2==0
+            lim2=0.1;
+        end
+
+        hold on
+        edges=-limKeep:limKeep/60:limKeep;
+        hc=histcounts(diffFieldKeep(:),edges);
+        bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc,1)
+        xlim([-lim2,lim2]);
+
+        ylims=s4.YLim;
+        plot([0,0],ylims,'-r','LineWidth',2);
+
+        s4.SortMethod='childorder';
+
+        grid on
+        box on
+        title([inFields{jj},' ',outParts{2},' - ',outParts{1}],'Interpreter','none');
 
         s8=subplot(2,4,8);
         if removeZeros
