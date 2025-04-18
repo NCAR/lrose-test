@@ -9,13 +9,16 @@ maxRange=[];
 
 showPlot='off';
 
+tripToSnr=0;
+tripToCnr=1;
+
 %% Loop through cases
 
 fileID = fopen('plotFiles_indVars_cases2425.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=24:size(inAll{1,1},1)
+for aa=44:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -42,6 +45,14 @@ for aa=24:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data=readDataTables(infile{:},' ');
         data.RHOHV_F=data.RHOHV_NNC_F;
+        if tripToSnr
+            data.SNR=data.TRIP;
+            data=rmfield(data,'TRIP');
+        end
+        if tripToCnr
+            data.CNR=data.TRIP;
+            data=rmfield(data,'TRIP');
+        end
     end
 
     %% Cut range

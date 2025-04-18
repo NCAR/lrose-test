@@ -41,3 +41,23 @@
 /scr/cirrus1/rsfdata/projects/nexrad/cfradial/adapt_vs_regr/ktbw.regr/20220928/cfrad.20220928_155512_to_20220928_155531_KTBW_SUR_0.53.nc regr.20220928_155512_regrCpp_KTBW -400 400 -400 400 -200 400 -300 400 nc
 /scr/cirrus1/rsfdata/projects/nexrad/cfradial/adapt_vs_regr/nop4.adapt/20130520/cfrad.20130520_201914_to_20130520_201931_NOP4_SUR_0.53.nc adapt.20130520_201914_regrCpp_NOP4 -400 400 -400 400 -300 300 -400 400 nc
 /scr/cirrus1/rsfdata/projects/nexrad/cfradial/adapt_vs_regr/nop4.regr/20130520/cfrad.20130520_201914_to_20130520_201931_NOP4_SUR_0.53.nc regr.20130520_201914_regrCpp_NOP4 -400 400 -400 400 -300 300 -400 400 nc
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KBUF-WN-lprt20221118_082103.txt wnFortran.20221118_082104_KBUF -400 400 -400 400 -180 180 -150 150 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KBUF-lprt20221118_082103.txt regrFortran.20221118_082104_KBUF -400 400 -400 400 -180 180 -150 150 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KMHX-WN-LPRT20110626_095843_1.62_14.37.txt wnFortran.20110626_095845_KMHX -400 400 -400 400 -300 400 -300 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KMHX-LPRT20110626_095843_1.62_14.37.txt regrFortran.20110626_095845_KMHX -400 400 -400 400 -300 400 -300 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUN-WN-lprt20100417_183535_0.57_298.49.txt wnFortran.20100417_183535_KOUN -400 400 -400 400 -300 300 -350 200 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUNlprt20100417_183535_0.57_298.49.txt regrFortran.20100417_183535_KOUN -400 400 -400 400 -300 300 -350 200 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUN-WN-lprt20110408_130532_1.15_111.85.txt wnFortran.20110408_130533_KOUN -300 300 -300 400 -200 150 -100 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUNlprt20110408_130532_1.15_111.85.txt regrFortran.20110408_130533_KOUN -300 300 -300 400 -200 150 -100 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUN-WN-lprt20110415_012238_1.26_37.56.txt wnFortran.20110415_012240_KOUN -400 400 -400 400 -150 400 -200 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUNlprt20110415_012238_1.26_37.56.txt regrFortran.20110415_012240_KOUN -400 400 -400 400 -150 400 -200 300 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUN-WN-lprt20110524_211430_0.86_16.95.txt wnFortran.20110524_211431_KOUN -400 400 -400 400 -300 150 -400 400 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KOUNlprt20110524_211430_0.86_16.95.txt regrFortran.20110524_211431_KOUN -400 400 -400 400 -300 150 -400 400 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KRIW-WN-LPRT20170124_163127_0.84_192.40.txt wnFortran.20170124_163128_KRIW -400 400 -400 400 -200 200 -200 200 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KRIW-LPRT20170124_163127_0.84_192.40.txt regrFortran.20170124_163128_KRIW -400 400 -400 400 -200 200 -200 200 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KTBW-WN-LPRT20220928_155511_0.49_238.38.txt wnFortran.20220928_155512_KTBW -400 400 -400 400 -200 400 -300 400 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KTBWLPRT20220928_155511_0.49_238.38.txt regrFortran.20220928_155512_KTBW -400 400 -400 400 -200 400 -300 400 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-WN-lprt-20130520_201912_1.88_178.67-jh.txt wnFortran.20130520_201914_NOP4 -400 400 -400 400 -300 300 -400 400
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-lprt-20130520_201912_1.88_178.67-jh.txt regrFortran.20130520_201914_NOP4 -400 400 -400 400 -300 300 -400 400
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/ wnFortranVSregrFortran.20110531_111309_KIWA -400 400 -400 400 -150 150 -150 150 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KIWAlprt20110531_111308_0.24_270.15.txt regrFortran.20110531_111309_KIWA -400 400 -400 400 -150 150 -150 150 table

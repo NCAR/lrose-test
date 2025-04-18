@@ -554,7 +554,7 @@ radar_latitude_deg = 35.238333;
 //
 // Type: double
 
-radar_longitude_deg = -97.460000;
+radar_longitude_deg = -97.46;
 
 ///////////// radar_altitude_meters ///////////////////
 //
@@ -564,7 +564,7 @@ radar_longitude_deg = -97.460000;
 //
 // Type: double
 
-radar_altitude_meters = 407.0;
+radar_altitude_meters = 407;
 
 ///////////// override_gate_geometry //////////////////
 //
@@ -787,10 +787,10 @@ scan_mode_for_override = SCAN_MODE_SURVEILLANCE;
 //   steered to a fixed angle for a while, and then jumps to a different 
 //   pointing direction. We use all of the pulses with a constant steering 
 //   angle to form the beam;
-// CONSTANT_PULSE_WIDTH: create beams (dwells) with with constant pulse 
-//   width. If the pulse width changes we move to a new dwell. Also, 
-//   optionally specify the pulase width and ignore pulses with a 
-//   different width.
+// PULSE_WIDTH_CHANGE: create beams (dwells) with with constant pulse 
+//   width - if the pulse width changes we move to a new dwell. Also, 
+//   optionally specify the pulse width and ignore pulses that do not 
+//   match the specified value.
 //
 // Type: struct
 //   typedef struct {
@@ -819,7 +819,7 @@ scan_mode_for_override = SCAN_MODE_SURVEILLANCE;
 //          BEAM_SPECIFY_N_SAMPLES
 //          BEAM_SPECIFY_ANGLE
 //          BEAM_CONSTANT_STEERING_ANGLE
-//          BEAM_CONSTANT_PULSE_WIDTH
+//          BEAM_PULSE_WIDTH_CHANGE
 //      int beam_n_samples;
 //      double beam_angle_deg;
 //      boolean index_the_beams;
@@ -870,7 +870,6 @@ moments_params = {
     check_antenna_rate = FALSE,
     antenna_rate_lower_limit = 0,
     antenna_rate_upper_limit = 90,
-    // beam_method = BEAM_SPECIFY_N_SAMPLES,
     beam_method = BEAM_SPECIFY_ANGLE,
     beam_n_samples = 16,
     beam_angle_deg = 0.5,
@@ -917,13 +916,12 @@ min_n_samples = 8;
 
 max_n_samples = 128;
 
-///////////// specify_pulse_width /////////////////////
+///////////// specify_fixed_pulse_width ///////////////
 //
-// Option to specify the pulse width.
+// Specify the pulse width to be fixed.
 //
-// Only applicable if beam_method = BEAM_CONSTANT_PULSE_WIDTH. See 
-//   'fixed_pulse_width_us'. Pulses with different pulse widths are 
-//   discarded.
+// Time series must have constant fixed pulse width. Data with other 
+//   pulse widths are discarded.
 //
 // Type: boolean
 
@@ -957,6 +955,21 @@ fixed_pulse_width_us = 1;
 // Type: boolean
 
 control_beam_indexing_from_time_series = FALSE;
+
+///////////// center_indexed_beams_starting_at_zero ////
+//
+// Center indexed beams on 0 deg in azimuth and elevation.
+//
+// If true, the first indexed beam will be centered on 0 deg. If false, 
+//   the edge of the first beam will be on 0, and it will be centered on 
+//   indexed_resolution / 2.0. The latter is what NEXRAD does, so for a 
+//   dwell resolution of 1.0 the center of the first beam will be at an 
+//   azimuth of 0.5 deg. For super-resolution with a beam resolution of 
+//   0.5 the first beam will be centered on 0.25 deg.
+//
+// Type: boolean
+
+center_indexed_beams_starting_at_zero = TRUE;
 
 ///////////// discard_non_indexed_beams ///////////////
 //
@@ -1543,7 +1556,8 @@ rx_temp_gain_corrections = {
 //
 // FOR HCR, CORRECT RECEIVER GAIN FOR TEMPERATURE USING VALUES FROM SPDB.
 //
-// Also, optionally correct georeference height.
+// Also, optionally (a) correct georeference height, and (b) set 
+//   georeference velocities to 0 for ground-based operations.
 //
 //======================================================================
  
@@ -1614,6 +1628,19 @@ correct_altitude_for_egm = FALSE;
 // Type: string
 
 egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
+
+///////////// georef_fixed_location_mode //////////////
+//
+// Option to set fixed location for ground-based HCR observations.
+//
+// If TRUE, we will override the metadata for 
+//   latitude/longitude/altitude, and set platform velocities to 0. Make 
+//   sure to set the parameters radar_latitude_deg, radar_longitude_deg 
+//   and radar_altitude_meters.
+//
+// Type: boolean
+
+georef_fixed_location_mode = FALSE;
 
 //======================================================================
 //

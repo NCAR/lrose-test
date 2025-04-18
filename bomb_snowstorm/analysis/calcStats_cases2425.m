@@ -11,11 +11,12 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=0;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 censorOnTRIP=0; % Only use weak trip (0).
 %%%%%%%%%%%%%%
 tripToSnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
 censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+tripToCnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually CNR.
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
@@ -28,7 +29,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=23:size(inAll{1,1},1)
+for aa=33:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -108,6 +109,10 @@ for aa=23:size(inAll{1,1},1)
             data1in.SNR=data1in.TRIP;
             data1in=rmfield(data1in,'TRIP');
         end
+        if tripToCnr
+            data1in.CNR=data1in.TRIP;
+            data1in=rmfield(data1in,'TRIP');
+        end
     end
 
     %% Read file 2
@@ -183,6 +188,10 @@ for aa=23:size(inAll{1,1},1)
             data2in.SNR=data2in.TRIP;
             data2in=rmfield(data2in,'TRIP');
         end
+        if tripToCnr
+            data2in.CNR=data2in.TRIP;
+            data2in=rmfield(data2in,'TRIP');
+        end
         data2in.RHOHV_F=data2in.RHOHV_NNC_F;
     elseif strcmp(fileType{:},'mat')
         load(infile2{:});
@@ -237,8 +246,8 @@ for aa=23:size(inAll{1,1},1)
     azRes=round((data1in.azimuth(2)-data1in.azimuth(1))*10)/10;
     if azRes==0.5
         pastDot=data1in.azimuth(1)-floor(data1in.azimuth(1));
-        if (pastDot>=0.2 & pastDot<=0.3) | (pastDot>=0.7 & pastDot<=0.8)
-            allAz=0:azRes:359.75;
+        if (pastDot>0.125 & pastDot<0.375) | (pastDot>0.625 & pastDot<0.875)
+            allAz=0.25:azRes:359.75;
         else
             allAz=0:azRes:359.5;
         end
