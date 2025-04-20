@@ -969,7 +969,7 @@ control_beam_indexing_from_time_series = FALSE;
 //
 // Type: boolean
 
-center_indexed_beams_starting_at_zero = TRUE;
+center_indexed_beams_starting_at_zero = FALSE;
 
 ///////////// discard_non_indexed_beams ///////////////
 //

@@ -230,6 +230,161 @@ LEVEL2_CFP      LEVEL2_CFP    $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).l
 ========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 ========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
 
+ADAPT_DBZ_F   ADAPT_DBZ_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT_DBZ     ADAPT_DBZ     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+ADAPT_VEL_F    ADAPT_VEL_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL_F   vel_nexrad_longprt.colors   m/s -5 80 5 radial 1 0
+ADAPT_VEL      ADAPT_VEL     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL     vel_nexrad_longprt.colors   m/s -5 80 5 radial 1 0
+ADAPT_WIDTH_F  ADAPT_WIDTH_F $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+ADAPT_WIDTH    ADAPT_WIDTH   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+ADAPT_VEL1_F    ADAPT_VEL1_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL_F   vel_rike.colors   m/s -5 80 5 radial 1 0
+ADAPT_VEL1      ADAPT_VEL1     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL   vel_rike.colors   m/s -5 80 5 radial 1 0
+ADAPT_VEL2_F    ADAPT_VEL2_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ADAPT_VEL2      ADAPT_VEL2     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&VEL   vel.colors   m/s -5 80 5 radial 1 0
+
+ADAPT_ZDR_F    ADAPT_ZDR_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT_ZDR      ADAPT_ZDR      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT_PHIDP_F  ADAPT_PHIDP_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+ADAPT_PHIDP    ADAPT_PHIDP    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&PHIDP phidp.colors deg -5 80 5 radial 1 0
+
+ADAPT_KDP_F    ADAPT_KDP_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+ADAPT_KDP      ADAPT_KDP      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+ADAPT_NCP_F    ADAPT_NCP_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+ADAPT_NCP      ADAPT_NCP      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+
+ADAPT_RHOHV_F     ADAPT_RHOHV_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV       ADAPT_RHOHV    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV_NNC_F ADAPT_RHOHV_NNC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT_RHOHV_NNC   ADAPT_RHOHV_NNC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
+
+ADAPT_SNRHC_F   ADAPT_SNRHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRHC     ADAPT_SNRHC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRVC_F   ADAPT_SNRVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+ADAPT_SNRVC     ADAPT_SNRVC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+
+ADAPT_DBMHC_F   ADAPT_DBMHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMHC     ADAPT_DBMHC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMVC_F   ADAPT_DBMVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+ADAPT_DBMVC     ADAPT_DBMVC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+ADAPT_CPA        ADAPT_CPA      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&CPA               cpa.colors  - -5 80 5 radial 1 0
+ADAPT_ZDR_SDEV   ADAPT_ZDR_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
+ADAPT_PHIDP_SDEV ADAPT_PHIDP_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+ADAPT_RHOHV_TEST_UNFILT  ADAPT_RHOHV_TEST_UNFILT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
+ADAPT_RHOHV_TEST_FILT    ADAPT_RHOHV_TEST_FILT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
+ADAPT_RHOHV_TEST_IMPROV  ADAPT_RHOHV_TEST_IMPROV $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
+ADAPT_RHOHV_TEST_FLAG    ADAPT_RHOHV_TEST_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+
+ADAPT_RHOHV_POWER_FLAG   ADAPT_RHOHV_POWER_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_VEL_FLAG     ADAPT_RHOHV_VEL_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_PHASE_FLAG   ADAPT_RHOHV_PHASE_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_RHOHV_RHO_FLAG     ADAPT_RHOHV_RHO_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+
+ADAPT_CMD      ADAPT_CMD $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&CMD cmd.colors  none -5 80 5 radial 1 0
+ADAPT_CMD_FLAG ADAPT_CMD_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT_CLUT     ADAPT_CLUT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).adapt&CLUT  dbz.colors dB -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+REGR_DBZ_F   REGR_DBZ_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR_DBZ     REGR_DBZ     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+REGR_VEL_F    REGR_VEL_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL_F   vel_nexrad_longprt.colors   m/s -5 80 5 radial 1 0
+REGR_VEL      REGR_VEL     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL     vel_nexrad_longprt.colors   m/s -5 80 5 radial 1 0
+REGR_WIDTH_F  REGR_WIDTH_F $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR_WIDTH    REGR_WIDTH   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+REGR_VEL1_F  REGR_VEL1_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL_F   vel_rike.colors   m/s -5 80 5 radial 1 0
+REGR_VEL1    REGR_VEL1     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL   vel_rike.colors   m/s -5 80 5 radial 1 0
+REGR_VEL2_F  REGR_VEL2_F   $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR_VEL2    REGR_VEL2     $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&VEL   vel.colors   m/s -5 80 5 radial 1 0
+
+REGR_ZDR_F    REGR_ZDR_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR_ZDR      REGR_ZDR      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+REGR_PHIDP_F  REGR_PHIDP_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR_PHIDP    REGR_PHIDP    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&PHIDP phidp.colors deg -5 80 5 radial 1 0
+
+REGR_KDP_F    REGR_KDP_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_KDP      REGR_KDP      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+REGR_NCP_F    REGR_NCP_F    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+REGR_NCP      REGR_NCP      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+
+REGR_RHOHV_F     REGR_RHOHV_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV       REGR_RHOHV    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV_NNC_F REGR_RHOHV_NNC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+REGR_RHOHV_NNC   REGR_RHOHV_NNC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_NNC   rhohv.colors _   -5 80 5 radial 1 0
+
+REGR_SNRHC_F   REGR_SNRHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRHC     REGR_SNRHC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRVC_F   REGR_SNRVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+REGR_SNRVC     REGR_SNRVC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+
+REGR_DBMHC_F   REGR_DBMHC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMHC     REGR_DBMHC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMVC_F   REGR_DBMVC_F  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+REGR_DBMVC     REGR_DBMVC    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+REGR_CPA        REGR_CPA      $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&CPA               cpa.colors  - -5 80 5 radial 1 0
+REGR_ZDR_SDEV   REGR_ZDR_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&ZDR_SDEV  sdzdr.colors - -5 80 5 radial 1 0
+REGR_PHIDP_SDEV REGR_PHIDP_SDEV  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&PHIDP_SDEV  sdphidp.colors - -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+REGR_RHOHV_TEST_UNFILT  REGR_RHOHV_TEST_UNFILT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
+REGR_RHOHV_TEST_FILT    REGR_RHOHV_TEST_FILT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1  0
+REGR_RHOHV_TEST_IMPROV  REGR_RHOHV_TEST_IMPROV $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
+REGR_RHOHV_TEST_FLAG    REGR_RHOHV_TEST_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+
+REGR_RHOHV_POWER_FLAG   REGR_RHOHV_POWER_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_POWER_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_VEL_FLAG     REGR_RHOHV_VEL_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_VEL_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_PHASE_FLAG   REGR_RHOHV_PHASE_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_PHASE_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_RHOHV_RHO_FLAG     REGR_RHOHV_RHO_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&RHOHV_RHO_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+
+REGR_CMD      REGR_CMD $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&CMD cmd.colors  none -5 80 5 radial 1 0
+REGR_CMD_FLAG REGR_CMD_FLAG $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR_CLUT     REGR_CLUT $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&CLUT  dbz.colors dB -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+REGR_ORDER  REGR_ORDER  $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&REGR_FILT_POLY_ORDER    number.colors  -  -5 80 5 radial 1 0
+REGR_CNR    REGR_CNR    $(DATA_DIR)/cfradial/adapt_vs_regr.08/$(radar_name).regr&REGR_FILT_CNR_DB        snr.colors   dB   -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+LEVEL2_DBZ     LEVEL2_DBZ     $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+LEVEL2_VEL      LEVEL2_VEL     $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&VEL     vel_rike.colors   m/s -5 80 5 radial 1 0
+LEVEL2_WIDTH    LEVEL2_WIDTH   $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&WIDTH    width.colors m/s -5 80 5 radial 1 0
+LEVEL2_ZDR      LEVEL2_ZDR      $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+
+LEVEL2_PHIDP    LEVEL2_PHIDP    $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&PHI phidp.colors deg -5 80 5 radial 1 0
+LEVEL2_RHOHV       LEVEL2_RHOHV    $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&RHO   rhohv.colors _   -5 80 5 radial 1 0
+LEVEL2_CFP      LEVEL2_CFP    $(DATA_DIR)/cfradial/adapt_vs_regr/$(radar_name).level2&CFP   clut.colors _   -5 80 5 radial 1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+========  ========   /tmp&dummy  none.colors   m   -5   80  5  dcont   1 0
+
 </GRIDS>
 
 <MAPS>
