@@ -11,7 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=0;
 censorOnVEL=0;
-censorOnCMD=0;
+censorOnCMD=1;
 censorOnTRIP=0; % Only use weak trip (0).
 %%%%%%%%%%%%%%
 tripToSnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
@@ -29,7 +29,8 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=33:size(inAll{1,1},1)
+for aa=43:size(inAll{1,1},1)
+%for aa=13:32
 
     nyquist=[];
 
@@ -294,13 +295,17 @@ for aa=33:size(inAll{1,1},1)
     % CMD
     if censorOnCMD
         cmd=zeros(size(data1.DBZ_F));
+        cmd1=zeros(size(data1.DBZ_F));
+        cmd2=zeros(size(data1.DBZ_F));
         if isfield(data1in,'CMD_FLAG')
             data1in.CMD_FLAG=data1in.CMD_FLAG(:,goodInds1);
-            cmd(ibAll,:)=data1in.CMD_FLAG(ib1,:);
+            cmd1(ibAll,:)=data1in.CMD_FLAG(ib1,:);
         elseif isfield(data2in,'CMD_FLAG')
             data2in.CMD_FLAG=data2in.CMD_FLAG(:,goodInds2);
-            cmd(ibAll,:)=data2in.CMD_FLAG(ib2,:);
+            cmd2(ibAll,:)=data2in.CMD_FLAG(ib2,:);
         end
+        cmd(cmd1>0)=1;
+        cmd(cmd2>0)=1;
         if sum(cmd,'all')==0
             censorOnCMD=0;
             warning('No CMD flag found.')
@@ -356,8 +361,6 @@ for aa=33:size(inAll{1,1},1)
                 if ~strcmp(inFields{ii},'CMD_FLAG')
                     data1.(inFields{ii})(cmd<0.5)=nan;
                     data2.(inFields{ii})(cmd<0.5)=nan;
-                    data1.(inFields{ii})(isnan(cmd))=nan;
-                    data2.(inFields{ii})(isnan(cmd))=nan;
                 end
             end
             % Censor on SNR
