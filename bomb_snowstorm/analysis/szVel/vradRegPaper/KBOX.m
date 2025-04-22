@@ -6,19 +6,18 @@ close all;
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 showPlot='on';
-radar='KBGM';
+radar='KBOX';
 
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/vradRegPaper/';
 
 nyquist=25.7428;
 
 %% Infiles
-regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KBGMdoppler20181109_183814_0.48_36.08.32pt.txt';
-regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KBGM_Regression_and_VRAD_Filt_12.mat';
-vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KBGM_VRAD_Legacy.mat';
-xlimits1=[-250,250];
-ylimits1=[-300,250];
-censThreshStd=6; %7
+regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KBOX-DOPPLER20240508_131424_0.48_95.63.32PT.txt';
+regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KBOX_Regression_and_VRAD_Filt_10.mat';
+vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KBOX_VRAD_Legacy.mat';
+xlimits1=[-250,200];
+ylimits1=[-200,300];
 
 %% Read regressino data
 
@@ -111,6 +110,7 @@ lev2.VEL=lev2.VEL(:,ri3);
 
 %% Censor regression
 
+censThreshStd=7; %7
 regCensored=reg.VEL;
 
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
@@ -135,8 +135,8 @@ tickXY=-300:50:300;
 
 close all
 f1 = figure('Position',[200 500 930 1200],'DefaultAxesFontSize',12,'visible',showPlot);
-colLims2=[-inf,-100,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
 colLims=[-inf,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
+colLims2=[-inf,-100,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
 
 t = tiledlayout(3,2,'TileSpacing','tight','Padding','tight');
 
