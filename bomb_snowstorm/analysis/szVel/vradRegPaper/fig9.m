@@ -112,6 +112,8 @@ regVradFilled(isnan(regVradFilled))=regCensored(isnan(regVradFilled));
 
 %% Plot preparation
 
+allAz(end)=359.95;
+allAz(1)=0;
 ang_p = deg2rad(90-allAz);
 
 angMat=repmat(ang_p',size(reg.range,1),1);
@@ -232,7 +234,8 @@ regVradFilled=regVrad.VEL;
 regVradFilled(isnan(regVradFilled))=regCensored(isnan(regVradFilled));
 
 %% Plot preparation
-
+allAz(end)=359.95;
+allAz(1)=0;
 ang_p = deg2rad(90-allAz);
 
 angMat=repmat(ang_p',size(reg.range,1),1);
