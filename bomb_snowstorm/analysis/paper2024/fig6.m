@@ -3,38 +3,30 @@
 clear all
 close all
 
-clutt=0; % Plot the ones with or without clutter
-
-R1R2=1;
-
-% 
-% indir='/scr/sci/romatsch/data/fromJohn/regModel/';
-% figdir='/scr/sci/romatsch/nexrad/tsPlotJohn/regModel/';
-
-%     indir='/scr/sci/romatsch/data/fromJohn/regModel/noClutter/';
-%     figdir='/scr/sci/romatsch/nexrad/tsPlotJohn/regModel/noClutterR1/';
-
 indir='/scr/sci/romatsch/data/fromJohn/regModel/widthEst_V3/';
-figdir='/scr/sci/romatsch/nexrad/tsPlotJohn/regModel/widthEstR1_V3/';
+figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024/';
 
 if ~exist(figdir,'dir')
     mkdir(figdir)
 end
 
-infilesAll=dir([indir,'*.d']);
+infilesAll={'mpow.d','spow.d', ...
+    'mvel.d','svel.d', ...
+    'mwth.d','swth.d';};
 
-colLims=[-3,3,24; % mphi
-    -20,1,20; % mpow
-    -0.03,0.02,20; % mrho
-    -2,2,16; % mvel
-    -2,2,16; % mwth
-    -0.25,0.25,20; % mzdr
-    0,5,20; % sphi
+colLims=[-20,1,20; % mpow
     0,4,16; % spow
-    0,0.015,15; % srho
+    -2,2,16; % mvel
     0,4,16; % svel
-    0,4,16; % swth
-    0,1,20]; % szdr
+    -2,2,16; % mwth
+    0,4,16]; % swth
+
+titlestr={'(a) Reg. mean power bias (dB)',
+    '(b) Reg. power SD (dB)',
+    '(c) Reg. mean velocity bias (m s^{-1})',
+    '(d) Reg. velocity SD (m s^{-1})',
+    '(e) Reg. mean width bias (m s^{-1})',
+    '(f) Reg. width SD (m s^{-1})'};
 
 colSD=jet(16);
 colSD=colSD(3:end,:);
@@ -55,9 +47,12 @@ colRB=cat(1,blues,reds);
 colRB=cat(1,[0,0,0.5;0,0,0.75],colRB,[0.75,0,0;0.5,0,0]);
 colRB=flipud(colRB);
 
+f1=figure('Position',[200 0 1150 1300],'DefaultAxesFontSize',12);
+t = tiledlayout(3,2,'TileSpacing','tight','Padding','tight');
+
 for ii=1:length(infilesAll)
 
-    infile=infilesAll(ii).name;
+    infile=infilesAll{ii};
 
     indata=readData_Torres([indir,infile]);
 
@@ -66,110 +61,48 @@ for ii=1:length(infilesAll)
     widthAx=indata.width;
     widthAx=[widthAx;widthAx(end)+(widthAx(end)-widthAx(end-1))];
 
-    if R1R2==1
-        titlestr={'R1','WN'};
-    else
-        titlestr={'R2','WN'};
-    end
 
-    close all
+    plotData=squeeze(indata.tableOut(:,2,:));
+    plotData=cat(1,plotData,plotData(end,:));
+    plotData=cat(2,plotData,plotData(:,end));
 
-    fig1=figure('DefaultAxesFontSize',12,'position',[3,100,1500,500]);
-
-    if R1R2==1
-        colIn=[2,5];
-    else
-        colIn=[3,5];
-    end
-
-    dname={'d1','d2'};
-
-    for jj=1:2
-
-        plotData=squeeze(indata.tableOut(:,colIn(jj),:));
-        plotData=cat(1,plotData,plotData(end,:));
-        plotData=cat(2,plotData,plotData(:,end));
-
-        sub=subplot(1,3,jj);
-        hold on
-
-        if ii==8 | ii==10 | ii==11
-            colormap(colSD);
-        elseif ii==2
-            colormap(colPB);
-        elseif ii==4 | ii==5
-            colormap(colRB);
-        else
-            colormap(jet(colLims(ii,3)));
-        end
-
-        pd.(dname{jj})=plotData';
-
-        surf(velAx,widthAx,plotData');
-
-        xlim([velAx(1),velAx(end)]);
-        ylim([widthAx(1),widthAx(end)]);
-
-        xtickAll=velAx(1:end-1)+(velAx(2:end)-velAx(1:end-1));
-        sub.XTick=xtickAll(1:10:end);
-        sub.XTickLabel=cellfun(@(x) num2str(x,'%.1f'),{velAx(1:10:end-1)},'un',0);
-        sub.XTickLabelRotation=0;
-
-        sub.YTick=widthAx(1:end-1)+(widthAx(2:end)-widthAx(1:end-1))/2;
-        sub.YTickLabel=cellfun(@num2str,{widthAx(1:end-1)},'un',0);
-
-        xlabel('Velocity (m s^{-1})');
-
-        titlen=strsplit(infile,'.');
-
-        title([titlestr{jj},' ',titlen{1}]);
-
-        if jj==1
-            ylabel('Spectrum width (m s^{-1})');
-            plotPos=sub.Position;
-        end
-        caxis(colLims(ii,1:2));
-        colorbar
-    end
-
-    sub1=subplot(1,3,3);
+    s1=nexttile(ii);
     hold on
 
-    plotData=pd.d2-pd.d1;
-    sub1.Colormap=jet(20);
+    xlabel('Velocity (m s^{-1})');
 
-    surf(velAx,widthAx,plotData);
+    title([titlestr{ii}]);
+
+    ylabel('Spectrum width (m s^{-1})');
+
+    if ii==2 | ii==4 | ii==6
+        s1.Colormap=colSD;
+    elseif ii==1
+        s1.Colormap=colPB;
+    elseif ii==3 | ii==5
+        s1.Colormap=colRB;
+    end
+
+    surf(velAx,widthAx,plotData');
 
     xlim([velAx(1),velAx(end)]);
     ylim([widthAx(1),widthAx(end)]);
 
     xtickAll=velAx(1:end-1)+(velAx(2:end)-velAx(1:end-1));
-    sub1.XTick=xtickAll(1:10:end);
-    sub1.XTickLabel=cellfun(@(x) num2str(x,'%.1f'),{velAx(1:10:end-1)},'un',0);
-    sub1.XTickLabelRotation=0;
+    sub.XTick=xtickAll(1:10:end);
+    sub.XTickLabel=cellfun(@(x) num2str(x,'%.1f'),{velAx(1:10:end-1)},'un',0);
+    sub.XTickLabelRotation=0;
 
-    sub1.YTick=widthAx(1:end-1)+(widthAx(2:end)-widthAx(1:end-1))/2;
-    sub1.YTickLabel=cellfun(@num2str,{widthAx(1:end-1)},'un',0);
+    sub.YTick=widthAx(1:end-1)+(widthAx(2:end)-widthAx(1:end-1))/2;
+    sub.YTickLabel=cellfun(@num2str,{widthAx(1:end-1)},'un',0);
 
-    xlabel('Velocity (m s^{-1})');
+    clim(colLims(ii,1:2));
+    colorbar
 
-    titlen=strsplit(infile,'.');
+    scatter(4,4,70,'k','*','LineWidth',1.5);
 
-    if R1R2==1
-        title(['WN-R1 ',titlen{1}]);
-    else
-        title(['WN-R2 ',titlen{1}]);
-    end
-
-    colLimDiff=max(max(abs(plotData(5:end,8:end))));
-
-    colTick=colLimDiff*2/20;
-
-    caxis([-colLimDiff-colTick,colLimDiff+colTick]);
-    cb=colorbar;
-
-    cb.Ticks=-colLimDiff-colTick:colTick:colLimDiff+colTick;
-
-    set(gcf,'PaperPositionMode','auto')
-    print(fig1,[figdir,'comp_',titlen{1},'.png'],'-dpng','-r0')
+    s1.SortMethod='childorder';
 end
+set(gcf,'PaperPositionMode','auto')
+%print([figdir,'figure6.png'],'-dpng','-r0')
+exportgraphics(f1,[figdir,'figure6.png'],'Resolution','300');

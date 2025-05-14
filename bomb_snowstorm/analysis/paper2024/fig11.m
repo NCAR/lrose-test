@@ -37,13 +37,14 @@ t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-h1=surf(XX,YY,dataWN.PHIDP_F,'edgecolor','none');
+h1=surf(XX,YY,dataWN.WIDTH_F,'edgecolor','none');
 view(2);
-clim([-60 92])
-title(['(a) \phi_{DP} WN (',char(176),')'])
+clim([-3 47])
+title('(a) Spectrum width WN (m s^{-1})')
 ylabel('km');
-s1.Colormap=phidp_default;
-colorbar
+
+colLims=[-inf,0,0.5,1,1.5,2,2.5,3,4,5,6,7,8,10,12.5,15,20,25,50,inf];
+applyColorScale(h1,dataWN.WIDTH_F,width_default,colLims);
 
 grid on
 box on
@@ -54,7 +55,7 @@ daspect(s1,[1 1 1]);
 
 rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
+text(-20,2,['S-Pol'],'Color','k','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
@@ -62,12 +63,13 @@ s1.SortMethod='childorder';
 
 s2=nexttile(2);
 hold on
-h3=surf(XX,YY,dataR.PHIDP_F,'edgecolor','none');
+h3=surf(XX,YY,dataR.WIDTH_F,'edgecolor','none');
 view(2);
-clim([-60 92])
-title(['(b) \phi_{DP} Regression (',char(176),')'])
-s2.Colormap=phidp_default;
-colorbar
+clim([-3 47])
+title('(b) Spectrum width Regression (m s^{-1})')
+
+colLims=[-inf,0,0.5,1,1.5,2,2.5,3,4,5,6,7,8,10,12.5,15,20,25,50,inf];
+applyColorScale(h3,dataR.WIDTH_F,width_default,colLims);
 
 grid on
 box on
@@ -80,20 +82,21 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s2.SortMethod='childorder';
 
-% Rho WN
+
+% ZDR WN
 
 s3=nexttile(3);
-h2=surf(XX,YY,dataWN.RHOHV_NNC_F,'edgecolor','none');
+h2=surf(XX,YY,dataWN.ZDR_F,'edgecolor','none');
 view(2);
-title('(c) \rho_{HV} WN')
+title('(c) Z_{DR} WN (dB)')
 xlabel('km');
 ylabel('km');
 
 grid on
 box on
 
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h2,dataWN.RHOHV_NNC_F,rhohv_default,colLims);
+colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
+applyColorScale(h2,dataWN.ZDR_F,zdr_default,colLims);
 
 grid on
 box on
@@ -109,16 +112,16 @@ s3.SortMethod='childorder';
 % ZDR Reg.
 
 s4=nexttile(4);
-h4=surf(XX,YY,dataR.RHOHV_NNC_F,'edgecolor','none');
+h4=surf(XX,YY,dataR.ZDR_F,'edgecolor','none');
 view(2);
-title('(d) \rho_{HV} Regression')
+title('(d) Z_{DR} Regression (dB)')
 xlabel('km');
 
 grid on
 box on
 
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h4,dataR.RHOHV_NNC_F,rhohv_default,colLims);
+colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
+applyColorScale(h4,dataR.ZDR_F,zdr_default,colLims);
 
 grid on
 box on
@@ -131,5 +134,5 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s4.SortMethod='childorder';
 
-%print([figdir,'figure15.png'],'-dpng','-r0');
-exportgraphics(f1,[figdir,'figure12.png'],'Resolution','300');
+%print([figdir,'figure14.png'],'-dpng','-r0');
+exportgraphics(f1,[figdir,'figure11.png'],'Resolution','300');

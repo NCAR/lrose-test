@@ -3,159 +3,301 @@
 clear all;
 close all;
 
-addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
-
-showPlot='on';
+addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024/';
-
-%% Load data
-
-infileWN='/scr/sleet1/rsfdata/projects/eolbase/cfradial/kftg/moments/20220329/cfrad.20220329_221646.829_to_20220329_222242.984_KFTG_SUR.nc';
-
-dataWN=[];
-
-dataWN.DBZ=[];
-dataWN.VEL=[];
-dataWN.WIDTH=[];
-dataWN.ZDR=[];
-dataWN.PHIDP=[];
-dataWN.RHOHV=[];
-
-dataWN=read_spol(infileWN,dataWN);
-
-dataWN=dataWN(1);
-
-infileR='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-V4.txt';
-dataR=readDataTables(infileR,' ');
-
-%% Plot preparation
-ang_p = deg2rad(90-dataWN.azimuth);
-
-angMat=repmat(ang_p,size(dataWN.range,1),1);
 
 xlimits1=[-120,60];
 ylimits1=[-110,70];
 
-XX = (dataWN.range.*cos(angMat));
-YY = (dataWN.range.*sin(angMat));
+kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
-ang_p2 = deg2rad(90-dataR.azimuth);
+censorOnCMD=1;
+%%%%%%%%%%%%%%
+censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+%%%%%%%%%%%%%%
+halfNyquist=0; % In some files the nyquist needs to be divided by 2
 
-angMat2=repmat(ang_p2,size(dataR.range,1),1);
+%% Read data
 
-XX2 = (dataR.range.*cos(angMat2));
-YY2 = (dataR.range.*sin(angMat2));
+infile1='/scr/sleet1/rsfdata/projects/eolbase/cfradial/kftg/moments/20220329/cfrad.20220329_221646.829_to_20220329_222242.984_KFTG_SUR.nc';
+
+data1in=[];
+
+data1in.DBZ=[];
+data1in.VEL=[];
+data1in.WIDTH=[];
+data1in.ZDR=[];
+data1in.PHIDP=[];
+data1in.RHOHV=[];
+
+data1in=read_spol(infile1,data1in);
+nyquist=ncread(infile1,'nyquist_velocity');
+
+data1in=data1in(1);
+
+data1in.DBZ_F=data1in.DBZ;
+data1in.VEL_F=data1in.VEL;
+data1in.WIDTH_F=data1in.WIDTH;
+data1in.ZDR_F=data1in.ZDR;
+data1in.PHIDP_F=data1in.PHIDP;
+data1in.RHOHV_NNC_F=data1in.RHOHV;
+
+data1in.azimuth=round(data1in.azimuth);
+if isfield(data1in,'TRIP')
+    data1in.SNR=data1in.TRIP;
+    data1in=rmfield(data1in,'TRIP');
+end
+
+infile2='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_LPRT_SR_20220329_221645_1.91_253.46_14ptFlt28pt-V4.txt';
+
+data2in=readDataTables(infile2,' ');
+%data2in.azimuth=round(data2in.azimuth);
+if isfield(data2in,'TRIP')
+    data2in.SNR=data2in.TRIP;
+    data2in=rmfield(data2in,'TRIP');
+end
+
+%% Cut range
+inFields1=fields(data1in);
+inFields2=fields(data2in);
+inFields=intersect(inFields1,inFields2);
+
+minMaxRangeOrig=[];
+if isempty(minMaxRangeOrig)
+    minMaxRange=max([data1in.range(1),data2in.range(1)]);
+    minMaxRange=[minMaxRange,min([data1in.range(end),data2in.range(end)])];
+else
+    minMaxRange=minMaxRangeOrig;
+end
+
+goodInds1=find(data1in.range>=minMaxRange(1)-0.001 & data1in.range<=minMaxRange(2)+0.001);
+goodInds2=find(data2in.range>=minMaxRange(1)-0.001 & data2in.range<=minMaxRange(2)+0.001);
+
+for ii=1:size(inFields,1)
+    if ~(strcmp(inFields{ii},'azimuth') | strcmp(inFields{ii},'elevation') | strcmp(inFields{ii},'time'))
+        data1in.(inFields{ii})=data1in.(inFields{ii})(:,goodInds1);
+        data2in.(inFields{ii})=data2in.(inFields{ii})(:,goodInds2);
+    end
+end
+
+
+%% Match azimuths and nans
+
+azRes=round((data1in.azimuth(2)-data1in.azimuth(1))*10)/10;
+if azRes==0.5
+    pastDot=data1in.azimuth(1)-floor(data1in.azimuth(1));
+    if (pastDot>=0.2 & pastDot<=0.3) | (pastDot>=0.7 & pastDot<=0.8)
+        allAz=0.25:azRes:360;
+    else
+        allAz=0.5:azRes:360;
+    end
+else
+    allAz=1:360;
+end
+
+minMaxAz=[];
+if ~isempty(minMaxAz)
+    %         data1in.azimuth(data1in.azimuth<minMaxAz(1) | data1in.azimuth>minMaxAz(2))=nan;
+    %         data2in.azimuth(data2in.azimuth<minMaxAz(1) | data2in.azimuth>minMaxAz(2))=nan;
+    allAz(allAz<minMaxAz(1))=[];
+    allAz(allAz>minMaxAz(2))=[];
+end
+
+ib1=[];
+ib2=[];
+ibAll=[];
+for kk=1:length(allAz)
+    [minDiff1,minInd1]=min(abs(data1in.azimuth-allAz(kk)));
+    [minDiff2,minInd2]=min(abs(data2in.azimuth-allAz(kk)));
+    if minDiff1<azRes/2 & minDiff2<azRes/2
+        ib1=cat(1,ib1,minInd1);
+        ib2=cat(1,ib2,minInd2);
+        ibAll=cat(1,ibAll,kk);
+    end
+end
+
+data1=[];
+data1.range=data1in.range;
+data2=[];
+data2.range=data2in.range;
+
+for ii=1:size(inFields,1)
+    if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
+        data1.(inFields{ii})=nan(length(allAz),size(data1in.(inFields{ii}),2));
+        data1.(inFields{ii})(ibAll,:)=data1in.(inFields{ii})(ib1,:);
+        data2.(inFields{ii})=nan(length(allAz),size(data2in.(inFields{ii}),2));
+        data2.(inFields{ii})(ibAll,:)=data2in.(inFields{ii})(ib2,:);
+    end
+end
+if censorOnCMD
+    cmd=zeros(size(data2.DBZ_F));
+    if isfield(data1in,'CMD_FLAG')
+        data1in.CMD_FLAG=data1in.CMD_FLAG(:,goodInds1);
+        cmd(ibAll,:)=data1in.CMD_FLAG(ib1,:);
+    elseif isfield(data2in,'CMD_FLAG')
+        data2in.CMD_FLAG=data2in.CMD_FLAG(:,goodInds2);
+        cmd(ibAll,:)=data2in.CMD_FLAG(ib2,:);
+    end
+    if isempty(cmd)
+        censorOnCMD=0;
+        disp('No CMD flag found.')
+    end
+end
+
+% SNR
+if ~isempty(censorOnSNR)
+    snr=zeros(size(data1.DBZ_F));
+    if isfield(data1in,'SNR')
+        data1in.SNR=data1in.SNR(:,goodInds1);
+        snr(ibAll,:)=data1in.SNR(ib1,:);
+    elseif isfield(data2in,'SNR')
+        data2in.SNR=data2in.SNR(:,goodInds2);
+        snr(ibAll,:)=data2in.SNR(ib2,:);
+    end
+    if isempty(snr)
+        censorOnSNR=0;
+        disp('No SNR found.')
+    end
+end
+
+for ii=1:size(inFields,1)
+    if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
+        % Censor on CMD
+        if censorOnCMD & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+            data1.(inFields{ii})(cmd==0)=nan;
+            data2.(inFields{ii})(cmd==0)=nan;
+        end
+        % Censor on SNR
+        if ~isempty(censorOnSNR) & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+            data1.(inFields{ii})(snr<censorOnSNR)=nan;
+            data2.(inFields{ii})(snr<censorOnSNR)=nan;
+        end
+        % Match nans
+        data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
+        data2.(inFields{ii})(isnan(data1.(inFields{ii})))=nan;
+    end
+end
+
+%% Plot preparation
+
+ang_p = deg2rad(90-data1.azimuth);
+
+angMat=repmat(ang_p,size(data1.range,1),1);
+
+XX = (data1.range.*cos(angMat));
+YY = (data1.range.*sin(angMat));
+
+
+%% Loop through fields
+for jj=1:length(inFields)
+
+    if strcmp(inFields{jj},'azimuth') | strcmp(inFields{jj},'elevation') | ...
+            strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')
+        continue
+    end
+
+
+    % Standard deviations
+
+    if strcmp(inFields{jj},'VEL_F')
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist(1));
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist(1));
+    elseif strcmp(inFields{jj},'PHIDP_F')
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
+    else
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
+    end
+
+    stdVar1(isnan(data1.(inFields{jj})))=nan;
+    stdVar2(isnan(data2.(inFields{jj})))=nan;
+
+    stdVar1(stdVar1==Inf)=nan;
+    stdVar2(stdVar2==Inf)=nan;
+
+    diffField.(inFields{jj})=stdVar2-stdVar1;
+
+end
 
 %% Plot
 close all
 
-figure('Position',[200 500 1000 900],'DefaultAxesFontSize',12,'visible',showPlot);
-t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
+f1=figure('Position',[200 500 350 885],'DefaultAxesFontSize',12);
+colormap('jet');
+t = tiledlayout(3,1,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-surf(XX,YY,dataWN.DBZ,'edgecolor','none');
-view(2);
-clim([-3 63])
-s1.Colormap=dbz_default3;
-cb1=colorbar('XTick',-3:4:67);
-title('(a) Reflectivity Level2 (dBZ)')
-ylabel('km');
+spacing=0.1;
+edges=-1.5:spacing:1.5;
+hc=histcounts(diffField.ZDR_F(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-1.5,1.5]);
 
-scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-text(-10,7,['KFTG'],'Color','w','FontSize',12,'FontWeight','bold');
+xlabel('St. dev. Reg. - st. dev. Level2 (dB)');
+ylabel('Percent of data points (%)');
+
+xticks(-2:0.5:2);
+xtickangle(0);
+
+ylims=s1.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
+
+s1.SortMethod='childorder';
+title('(a) Z_{DR} (dB)')
 
 grid on
 box on
 
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s1,[1 1 1]);
-
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-%scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-%text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
-
-s1.SortMethod='childorder';
-
-% Refl. Reg.
 
 s2=nexttile(2);
 hold on
-surf(XX2,YY2,dataR.DBZ_F,'edgecolor','none');
-view(2);
-clim([-3 63])
-s2.Colormap=dbz_default3;
-cb1=colorbar('XTick',-3:4:67);
-title('(b) Reflectivity Regression (dBZ)')
+spacing=0.6;
+edges=-9:spacing:9;
+hc=histcounts(diffField.PHIDP_F(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-9,9]);
 
-scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+xlabel(['St. dev. Reg. - st. dev. Level2 (',char(176),')']);
+ylabel('Percent of data points (%)');
+
+xticks(-10:2:10);
+xtickangle(0);
+ylim([0,12]);
+
+ylims=s2.YLim;
+plot([0,0],ylims+[0,1],'-r','LineWidth',2);
+
+s2.SortMethod='childorder';
+title(['(b) \phi_{DP} (',char(176),')'])
 
 grid on
 box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s2,[1 1 1]);
-
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-
-s2.SortMethod='childorder';
-
-
-% ZDR WN
 
 s3=nexttile(3);
 hold on
-h3=surf(XX,YY,dataWN.ZDR,'edgecolor','none');
-view(2);
-title('(c) Z_{DR} Level2 (dB)')
-xlabel('km');
-ylabel('km');
+spacing=0.004;
+edges=-0.06:spacing:0.06;
+hc=histcounts(diffField.RHOHV_NNC_F(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-0.06,0.06]);
 
-grid on
-box on
+xlabel('St. dev. Reg. - st. dev. Level2');
+ylabel('Percent of data points (%)');
 
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h3,dataWN.ZDR,zdr_default,colLims);
+xticks(-1:0.02:1);
+xtickangle(0);
 
-scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s3,[1 1 1]);
-
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
+ylims=s3.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
 
 s3.SortMethod='childorder';
-
-% ZDR Reg.
-
-s4=nexttile(4);
-hold on
-h4=surf(XX2,YY2,dataR.ZDR_F,'edgecolor','none');
-view(2);
-title('(d) Z_{DR} Regression (dB)')
-xlabel('km');
+title('(c) \rho_{HV}')
 
 grid on
 box on
 
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h4,dataR.ZDR_F,zdr_default,colLims);
-
-grid on
-box on
-
-scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s4,[1 1 1]);
-
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-
-s4.SortMethod='childorder';
-
-print([figdir,'figure22.png'],'-dpng','-r0');
+%print([figdir,'figure25.png'],'-dpng','-r0');
+exportgraphics(f1,[figdir,'figure22.png'],'Resolution','300');
