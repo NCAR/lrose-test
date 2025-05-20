@@ -20,7 +20,8 @@ m2=-(fliplr(0:2:20));
 
 %cutoffAll=100:100:1000;
 %cutoffAll=[100,500,1000,1100,1200,1300,1400,1500];
-cutoffAll=[5000,10000,15000];
+%cutoffAll=[5000,10000,15000];
+cutoffAll=[20000,25000];
 %cutoffAll=10000;
 
 distSize=floor(d/2);
@@ -194,7 +195,7 @@ title(['d: ',num2str(d),', delta: ',num2str(delta),', lambda: ',num2str(lambda)]
 grid on
 box on
 
-print([figdir,'mpxFig_d',num2str(d),'_delta',num2str(delta),'_lambda',num2str(lambda),'.png'],'-dpng','-r0');
+print([figdir,'mpxFig_d',num2str(d),'_delta',num2str(delta),'_lambda',num2str(lambda),'_maxCutoof',num2str(cutoffAll(end)),'.png'],'-dpng','-r0');
 
 elapsedTime=toc;
 
