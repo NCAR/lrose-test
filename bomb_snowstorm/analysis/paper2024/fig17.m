@@ -5,7 +5,7 @@ close all;
 
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
-infile1='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN_V3_1.txt';
+infile1='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN128_V3.txt';
 
 infile2='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_REG_V3.txt';
 
@@ -184,9 +184,9 @@ end
 %% Plot
 close all
 
-figure('Position',[200 500 1000 585],'DefaultAxesFontSize',12);
+f1=figure('Position',[200 500 1000 585],'DefaultAxesFontSize',12);
 colormap('jet');
-t = tiledlayout(2,3,'TileSpacing','tight','Padding','tight');
+t = tiledlayout(2,3,'TileSpacing','compact','Padding','tight');
 
 s1=nexttile(1);
 hold on
@@ -200,6 +200,7 @@ xlabel('St. dev. Reg. - st. dev. WN (dB)');
 ylabel('Percent of data points (%)');
 
 xticks(-2:0.5:2);
+s1.XTickLabelRotation=0;
 
 ylims=s1.YLim;
 plot([0,0],ylims,'-r','LineWidth',2);
@@ -321,4 +322,5 @@ title('(f) \rho_{HV}')
 grid on
 box on
 
-print([figdir,'figure17.png'],'-dpng','-r0');
+%print([figdir,'figure20.png'],'-dpng','-r0');
+exportgraphics(f1,[figdir,'figure17.png'],'Resolution','300');

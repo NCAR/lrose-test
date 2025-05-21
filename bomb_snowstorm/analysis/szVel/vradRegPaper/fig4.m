@@ -146,7 +146,7 @@ s1=nexttile(1);
 hold on
 h1=surf(XX,YY,lev2.VEL,'edgecolor','none');
 view(2);
-title('(a) Legacy velocity (m s^{-1})');
+title('(a) Level-2 velocity (m s^{-1})');
 %xlabel('km');
 ylabel('km');
 
@@ -172,7 +172,7 @@ s2=nexttile(2);
 
 h1=surf(XX,YY,vradLeg.VEL,'edgecolor','none');
 view(2);
-title('(b) VRAD Legacy velocity (m s^{-1})');
+title('(b) VRAD Level-2 velocity (m s^{-1})');
 % xlabel('km');
 % ylabel('km');
 

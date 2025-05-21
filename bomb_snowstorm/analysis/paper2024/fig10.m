@@ -32,18 +32,18 @@ YY = (dataWN.range.*sin(angMat));
 %% Plot
 close all
 
-figure('Position',[200 500 1000 900],'DefaultAxesFontSize',12,'visible',showPlot);
+f1=figure('Position',[200 500 1000 900],'DefaultAxesFontSize',12,'visible',showPlot);
 t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-h1=surf(XX,YY,dataWN.PHIDP_F,'edgecolor','none');
+surf(XX,YY,dataWN.DBZ_F,'edgecolor','none');
 view(2);
-clim([-60 92])
-title(['(a) \phi_{DP} WN (',char(176),')'])
+clim([-3 63])
+s1.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
+title('(a) Reflectivity WN (dBZ)')
 ylabel('km');
-s1.Colormap=phidp_default;
-colorbar
 
 grid on
 box on
@@ -58,16 +58,16 @@ text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% Width Reg.
+% Refl. Reg.
 
 s2=nexttile(2);
 hold on
-h3=surf(XX,YY,dataR.PHIDP_F,'edgecolor','none');
+surf(XX,YY,dataR.DBZ_F,'edgecolor','none');
 view(2);
-clim([-60 92])
-title(['(b) \phi_{DP} Regression (',char(176),')'])
-s2.Colormap=phidp_default;
-colorbar
+clim([-3 63])
+s2.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
+title('(b) Reflectivity Regression (dBZ)')
 
 grid on
 box on
@@ -80,20 +80,21 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s2.SortMethod='childorder';
 
-% Rho WN
+% Vel. WN
 
 s3=nexttile(3);
-h2=surf(XX,YY,dataWN.RHOHV_NNC_F,'edgecolor','none');
+h2=surf(XX,YY,dataWN.VEL_F,'edgecolor','none');
 view(2);
-title('(c) \rho_{HV} WN')
+title('(c) Velocity WN (m s^{-1})')
 xlabel('km');
 ylabel('km');
+
 
 grid on
 box on
 
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h2,dataWN.RHOHV_NNC_F,rhohv_default,colLims);
+colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
+applyColorScale(h2,dataWN.VEL_F,vel_default2,colLims);
 
 grid on
 box on
@@ -106,19 +107,19 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s3.SortMethod='childorder';
 
-% ZDR Reg.
+% Vel Reg.
 
 s4=nexttile(4);
-h4=surf(XX,YY,dataR.RHOHV_NNC_F,'edgecolor','none');
+h4=surf(XX,YY,dataR.VEL_F,'edgecolor','none');
 view(2);
-title('(d) \rho_{HV} Regression')
+title('(d) Velocity Regression (m s^{-1})')
 xlabel('km');
 
 grid on
 box on
 
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h4,dataR.RHOHV_NNC_F,rhohv_default,colLims);
+colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
+applyColorScale(h4,dataWN.VEL_F,vel_default2,colLims);
 
 grid on
 box on
@@ -131,4 +132,5 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s4.SortMethod='childorder';
 
-print([figdir,'figure15.png'],'-dpng','-r0');
+%print([figdir,'figure13.png'],'-dpng','-r0');
+exportgraphics(f1,[figdir,'figure10.png'],'Resolution','300');

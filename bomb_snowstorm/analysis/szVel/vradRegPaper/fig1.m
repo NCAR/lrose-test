@@ -67,7 +67,7 @@ YY = (dataLev2.range.*sin(angMat));
 
 h1=surf(XX,YY,dataLev2.VEL,'edgecolor','none');
 view(2);
-title('(a) Legacy velocity (m s^{-1})');
+title('(a) Level-2 velocity (m s^{-1})');
 xlabel('km');
 ylabel('km');
 

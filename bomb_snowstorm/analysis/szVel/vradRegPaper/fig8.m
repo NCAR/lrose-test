@@ -326,7 +326,7 @@ view(2);
 s1.Colormap=velCols;
 clim(diffLims);
 colorbar
-title('(a) SD VRAD-REG - SD VRAD legacy (m s^{-1})');
+title('(a) SD VRAD-REG - SD VRAD Level-2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -355,6 +355,6 @@ s2.SortMethod='childorder';
 
 grid on
 box on
-title('(b) SD VRAD-REG - SD VRAD legacy (m s^{-1})');
+title('(b) SD VRAD-REG - SD VRAD Level-2 (m s^{-1})');
 
 print([figdir,'figure8.png'],'-dpng','-r0');

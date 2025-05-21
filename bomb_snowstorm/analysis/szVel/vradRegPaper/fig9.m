@@ -266,7 +266,7 @@ s1=nexttile(1);
 hold on
 h1=surf(XX1(:,1:end-1),YY1(:,1:end-1),pan1,'edgecolor','none');
 view(2);
-title('(a) KBGM Legacy velocity (m s^{-1})');
+title('(a) KBGM Level-2 velocity (m s^{-1})');
 %xlabel('km');
 ylabel('km');
 
@@ -308,7 +308,7 @@ s3=nexttile(3);
 hold on
 h1=surf(XX2(:,1:end-1),YY2(:,1:end-1),pan3,'edgecolor','none');
 view(2);
-title('(c) KBOX Legacy velocity (m s^{-1})');
+title('(c) KBOX Level-2 velocity (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
