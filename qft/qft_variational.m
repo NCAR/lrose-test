@@ -7,7 +7,7 @@ figdir='/scr/virga1/rsfdata/projects/qft/dVaries_delta1overD_lambda2/';
 %figdir='/scr/virga1/rsfdata/projects/qft/d/';
 
 % Initialize
-d=5;
+d=6;
 nMax=10;
 
 w=1:0.25:10;
