@@ -311,7 +311,7 @@ color_scale_dir = "$(HOME)/git/lrose-displays/color_scales";
 fields = {
   {
     label = "DBZ",
-    raw_name = "DBZH",
+    raw_name = "DBZ",
     filtered_name = "",
     units = "dBZ",
     color_map = "dbz.colors",
@@ -319,8 +319,8 @@ fields = {
   }
   ,
   {
-    label = "TH",
-    raw_name = "TH",
+    label = "DBZ_TOT",
+    raw_name = "DBZ_TOT",
     filtered_name = "",
     units = "dBZ",
     color_map = "dbz.colors",
@@ -329,7 +329,7 @@ fields = {
   ,
   {
     label = "VEL",
-    raw_name = "VRADH",
+    raw_name = "VEL",
     filtered_name = "",
     units = "m/s",
     color_map = "vel.colors",
@@ -338,7 +338,7 @@ fields = {
   ,
   {
     label = "WIDTH",
-    raw_name = "WRADH",
+    raw_name = "WIDTH",
     filtered_name = "",
     units = "m/s",
     color_map = "width.colors",
@@ -392,7 +392,7 @@ fields = {
   ,
   {
     label = "NCP",
-    raw_name = "SQIH",
+    raw_name = "NCP",
     filtered_name = "",
     units = "",
     color_map = "ncp.colors",

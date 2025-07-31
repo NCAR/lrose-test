@@ -2,5 +2,5 @@
 
 cd $HOME/git/lrose-test/ams2025/params
 
-RadxConvert -params RadxConvert.raw.hail -debug -f ~/data/ams2025/canada/raw/hail/202408060*h5
+RadxConvert -params RadxConvert.raw -debug -f ~/data/ams2025/canada/raw/hail/202408060*h5 -outdir ~/data/ams2025/canada/cfradial/hail
 

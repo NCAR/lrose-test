@@ -38,7 +38,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "raw.derecho";
+instance = "raw.hail";
 
 //======================================================================
 //
@@ -54,7 +54,7 @@ instance = "raw.derecho";
 //
 // Type: string
 
-input_dir = "$(HOME)/data/ams2025/canada/raw/derecho";
+input_dir = "$(HOME)/data/ams2025/canada/raw/hail";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1526,7 +1526,7 @@ user_defined_global_attributes = {
 //
 // Type: boolean
 
-set_output_fields = FALSE;
+set_output_fields = TRUE;
 
 ///////////// output_fields ///////////////////////////
 //
@@ -1564,7 +1564,7 @@ set_output_fields = FALSE;
 
 output_fields = {
   {
-    input_field_name = "DBZ",
+    input_field_name = "DBZH",
     output_field_name = "DBZ",
     long_name = "reflectivity",
     standard_name = "equivalent_reflectivity_factor",
@@ -1576,11 +1576,107 @@ output_fields = {
   }
   ,
   {
-    input_field_name = "VEL",
+    input_field_name = "TH",
+    output_field_name = "DBZ_TOT",
+    long_name = "unfiltererd reflectivity",
+    standard_name = "equivalent_reflectivity_factor",
+    output_units = "dBZ",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "VRADH",
     output_field_name = "VEL",
     long_name = "radial_velocity",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",
     output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "WRADH",
+    output_field_name = "WIDTH",
+    long_name = "spectruim_width",
+    standard_name = "doppler_spectrum_width",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "ZDR",
+    output_field_name = "ZDR",
+    long_name = "Logged differential reflectivity",
+    standard_name = "corrected_log_differential_reflectivity_hv",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "PHIDP",
+    output_field_name = "PHIDP",
+    long_name = "Differential phase",
+    standard_name = "differential_phase_hv",
+    output_units = "deg",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "UPHIDP",
+    output_field_name = "UPHIDP",
+    long_name = "Unfiltered differential phase",
+    standard_name = "differential_phase_hv",
+    output_units = "deg",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "RHOHV",
+    output_field_name = "RHOHV",
+    long_name = "Correlation between Zh and Zv",
+    standard_name = "cross_correlation_ratio_hv",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "KDP",
+    output_field_name = "KDP",
+    long_name = "Specific differential phase",
+    standard_name = "specific_differential_phase_hv",
+    output_units = "deg/km",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SQIH",
+    output_field_name = "NCP",
+    long_name = "Lag1 correlation",
+    standard_name = "normalized_coherent_power",
+    output_units = "",
     encoding = OUTPUT_ENCODING_ASIS,
     output_scaling = SCALING_DYNAMIC,
     output_scale = 0.01,
@@ -2052,7 +2148,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(HOME)/data/ams2025/canada/cfradial/derecho";
+output_dir = "$(HOME)/data/ams2025/canada/cfradial/hail";
 
 ///////////// output_filename_mode ////////////////////
 //
