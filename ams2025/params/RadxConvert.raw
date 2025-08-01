@@ -1602,7 +1602,7 @@ output_fields = {
   {
     input_field_name = "WRADH",
     output_field_name = "WIDTH",
-    long_name = "spectruim_width",
+    long_name = "spectrum_width",
     standard_name = "doppler_spectrum_width",
     output_units = "m/s",
     encoding = OUTPUT_ENCODING_ASIS,
@@ -1674,7 +1674,7 @@ output_fields = {
   {
     input_field_name = "SQIH",
     output_field_name = "NCP",
-    long_name = "Lag1 correlation",
+    long_name = "lag1 correlation",
     standard_name = "normalized_coherent_power",
     output_units = "",
     encoding = OUTPUT_ENCODING_ASIS,

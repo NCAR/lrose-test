@@ -1,0 +1,9 @@
+#! /bin/csh
+
+cd $HOME/git/lrose-test/ams2025/params
+
+RadxQc -params RadxQc.derecho -debug -f ~/data/ams2025/canada/cfradial/derecho/20220521/*nc
+
+
+
+

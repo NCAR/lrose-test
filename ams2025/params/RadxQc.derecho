@@ -115,7 +115,7 @@ n_compute_threads = 4;
 //
 // Type: string
 
-input_dir = ".";
+input_dir = "$(HOME)/data/ams2025/canada/cfradial/derecho";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -155,7 +155,7 @@ max_realtime_data_age_secs = 300;
 //
 // Type: string
 
-input_file_search_ext = "";
+input_file_search_ext = "nc";
 
 ///////////// input_file_search_substr ////////////////
 //
@@ -396,7 +396,7 @@ VEL_field_name = "VEL";
 //
 // Type: boolean
 
-WIDTH_available = FALSE;
+WIDTH_available = TRUE;
 
 ///////////// WIDTH_field_name ////////////////////////
 //
@@ -415,7 +415,7 @@ WIDTH_field_name = "WIDTH";
 //
 // Type: boolean
 
-NCP_available = FALSE;
+NCP_available = TRUE;
 
 ///////////// NCP_field_name //////////////////////////
 //
@@ -434,7 +434,7 @@ NCP_field_name = "NCP";
 //
 // Type: boolean
 
-SNR_available = TRUE;
+SNR_available = FALSE;
 
 ///////////// SNR_field_name //////////////////////////
 //
@@ -458,7 +458,7 @@ SNR_field_name = "SNR";
 //
 // Type: double
 
-noise_dbz_at_100km = 0;
+noise_dbz_at_100km = 0.0;
 
 ///////////// ZDR_available ///////////////////////////
 //
@@ -466,7 +466,7 @@ noise_dbz_at_100km = 0;
 //
 // Type: boolean
 
-ZDR_available = FALSE;
+ZDR_available = TRUE;
 
 ///////////// ZDR_field_name //////////////////////////
 //
@@ -500,7 +500,7 @@ LDR_field_name = "LDR";
 //
 // Type: boolean
 
-PHIDP_available = FALSE;
+PHIDP_available = TRUE;
 
 ///////////// PHIDP_field_name ////////////////////////
 //
@@ -516,7 +516,7 @@ PHIDP_field_name = "PHIDP";
 //
 // Type: boolean
 
-RHOHV_available = FALSE;
+RHOHV_available = TRUE;
 
 ///////////// RHOHV_field_name ////////////////////////
 //
@@ -696,7 +696,7 @@ KDP_rhohv_threshold = 0.95;
 //
 // Type: boolean
 
-KDP_check_zdr_sdev = FALSE;
+KDP_check_zdr_sdev = TRUE;
 
 ///////////// KDP_zdr_sdev_max ////////////////////////
 //
@@ -819,7 +819,7 @@ zdr_attenuation_exponent = 1.05;
 //
 // Type: boolean
 
-locate_rlan_interference = FALSE;
+locate_rlan_interference = TRUE;
 
 //======================================================================
 //
@@ -1342,7 +1342,7 @@ compute_pid = TRUE;
 //
 // Type: string
 
-pid_thresholds_file_path = "./s_band_pid_input_steraotables27.input";
+pid_thresholds_file_path = "./pid_thresholds.sband.shv";
 
 ///////////// PID_snr_threshold ///////////////////////
 //
@@ -1853,6 +1853,30 @@ output_fields = {
   }
   ,
   {
+    id = VEL,
+    name = "VEL",
+    long_name = "radial_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    units = "m/s",
+    encoding = OUTPUT_ENCODING_INT16,
+    scaling = OUTPUT_SCALING_DYNAMIC,
+    scale = 0.01,
+    offset = 0
+  }
+  ,
+  {
+    id = WIDTH,
+    name = "WIDTH",
+    long_name = "spectrum_width",
+    standard_name = "doppler_spectrum_width",
+    units = "m/s",
+    encoding = OUTPUT_ENCODING_INT16,
+    scaling = OUTPUT_SCALING_DYNAMIC,
+    scale = 0.01,
+    offset = 0
+  }
+  ,
+  {
     id = ZDR,
     name = "ZDR",
     long_name = "calibrated_log_differential_reflectivity",
@@ -1906,6 +1930,18 @@ output_fields = {
     long_name = "phase_shift_on_backscatter",
     standard_name = "phase_shift_on_backscatter",
     units = "deg",
+    encoding = OUTPUT_ENCODING_INT16,
+    scaling = OUTPUT_SCALING_DYNAMIC,
+    scale = 0.001,
+    offset = 0
+  }
+  ,
+  {
+    id = NCP,
+    name = "NCP",
+    long_name = "lag1 correlation",
+    standard_name = "normalized_coherent_power",
+    units = "",
     encoding = OUTPUT_ENCODING_INT16,
     scaling = OUTPUT_SCALING_DYNAMIC,
     scale = 0.001,
@@ -2003,7 +2039,7 @@ input_field_censoring_min_valid_run = 1;
 //
 // Type: boolean
 
-write_censored_fields_to_output = TRUE;
+write_censored_fields_to_output = FALSE;
 
 ///////////// censored_output_fields //////////////////
 //
@@ -2184,7 +2220,7 @@ write_output_volume = TRUE;
 //
 // Type: string
 
-output_dir = "./output";
+output_dir = "$(HOME)/data/ams2025/canada/qc/cfradial/derecho";
 
 ///////////// output_filename_mode ////////////////////
 //
