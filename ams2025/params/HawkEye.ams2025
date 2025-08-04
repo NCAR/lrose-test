@@ -346,6 +346,15 @@ fields = {
   }
   ,
   {
+    label = "SNR",
+    raw_name = "SNR",
+    filtered_name = "",
+    units = "dB",
+    color_map = "snr.colors",
+    shortcut = "1"
+  }
+  ,
+  {
     label = "ZDR",
     raw_name = "ZDR",
     filtered_name = "",
