@@ -222,7 +222,7 @@ height_field_name = "height";
 //
 // Type: boolean
 
-heights_are_in_km = FALSE;
+heights_are_in_km = TRUE;
 
 //======================================================================
 //
@@ -246,59 +246,10 @@ heights_are_in_km = FALSE;
 
 station_locations = {
   {
-    name = "SPOL",
-    latitude = 40.1233,
-    longitude = -104.891,
-    altitudeKm = 1.55296
-  }
-  ,
-  {
-    name = "CHILL",
-    latitude = 40.4464,
-    longitude = -104.637,
-    altitudeKm = 1.432
-  }
-  ,
-  {
-    name = "KFTG",
-    latitude = 39.7866,
-    longitude = -104.546,
-    altitudeKm = 1.709
-  }
-  ,
-  {
-    name = "KCYS",
-    latitude = 41.1519,
-    longitude = -104.806,
-    altitudeKm = 1.886
-  }
-  ,
-  {
-    name = "KPUX",
-    latitude = 38.4595,
-    longitude = -104.181,
-    altitudeKm = 1.634
-  }
-  ,
-  {
-    name = "KGLD",
-    latitude = 39.3667,
-    longitude = -101.7,
-    altitudeKm = 1.131
-  }
-  ,
-  {
-    name = "KGJX",
-    latitude = 39.0622,
-    longitude = -108.213,
-    altitudeKm = 3.064
-  }
-  ,
-  {
-    name = "PWNE",
-    latitude = 40.8712,
-    longitude = -104.714,
-    altitudeKm = 1.688
+    name = "STRATH",
+    latitude = 51.2061,
+    longitude = -113.399,
+    altitudeKm = 0.9913
   }
 };
 
@@ -314,7 +265,7 @@ station_locations = {
 //
 // Type: string
 
-output_url = "spdbp:://localhost::/tmp/spdb/Mdv2SoundingSpdb";
+output_url = "$(DATA_DIR)/ERA5/spdb/Strathmore";
 
 ///////////// valid_period_secs ///////////////////////
 //
