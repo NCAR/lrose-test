@@ -145,6 +145,26 @@ NCP_NO_QC      NCP_NO_QC      radar/cfradial/no_qc/Strathmore&NCP      ncp.color
 ====           ====           radar/cfradial/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
 ====           ====           radar/cfradial/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
 
+PID          PID          radar/cfradial/pid/Strathmore&PID      pid.colors      dbz    0 0 0   cart  1 0
+DBZ_PID      DBZ_PID      radar/cfradial/pid/Strathmore&DBZ      dbz.colors      dbz    0 0 0   cart  1 0
+VEL_PID      VEL_PID      radar/cfradial/pid/Strathmore&VEL      vel.colors      m/s    0 0 0   cart  1 0
+WIDTH_PID    WIDTH_PID    radar/cfradial/pid/Strathmore&WIDTH    width.colors    m/s    0 0 0   cart  1 0
+
+SNR_PID      SNR_PID      radar/cfradial/pid/Strathmore&SNR      snr.colors      dB     0 0 0   cart  1 0
+ZDR_PID      ZDR_PID      radar/cfradial/pid/Strathmore&ZDR      zdr.colors      dB     0 0 0   cart  1 0
+PHIDP_PID    PHIDP_PID    radar/cfradial/pid/Strathmore&PHIDP    phidp_360.colors    deg    0 0 0   cart  1 0
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+
+RHOHV_PID    RHOHV_PID    radar/cfradial/pid/Strathmore&RHOHV    rhohv.colors    -      0 0 0   cart  1 0
+KDP_PID      KDP_PID      radar/cfradial/pid/Strathmore&KDP      kdp.colors      deg/km 0 0 0   cart  1 0
+NCP_PID      NCP_PID      radar/cfradial/pid/Strathmore&NCP      ncp.colors      -      0 0 0   cart  1 0
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+
 #
 </GRIDS>
 
