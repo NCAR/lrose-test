@@ -165,6 +165,26 @@ NCP_PID      NCP_PID      radar/cfradial/pid/Strathmore&NCP      ncp.colors     
 ====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
 ====           ====           radar/cfradial/pid/Strathmore&none     none.colors     -      0 0 0   cart  1 0
 
+DBZ_CART         DBZ_CART         radar/cart/qc/Strathmore&DBZ         dbz.colors      dbz    0 0 0   cart  1 0
+DBZ_TOT_CART     DBZ_TOT_CART     radar/cart/qc/Strathmore&DBZ_TOT     dbz.colors      dbz    0 0 0   cart  1 0
+VEL_CART         VEL_CART         radar/cart/qc/Strathmore&VEL         vel.colors      m/s    0 0 0   cart  1 0
+WIDTH_CART       WIDTH_CART       radar/cart/qc/Strathmore&WIDTH       width.colors    m/s    0 0 0   cart  1 0
+
+SNR_CART         SNR_CART         radar/cart/qc/Strathmore&SNR         snr.colors      dB     0 0 0   cart  1 0
+ZDR_CART         ZDR_CART         radar/cart/qc/Strathmore&ZDR         zdr.colors      dB     0 0 0   cart  1 0
+PHIDP_CART       PHIDP_CART       radar/cart/qc/Strathmore&PHIDP       phidp_360.colors    deg    0 0 0   cart  1 0
+UPHIDP_CART      UPHIDP_CART      radar/cart/qc/Strathmore&UPHIDP      phidp_360.colors    deg    0 0 0   cart  1 0
+
+RHOHV_CART       RHOHV_CART       radar/cart/qc/Strathmore&RHOHV       rhohv.colors    -      0 0 0   cart  1 0
+KDP_CART         KDP_CART         radar/cart/qc/Strathmore&KDP         kdp.colors      deg/km 0 0 0   cart  1 0
+NCP_CART         NCP_CART         radar/cart/qc/Strathmore&NCP         ncp.colors      -      0 0 0   cart  1 0
+====           ====           radar/cart/qc/Strathmore&none        none.colors     -      0 0 0   cart  1 0
+
+====           ====           radar/cart/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cart/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cart/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cart/no_qc/Strathmore&none     none.colors     -      0 0 0   cart  1 0
+
 #
 </GRIDS>
 

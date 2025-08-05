@@ -1,0 +1,9 @@
+#! /bin/csh
+
+setenv DATA_DIR $HOME/data/ams2025
+
+cd $HOME/git/lrose-test/ams2025/params
+
+Radx2Grid -params Radx2Grid.hail -debug
+
+
