@@ -1826,7 +1826,7 @@ censoring_fields = {
   ,
   {
     name = "SQIH",
-    min_valid_value = 0.3,
+    min_valid_value = 0.2,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
@@ -1845,7 +1845,7 @@ censoring_fields = {
 //
 // Type: int
 
-censoring_min_valid_run = 1;
+censoring_min_valid_run = 4;
 
 ///////////// specify_fields_to_be_censored ///////////
 //
