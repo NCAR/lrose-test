@@ -1,0 +1,10 @@
+#! /bin/csh
+
+setenv DATA_DIR $HOME/data/ams2025
+setenv PROJ_DIR $HOME/git/lrose-test/ams2025
+
+cd $PROJ_DIR/params
+
+Rview -params Rview.hail
+
+

@@ -1381,7 +1381,7 @@ FOKR_cat4_zmax_thresh = 65;
 //
 // Type: string
 
-storm_data_dir = "$(DATA_DIR)/radar/titan/KingCity";
+storm_data_dir = "$(DATA_DIR)/titan/storms/KingCity";
 
 ///////////// store_storm_runs ////////////////////////
 //

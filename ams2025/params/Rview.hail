@@ -223,7 +223,7 @@ Rview.use_track_data: true
 
 # If you are using track data you need to specify the URL for the DsTitanServer
 
-Rview.titan_server_url: $(DATA_DIR)/radar/titan/Strathmore
+Rview.titan_server_url: $(DATA_DIR)/titan/storms/Strathmore
 
 # How often to check for new track data (secs)
 
