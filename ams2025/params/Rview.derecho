@@ -46,6 +46,11 @@ Rview.z_requested: 3.0
 
 Rview.delta_z: 1.0
 
+# diameter (km) of track node graphic when plotting vectors only
+#  i.e. not ellipses or polygons
+
+Rview.node_icon_diam_km: 6.0
+
 # mouse double-clicking delay - secs - set to your taste
 
 Rview.double_click_delay: 0.3
@@ -437,8 +442,8 @@ Rview.x_past_storm_line_width: 1
 Rview.x_future_storm_line_width: 1
 Rview.x_forecast_storm_line_width: 2
 
-Rview.x_past_vector_color: magenta
-Rview.x_future_vector_color: magenta
+Rview.x_past_vector_color: orange
+Rview.x_future_vector_color: orange
 Rview.x_forecast_vector_color: red
 Rview.x_storm_vector_width: 2
 
