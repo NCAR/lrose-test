@@ -431,9 +431,9 @@ Rview.x_hlight_background: mediumblue
 Rview.x_contourlabel_color: gray50
 
 Rview.x_current_storm_color: cyan
-Rview.x_past_storm_color: yellow
+Rview.x_past_storm_color: gold
 Rview.x_past_storm_color_2: gold
-Rview.x_future_storm_color: seagreen2
+Rview.x_future_storm_color: seagreen
 Rview.x_future_storm_color_2: seagreen
 Rview.x_forecast_storm_color: red
 Rview.x_forecast_storm_color_2: gray50
@@ -442,8 +442,8 @@ Rview.x_past_storm_line_width: 1
 Rview.x_future_storm_line_width: 1
 Rview.x_forecast_storm_line_width: 2
 
-Rview.x_past_vector_color: orange
-Rview.x_future_vector_color: orange
+Rview.x_past_vector_color: white
+Rview.x_future_vector_color: white
 Rview.x_forecast_vector_color: red
 Rview.x_storm_vector_width: 2
 
