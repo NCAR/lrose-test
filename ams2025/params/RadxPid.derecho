@@ -207,7 +207,7 @@ ZDR_field_name = "ZDR";
 //
 // Type: string
 
-PHIDP_field_name = "PHIDP";
+PHIDP_field_name = "UPHIDP";
 
 ///////////// RHOHV_field_name ////////////////////////
 //
@@ -487,8 +487,8 @@ copy_fields = {
   }
   ,
   {
-    input_name = "PHIDP",
-    output_name = "PHIDP",
+    input_name = "UPHIDP",
+    output_name = "UPHIDP",
     censor_non_weather = TRUE
   }
   ,
