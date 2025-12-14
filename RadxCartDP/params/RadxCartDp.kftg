@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for RadxCartDP
+ * TDRP params for ./RadxCartDP
  **********************************************************************/
 
 //======================================================================
@@ -227,7 +227,7 @@ radar_field_names = {
  
 ///////////// model_input_url /////////////////////////
 //
-// URL for model data, in MDV/Netcdf-CF format.
+// URL for reading model data, in MDV/Netcdf-CF format.
 //
 // We read in the model data that is closest in time to the radar data.
 //
@@ -244,6 +244,24 @@ model_input_url = "$(HOME)/data/pecan/mdv/ruc";
 // Type: int
 
 model_search_margin_secs = 3600;
+
+///////////// write_interpolated_model_data ///////////
+//
+// Write out interpolated model data?.
+//
+// This is useful for debugging.
+//
+// Type: boolean
+
+write_interpolated_model_data = TRUE;
+
+///////////// interpolated_model_output_url ///////////
+//
+// URL for interpolated model data, in MDV/Netcdf-CF format.
+//
+// Type: string
+
+interpolated_model_output_url = "$(HOME)/data/pecan/mdv/ruc_interp";
 
 //======================================================================
 //
@@ -351,7 +369,7 @@ bblock_field_names = {
 //
 // Type: string
 
-output_dir = "/tmp/RadxCartDP";
+output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
 
 //======================================================================
 //
@@ -461,7 +479,7 @@ LDR_field_name = "LDR";
 //
 // Type: string
 
-KDP_params_file_path = "use-defaults";
+KDP_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/kdp_params.nexrad";
 
 ///////////// KDP_write_debug_fields //////////////////
 //
@@ -489,7 +507,7 @@ KDP_write_debug_fields = FALSE;
 //
 // Type: string
 
-PID_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/pid_thresholds.nexrad";
+PID_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/pid_params.nexrad";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
@@ -540,7 +558,7 @@ PID_write_debug_fields = FALSE;
 //
 // Type: string
 
-RATE_params_file_path = "use-defaults";
+RATE_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/rate_params.nexrad";
 
 ///////////// RATE_use_KDP_self_consistency ///////////
 //

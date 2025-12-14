@@ -118,6 +118,15 @@ KDDC_RHOHV KDDC_RHOHV  $(HOME)/data/pecan/cfradial/kddc/moments&RHOHV       rhoh
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
+CART_KFTG_DBZ   CART_KFTG_DBZ    $(HOME)/data/pecan/mdv/radarCart/kftg&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+CART_KFTG_VEL   CART_KFTG_VEL    $(HOME)/data/pecan/mdv/radarCart/kftg&VEL       vel.colors   m/s -5 80 5 cart 1 0
+CART_KFTG_WIDTH CART_KFTG_WIDTH  $(HOME)/data/pecan/mdv/radarCart/kftg&WIDTH        width.colors m/s -5 80 5 cart 1 0
+CART_KFTG_ZDR   CART_KFTG_ZDR    $(HOME)/data/pecan/mdv/radarCart/kftg&ZDR       zdr.colors   dB  -5 80 5 cart 1 0
+CART_KFTG_PHIDP CART_KFTG_PHIDP  $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP       phidp.colors deg -5 80 5 cart 1 0
+CART_KFTG_RHOHV CART_KFTG_RHOHV  $(HOME)/data/pecan/mdv/radarCart/kftg&RHOHV       rhohv.colors -   -5 80 5 cart 1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+
 # Model data
 
 RUC-temp   RUC-temp   $(HOME)/data/pecan/mdv/ruc&TMP  temp.colors   C   -5   80  5  dcont   1 0
@@ -125,9 +134,9 @@ RUC-RH     RUC-RH     $(HOME)/data/pecan/mdv/ruc&RH   rh.colors   %   -5   80  5
 RUC-Wspd   RUC-Wspd   $(HOME)/data/pecan/mdv/ruc&speed   wind_speed.colors   m/s   -5   80  5  dcont   1 0
 Terrain    Terrain    mdvp::terrain//localhost:0:pecan/mdv/terrain&Elevation     terrain_pecan.colors m -5 80 5 dcont 1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/ruc_interp&TMP  temp.colors   C   -5   80  5  dcont   1 0
+INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/ruc_interp&RH   rh.colors   %   -5   80  5  dcont   1 0
+INTERP-Wspd   INTERP-Wspd   $(HOME)/data/pecan/mdv/ruc_interp&speed   wind_speed.colors   m/s   -5   80  5  dcont   1 0
 
 </GRIDS>
 
