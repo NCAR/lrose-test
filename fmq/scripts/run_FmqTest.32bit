@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/fmq/params
+
+
+Titan -params Titan.mrms -start "2015 06 26 00 00 00"  -end "2015 06 26 01 00 00" -debug
+
+

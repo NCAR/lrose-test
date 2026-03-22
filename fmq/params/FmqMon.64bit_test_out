@@ -1,0 +1,115 @@
+/**********************************************************************
+ * TDRP params for ./FmqMon
+ **********************************************************************/
+
+//======================================================================
+//
+// FmqMon program.
+//
+// FmqMon monitors the output from an FMQ, reporting statistics on the 
+//   queue, such as the number of messages and bytes in a given interval, 
+//   and the compressed and uncompressed data rate.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+
+debug = DEBUG_VERBOSE;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+//
+// Used for registration with procmap.
+//
+// Type: string
+
+instance = "64bit_test_out";
+
+//======================================================================
+//
+// DATA INPUT.
+//
+//======================================================================
+ 
+///////////// input_url ///////////////////////////////
+//
+// URL for input FMQ.
+//
+// Type: string
+
+input_url = "/tmp/fmq/test/64_bit_out";
+
+///////////// msecs_sleep_blocking ////////////////////
+//
+// Number of millisecs to sleep while polling the input.
+//
+// The reads are done in a polling-blocking mode. This is the number of 
+//   millisecs to sleep between polls.
+//
+// Type: int
+
+msecs_sleep_blocking = 1000;
+
+///////////// seek_to_start_of_input //////////////////
+//
+// Option to seek to the start of the input FMQ.
+//
+// If FALSE, the program will seek to the end of the fmq and only read 
+//   in new data. If TRUE, it will start reading from the beginning of the 
+//   FMQ.
+//
+// Type: boolean
+
+seek_to_start_of_input = FALSE;
+
+//======================================================================
+//
+// OUTPUT STATS.
+//
+//======================================================================
+ 
+///////////// mode ////////////////////////////////////
+//
+// Sets the type of printout. All information will be printed to stdout.
+//
+// SUMMARY: scrolling summary of the number of messages and data rate. 
+//   FULL: prints out message info as messages are read. ASCII_PRINT: 
+//   assumes the messages are ASCII, prints out the message.
+//
+// Type: enum
+// Options:
+//     SUMMARY
+//     FULL
+//     ASCII_PRINT
+
+mode = ASCII_PRINT;
+
+///////////// monitor_interval ////////////////////////
+//
+// The number of seconds between monitor output.
+//
+// The data rate is computed over this interval.
+//
+// Minimum val: 1
+//
+// Type: int
+
+monitor_interval = 1;
+
