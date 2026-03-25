@@ -61,7 +61,7 @@ instance = "DS_64bit";
 // Type: string
 //
 
-input_url = "/tmp/fmq/test/64bit_1";
+input_url = "/tmp/fmq/test/32bit_1";
 
 ///////////// msecs_sleep_blocking ////////////////////
 //

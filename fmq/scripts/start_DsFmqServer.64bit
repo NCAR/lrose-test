@@ -4,7 +4,7 @@ snuff DsFmqServer.64bit
 
 cd ~/git/lrose-test/fmq/params
 
-~/lrose_64/bin/DsFmqServer -params DsFmqServer.64bit -verbose >& /tmp/fmq/test/DsFmqServer.64bit.log &
+DsFmqServer -params DsFmqServer.64bit -verbose >& /tmp/fmq/test/DsFmqServer.64bit.log &
 
 
 

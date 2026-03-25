@@ -92,7 +92,7 @@ msecs_sleep_blocking = 1;
 //
 
 output_urls = {
-  "/tmp/fmq/test/64bit_2"
+  "/tmp/fmq/test/32bit_2"
 };
 
 ///////////// data_mapper_report_interval /////////////
