@@ -106,12 +106,12 @@ KFTG_RHOHV KFTG_RHOHV  $(HOME)/data/pecan/cfradial/kftg/moments&RHOHV       rhoh
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
-CART_KFTG_DBZ   CART_KFTG_DBZ    $(HOME)/data/pecan/radarCart/kftg&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
-CART_KFTG_VEL   CART_KFTG_VEL    $(HOME)/data/pecan/radarCart/kftg&VEL       vel.colors   m/s -5 80 5 cart 1 0
-CART_KFTG_WIDTH CART_KFTG_WIDTH  $(HOME)/data/pecan/radarCart/kftg&WIDTH        width.colors m/s -5 80 5 cart 1 0
-CART_KFTG_ZDR   CART_KFTG_ZDR    $(HOME)/data/pecan/radarCart/kftg&ZDR       zdr.colors   dB  -5 80 5 cart 1 0
-CART_KFTG_PHIDP CART_KFTG_PHIDP  $(HOME)/data/pecan/radarCart/kftg&PHIDP       phidp.colors deg -5 80 5 cart 1 0
-CART_KFTG_RHOHV CART_KFTG_RHOHV  $(HOME)/data/pecan/radarCart/kftg&RHOHV       rhohv.colors -   -5 80 5 cart 1 0
+CART_KFTG_DBZ   CART_KFTG_DBZ    $(HOME)/data/pecan/mdv/radarCart/kftg&DBZ       dbz.colors   dBZ -5 80 5 cart 1 0
+CART_KFTG_VEL   CART_KFTG_VEL    $(HOME)/data/pecan/mdv/radarCart/kftg&VEL       vel.colors   m/s -5 80 5 cart 1 0
+CART_KFTG_WIDTH CART_KFTG_WIDTH  $(HOME)/data/pecan/mdv/radarCart/kftg&WIDTH        width.colors m/s -5 80 5 cart 1 0
+CART_KFTG_ZDR   CART_KFTG_ZDR    $(HOME)/data/pecan/mdv/radarCart/kftg&ZDR       zdr.colors   dB  -5 80 5 cart 1 0
+CART_KFTG_PHIDP CART_KFTG_PHIDP  $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP       phidp.colors deg -5 80 5 cart 1 0
+CART_KFTG_RHOHV CART_KFTG_RHOHV  $(HOME)/data/pecan/mdv/radarCart/kftg&RHOHV       rhohv.colors -   -5 80 5 cart 1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 

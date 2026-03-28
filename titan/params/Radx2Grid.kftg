@@ -161,7 +161,7 @@ end_time = "2015 06 26 00 00 00";
 //
 // Type: string
 
-output_dir = "$(HOME)/data/pecan/radarCart/kftg";
+output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
 
 ///////////// output_format ///////////////////////////
 //
