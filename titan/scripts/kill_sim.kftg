@@ -2,6 +2,12 @@
 
 snuff simulate_files_realtime.py
 
+snuff Radx2Grid.sim.kftg
+
+snuff Titan.sim.kftg
+
+snuff Rview.sim.kftg
+
 
 
 

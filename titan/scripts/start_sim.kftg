@@ -1,6 +1,18 @@
 #! /bin/csh
 
-simulate_files_realtime.py --src-root ~/data/pecan/cfradial/kftg/moments --dst-root ~/data/pecan/sim/cfradial/kftg/moments --sleep-secs 10 --start-time 20150625_230000 --end-time 20150626_010000 --overwrite --verbose >& /tmp/simulate_files_realtime.pecan.log &
+kill_sim.kftg
+
+# /bin/rm -rf ~/data/pecan/sim
+
+start_DsServerMgr
+
+Titan -params ../params/Titan.sim.kftg -debug >& /tmp/Titan.sim.kftg.log &
+
+Radx2Grid -params ../params/Radx2Grid.sim.kftg -debug >& /tmp/Radx2Grid.sim.kftg.log &
+
+simulate_files_realtime.py --src-root ~/data/pecan/cfradial/kftg/moments --dst-root ~/data/pecan/sim/cfradial/kftg/moments --sleep-secs 10 --start-time 20150625_230000 --end-time 20150626_010000 --overwrite --verbose >& /tmp/simulate_files_realtime.sim.kftg.log &
+
+Rview -params ../params/Rview.sim.kftg
 
 
 
