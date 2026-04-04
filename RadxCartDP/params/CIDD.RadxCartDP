@@ -106,6 +106,25 @@ KFTG_RHOHV KFTG_RHOHV  $(HOME)/data/pecan/cfradial/kftg/moments&RHOHV       rhoh
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
+SCALAR_DBZ   SCALAR_DBZ    $(HOME)/data/pecan/cfradial/kftg/scalars&DBZ       dbz.colors   dBZ -5 80 5 radial 1 0
+SCALAR_VEL   SCALAR_VEL    $(HOME)/data/pecan/cfradial/kftg/scalars&VEL       vel.colors   m/s -5 80 5 radial 1 0
+SCALAR_WIDTH SCALAR_WIDTH  $(HOME)/data/pecan/cfradial/kftg/scalars&WIDTH        width.colors m/s -5 80 5 radial 1 0
+SCALAR_ZDR   SCALAR_ZDR    $(HOME)/data/pecan/cfradial/kftg/scalars&ZDR       zdr.colors   dB  -5 80 5 radial 1 0
+SCALAR_PHIDP SCALAR_PHIDP  $(HOME)/data/pecan/cfradial/kftg/scalars&PHIDP       phidp.colors deg -5 80 5 radial 1 0
+SCALAR_RHOHV SCALAR_RHOHV  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV       rhohv.colors -   -5 80 5 radial 1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+
+DBZ_SMOOTHED DBZ_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&DBZ_SMOOTHED  dbz.colors   dBZ -5 80 5 radial 1 0
+RHOHV_SMOOTHED RHOHV_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV_SMOOTHED  rhohv.colors - -5 80 5 radial 1 0
+SD_ZDR   SD_ZDR    $(HOME)/data/pecan/cfradial/kftg/scalars&SD_ZDR       sdzdr.colors   dB -5 80 5 radial 1 0
+TEMP     TEMP      $(HOME)/data/pecan/cfradial/kftg/scalars&TEMP_FOR_PID   temp.colors C -5 80 5 radial 1 0
+SCALAR_ZDR   SCALAR_ZDR    $(HOME)/data/pecan/cfradial/kftg/scalars&ZDR       zdr.colors   dB  -5 80 5 radial 1 0
+SCALAR_PHIDP SCALAR_PHIDP  $(HOME)/data/pecan/cfradial/kftg/scalars&PHIDP       phidp.colors deg -5 80 5 radial 1 0
+SCALAR_RHOHV SCALAR_RHOHV  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV       rhohv.colors -   -5 80 5 radial 1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+
 #############################
 # NEXRAD RADIAL MOMENTS
 

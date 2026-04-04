@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./RadxCartDP
+ * TDRP params for RadxCartDP
  **********************************************************************/
 
 //======================================================================
@@ -271,6 +271,10 @@ write_interpolated_model_data = TRUE;
 //
 // URL for interpolated model data, in MDV/Netcdf-CF format.
 //
+// We interpolate the model data onto the output grid. Writing out this 
+//   data is useful for debugging, allowing us to compare the original 
+//   model with the interpolated model.
+//
 // Type: string
 
 interpolated_model_output_url = "$(HOME)/data/pecan/mdv/ruc_interp";
@@ -382,6 +386,33 @@ bblock_field_names = {
 // Type: string
 
 output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
+
+//======================================================================
+//
+// WRITE RADIAL DATA FOR DEBUGGING.
+//
+//======================================================================
+ 
+///////////// write_scalar_polar_output ///////////////
+//
+// Write polar volume for debugging.
+//
+// If TRUE, write out the input volume in polar coords, after the extra 
+//   scalar fields have been added.
+//
+// Type: boolean
+
+write_scalar_polar_output = TRUE;
+
+///////////// scalar_polar_output_dir /////////////////
+//
+// Output directory for writing files.
+//
+// Files will be written to this directory.
+//
+// Type: string
+
+scalar_polar_output_dir = "$(HOME)/data/pecan/cfradial/kftg/scalars";
 
 //======================================================================
 //
@@ -554,6 +585,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //          PID_OUT
 //          PID_INTEREST
 //          TEMP_FOR_PID
+//          SD_ZDR
 //          KDP_OUT
 //          KDP_SC
 //          DBZ_ATTEN_CORRECTION
