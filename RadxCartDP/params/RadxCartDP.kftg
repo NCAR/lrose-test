@@ -373,7 +373,7 @@ bblock_field_names = {
 
 //======================================================================
 //
-// DATA OUTPUT DIRECTORY AND FILE NAMES.
+// OUTPUT DATA DIRECTORY.
 //
 //======================================================================
  
@@ -389,30 +389,28 @@ output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
 
 //======================================================================
 //
-// WRITE RADIAL DATA FOR DEBUGGING.
+// WRITE DERIVED POLAR DATA FOR DEBUGGING.
 //
 //======================================================================
  
-///////////// write_scalar_polar_output ///////////////
+///////////// write_debug_polar_output ////////////////
 //
-// Write polar volume for debugging.
+// Write derived polar variables for debugging.
 //
-// If TRUE, write out the input volume in polar coords, after the extra 
-//   scalar fields have been added.
+// If TRUE, write out the augmented input volume in polar coords, 
+//   including all derived fields.
 //
 // Type: boolean
 
-write_scalar_polar_output = TRUE;
+write_debug_polar_output = TRUE;
 
-///////////// scalar_polar_output_dir /////////////////
+///////////// debug_polar_output_dir //////////////////
 //
-// Output directory for writing files.
-//
-// Files will be written to this directory.
+// Output directory for writing debug polar files.
 //
 // Type: string
 
-scalar_polar_output_dir = "$(HOME)/data/pecan/cfradial/kftg/scalars";
+debug_polar_output_dir = "$(HOME)/data/pecan/cfradial/kftg/debug";
 
 //======================================================================
 //
@@ -422,7 +420,7 @@ scalar_polar_output_dir = "$(HOME)/data/pecan/cfradial/kftg/scalars";
  
 ///////////// KDP_params_file_path ////////////////////
 //
-// Path for parameters for computing KDP.
+// Path for parameters for computing KDP, if specified.
 //
 // If set to use-defaults, no parameter file will be read in, and the 
 //   default parameters will be used.
@@ -450,7 +448,7 @@ KDP_write_debug_fields = FALSE;
  
 ///////////// PID_params_file_path ////////////////////
 //
-// Path for parameters for computing PID.
+// Path for parameters for computing PID, if specified.
 //
 // If set to use-defaults, no parameter file will be read in, and the 
 //   default parameters will be used.
@@ -470,7 +468,7 @@ PID_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/pid_params.nexr
 //
 // Type: boolean
 
-PID_use_KDP_self_consistency = FALSE;
+PID_use_KDP_self_consistency = TRUE;
 
 ///////////// PID_use_attenuation_corrected_fields ////
 //
@@ -501,7 +499,7 @@ PID_write_debug_fields = FALSE;
  
 ///////////// RATE_params_file_path ///////////////////
 //
-// Path for parameters for computing PRECIP.
+// Path for parameters for computing PRECIP if specified.
 //
 // If set to use-defaults, no parameter file will be read in, and the 
 //   default parameters will be used.
@@ -540,7 +538,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //
 //======================================================================
  
-///////////// output_fields ///////////////////////
+///////////// output_fields ///////////////////////////
 //
 // Indicate which fields should be written to the output file.
 //
@@ -586,6 +584,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //          PID_INTEREST
 //          TEMP_FOR_PID
 //          SD_ZDR
+//          SD_PHIDP
 //          KDP_OUT
 //          KDP_SC
 //          DBZ_ATTEN_CORRECTION
