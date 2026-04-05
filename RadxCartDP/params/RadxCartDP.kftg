@@ -540,7 +540,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //
 //======================================================================
  
-///////////// pid_output_fields ///////////////////////
+///////////// output_fields ///////////////////////
 //
 // Indicate which fields should be written to the output file.
 //
@@ -571,7 +571,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //
 // Type: struct
 //   typedef struct {
-//      pid_output_field_id_t id;
+//      output_field_id_t id;
 //        Options:
 //          RATE_ZH
 //          RATE_ZH_SNOW
@@ -601,7 +601,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //
 // 1D array - variable length.
 
-pid_output_fields = {
+output_fields = {
   {
     id = RATE_ZH,
     name = "RATE_ZH",

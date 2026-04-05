@@ -142,14 +142,14 @@ CART_KFTG_RHOHV CART_KFTG_RHOHV  $(HOME)/data/pecan/mdv/radarCart/kftg&RHOHV    
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
-CART_SD_ZDR CART_SD_ZDR      $(HOME)/data/pecan/mdv/radarCart/kftg&SD_ZDR      sdzdr.colors   dB -5 80 5 cart 1 0
-CART_SD_PHIDP CART_SD_PHIDP      $(HOME)/data/pecan/mdv/radarCart/kftg&SD_PHIDP      sdphidp.colors deg -5 80 5 cart 1 0
-CART_TEMPC  CART_TEMPC    $(HOME)/data/pecan/mdv/radarCart/kftg&TEMPC       temp.colors  C -5 80 5 cart 1 0
-CART_KDP  CART_KDP   $(HOME)/data/pecan/mdv/radarCart/kftg&KDP       kdp.colors deg/km -5 80 5 cart 1 0
-CART_KDP_SC  CART_KDP_SC   $(HOME)/data/pecan/mdv/radarCart/kftg&KDP_SC       kdp.colors deg/km -5 80 5 cart 1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+PID_KFTG_SNR   PID_KFTG_SNR    $(HOME)/data/pecan/mdv/radarCart/kftg&SNR_FOR_PID       snr.colors   dB -5 80 5 cart 1 0
+PID_KFTG_DBZ   PID_KFTG_DBZ    $(HOME)/data/pecan/mdv/radarCart/kftg&DBZ_FOR_PID       dbz.colors   dBZ -5 80 5 cart 1 0
+PID_KFTG_ZDR   PID_KFTG_ZDR    $(HOME)/data/pecan/mdv/radarCart/kftg&ZDR_FOR_PID       zdr.colors   dB  -5 80 5 cart 1 0
+PID_KFTG_PHIDP PID_KFTG_PHIDP  $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP_FOR_PID       phidp.colors deg -5 80 5 cart 1 0
+PID_KFTG_RHOHV PID_KFTG_RHOHV  $(HOME)/data/pecan/mdv/radarCart/kftg&RHOHV_FOR_PID       rhohv.colors -   -5 80 5 cart 1 0
+PID_KFTG_KDP   PID_KFTG_KDP    $(HOME)/data/pecan/mdv/radarCart/kftg&KDP_FOR_PID        kdp.colors -   -5 80 5 cart 1 0
+PID_SD_ZDR     PID_SD_ZDR      $(HOME)/data/pecan/mdv/radarCart/kftg&ZDR_SDEV_FOR_PID  sdzdr.colors   dB -5 80 5 cart 1 0
+PID_SD_PHIDP   PID_SD_PHIDP    $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP_SDEV_FOR_PID sdphidp.colors deg -5 80 5 cart 1 0
 
 # Model data
 
@@ -161,6 +161,15 @@ Terrain    Terrain    mdvp::terrain//localhost:0:pecan/mdv/terrain&Elevation    
 INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/ruc_interp&TMP  temp.colors   C   -5   80  5  dcont   1 0
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/ruc_interp&RH   rh.colors   %   -5   80  5  dcont   1 0
 INTERP-Wspd   INTERP-Wspd   $(HOME)/data/pecan/mdv/ruc_interp&speed   wind_speed.colors   m/s   -5   80  5  dcont   1 0
+
+CART_SD_ZDR CART_SD_ZDR      $(HOME)/data/pecan/mdv/radarCart/kftg&SD_ZDR      sdzdr.colors   dB -5 80 5 cart 1 0
+CART_SD_PHIDP CART_SD_PHIDP      $(HOME)/data/pecan/mdv/radarCart/kftg&SD_PHIDP      sdphidp.colors deg -5 80 5 cart 1 0
+CART_TEMPC  CART_TEMPC    $(HOME)/data/pecan/mdv/radarCart/kftg&TEMPC       temp.colors  C -5 80 5 cart 1 0
+CART_KDP  CART_KDP   $(HOME)/data/pecan/mdv/radarCart/kftg&KDP       kdp.colors deg/km -5 80 5 cart 1 0
+CART_KDP_SC  CART_KDP_SC   $(HOME)/data/pecan/mdv/radarCart/kftg&KDP_SC       kdp.colors deg/km -5 80 5 cart 1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
@@ -425,7 +434,8 @@ cidd.request_compressed_data: 1
 #
 # Sets the projection for cidd's plan view - Current valid choices are:
 # CARTESIAN, LAT_LON, LAMBERT,  STEREOGRAPHIC
-cidd.projection_type: LAT_LON
+cidd.projection_type: CARTESIAN
+#cidd.projection_type: LAT_LON
 
 # These must be set if using a Lambert conformal projection - Ignored otherwise
 cidd.lambert_lat1: 20.0
@@ -476,8 +486,8 @@ cidd.domain_limit_max_y:         5000
  
 # The Lat, Long of the center of the display. Internal range rings
 # are relative to this point.
-cidd.origin_longitude:       -99.535739
-cidd.origin_latitude:        38.553164
+cidd.origin_longitude:       -104.546
+cidd.origin_latitude:        39.7866
 
 #
 #
@@ -488,8 +498,8 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       6
-cidd.start_zoom_level:      1
+cidd.num_zoom_levels:       5
+cidd.start_zoom_level:      2
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -498,44 +508,36 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  KFTG
-cidd.level1_min_xkm:                -108
-cidd.level1_min_ykm:                37
-cidd.level1_max_xkm:                -102
-cidd.level1_max_ykm:                43
+cidd.level1_label:                  100km
+cidd.level1_min_xkm:                -100
+cidd.level1_min_ykm:                -100
+cidd.level1_max_xkm:                100
+cidd.level1_max_ykm:                100
 #
-cidd.level2_label:                  PECAN-DOMAIN
-cidd.level2_min_xkm:                -103.7
-cidd.level2_min_ykm:                35.45
-cidd.level2_max_xkm:                -95.2
-cidd.level2_max_ykm:                41.6
+cidd.level2_label:                  150km
+cidd.level2_min_xkm:                -150
+cidd.level2_min_ykm:                -150
+cidd.level2_max_xkm:                150
+cidd.level2_max_ykm:                150
 #
+cidd.level3_label:                  200km
+cidd.level3_min_xkm:                -200
+cidd.level3_min_ykm:                -200
+cidd.level3_max_xkm:                200
+cidd.level3_max_ykm:                200
 #
-cidd.level3_label:                  WIDE
-cidd.level3_min_xkm:                -107.0
-cidd.level3_min_ykm:                33.5
-cidd.level3_max_xkm:                -92.0
-cidd.level3_max_ykm:                43.5
+cidd.level4_label:                  250km
+cidd.level4_min_xkm:                -250
+cidd.level4_min_ykm:                -250
+cidd.level4_max_xkm:                250
+cidd.level4_max_ykm:                250
 #
+cidd.level5_label:                  500km
+cidd.level5_min_xkm:                -500
+cidd.level5_min_ykm:                -500
+cidd.level5_max_xkm:                500
+cidd.level5_max_ykm:                500
 #
-cidd.level4_label:                  REGIONAL
-cidd.level4_min_xkm:                -110
-cidd.level4_min_ykm:                29
-cidd.level4_max_xkm:                -90
-cidd.level4_max_ykm:                46
-#
-#
-cidd.level5_label:                  CONUS
-cidd.level5_min_xkm:                -125
-cidd.level5_min_ykm:                25
-cidd.level5_max_xkm:                -70
-cidd.level5_max_ykm:                50
-#
-cidd.level6_label:                  WORLD
-cidd.level6_min_xkm:                -180
-cidd.level6_min_ykm:                -90
-cidd.level6_max_xkm:                180
-cidd.level6_max_ykm:                90
 #
 #
 
@@ -554,7 +556,7 @@ cidd.level6_max_ykm:                90
 #  
 cidd.min_ht:               0.0
 cidd.max_ht:               20.0
-cidd.start_ht:             1.7
+cidd.start_ht:             3.5
 
 # Radial data Limits
 cidd.min_rkm:                0.0
