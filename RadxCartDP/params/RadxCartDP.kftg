@@ -865,9 +865,9 @@ beam_width_fraction_for_data_limit_extension = 0.5;
 //
 
 grid_z_geom = {
-    nz = 20,
-    minz = 0.5,
-    dz = 1
+    nz = 34,
+    minz = 2.0,
+    dz = 0.5
 };
 
 ///////////// specify_individual_z_levels /////////////
@@ -944,12 +944,12 @@ z_level_array = {
 //
 
 grid_xy_geom = {
-    nx = 400,
-    ny = 400,
-    minx = -199.5,
-    miny = -199.5,
-    dx = 1,
-    dy = 1
+    nx = 800,
+    ny = 800,
+    minx = -199.75,
+    miny = -199.75,
+    dx = 0.5,
+    dy = 0.5
 };
 
 ///////////// center_grid_on_radar ////////////////////

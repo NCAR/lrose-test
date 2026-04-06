@@ -146,7 +146,7 @@ PID_RHOHV_median_filter_len = 5;
 // Type: boolean
 //
 
-PID_apply_median_filter_to_LDR = TRUE;
+PID_apply_median_filter_to_LDR = FALSE;
 
 ///////////// PID_LDR_median_filter_len ///////////////
 //
@@ -174,7 +174,7 @@ PID_LDR_median_filter_len = 5;
 // Type: boolean
 //
 
-PID_replace_missing_LDR = TRUE;
+PID_replace_missing_LDR = FALSE;
 
 ///////////// PID_LDR_replacement_value ///////////////
 //
