@@ -145,6 +145,7 @@ PID_SD_PHIDP   PID_SD_PHIDP    $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP_SDEV_
 # Model data
 
 PID  PID $(HOME)/data/pecan/mdv/radarCart/kftg&PID pid.colors - -5 80 5 cart 1 0
+PID_FILT  PID_FILT $(HOME)/data/pecan/mdv/radarCart/kftg&PID_FILT pid.colors - -5 80 5 cart 1 0
 
 RUC-temp   RUC-temp   $(HOME)/data/pecan/mdv/ruc&TMP  temp.colors   C   -5   80  5  dcont   1 0
 RUC-RH     RUC-RH     $(HOME)/data/pecan/mdv/ruc&RH   rh.colors   %   -5   80  5  dcont   1 0
@@ -152,8 +153,6 @@ INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/ruc_interp&TEMP  temp.colors 
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/ruc_interp&RH   rh.colors   %   -5   80  5  dcont   1 0
 INTERP-temp2   INTERP-temp2   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP  temp.colors   C   -5   80  5  dcont   1 0
 INTERP-RH2     INTERP-RH2     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors   %   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
 
