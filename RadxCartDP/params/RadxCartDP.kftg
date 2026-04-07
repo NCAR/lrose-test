@@ -265,7 +265,7 @@ model_search_margin_secs = 3600;
 //
 // Type: boolean
 
-write_interpolated_model_data = TRUE;
+write_interpolated_model_data = FALSE;
 
 ///////////// interpolated_model_output_url ///////////
 //
@@ -301,6 +301,7 @@ interpolated_model_output_url = "$(HOME)/data/pecan/mdv/ruc_interp";
 //          UVEL
 //          VVEL
 //          WVEL
+//          NOT_SET
 //      string input_name;
 //      string output_name;
 //   }
@@ -480,6 +481,19 @@ PID_use_KDP_self_consistency = TRUE;
 // Type: boolean
 
 PID_use_attenuation_corrected_fields = FALSE;
+
+///////////// PID_mode_filter_kernel_size /////////////
+//
+// Kernel size for 2D mode filter.
+//
+// The PID field is filtered, using the mode over a 2D kernel for each 
+//   plane. The kernel is moved across each Cartesian plane, the mode is 
+//   computed, and the value at the kernel center is replaced with the 
+//   mode.
+//
+// Type: int
+
+PID_mode_filter_kernel_size = 1;
 
 ///////////// PID_write_debug_fields //////////////////
 //
@@ -866,7 +880,7 @@ beam_width_fraction_for_data_limit_extension = 0.5;
 
 grid_z_geom = {
     nz = 34,
-    minz = 2.0,
+    minz = 2,
     dz = 0.5
 };
 
