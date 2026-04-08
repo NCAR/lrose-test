@@ -493,7 +493,7 @@ PID_use_attenuation_corrected_fields = FALSE;
 //
 // Type: int
 
-PID_mode_filter_kernel_size = 1;
+PID_mode_filter_kernel_size = 5;
 
 ///////////// PID_write_debug_fields //////////////////
 //
