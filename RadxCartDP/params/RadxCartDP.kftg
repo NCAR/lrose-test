@@ -546,6 +546,19 @@ RATE_use_KDP_self_consistency = FALSE;
 
 RATE_use_attenuation_corrected_fields = FALSE;
 
+///////////// RATE_median_filter_kernel_size //////////
+//
+// Kernel size for 2D median filter.
+//
+// The precip rate field is filtered, using the median over a 2D kernel 
+//   for each plane. The kernel is moved across each Cartesian plane, the 
+//   median is computed, and the value at the kernel center is replaced 
+//   with the median.
+//
+// Type: int
+
+RATE_median_filter_kernel_size = 5;
+
 //======================================================================
 //
 // SPECIFYING PID OUTPUT FIELDS.
