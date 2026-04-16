@@ -157,7 +157,7 @@ INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP  temp.col
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors   %   -5   80  5  dcont   1 0
 RUC-temp   RUC-temp   $(HOME)/data/pecan/mdv/ruc&TMP  temp.colors   C   -5   80  5  dcont   1 0
 RUC-RH     RUC-RH     $(HOME)/data/pecan/mdv/ruc&RH   rh.colors   %   -5   80  5  dcont   1 0
-Terrain    Terrain    mdvp::static//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/cart_terrain&terrain_ht  terrain_front.colors   m   -5   80  5  dcont   1 0
+Terrain    Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/cart_terrain&terrain_ht  terrain_front.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
