@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 
 fs = 1000.0       # sample rate, Hz
 n_samples = 1024
+#n_samples = 112
 
 t = np.arange(n_samples) / fs
 
@@ -50,15 +51,33 @@ power_db = 10.0 * np.log10(np.maximum(power, 1.0e-12))
 # Plot
 # ---------------------------------------------------------
 
-plt.figure(figsize=(10, 5))
+fig, axes = plt.subplots(2, 1, figsize=(10, 8))
 
-plt.plot(f, power_db)
+# ---------------------------------------------------------
+# Plot time-series magnitude
+# ---------------------------------------------------------
 
-plt.xlabel("Frequency (Hz)")
-plt.ylabel("Power (dB)")
-plt.title("Spectrum of complex time series")
+axes[0].plot(t, np.abs(x))
+axes[0].set_xlabel("Time (s)")
+axes[0].set_ylabel("Magnitude")
+axes[0].set_title("Magnitude of complex time series")
+axes[0].grid(True)
 
-plt.grid(True)
-plt.ylim(-80, 5)
+# ---------------------------------------------------------
+# Plot spectrum
+# ---------------------------------------------------------
 
+axes[1].plot(f, power_db)
+axes[1].set_xlabel("Frequency (Hz)")
+axes[1].set_ylabel("Power (dB)")
+axes[1].set_title("Spectrum of complex time series")
+#axes[1].set_ylim(-180, 5)
+axes[1].grid(True)
+
+plt.tight_layout()
 plt.show()
+
+
+#axes[0].set_ylabel("Real")
+#axes[0].set_title("Complex time series")
+#axes[0].grid(True)
