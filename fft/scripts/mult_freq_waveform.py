@@ -77,7 +77,3 @@ axes[1].grid(True)
 plt.tight_layout()
 plt.show()
 
-
-#axes[0].set_ylabel("Real")
-#axes[0].set_title("Complex time series")
-#axes[0].grid(True)
