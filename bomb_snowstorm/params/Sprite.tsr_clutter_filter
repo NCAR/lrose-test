@@ -1603,13 +1603,21 @@ iqplot_line_width = 2;
 
 iqplot_adaptive_filtered_color = "pink";
 
+///////////// iqplot_tsr_unfiltered_color ///////////////
+//
+// Color of TSR unfiltered lines in spectra plots.
+//
+// Type: string
+
+iqplot_tsr_unfiltered_color = "magenta";
+
 ///////////// iqplot_tsr_filtered_color ///////////////
 //
 // Color of TSR filtered lines in spectra plots.
 //
 // Type: string
 
-iqplot_tsr_filtered_color = "magenta";
+iqplot_tsr_filtered_color = "yellow";
 
 ///////////// iqplot_clutter_model_color //////////////
 //
