@@ -1297,19 +1297,6 @@ iq_plots = {
   {
     plot_type = SPECTRAL_POWER,
     rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_TSR,
-    plot_clutter_model = TRUE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_POWER,
-    rx_channel = CHANNEL_HC,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
     clutter_filter_type = CLUTTER_FILTER_TSR,
@@ -1317,6 +1304,19 @@ iq_plots = {
     clutter_model_width_mps = 0.75,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_NONE,
+    compute_plot_range_dynamically = TRUE
+  }
+  ,
+  {
+    plot_type = SPECTRAL_POWER,
+    rx_channel = CHANNEL_HC,
+    fft_window = FFT_WINDOW_RECT,
+    median_filter_len = 1,
+    clutter_filter_type = CLUTTER_FILTER_TSR,
+    plot_clutter_model = TRUE,
+    clutter_model_width_mps = 0.75,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
 };
@@ -1617,7 +1617,7 @@ iqplot_tsr_unfiltered_color = "magenta";
 //
 // Type: string
 
-iqplot_tsr_filtered_color = "yellow";
+iqplot_tsr_filtered_color = "red";
 
 ///////////// iqplot_clutter_model_color //////////////
 //
@@ -1625,7 +1625,7 @@ iqplot_tsr_filtered_color = "yellow";
 //
 // Type: string
 
-iqplot_clutter_model_color = "red";
+iqplot_clutter_model_color = "lightgreen";
 
 ///////////// iqplot_regression_filtered_color ////////
 //
