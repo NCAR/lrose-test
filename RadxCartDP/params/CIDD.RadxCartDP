@@ -139,6 +139,17 @@ Elev          Elev    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBloc
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
+# Titan-based temp
+
+Titan-temp   Titan-temp   $(HOME)/data/pecan/mdv/temp_interp&TMP temp.colors   C   -5   80  5  dcont  1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+
 INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP temp.colors   C   -5   80  5  dcont  1 0
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors     %   -5   80  5  dcont  1 0
 EchoType      EchoType      mdvp::pid//localhost:0:$(HOME)/data/pecan/mdv/radarCart/kftg&EchoType3D  conv_strat4.colors - -5 80 5
