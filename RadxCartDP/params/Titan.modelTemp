@@ -989,7 +989,8 @@ dbz_hist_interval = 3;
 //     READ_SOUNDING_FROM_SPDB
 //     READ_SOUNDING_FROM_MODEL
 
-sounding_mode = SPECIFY_SOUNDING;
+// sounding_mode = SPECIFY_SOUNDING;
+sounding_mode = READ_SOUNDING_FROM_MODEL;
 
 ///////////// specified_sounding //////////////////////
 //
@@ -1188,7 +1189,7 @@ model_input_url = "$(HOME)/data/pecan/mdv/ruc";
 //
 // Type: int
 
-model_search_margin_secs = 10400;
+model_search_margin_secs = 7200;
 
 ///////////// model_temperature_field_name ////////////
 //

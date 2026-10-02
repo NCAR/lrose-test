@@ -4,14 +4,31 @@
 
 //======================================================================
 //
-// RadxCartDP reads radar fields in polar coordinates, radar beam 
-//   blockage, and model data in Cartesian coordinates. It computes KDP, 
-//   PID and precip rate, interpolates onto a Cartesian grid, estimates 
-//   QPE at the surface, and writes out the results to Cartesian files in 
-//   MDV NetCDF files.
+// RadxCartDP reads radar fields in polar coordinates, derives 
+//   dual-polarization-based fields in 3D Cartesian coordinates, and 
+//   writes out a 3D Cartesian file in MDV CF-NetCDF format.
 //
-// The output is written to Cartesian files in CF-compliant NetCDF 
-//   format.
+// RadxCartDP peforms the following:
+//
+//  * Reads in dual-polarization data in polar coords.
+//
+//  * Computes KDP and texture-based feature fields in polar coords.
+//
+//  * Interpolates those fields onto a 3D Cartesian grid.
+//
+//  * Reads model data and interpolates onto the 3D grid.
+//
+//  * Computes PID and precip rate on the 3D grid.
+//
+//  * Reads in terrain height (DEM) data and interpolates onto the 2D 
+//   grid.
+//
+//  * Estimates beam blockage fraction for each point in the 3D grid.
+//
+//  * Computes QPE from the 3D precipitation rate, the terrain height 
+//   and beam blockage.
+//
+//  * Computes the 3D convective/stratiform partition.
 //
 //======================================================================
  
@@ -34,11 +51,11 @@
 //     DEBUG_VERBOSE
 //     DEBUG_EXTRA
 
-debug = DEBUG_OFF;
+debug = DEBUG_NORM;
 
 //======================================================================
 //
-// RADAR DATA INPUT DIRECTORY and INPUT MODE.
+// RADAR DATA INPUT.
 //
 //======================================================================
  
@@ -74,7 +91,7 @@ radar_input_dir = "$(HOME)/data/pecan/cfradial/kftg/moments";
 //     ARCHIVE
 //     REALTIME
 
-radar_input_mode = FILELIST;
+radar_input_mode = ARCHIVE;
 
 ///////////// radar_max_realtime_data_age_secs ////////
 //
@@ -126,7 +143,7 @@ start_time = "2015 06 26 00 00 00";
 //
 // Type: string
 
-end_time = "2015 06 26 00 15 00";
+end_time = "2015 06 26 01 00 00";
 
 //======================================================================
 //
@@ -134,12 +151,15 @@ end_time = "2015 06 26 00 15 00";
 //
 //======================================================================
  
-///////////// radar_field_names ///////////////////////
+///////////// radar_fields ////////////////////////////
 //
-// Converts field type to strings.
+// Details of available radar fields. Exactly one of each field type 
+//   must be present in the parameter file.
 //
-// If input_name is empty the field is assumed to not exist in the input 
-//   data set.
+// 'is_available' specifies whether the field is available in the input 
+//   file. 'do_write' specifies wiether to write the field in the output 
+//   data set. You can rename the field on output. The following fields 
+//   are required: DBZ, VEL, WIDTH, ZDR, PHIDP, RHOHV.
 //
 // Type: struct
 //   typedef struct {
@@ -150,78 +170,100 @@ end_time = "2015 06 26 00 15 00";
 //          WIDTH
 //          SNR
 //          ZDR
-//          LDR
 //          PHIDP
 //          RHOHV
-//          KDP
+//          LDR
+//      boolean is_available;
 //      string input_name;
+//      boolean do_write;
 //      string output_name;
 //   }
 //
-// 1D array - fixed length - 9 elements.
+// 1D array - variable length.
 
-radar_field_names = {
+radar_fields = {
   {
     field_type = DBZ,
+    is_available = TRUE,
     input_name = "DBZ",
+    do_write = TRUE,
     output_name = "DBZ"
   }
   ,
   {
     field_type = VEL,
+    is_available = TRUE,
     input_name = "VEL",
+    do_write = TRUE,
     output_name = "VEL"
   }
   ,
   {
     field_type = WIDTH,
+    is_available = TRUE,
     input_name = "WIDTH",
+    do_write = TRUE,
     output_name = "WIDTH"
   }
   ,
   {
-    field_type = SNR,
-    input_name = "",
-    output_name = "SNR"
-  }
-  ,
-  {
     field_type = ZDR,
+    is_available = TRUE,
     input_name = "ZDR",
+    do_write = TRUE,
     output_name = "ZDR"
   }
   ,
   {
-    field_type = LDR,
-    input_name = "",
-    output_name = "LDR"
-  }
-  ,
-  {
     field_type = PHIDP,
+    is_available = TRUE,
     input_name = "PHIDP",
+    do_write = TRUE,
     output_name = "PHIDP"
   }
   ,
   {
     field_type = RHOHV,
+    is_available = TRUE,
     input_name = "RHOHV",
+    do_write = TRUE,
     output_name = "RHOHV"
   }
   ,
   {
-    field_type = KDP,
-    input_name = "",
-    output_name = "KDP"
+    field_type = SNR,
+    is_available = FALSE,
+    input_name = "SNR",
+    do_write = TRUE,
+    output_name = "SNR"
+  }
+  ,
+  {
+    field_type = LDR,
+    is_available = FALSE,
+    input_name = "LDR",
+    do_write = FALSE,
+    output_name = "LDR"
   }
 };
 
+///////////// estimate_snr_from_dbz ///////////////////
+//
+// Option to estimate SNR from DBZ field.
+//
+// If true, we estimate the SNR field from DBZ, using 
+//   'noise_dbz_at_100km' adjusted for range.
+//
+// Type: boolean
+
+estimate_snr_from_dbz = TRUE;
+
 ///////////// noise_dbz_at_100km //////////////////////
 //
-// The noise value, represented as dBZ at a range of 100km.
+// The estimates noise value, represented as dBZ at a range of 100km.
 //
-// This is used for computing the SNR from the DBZ field. It is only 
-//   used if SNR_available is FALSE. The SNR will be computed by 
+// This is used for estimating the SNR from the DBZ field. It is only 
+//   used if SNR is not available. The SNR will be computed by 
 //   range-correcting this value and using it as the noise value.
 //
 // Type: double
@@ -230,10 +272,10 @@ noise_dbz_at_100km = 0;
 
 //======================================================================
 //
-// MODEL FOR ENVIRONMENTAL FIELDS.
+// MODEL DATA FOR ENVIRONMENTAL CONDITIONS.
 //
-// We need access to model data to provide a temperature profile. We can 
-//   also make use of moisture and wind fields from the model.
+// We need access to model data to provide a temperature profile. We may 
+//   also store the moisture and wind fields from the model for later use.
 //
 //======================================================================
  
@@ -251,46 +293,20 @@ model_input_url = "$(HOME)/data/pecan/mdv/ruc";
 //
 // Search margin for model data (secs).
 //
-// We search for model data within this margin of the radar data.
+// We search for model data within this margin of the radar data time.
 //
 // Type: int
 
-model_search_margin_secs = 3600;
+model_search_margin_secs = 7200;
 
-///////////// write_interpolated_model_data ///////////
+///////////// model_fields ////////////////////////////
 //
-// Write out interpolated model data?.
+// Details of available model fields. Exactly one of each field type 
+//   must be present in the parameter file.
 //
-// This is useful for debugging.
-//
-// Type: boolean
-
-write_interpolated_model_data = FALSE;
-
-///////////// interpolated_model_output_url ///////////
-//
-// URL for interpolated model data, in MDV/Netcdf-CF format.
-//
-// We interpolate the model data onto the output grid. Writing out this 
-//   data is useful for debugging, allowing us to compare the original 
-//   model with the interpolated model.
-//
-// Type: string
-
-interpolated_model_output_url = "$(HOME)/data/pecan/mdv/ruc_interp";
-
-//======================================================================
-//
-// MODEL FIELD NAMES.
-//
-//======================================================================
- 
-///////////// model_field_names ///////////////////////
-//
-// Converts field type to string.
-//
-// If input_name is empty the field is assumed to not exist in the input 
-//   data set.
+// 'is_available' specifies whether the field is available in the input 
+//   file. 'do_write' specifies wiether to write the field in the output 
+//   data set. You can rename the field on output.
 //
 // Type: struct
 //   typedef struct {
@@ -301,41 +317,53 @@ interpolated_model_output_url = "$(HOME)/data/pecan/mdv/ruc_interp";
 //          UVEL
 //          VVEL
 //          WVEL
-//          NOT_SET
+//          MODEL_NOT_SET
+//      boolean is_available;
 //      string input_name;
+//      boolean do_write;
 //      string output_name;
 //   }
 //
-// 1D array - fixed length - 5 elements.
+// 1D array - variable length.
 
-model_field_names = {
+model_fields = {
   {
     field_type = TEMP,
+    is_available = TRUE,
     input_name = "TMP",
+    do_write = TRUE,
     output_name = "TEMP"
   }
   ,
   {
     field_type = RH,
+    is_available = TRUE,
     input_name = "RH",
+    do_write = TRUE,
     output_name = "RH"
   }
   ,
   {
     field_type = UVEL,
-    input_name = "UGRD",
+    is_available = FALSE,
+    input_name = "UVEL",
+    do_write = FALSE,
     output_name = "UVEL"
   }
   ,
   {
     field_type = VVEL,
-    input_name = "VGRD",
+    is_available = FALSE,
+    input_name = "VVEL",
+    do_write = FALSE,
     output_name = "VVEL"
   }
   ,
   {
     field_type = WVEL,
-    input_name = "VVEL",
+    is_available = FALSE,
+    input_name = "WVEL",
+    do_write = FALSE,
     output_name = "WVEL"
   }
 };
@@ -456,7 +484,7 @@ qpe_zr_field_name = "QPE_ZR";
 
 //======================================================================
 //
-// OUTPUT DATA DIRECTORY.
+// OUTPUT DATA.
 //
 //======================================================================
  
@@ -469,6 +497,40 @@ qpe_zr_field_name = "QPE_ZR";
 // Type: string
 
 output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
+
+///////////// name_file_from_start_time ///////////////
+//
+// If true, name the output file using the start time.
+//
+// If false, the end time is used, in the MDV tradition.
+//
+// Type: boolean
+
+name_file_from_start_time = TRUE;
+
+///////////// ncf_institution /////////////////////////
+//
+// Institution string for netCDF file.
+//
+// Type: string
+
+ncf_institution = "";
+
+///////////// ncf_references //////////////////////////
+//
+// References string for netCDF file.
+//
+// Type: string
+
+ncf_references = "";
+
+///////////// ncf_comment /////////////////////////////
+//
+// Comment string for netCDF file.
+//
+// Type: string
+
+ncf_comment = "";
 
 //======================================================================
 //
@@ -511,17 +573,6 @@ debug_polar_output_dir = "$(HOME)/data/pecan/cfradial/kftg/debug";
 // Type: string
 
 KDP_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/kdp_params.nexrad";
-
-///////////// KDP_write_debug_fields //////////////////
-//
-// Write extra fields to assist with KDP debugging.
-//
-// These are the intermediate fields used in computing KDP and 
-//   attenuation.
-//
-// Type: boolean
-
-KDP_write_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -577,16 +628,6 @@ PID_use_attenuation_corrected_fields = FALSE;
 
 PID_mode_filter_kernel_size = 5;
 
-///////////// PID_write_debug_fields //////////////////
-//
-// Write extra fields to assist with PID debugging.
-//
-// These are the intermediate fields used in computing PID.
-//
-// Type: boolean
-
-PID_write_debug_fields = FALSE;
-
 //======================================================================
 //
 // COMPUTING PRECIP RATE.
@@ -640,229 +681,6 @@ RATE_use_attenuation_corrected_fields = FALSE;
 // Type: int
 
 RATE_median_filter_kernel_size = 5;
-
-//======================================================================
-//
-// SPECIFYING PID OUTPUT FIELDS.
-//
-//======================================================================
- 
-///////////// output_fields ///////////////////////////
-//
-// Indicate which fields should be written to the output file.
-//
-// Choose the ID from the list.
-//
-// The name and units can be set however the user prefers.
-//
-// The output_encoding apply to CfRadial output only. 
-//
-// 	RATE_ZR: Precip rate from ZR
-// 	RATE_ZR_SNOW: Precip rate from ZR in dry snow
-// 	RATE_Z_ZDR: Precip rate from Z and ZDR
-// 	RATE_KDP: Precip rate from KDP
-// 	RATE_KDP_ZDR: Precip rate from KDP and ZDR
-// 	RATE_HYBRID: Precip rate from NCAR hybrid
-// 	RATE_PID: Precip rate using PID to select the appropriate rate
-// 	RATE_HIDRO: Precip rate using CSU HIDRO hybrid
-// 	RATE_BRINGI: Precip rate using Bringi hybrid
-// 	PID: NCAR Particle ID
-// 	PID_INTEREST: final interest map for NCAR Particle ID values
-// 	TEMP_FOR_PID: temperature field for PID (C)
-// 	KDP: KDP from filtering PHIDP and computing slope (deg/km)
-// 	KDP_SC: KDP conditioned using ZZDR self-consistency (deg/km)
-// 	DBZ_ATTEN_CORRECTION: DBZ attenuation correction (dB)
-// 	ZDR_ATTEN_CORRECTION: ZDR attenuation correction (dB)
-// 	DBZ_ATTEN_CORRECTED: DBZ corrected for attenuation (dBZ)
-// 	ZDR_ATTEN_CORRECTED: ZDR corrected for attenuation (dB).
-//
-// Type: struct
-//   typedef struct {
-//      output_field_id_t id;
-//        Options:
-//          RATE_ZR
-//          RATE_ZR_SNOW
-//          RATE_Z_ZDR
-//          RATE_KDP
-//          RATE_KDP_ZDR
-//          RATE_HYBRID
-//          RATE_PID
-//          RATE_HIDRO
-//          RATE_BRINGI
-//          PID_OUT
-//          PID_INTEREST
-//          TEMP_FOR_PID
-//          SD_ZDR
-//          SD_PHIDP
-//          KDP_OUT
-//          KDP_SC
-//          DBZ_ATTEN_CORRECTION
-//          ZDR_ATTEN_CORRECTION
-//          DBZ_ATTEN_CORRECTED
-//          ZDR_ATTEN_CORRECTED
-//      string name;
-//      string long_name;
-//      string standard_name;
-//      string units;
-//      boolean do_write;
-//   }
-//
-// 1D array - variable length.
-
-output_fields = {
-  {
-    id = RATE_ZR,
-    name = "RATE_ZR",
-    long_name = "precip_rate_from_z",
-    standard_name = "precip_rate_from_z",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_ZR_SNOW,
-    name = "RATE_ZR_SNOW",
-    long_name = "precip_rate_from_z_for_snow",
-    standard_name = "precip_rate_from_z_for_snow",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_Z_ZDR,
-    name = "RATE_Z_ZDR",
-    long_name = "precip_rate_from_z_and_zdr",
-    standard_name = "precip_rate_from_z_and_zdr",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_KDP,
-    name = "RATE_KDP",
-    long_name = "precip_rate_from_kdp",
-    standard_name = "precip_rate_from_kdp",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_KDP_ZDR,
-    name = "RATE_KDP_ZDR",
-    long_name = "precip_rate_from_kdp_and_zdr",
-    standard_name = "precip_rate_from_kdp_and_zdr",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_HYBRID,
-    name = "RATE_HYBRID",
-    long_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
-    standard_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_PID,
-    name = "RATE_PID",
-    long_name = "precip_rate_based_on_pid",
-    standard_name = "precip_rate_based_on_pid",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = PID_OUT,
-    name = "PID",
-    long_name = "particle_id",
-    standard_name = "hydrometeor_type",
-    units = "",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = PID_INTEREST,
-    name = "PID_INTEREST",
-    long_name = "final_interest_value_for_pid_decision",
-    standard_name = "final_interest_value_for_pid_decision",
-    units = "",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = TEMP_FOR_PID,
-    name = "TEMP_FOR_PID",
-    long_name = "temperature_for_computing_pid",
-    standard_name = "temperature",
-    units = "C",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = SD_ZDR,
-    name = "SD_ZDR",
-    long_name = "sdev_of_zdr_for_computing_pid",
-    standard_name = "sdev_zdr",
-    units = "dB",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = SD_PHIDP,
-    name = "SD_PHIDP",
-    long_name = "sdev_of_phidp_for_computing_pid",
-    standard_name = "sdev_phidp",
-    units = "deg",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = KDP_OUT,
-    name = "KDP",
-    long_name = "specific_differential_phase",
-    standard_name = "specific_differential_phase_hv",
-    units = "deg/km",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = KDP_SC,
-    name = "KDP_SC",
-    long_name = "kdp_conditioned_using_ZZDR_self_consistency",
-    standard_name = "specific_differential_phase_hv",
-    units = "deg/km",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = ZDR_ATTEN_CORRECTION,
-    name = "ZDR_ATTEN_CORRECTION",
-    long_name = "correction_to_zdr_for_attenuation",
-    standard_name = "zdr_attenuation_correction",
-    units = "dB",
-    do_write = FALSE
-  }
-  ,
-  {
-    id = DBZ_ATTEN_CORRECTED,
-    name = "DBZ_ATTEN_CORRECTED",
-    long_name = "dbz_corrected_for_attenuation",
-    standard_name = "dbz_corrected_for_attenuation",
-    units = "dBZ",
-    do_write = FALSE
-  }
-  ,
-  {
-    id = ZDR_ATTEN_CORRECTED,
-    name = "ZDR_ATTEN_CORRECTED",
-    long_name = "zdr_corrected_for_attenuation",
-    standard_name = "zdr_corrected_for_attenuation",
-    units = "dB",
-    do_write = FALSE
-  }
-};
 
 //======================================================================
 //
@@ -942,6 +760,12 @@ use_fixed_angle_for_data_limits = TRUE;
 
 beam_width_fraction_for_data_limit_extension = 0.5;
 
+//======================================================================
+//
+// CARTESIAN GRID DETAILS.
+//
+//======================================================================
+ 
 //======================================================================
 //
 // CARTESIAN GRID VERTICAL LEVELS.
@@ -1277,6 +1101,42 @@ grid_offset_origin_longitude = 0;
 
 //======================================================================
 //
+// CREATE A CARTESIAN GRID TEMPLATE CARTESIAN.
+//
+//======================================================================
+ 
+///////////// create_grid_template ////////////////////
+//
+// Option to create a template file for use by CartBeamBlock.
+//
+// If TRUE, just create an MDV file for use as a template to obtain the 
+//   Cartesian grid details. The file will contain a single field named 
+//   'template'. It will be time stamped with the current time. In order 
+//   to get the grid details correct, we need to read in one radar volume 
+//   from 'radar_input_dir'.
+//
+// Type: boolean
+
+create_grid_template = FALSE;
+
+///////////// grid_template_dir ///////////////////////
+//
+// Directory for writing template grid file.
+//
+// Type: string
+
+grid_template_dir = "/tmp/mdv/template";
+
+///////////// template_3d_field_name //////////////////
+//
+// Name of 3D template field in grid template file.
+//
+// Type: string
+
+template_3d_field_name = "template3D";
+
+//======================================================================
+//
 // SPECIFY COPY-THROUGH FIELDS.
 //
 // These input fields are read from the input file and added to the 
@@ -1410,49 +1270,32 @@ nyquist_velocity = 25;
 
 //======================================================================
 //
-// OPTION TO ADD GEOMETRY AND TIME FIELDS.
+// OPTION TO ADD DERIVED FIELDS.
 //
 // These fields are computed from the geometry of the radar rays, and 
 //   then added as input fields in native radial coordinates.
 //
 //======================================================================
  
-///////////// output_angle_fields /////////////////////
+///////////// output_KDP_field ////////////////////////
 //
-// Option to output angle fields.
+// Option to add KDP field to the output.
+//
+// KDP is derived from PHIDP.
 //
 // Type: boolean
 
-output_angle_fields = FALSE;
+output_KDP_field = TRUE;
 
-///////////// angle_fields ////////////////////////////
+///////////// KDP_field_name //////////////////////////
 //
-// Specify the output names of the angle fields. If set to empty, that 
-//   field will not be created.
+// Name of KDP field to be written.
 //
-// 	azimuth: the azimuth of the ray (deg)
-// 	elevation: the elevation of the ray (deg)
-// 	alpha: sin(az) * cos(el)
-// 	beta: cos(az) * cos(el)
-// 	gamma: sin(el).
+// See 'output_KDP_field'.
 //
-// Type: struct
-//   typedef struct {
-//      string azimuth_field_name;
-//      string elevation_field_name;
-//      string alpha_field_name;
-//      string beta_field_name;
-//      string gamma_field_name;
-//   }
-//
+// Type: string
 
-angle_fields = {
-    azimuth_field_name = "azimuth",
-    elevation_field_name = "elevation",
-    alpha_field_name = "alpha",
-    beta_field_name = "beta",
-    gamma_field_name = "gamma"
-};
+KDP_field_name = "KDP";
 
 ///////////// output_range_field //////////////////////
 //
@@ -1548,19 +1391,49 @@ time_field_name = "time_elapsed";
 
 interp_time_field = TRUE;
 
-//======================================================================
+///////////// output_angle_fields /////////////////////
 //
-// OPTION TO ADD DEBUG FIELDS.
+// Option to output angle fields.
 //
-// The debug fields are added to the output Cartesian grid. These are 
+// Type: boolean
+
+output_angle_fields = FALSE;
+
+///////////// angle_fields ////////////////////////////
+//
+// Specify the output names of the angle fields. If set to empty, that 
+//   field will not be created.
+//
+// 	azimuth: the azimuth of the ray (deg)
+// 	elevation: the elevation of the ray (deg)
+// 	alpha: sin(az) * cos(el)
+// 	beta: cos(az) * cos(el)
+// 	gamma: sin(el).
+//
+// Type: struct
+//   typedef struct {
+//      string azimuth_field_name;
+//      string elevation_field_name;
+//      string alpha_field_name;
+//      string beta_field_name;
+//      string gamma_field_name;
+//   }
+//
+
+angle_fields = {
+    azimuth_field_name = "azimuth",
+    elevation_field_name = "elevation",
+    alpha_field_name = "alpha",
+    beta_field_name = "beta",
+    gamma_field_name = "gamma"
+};
+
+///////////// write_interp_debug_fields ///////////////
+//
+// Option to write out debug fields for checking the interpolation. The 
+//   debug fields are added to the output Cartesian grid. These are 
 //   geometry fields, and can be used to ensure the interpolation is 
 //   working as expected.
-//
-//======================================================================
- 
-///////////// output_debug_fields /////////////////////
-//
-// Option to add debug fields for checking the interpolation.
 //
 // The test fields allow us to ensure that the interpolation is working 
 //   correctly.
@@ -1582,7 +1455,7 @@ interp_time_field = TRUE;
 //
 // Type: boolean
 
-output_debug_fields = FALSE;
+write_interp_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -1785,118 +1658,6 @@ gate_spacing_km = 0.25;
 
 //======================================================================
 //
-// CF NetCDF OUTPUT DETAILS.
-//
-//======================================================================
- 
-///////////// specify_output_filename /////////////////
-//
-// If true, the file will be named 'output_filename'.
-//
-// If false, the file name will be computed from the data time.
-//
-// Type: boolean
-
-specify_output_filename = FALSE;
-
-///////////// output_filename /////////////////////////
-//
-// Name of output file.
-//
-// Applies only if specify_output_filename is true.
-//
-// Type: string
-
-output_filename = "ncfGrid.nc";
-
-///////////// name_file_from_start_time ///////////////
-//
-// If true, name the output file using the start time.
-//
-// If false, the end time is used, in the MDV tradition.
-//
-// Type: boolean
-
-name_file_from_start_time = TRUE;
-
-///////////// netcdf_file_prefix //////////////////////
-//
-// User-specified output file prefix, comes before date_time.
-//
-// Type: string
-
-netcdf_file_prefix = "ncf_";
-
-///////////// netcdf_file_suffix //////////////////////
-//
-// User-specified output file suffix, comes after the date_time and 
-//   before the .nc which gets automatically added on.
-//
-// Type: string
-
-netcdf_file_suffix = "";
-
-///////////// use_iso8601_filename_convention /////////
-//
-// If true the output filename uses the prefix, followed by ISO 8601 
-//   timestamp convention.
-//
-// eg. prefix.2008-05-22T14:00:00.nc.
-//
-// Type: boolean
-
-use_iso8601_filename_convention = FALSE;
-
-///////////// ncf_title ///////////////////////////////
-//
-// Title string for netCDF file.
-//
-// Type: string
-
-ncf_title = "KFTG radar data";
-
-///////////// ncf_institution /////////////////////////
-//
-// Institution string for netCDF file.
-//
-// Type: string
-
-ncf_institution = "";
-
-///////////// ncf_references //////////////////////////
-//
-// References string for netCDF file.
-//
-// Type: string
-
-ncf_references = "";
-
-///////////// ncf_source //////////////////////////////
-//
-// Source string for netCDF file.
-//
-// Type: string
-
-ncf_source = "NWS";
-
-///////////// ncf_history /////////////////////////////
-//
-// History string for netCDF file.
-//
-// Type: string
-
-ncf_history = "";
-
-///////////// ncf_comment /////////////////////////////
-//
-// Comment string for netCDF file.
-//
-// Type: string
-
-ncf_comment = "";
-
-//======================================================================
-//
 // PROCESS CONTROL.
 //
 //======================================================================
@@ -1974,6 +1735,88 @@ use_multiple_threads = TRUE;
 // Type: int
 
 n_compute_threads = 8;
+
+//======================================================================
+//
+// CONVECTIVE/STRATIFORM PARTITION.
+//
+//======================================================================
+ 
+///////////// identify_conv_strat_partition ///////////
+//
+// Option to identify the convective / stratiform split.
+//
+// Uses the standard deviation of reflectivity as a texture field for 
+//   each Cartesian plane. Low variability indicates stratiform 
+//   conditions.
+//
+// Type: boolean
+
+identify_conv_strat_partition = TRUE;
+
+///////////// conv_strat_params_file_path /////////////
+//
+// Path for parameters for computing convective-stratiform partition, if 
+//   specified.
+//
+// If set to use-defaults, no parameter file will be read in, and the 
+//   default parameters will be used.
+//
+// Type: string
+
+conv_strat_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/conv_strat_params.nexrad";
+
+///////////// conv_strat_write_partition //////////////
+//
+// Option to write out the convective/stratiform partition.
+//
+// If true, the 3-D partition will be added to the output file.
+//
+// Type: boolean
+
+conv_strat_write_partition = TRUE;
+
+///////////// conv_strat_write_convectivity ///////////
+//
+// Option to write out the convective/stratiform partition.
+//
+// If true, the 3-D convectivity field will be added to the output file.
+//
+// Type: boolean
+
+conv_strat_write_convectivity = TRUE;
+
+///////////// conv_strat_write_convective_dbz /////////
+//
+// Option to write out the dbz field in convection.
+//
+// This is a 3D field - the reflectivity trimmed only to convective 
+//   regions, based on the convective/stratiform partition.
+//
+// Type: boolean
+
+conv_strat_write_convective_dbz = TRUE;
+
+///////////// conv_strat_write_echo_tops //////////////
+//
+// Option to write out echo tops fields.
+//
+// If true, the echo tops and convective echo tops will be written to 
+//   the output file.
+//
+// Type: boolean
+
+conv_strat_write_echo_tops = TRUE;
+
+///////////// conv_strat_write_debug_fields ///////////
+//
+// Option to write out the intermediate fields for debug purposes.
+//
+// If true, the intermediate fields will be written to the output file.
+//
+// Type: boolean
+
+conv_strat_write_debug_fields = TRUE;
 
 //======================================================================
 //
@@ -2062,86 +1905,4 @@ echo_orientation_n_points_sdev_h = 3;
 // Type: int
 
 echo_orientation_n_points_sdev_v = 3;
-
-//======================================================================
-//
-// CONVECTIVE/STRATIFORM PARTITION.
-//
-//======================================================================
- 
-///////////// identify_conv_strat_partition ///////////
-//
-// Option to identify the convective / stratiform split.
-//
-// Uses the standard deviation of reflectivity as a texture field for 
-//   each Cartesian plane. Low variability indicates stratiform 
-//   conditions.
-//
-// Type: boolean
-
-identify_conv_strat_partition = TRUE;
-
-///////////// conv_strat_params_file_path /////////////
-//
-// Path for parameters for computing convective-stratiform partition, if 
-//   specified.
-//
-// If set to use-defaults, no parameter file will be read in, and the 
-//   default parameters will be used.
-//
-// Type: string
-
-conv_strat_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/conv_strat_params.nexrad";
-
-///////////// conv_strat_write_partition //////////////
-//
-// Option to write out the convective/stratiform partition.
-//
-// If true, the 3-D partition will be added to the output file.
-//
-// Type: boolean
-
-conv_strat_write_partition = TRUE;
-
-///////////// conv_strat_write_convectivity ///////////
-//
-// Option to write out the convective/stratiform partition.
-//
-// If true, the 3-D convectivity field will be added to the output file.
-//
-// Type: boolean
-
-conv_strat_write_convectivity = TRUE;
-
-///////////// conv_strat_write_convective_dbz /////////
-//
-// Option to write out the dbz field in convection.
-//
-// This is a 3D field - the reflectivity trimmed only to convective 
-//   regions, based on the convective/stratiform partition.
-//
-// Type: boolean
-
-conv_strat_write_convective_dbz = TRUE;
-
-///////////// conv_strat_write_echo_tops //////////////
-//
-// Option to write out echo tops fields.
-//
-// If true, the echo tops and convective echo tops will be written to 
-//   the output file.
-//
-// Type: boolean
-
-conv_strat_write_echo_tops = TRUE;
-
-///////////// conv_strat_write_debug_fields ///////////
-//
-// Option to write out the intermediate fields for debug purposes.
-//
-// If true, the intermediate fields will be written to the output file.
-//
-// Type: boolean
-
-conv_strat_write_debug_fields = TRUE;
 
