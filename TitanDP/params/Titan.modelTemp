@@ -490,7 +490,7 @@ high_convectivity_threshold = 1;
 //
 // Type: boolean
 
-identify_convective_regions = FALSE;
+identify_convective_regions = TRUE;
 
 ///////////// convection_finder_min_valid_height //////
 //
@@ -591,7 +591,7 @@ convection_finder_min_overlap_for_convective_clumps = 3;
 //
 // Type: boolean
 
-convection_finder_write_debug_files = FALSE;
+convection_finder_write_debug_files = TRUE;
 
 ///////////// convection_finder_output_url ////////////
 //
@@ -601,7 +601,7 @@ convection_finder_write_debug_files = FALSE;
 //
 // Type: string
 
-convection_finder_output_url = "mdv/convection";
+convection_finder_output_url = "$(HOME)/data/pecan/mdv/conv_strat";
 
 //======================================================================
 //
