@@ -1,0 +1,6 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/RadxConvert/params
+
+RadxConvert -params RadxConvert.kbuf -cf2 -outdir ~/data/lrose-test/RadxConvert/kbuf/cf2 -start "2022 11 18 00 00 00" -end "2022 11 18 01 00 00" -debug
+

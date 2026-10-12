@@ -1,0 +1,7 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/RadxConvert/params
+
+HawkEye -params HawkEye.kbuf -archive_url ~/data/lrose-test/RadxConvert/kbuf/cf2 -start_time "2022 11 18 00 00 00" -time_span 3600
+
+
