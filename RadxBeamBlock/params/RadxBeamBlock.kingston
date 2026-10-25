@@ -170,7 +170,7 @@ radar_name = "KINGSTON";
 radar_location = {
     latitudeDeg = 18.073312,
     longitudeDeg = -76.852764,
-    altitudeKm = 0.780
+    altitudeKm = 0.772
 };
 
 ///////////// do_lookup_radar_altitude ////////////////

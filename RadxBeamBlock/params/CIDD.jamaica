@@ -112,6 +112,16 @@ BEAMB_BBAY     BEAMB_BBAY    $(HOME)/data/jamaica/beamblock/BBAY&BEAMB       bea
 BEAML_BBAY     BEAML_BBAY    $(HOME)/data/jamaica/beamblock/BBAY&BEAML       fraction.colors    frac  -5 80 5 cart 1 0
 PEAK_BBAY      PEAK_BBAY     $(HOME)/data/jamaica/beamblock/BBAY&PEAK        terrain_m.colors    m   -5 80 5 cart 1 0
 
+BEAME_MALDEN     BEAME_MALDEN    $(HOME)/data/jamaica/beamblock/MALDEN&BEAME       fraction.colors   frac   -5 80 5 cart 1 0
+BEAMB_MALDEN     BEAMB_MALDEN    $(HOME)/data/jamaica/beamblock/MALDEN&BEAMB       beamb.colors    dB   -5 80 5 cart 1 0
+BEAML_MALDEN     BEAML_MALDEN    $(HOME)/data/jamaica/beamblock/MALDEN&BEAML       fraction.colors    frac  -5 80 5 cart 1 0
+PEAK_MALDEN      PEAK_MALDEN     $(HOME)/data/jamaica/beamblock/MALDEN&PEAK        terrain_m.colors    m   -5 80 5 cart 1 0
+
+BEAME_MT_HOREB     BEAME_MT_HOREB    $(HOME)/data/jamaica/beamblock/MT_HOREB&BEAME       fraction.colors   frac   -5 80 5 cart 1 0
+BEAMB_MT_HOREB     BEAMB_MT_HOREB    $(HOME)/data/jamaica/beamblock/MT_HOREB&BEAMB       beamb.colors    dB   -5 80 5 cart 1 0
+BEAML_MT_HOREB     BEAML_MT_HOREB    $(HOME)/data/jamaica/beamblock/MT_HOREB&BEAML       fraction.colors    frac  -5 80 5 cart 1 0
+PEAK_MT_HOREB      PEAK_MT_HOREB     $(HOME)/data/jamaica/beamblock/MT_HOREB&PEAK        terrain_m.colors    m   -5 80 5 cart 1 0
+
 TerrainHt  TerrainHt  $(HOME)/data/jamaica/beamblock/KINGSTON/cart_terrain&terrain_ht     terrain_low.colors   m   -5   80  5  cart   1 0
 TerrainHt  TerrainHt  $(HOME)/data/jamaica/beamblock/MONTEGO/cart_terrain&terrain_ht     terrain_low.colors   m   -5   80  5  cart   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
@@ -138,7 +148,7 @@ TerrainHt  TerrainHt  $(HOME)/data/jamaica/beamblock/MONTEGO/cart_terrain&terrai
 #------------------------------------------------------------------------------------------
 
 Coast   Coast        jamaica_coastline.shp   1  0.0 1000000.0  white
-Roads   Roads        jamaica_roads.shp       1  0.0 1000000.0  gray
+Roads   Roads        jamaica_roads.shp       0  0.0 1000000.0  gray
 
 </MAPS>
 
@@ -731,7 +741,7 @@ cidd.domain_follows_data: 0
 cidd.range_ring_x_space:    40
 cidd.range_ring_y_space:    13
 cidd.azmith_interval:       30.0
-cidd.azmith_radius:         200.0
+cidd.azmith_radius:         250.0
 
 # Toggles to turn on/off  Extras features on startup
 cidd.range_rings:             1
