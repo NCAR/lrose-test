@@ -1,0 +1,9 @@
+#! /bin/csh
+   
+source set_env_vars
+
+cd $PROJ_DIR/params
+
+RadxConvert -outdir $DATA_DIR/jastrebac/cfradial -debug -params RadxConvert.jastrebac -f $DATA_DIR/jastrebac/raw/2017-08-12/201708121*
+
+

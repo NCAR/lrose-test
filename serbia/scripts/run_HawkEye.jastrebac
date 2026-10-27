@@ -1,0 +1,8 @@
+#! /bin/csh
+
+source set_env_vars
+
+cd $PROJ_DIR/params
+
+HawkEye -params HawkEye.jastrebac -f ${DATA_DIR}/jastrebac/cfradial/20170812/*nc
+

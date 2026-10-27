@@ -1,0 +1,4 @@
+# set env vars for jastrebac radar in serbia
+
+setenv DATA_DIR $HOME/data/serbia
+setenv PROJ_DIR $HOME/git/lrose-test/serbia
