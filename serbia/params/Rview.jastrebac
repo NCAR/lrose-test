@@ -229,8 +229,8 @@ Rview.use_track_data: true
 
 # If you are using track data you need to specify the URL for the DsTitanServer
 
-# Rview.titan_server_url: titanp:://localhost::$(DATA_DIR)/jastrebac/titan/storms
-Rview.titan_server_url: titanp:://localhost::$(DATA_DIR)/jastrebac/titan/storms_anna
+Rview.titan_server_url: titanp:://localhost::$(DATA_DIR)/jastrebac/titan/storms
+# Rview.titan_server_url: titanp:://localhost::$(DATA_DIR)/jastrebac/titan/storms_anna
 
 # How often to check for new track data (secs)
 
