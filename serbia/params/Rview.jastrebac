@@ -22,7 +22,8 @@ Rview.instance: jastrebac
 # In archive mode, the time_requested is used.
 #
 
-Rview.time_requested: 2017 08 12 15 30 00
+#Rview.time_requested: 2017 08 12 15 30 00
+Rview.time_requested: 2017 08 12 16 30 00
 Rview.mode: archive
 Rview.time_label: UTC
 Rview.localtime: false
@@ -86,10 +87,10 @@ Rview.grid_lat: 43.3912
 Rview.grid_lon: 21.4433
 Rview.grid_rot: 0.0
 
-Rview.full_min_x: -150.0
-Rview.full_min_y: -150.0
-Rview.full_max_x: 150.0
-Rview.full_max_y: 150.0
+Rview.full_min_x: -200.0
+Rview.full_min_y: -200.0
+Rview.full_max_x: 200.0
+Rview.full_max_y: 200.0
 
 #######################################################################
 # Initial plot settings

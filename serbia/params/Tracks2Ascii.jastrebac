@@ -143,7 +143,7 @@ scan_interval = 300;
 //
 // Type: int
 
-min_duration = 900;
+min_duration = 0;
 
 ///////////// use_box_limits //////////////////////////
 //
