@@ -23,7 +23,7 @@ Rview.instance: jastrebac
 #
 
 #Rview.time_requested: 2017 08 12 15 30 00
-Rview.time_requested: 2017 08 12 16 30 00
+Rview.time_requested: 2017 08 12 16 13 00
 Rview.mode: archive
 Rview.time_label: UTC
 Rview.localtime: false
@@ -50,7 +50,7 @@ Rview.delta_z: 0.5
 # diameter (km) of track node graphic when plotting vectors only
 #  i.e. not ellipses or polygons
 
-Rview.node_icon_diam_km: 1.0
+Rview.node_icon_diam_km: 10.0
 
 # mouse double-clicking delay - secs - set to your taste
 
@@ -250,7 +250,7 @@ Rview.future_plot_period: 30.0
 
 Rview.plot_tracks: all_tracks
 Rview.plot_current: true
-Rview.plot_past: limited
+Rview.plot_past: false
 Rview.plot_future: false
 Rview.plot_forecast: false
 Rview.track_graphic: polygons
@@ -432,7 +432,7 @@ Rview.x_border_color: CadetBlue
 Rview.x_hlight_background: mediumblue
 Rview.x_contourlabel_color: gray50
 
-Rview.x_current_storm_color: cyan
+Rview.x_current_storm_color: white
 Rview.x_past_storm_color: yellow
 Rview.x_past_storm_color_2: gold
 Rview.x_future_storm_color: seagreen2

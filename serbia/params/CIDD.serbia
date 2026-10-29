@@ -97,7 +97,7 @@ field_list = {
 
 # Cart data
 
-JASTREBAC_DBZ   JASTREBAC_DBZ    $(DATA_DIR)/jastrebac/cfradial&DBZ       dbz.colors   dBZ -5 80 5 radial 1 0
+JASTREBAC_DBZ   JASTREBAC_DBZ    $(DATA_DIR)/jastrebac/cfradial&DBZ       dbz_color.colors   dBZ -5 80 5 radial 1 0
 JASTREBAC_VEL   JASTREBAC_VEL    $(DATA_DIR)/jastrebac/cfradial&VEL       vel.colors   m/s -5 80 5 radial 1 0
 JASTREBAC_WIDTH JASTREBAC_WIDTH  $(DATA_DIR)/jastrebac/cfradial&WIDTH     width.colors m/s -5 80 5 radial 1 0
 JASTREBAC_ZDR   JASTREBAC_ZDR    $(DATA_DIR)/jastrebac/cfradial&ZDR       zdr.colors   dB  -5 80 5 radial 1 0
@@ -106,7 +106,7 @@ JASTREBAC_RHOHV JASTREBAC_RHOHV  $(DATA_DIR)/jastrebac/cfradial&RHOHV     rhohv.
 JASTREBAC_KDP   JASTREBAC_KDP    $(DATA_DIR)/jastrebac/cfradial&KDP       kdp.colors -   -5 80 5 radial 1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
-CART_DBZ   CART_DBZ    $(DATA_DIR)/jastrebac/radarCart&DBZ       dbz.colors   dBZ -5 80 5 radial 1 0
+CART_DBZ   CART_DBZ    $(DATA_DIR)/jastrebac/radarCart&DBZ       dbz_color.colors   dBZ -5 80 5 radial 1 0
 CART_VEL   CART_VEL    $(DATA_DIR)/jastrebac/radarCart&VEL       vel.colors   m/s -5 80 5 radial 1 0
 CART_WIDTH CART_WIDTH  $(DATA_DIR)/jastrebac/radarCart&WIDTH     width.colors m/s -5 80 5 radial 1 0
 CART_ZDR   CART_ZDR    $(DATA_DIR)/jastrebac/radarCart&ZDR       zdr.colors   dB  -5 80 5 radial 1 0
@@ -220,7 +220,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  15:10 08/12/2017
+cidd.demo_time:  15:00 08/12/2017
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
