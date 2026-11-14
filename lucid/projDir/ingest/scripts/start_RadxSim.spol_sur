@@ -1,0 +1,13 @@
+#! /bin/csh
+
+source ~/git/lrose-test/lucid/projDir/system/dotfiles/cshrc
+
+cd $PROJ_DIR/ingest/params
+
+Titan -params Titan.modelTemp -start "2015 06 26 00 00 00" -end "2015 06 26 01 00 00" -debug
+
+source ~/git/lrose-test/lucid/system/dotfiles/cshrc
+
+cd ~/git/lrose-test/TitanDP/params
+
+Titan -params Titan.modelTemp -start "2015 06 26 00 00 00" -end "2015 06 26 01 00 00" -debug
