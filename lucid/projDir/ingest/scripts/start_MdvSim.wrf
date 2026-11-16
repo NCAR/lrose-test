@@ -1,0 +1,13 @@
+#! /bin/csh
+
+source ~/git/lrose-test/lucid/projDir/system/dotfiles/cshrc
+
+cd $PROJ_DIR/ingest/params
+
+running "MdvSim -params MdvSim.wrf"
+
+if ($status == 1) then
+    MdvSim -params MdvSim.wrf -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p MdvSim -i wrf >& /dev/null &
+endif
+

@@ -132,7 +132,7 @@ continue_on_input_error = TRUE;
 //
 // Type: double
 
-replay_rate = 10;
+replay_rate = 5;
 
 ///////////// time_offset_secs ////////////////////////
 //
