@@ -1,0 +1,13 @@
+#! /bin/csh
+
+source ~/git/lrose-test/lucid/projDir/system/dotfiles/cshrc
+
+cd $PROJ_DIR/ingest/params
+
+running "RadxSim -params RadxSim.spol_rhi"
+
+if ($status == 1) then
+    RadxSim -params RadxSim.spol_rhi -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p RadxSim -i spol_rhi >& /dev/null &
+endif
+

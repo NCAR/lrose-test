@@ -1,0 +1,13 @@
+#! /bin/csh
+
+source ~/git/lrose-test/lucid/projDir/system/dotfiles/cshrc
+
+cd $PROJ_DIR/ingest/params
+
+running "MdvSim -params MdvSim.himawari_ch03"
+
+if ($status == 1) then
+    MdvSim -params MdvSim.himawari_ch03 -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p MdvSim -i himawari_ch03 >& /dev/null &
+endif
+

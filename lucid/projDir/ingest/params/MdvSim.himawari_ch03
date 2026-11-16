@@ -1,0 +1,222 @@
+/**********************************************************************
+ * TDRP params for MdvSim
+ **********************************************************************/
+
+//======================================================================
+//
+// MdvSim replays archive MDV data as a realtime file feed.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS REGISTRATION.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Program instance for procmap registration.
+//
+// Type: string
+
+instance = "himawari_ch03";
+
+//======================================================================
+//
+// INPUT FILE SELECTION.
+//
+//======================================================================
+ 
+///////////// input_mode //////////////////////////////
+//
+// Input selection mode.
+//
+// FILE_LIST uses input_file_paths or paths supplied with -f. ARCHIVE 
+//   searches input_url over the inclusive archive range.
+//
+// Type: enum
+// Options:
+//     FILE_LIST
+//     ARCHIVE
+
+input_mode = ARCHIVE;
+
+///////////// input_data_type /////////////////////////
+//
+// Whether the input uses normal valid-time or forecast hierarchy.
+//
+// All inputs in one MdvSim instance must use the same type.
+//
+// Type: enum
+// Options:
+//     NON_FORECAST
+//     FORECAST
+
+input_data_type = NON_FORECAST;
+
+///////////// input_file_paths ////////////////////////
+//
+// Explicit MDV input paths.
+//
+// Used in FILE_LIST mode. Paths supplied with -f are appended.
+//
+// Type: string
+// 1D array - variable length.
+
+input_file_paths = {
+};
+
+///////////// input_url ///////////////////////////////
+//
+// Archive MDV input URL.
+//
+// Used in ARCHIVE mode.
+//
+// Type: string
+
+input_url = "$(HOME)/data/lucid/precip/mdv/himawari_ch03";
+
+///////////// archive_start_time //////////////////////
+//
+// Inclusive archive start time.
+//
+// For forecast input this selects generation times.
+//
+// Type: string
+
+archive_start_time = "2022 06 08 00 00 0";
+
+///////////// archive_end_time ////////////////////////
+//
+// Inclusive archive end time.
+//
+// For forecast input this selects generation times.
+//
+// Type: string
+
+archive_end_time = "2022 06 09 01 00 00";
+ 
+///////////// continue_on_input_error /////////////////
+//
+// Continue after unreadable or unsupported input.
+//
+// Type: boolean
+
+continue_on_input_error = TRUE;
+
+//======================================================================
+//
+// REPLAY CLOCK.
+//
+//======================================================================
+ 
+///////////// replay_rate /////////////////////////////
+//
+// Replay speed multiplier.
+//
+// Must be greater than zero. This scales intervals between input 
+//   products, not the time relationships within a product.
+//
+// Type: double
+
+replay_rate = 10;
+
+///////////// time_offset_secs ////////////////////////
+//
+// Offset applied to output data times, seconds.
+//
+// This changes header times without changing replay waits.
+//
+// Type: int
+
+time_offset_secs = 0;
+
+///////////// delivery_delay_secs /////////////////////
+//
+// Delivery delay relative to the mapped product time, seconds.
+//
+// This changes publication deadlines without changing header times. It 
+//   may be negative.
+//
+// Type: double
+
+delivery_delay_secs = 0;
+
+///////////// repeat_replay ///////////////////////////
+//
+// Repeat the resolved input sequence.
+//
+// Type: boolean
+
+repeat_replay = TRUE;
+
+///////////// inter_cycle_gap_secs ////////////////////
+//
+// Gap between repeated cycles, seconds.
+//
+// Must be at least one second when repeat_replay is TRUE because 
+//   standard MDV paths have one-second resolution.
+//
+// Type: int
+
+inter_cycle_gap_secs = 1;
+
+//======================================================================
+//
+// OUTPUT.
+//
+//======================================================================
+ 
+///////////// output_dir //////////////////////////////
+//
+// Local realtime output directory.
+//
+// Type: string
+
+output_dir = "$(HOME)/data/lucid/sim/mdv/himawari_ch03";
+
+///////////// output_format ///////////////////////////
+//
+// Output file format.
+//
+// PRESERVE_INPUT retains MDV versus NCF representation. OUTPUT_MDV 
+//   writes classic MDV where its time range permits. OUTPUT_NCF writes 
+//   NetCDF.
+//
+// Type: enum
+// Options:
+//     PRESERVE_INPUT
+//     OUTPUT_MDV
+//     OUTPUT_NCF
+
+output_format = OUTPUT_NCF;
+
+///////////// write_using_extended_paths //////////////
+//
+// Use extended MDV output paths.
+//
+// Type: boolean
+
+write_using_extended_paths = FALSE;
+
+///////////// append_year_dir_to_output_dir ///////////
+//
+// Add a year directory above the day directory.
+//
+// Type: boolean
+
+append_year_dir_to_output_dir = FALSE;
+

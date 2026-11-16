@@ -1,0 +1,451 @@
+#########################################
+# .cshrc file for mdtest
+#########################################
+
+if ( $?prompt ) then
+  set prompt="(`hostname`) `basename $cwd` ! % "
+  set autoexpand
+  set autolist
+  set cdpath = ( ~ )
+  set pushdtohome
+endif
+
+unset autologout
+set autologout=0
+balooctl disable >& /dev/null
+
+umask 002
+setenv TAPE /dev/st0
+#setenv PRINTER ET-2720-Series
+#setenv PRINTER eol-color-nw
+#setenv PRINTER HP-Color-Laserjet-5M
+setenv PRINTER Xerox-RSF
+
+#unsetenv MANPATH
+
+setenv EDITOR emacs
+setenv PAGER less
+
+# hostname
+
+set hostname=`hostname`
+
+# git completion
+
+if ( -f $HOME/.git-completion.csh ) then
+    source $HOME/.git-completion.csh
+endif
+
+###############################################
+# Set the build environment - LINUX
+
+setenv LANG C
+#setenv LANG en_US.utf8
+
+set path = ($path /usr/bin)
+setenv HOST_OS LINUX_LROSE
+# check if we are using qt5 instead of 6
+# if so set the host OS accordingly
+qmake --version |& grep "Using Qt version 5" > & /dev/null
+if ($status == 0) then
+  setenv HOST_OS LINUX_QT5
+endif
+
+setenv LROSE_INSTALL_DIR $HOME/lrose
+setenv LROSE_CORE_DIR $HOME/git/lrose-core
+
+#setenv HOST_OS LINUX_64_CIDD32
+#setenv LROSE_INSTALL_DIR $HOME/cidd
+#setenv LROSE_CORE_DIR $HOME/git/lrose-core
+
+# testing MAMBA_FORGE
+
+#setenv HOST_OS MAMBA_FORGE
+#setenv LROSE_INSTALL_DIR /tmp/lrose_mamba_test
+
+setenv MY_NETCDF4_INCS
+setenv MY_NETCDF4_LIBS
+setenv MY_CFLAGS
+#setenv MY_CPPC_CFLAGS " -std=c++11 -pedantic-errors "
+setenv MY_CPPC_CFLAGS " -std=c++17 "
+
+setenv GCC_WARNINGS "-Wall "
+
+##################################################
+# building readyflow for spoldrx
+
+setenv WINDRIVERVERSION 1130
+setenv WD_BASEDIR /usr/local/src/WinDriver1130_64
+setenv READYFLOW_71620_LINUX $HOME/git/spoldrx/src/ReadyFlow/linux/3.0
+
+# --- OTHER BUILD SETTINGS
+
+setenv QTDIR /usr/local/qt5
+setenv FC gfortran
+
+# --- LD library path --
+
+setenv LD_LIBRARY_PATH $LROSE_INSTALL_DIR/lib
+
+# --- NCAR GRAPHICS ---
+
+setenv NCARG_ROOT /usr/local/ncarg
+
+# --- JAVA ---
+
+#setenv JAVA_HOME /usr/java/latest
+setenv JAVA_HOME ~/java/jdk-18.0.2.1
+#setenv ANT_HOME /usr/local/ant
+setenv ANT_HOME $HOME/git/lrose-jazz/ant
+#setenv ANT_HOME /usr/bin/ant
+setenv RAP_INST_JAVA_DIR /home/dixon/cvs/java/dist/lib
+
+# --- RELEASES ---
+
+setenv RELEASES $HOME/releases
+
+# --- RUNTIME ---
+
+setenv PROJ_DIR $HOME/projDir
+setenv DATA_HOST localhost
+# setenv TITAN_HOME $PROJ_DIR
+setenv TITAN_HOME $HOME/data/mexico
+setenv MEXICO_HOME $HOME/data/mexico
+setenv DATA_DIR $PROJ_DIR/data
+setenv RADX_DATA_DIR $DATA_DIR/radx
+setenv TMP_DIR $DATA_DIR/tmp
+setenv LOG_DIR $PROJ_DIR/logs
+setenv DATA_DISTRIB_LOG_DIR $LOG_DIR/distrib
+setenv ERRORS_LOG_DIR $LOG_DIR/status
+setenv RESTART_LOG_DIR $LOG_DIR/restart
+
+setenv PROCMAP_HOST localhost
+setenv DATA_MAPPER_ACTIVE true
+setenv LDATA_FMQ_ACTIVE true
+
+setenv DS_COMM_TIMEOUT_MSECS 60000
+setenv DS_PING_TIMEOUT_MSECS 20000
+
+
+# udunits XML
+
+#setenv UDUNITS2_XML_PATH /usr/share/udunits/udunits2.xml
+#setenv UDUNITS2_XML_PATH /opt/local/lib/udunits2.xml
+
+# --- site info --- 
+
+if (-f $PROJ_DIR/system/params/site_params) then
+  source $PROJ_DIR/system/params/site_params
+endif
+
+if (-f $PROJ_DIR/system/params/site_info) then
+  source $PROJ_DIR/system/params/site_info
+endif
+
+if (-f $PROJ_DIR/system/params/project_info) then
+  source $PROJ_DIR/system/params/project_info
+endif
+
+# --- PYTHON ---
+
+# setenv PYTHONPATH ~/miniforge3/pkgs
+
+# -------- HSRL --------
+
+setenv HSRL_CONFIG ~/hsrl_config
+setenv GRIB_CACHE /scr/eldora1/HSRL_data/GFS_cache
+
+# --- Path ---
+
+# Assemble path to include all scripts directories
+# then projDir/bin, then the rest
+
+set path = (.)
+
+if ( -d $LROSE_INSTALL_DIR/bin ) then
+  set path = ($path $LROSE_INSTALL_DIR/bin)
+endif
+
+if ( -d $HOME/lrose/bin ) then
+  set path = ($path $HOME/lrose/bin)
+endif
+
+if ( -d $PROJ_DIR ) then
+  foreach dir ($PROJ_DIR/*)
+    if (-d $dir/scripts) then
+      set path = ($path $dir/scripts)
+    endif
+  end
+endif
+
+set path = ($path ~/spol_control/bin)
+set path = ($path /usr/bin)
+set path = ($path /usr/lib64/qt5/bin)
+
+set path = ($path $ANT_HOME/bin $JAVA_HOME/bin)
+
+set path = ($path ~/java/jdk-18.0.2.1/bin/java/bin)
+
+set path = ($path ~/bin)
+set path = ($path /opt/local/lrose/bin)
+
+set path = ($path \
+	$NCARG_ROOT/bin \
+        /usr/X11R6/bin /sbin /usr/sbin /usr/bin /sbin /bin \
+	/usr/bin/X11 /usr/local/bin /usr/local/sbin \
+	/opt/gfortran/irun/bin \
+        /usr/lib64/qt5/bin /usr/lib/qt5/bin )
+
+set path = ($path /home/mdtest/src/HDFView/2.11.0/bin )
+
+if ( -d ~/cidd/bin ) then
+  set path = ($path ~/cidd/bin)
+endif
+
+
+# -- core files --
+# unlimit coredumpsize
+
+# --- Aliases ---
+
+if ($?prompt) then
+
+  alias sc source ~/.cshrc
+
+  alias setprompt 'set prompt="(`hostname`) `basename $cwd` ! % "'
+  alias cd 'cd \!*;setprompt; echo $cwd'
+  alias push 'pushd \!*; cd .'
+  alias pop 'popd; cd .'
+
+#  set prompt = "%m:%~%# "             # tcsh
+#  set showdots                        # tcsh
+  set watch = (1 root any)            # tcsh
+  set history=100
+  alias h history
+  # set savehist=0
+  set nobeep
+  set time = 5
+
+  alias ssh 'ssh -XY'
+  alias sshagent 'ssh-agent csh'
+
+  alias rm 'rm -i'
+  alias mv 'mv -i'
+  alias cp 'cp -i' 
+
+  alias df 'df -h'
+  set filec
+  set fignore = (.o .ln)
+
+  alias catw 'cat `which \!*`'
+  alias lessw 'less `which \!*`'
+
+  alias lls 'ls -altrh --color=tty'
+  alias lst 'ls -l \!* | awk \{s+=\$4\}END\{print\ s\}'
+  alias la 'ls -la --color=tty'
+  alias ll 'ls -l --color=tty'
+  alias lt 'ls -lt --color=tty'
+  alias lat 'ls -alt --color=tty'
+
+  alias gstat 'git status'
+  alias gcom 'git commit -am \!*'
+  alias gpush 'git push'
+  alias gpull 'git pull --ff-only'
+  alias gdiff 'git diff '
+  alias gdt 'git difftool -g -y '
+  alias glol 'git log --graph --decorate --pretty=oneline --abbrev-commit --all'
+
+  alias docker_rm_containers 'docker rm `docker ps -aq`'
+  alias docker_rm_images 'docker image rm `docker images -q`'
+
+  alias xx 'xrdb -override ~/.Xdefaults'
+  # alias cvs 'cvs -d :pserver:dixon@localhost:/cvs \!*'
+  alias cvs 'cvs -d :pserver:dixon@cvs.rap.ucar.edu:/cvs \!*'
+  alias cvsforward 'ssh -a -x -C -Y -R 2401:localhost:2401'
+  alias gitforward 'ssh -a -x -C -Y -R 2222:localhost:22 -R 8888:svn.eol.ucar.edu:80'
+  alias cvsin 'ssh -a -x -C -L 2401:cvs.rap.ucar.edu:2401'
+  alias cvsout 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401'
+  alias cvsclosed 'cvs -d :pserver:dixon@cvs:/cvs_closed \!*'
+
+  alias psg 'ps axww | sed -n "1p; \|sed .*/\!*/|d; /\!*/p"'
+  alias pslg 'ps alxww | sed -n "1p; \|sed .*/\!*/|d; /\!*/p"'
+  alias psug 'ps auxww | sed -n "1p; \|sed .*/\!*/|d; /\!*/p"'
+  alias psx 'ps xww | grep -v LogFilter'
+  alias ensc 'enscript -2r -fCourier7'
+
+  alias print_procmap 'print_procmap -hb -up -status'
+  alias PrintDataMap 'PrintDataMap -all -relt -lreg'
+  alias ppm 'print_procmap -hb -up -status'
+  alias pdm 'PrintDataMap -all -relt -lreg'
+  alias pcheck 'procmap_list_check -proc_list $PROJ_DIR/control/proc_list'
+  alias ph 'get_host_type'
+
+  alias xsede 'ssh -a -X -C mdixon@xsede.org'
+  alias jetstream 'ssh -a -X -C dixon@149.165.169.95'
+  alias yellowstone 'ssh -a -X -C dixon@yellowstone.ucar.edu'
+  alias cheyenne 'ssh -a -X -C dixon@cheyenne.ucar.edu'
+
+#  alias gate 'ssh -XY -J gate.ucar.edu -L 2222:titan.eol.ucar.edu:22 dixon@tikal.eol.ucar.edu'
+#  alias gate 'ssh -XY -J gate.ucar.edu -L 2222:titan.eol.ucar.edu:22 mdtest@titan.eol.ucar.edu'
+   alias gate 'ssh -XY -J gate.ucar.edu -L 2222:cirrus.eol.ucar.edu:22 rsfdata@cirrus.eol.ucar.edu'
+#  alias gate 'ssh -XY -J gate.ucar.edu -L 2222:titan.eol.ucar.edu:22 mdtest@titan.eol.ucar.edu'
+
+  alias gpc 'globalprotect connect --portal gp.ucar.edu'
+  alias gpd 'globalprotect disconnect'
+  alias gps 'globalprotect show --status'
+  
+  alias grsync "rsync -av --rsh='ssh -p2222' mdtest@localhost:"
+  alias rsyncFromSpol "rsync -av --rsh='ssh -p2222' spol@localhost:/data/spol/data.mgen2/time_series/spoldrx/save/20250815 ."
+
+  alias front 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 -p 22 dixon@front.eol.ucar.edu'
+  alias front8 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 -p 22 dixon@front8.eol.ucar.edu'
+  alias snow 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@snow.eol.ucar.edu'
+  alias sleet 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@sleet.eol.ucar.edu'
+  alias smaug 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@eol-smaug.eol.ucar.edu'
+  alias virga 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@eol-virga.eol.ucar.edu'
+  alias cirrus 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@cirrus.eol.ucar.edu'
+  alias fog 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@fog.eol.ucar.edu'
+  alias wind 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@wind.eol.ucar.edu'
+  alias finecast 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@eol-finecast.eol.ucar.edu'
+
+  alias rain 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@eol-rain.eol.ucar.edu'
+  alias rsnow 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@snow.eol.ucar.edu'
+  alias rsleet 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@sleet.eol.ucar.edu'
+  alias rcirrus 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@cirrus.eol.ucar.edu'
+  alias rfog 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@fog.eol.ucar.edu'
+  alias rsmaug 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@eol-smaug.eol.ucar.edu'
+  alias rvirga 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@eol-virga.eol.ucar.edu'
+  alias rwind 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@wind.eol.ucar.edu'
+  alias awind 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 apar@wind.eol.ucar.edu'
+  alias rfinecast 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 rsfdata@eol-finecast.eol.ucar.edu'
+  alias titan 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@titan.eol.ucar.edu'
+  alias mdtest 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 mdtest@titan.eol.ucar.edu'
+
+  alias altair 'ssh -a -X -Y lroot@eol-altair'
+
+  alias rsfdata 'su - rsfdata'
+
+  alias cvsu 'cvs update'
+  alias cvsun 'cvs update | grep -v tdrp'
+  alias cvssh 'ssh -a -x -C -R 2401:cvs:2401 aoaws@mail.aoaws.caa.gov.tw'
+  alias maui 'ssh -a -XY mdixon@maui.atmos.colostate.edu'
+  alias cvsleeds 'ssh -a -XY -C -R 2401:cvs:2401 dixon@k9.leeds.ac.uk'
+  alias cvsbon 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 mdixon@sv30.meteo.uni-bonn.de'
+
+  alias cvscp2 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 titan5@134.178.131.50'
+  alias cvsturkey 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 titan@212.175.180.97'
+  alias cvsipmet 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401 titan@200.145.151.199'
+  alias cvscemaden 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401 titan@200.145.151.131'
+  alias cvsdow 'ssh -p 22 -a -XY -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 titan5@eldora-router.fl-guest.ucar.edu'
+  alias saturn 'ssh -p 22 -a -XY -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 spol@128.117.85.36'
+  alias cvslab 'ssh -p 22 -a -XY -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 spol@128.117.85.36'
+  alias sshlab 'ssh -p 22 -a -XY -R 2222:localhost:22 -R 8888:svn.eol.ucar.edu:80 spol@spol-RV325.eol.ucar.edu'
+  alias spollab 'ssh -p 22 -a -XY spol@spol-router.eol.ucar.edu'
+  alias sshapar 'ssh -p 22 -a -XY apar@apar-router.eol.ucar.edu'
+  alias aparsim 'ssh -p 23 -a -XY apar@apar-router.eol.ucar.edu'
+  alias apartrenton 'ssh -p 24 -a -XY apar@apar-router.eol.ucar.edu'
+  alias apararchiver 'ssh -p 22 -a -XY apar@apar-router.eol.ucar.edu'
+  alias cswrtitan 'ssh -p 22150 -a -XY titan@spol-router.eol.ucar.edu'
+  alias cvscswr 'ssh -p 22 -a -XY -R 2401:cvs.rap.ucar.edu:2401 titan5@71.33.231.76'
+  alias sshcswr 'ssh -p 22 -a -XY titan5@71.33.231.78'
+  alias cvshangar 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401 titan5@121.215.243.79'
+  alias cvsbom 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401 mdixon@titandev6.bom.gov.au'
+  alias cvsuae 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 titan5@94.56.143.60'
+  alias control1 'ssh -p 20022 -a -x -X -C spol@spol.dyndns.org'
+  alias control2 'ssh -p 20023 -a -x -X -C spol@spol.dyndns.org'
+  alias control3 'ssh -p 20024 -XY -L 2222:mgen1:22 -L 3333:pgen1:22 spol@spol.dyndns.org'
+
+alias cvsgate 'ssh -p 23 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 spol@spol-gate.ucar.edu'
+  alias hcr-rack 'ssh -p 25 -a -XY hcr@spol-router.eol.ucar.edu'
+  alias hcr-archiver 'ssh -a -x -XY -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 -p 22 hcr@hcr-router.eol.ucar.edu'
+  alias cvsarchiver 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 -p 22 hcr@hcr-router.eol.ucar.edu'
+  alias cvsarchiver2 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 -p 22 hcr@hcr-router.dyndns.org'
+  alias cvshyper 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 -p 22 ads@hyper.raf-guest.ucar.edu'
+  alias cvsgv 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 -p 22 ads@rafgv.dyndns.org'
+
+  alias hsrl 'ssh -a -XY hsrl@hsrl-router.eol.ucar.edu'
+  alias hsrl-archiver 'ssh -p 23 -a -XY hsrl@hsrl-router.eol.ucar.edu'
+  alias hsrl-archiver2 'ssh -p 24 -a -XY hsrl@hsrl-router.eol.ucar.edu'
+
+  alias kaband 'ssh -a -XY -C spol@128.117.78.147'
+
+  alias cvsmgen6 'ssh -p 6666 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80  titan5@50.194.132.139'
+  alias cvsmgen7 'ssh -p 7777 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 titan5@dow7.ddns.net'
+  alias cvsmgen8 'ssh -p 8888 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 titan5@dow8.ddns.net'
+
+  alias cswr7 'ssh -p 7777 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -R 8888:svn.eol.ucar.edu:80 titan5@50.194.132.139'
+  alias cswr8 'ssh -p 8888 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 titan5@50.194.132.139'
+
+  alias tunnelspol 'ssh -a -x -X -C -R 5443:refr1:5445 -R 5440:refr1:5440 -L 2512:iq:2512 operator@spol-gate.ucar.edu'
+
+  alias ccvs 'cvs -d :pserver:anonymous@lab.chill.colostate.edu:/home/cvs \!*'
+  alias cvschill 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -p 20789 dixon@gw.chill.colostate.edu'
+  alias rsyncchill "rsync -av --rsh='ssh -p20789' dixon@xlab.chill.colostate.edu:"
+  alias rsyncspol "rsync -av --rsh='ssh -p20022' dspol@spol.dyndns.org:/tmp"
+
+  alias nc_send 'tar cf - . | pv | nc -l -l 5555 '
+  alias nc_receive 'nc snow 5555 | pv | tar xf - '
+
+  alias chilldisplay 'ssh -a -X -C -R 2401:cvs.rap.ucar.edu:2401 operator@128.117.82.183'
+
+  alias svngate 'ssh -p 23 -a -x -X -C -R 8888:svn.eol.ucar.edu:80 operator@spol-gate.ucar.edu'
+  alias cvsate 'ssh -p 24 -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 operator@spol-gate.ucar.edu'
+  alias tunnelspol 'ssh -a -x -X -C -R 5443:refr1:5445 -R 5440:refr1:5440 -L 2512:iq:2512 operator@spol-gate.ucar.edu'
+
+  alias cvschill 'ssh -a -x -X -C -R 2401:cvs.rap.ucar.edu:2401 -p 20789 dixon@gw.chill.colostate.edu'
+  alias rsyncchill "rsync -av --rsh='ssh -p20789' dixon@gw.chill.colostate.edu:"
+  alias chilldisplay 'ssh -a -X -C -R 2401:cvs.rap.ucar.edu:2401 operator@128.117.82.183'
+
+  alias cvsstacy 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 meso@mjo.atmos.washington.edu'
+  alias cvsbob 'ssh -a -XY -C -R 2401:cvs.rap.ucar.edu:2401 meso@bob.atmos.washington.edu'
+  alias stellar 'ssh -a -X -C -R 2401:cvs.rap.ucar.edu:2401 meso@stellar.atmos.washington.edu'
+  alias eyewall 'ssh -a -X -C -R 2401:cvs.rap.ucar.edu:2401 meso@eyewall.atmos.washington.edu'
+  alias shear 'ssh -a -X -C meso@shear.atmos.washington.edu'
+
+  alias tikal 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@tikal.eol.ucar.edu'
+  alias barolo 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@barolo.eol.ucar.edu'
+  alias k13 'ssh -a -X -Y -C dixon@k13.rap.ucar.edu'
+  alias k12 'ssh -a -X -Y -C dixon@k12.rap.ucar.edu'
+  alias k11 'ssh -a -X -Y -C dixon@k11.rap.ucar.edu'
+  alias k10 'ssh -a -X -Y -C dixon@k10.rap.ucar.edu'
+  alias k9 'ssh -a -X -Y -C dixon@k9.rap.ucar.edu'
+  alias k8 'ssh -a -X -Y -C dixon@k8.rap.ucar.edu'
+  alias k5 'ssh -a -X -Y -C dixon@k5.rap.ucar.edu'
+  alias dc3 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@rhsc.eol.ucar.edu'
+  alias sshxpol 'ssh -a -X -Y -C radarop@128.117.200.10'
+  alias xpol_camera 'ssh -L 8080:192.168.99.101:80 dixon@cumulus'
+  alias vapor 'ssh -a -X -Y -C ice@vapor'
+# alias xpol 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 radarop@128.117.47.56'
+  alias ice 'ssh -a -X -Y -C -R 2401:cvs.rap.ucar.edu:2401 dixon@ice.eol.ucar.edu'
+# alias titan 'ssh -a -X -Y -C dixon@titan.rap.ucar.edu'
+  alias ral 'ssh -a -X -Y -C dixon@daylight.rap.ucar.edu'
+  alias cp2data 'ssh titan5@cp2data'
+
+  alias cvsforward22 'ssh -p 22 -a -x -C -R 2401:localhost:2401'
+
+  alias cvsr 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401'
+  alias saws 'ssh titan5@196.25.43.229'
+  alias cvssaws 'ssh -a -x -C -R 2401:cvs.rap.ucar.edu:2401 titan5@196.25.43.229'
+
+# remote desktop to windows servers
+
+  alias windows 'krdc > /dev/null &'
+#  alias windows '~/rdesktop/bin/rdesktop -g2500x1500 -a 16 -d cit -u dixon -r disk:home=${HOME} eol-vdesktop.eol.ucar.edu &'
+  alias windows-lrose '~/rdesktop/bin/rdesktop -g2500x1500 -a 16 -d cit -u lrose -r disk:home=${HOME} eol-lrose-dev.eol.ucar.edu &'
+
+# rsync releases
+
+  alias rsyncReleases2exposure "rsync -av ~/releases/* dixon@exposure.rap.ucar.edu:/ftp/root/pub/titan"
+  alias rsyncReleases2titan "rsync -av ~/releases/* titan.eol.ucar.edu:releases"
+
+# save to dvd
+
+  alias savedvd 'growisofs -Z /dev/dvd -r -J'
+  alias saveiso2dvd 'growisofs -dvd-compat -Z /dev/dvd='
+
+#  if (-f ~/.dircolors) then
+#    eval `dircolors ~/.dircolors`      # Set up color-ls variables.
+#  endif
+
+endif
+

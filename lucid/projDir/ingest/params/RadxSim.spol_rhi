@@ -1,0 +1,197 @@
+/**********************************************************************
+ * TDRP params for RadxSim
+ **********************************************************************/
+
+//======================================================================
+//
+// RadxSim is intended to simulate Radx-type files in a realtime 
+//   scenario.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS REGISTRATION.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, diagnostic messages are printed to stderr.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Program instance for procmap registration.
+//
+// Type: string
+
+instance = "spol_rhi";
+
+//======================================================================
+//
+// INPUT SELECTION.
+//
+//======================================================================
+ 
+///////////// input_mode //////////////////////////////
+//
+// Input selection mode.
+//
+// FILE_LIST uses input_file_paths or paths supplied with -f. ARCHIVE 
+//   searches input_dir over the inclusive archive time range.
+//
+// Type: enum
+// Options:
+//     FILE_LIST
+//     ARCHIVE
+
+input_mode = ARCHIVE;
+
+///////////// input_file_paths ////////////////////////
+//
+// Input radar file paths.
+//
+// Used in FILE_LIST mode. Command-line paths supplied with -f are 
+//   appended.
+//
+// Type: string
+// 1D array - variable length.
+
+input_file_paths = {
+};
+
+///////////// input_dir ///////////////////////////////
+//
+// Archive input directory.
+//
+// Used in ARCHIVE mode.
+//
+// Type: string
+
+input_dir = "$(HOME)/data/lucid/precip/cfradial/spol/rhi";
+
+///////////// archive_start_time //////////////////////
+//
+// Inclusive archive start time.
+//
+// Format: yyyy mm dd hh mm ss. May be overridden with -start.
+//
+// Type: string
+
+archive_start_time = "2022 06 08 00 00 00";
+
+///////////// archive_end_time ////////////////////////
+//
+// Inclusive archive end time.
+//
+// Format: yyyy mm dd hh mm ss. May be overridden with -end.
+//
+// Type: string
+
+archive_end_time = "2022 06 08 08 00 00";
+
+///////////// continue_on_input_error /////////////////
+//
+// Continue after an unreadable or unsupported input file.
+//
+// If FALSE, the first input read error terminates the replay.
+//
+// Type: boolean
+
+continue_on_input_error = TRUE;
+
+//======================================================================
+//
+// REPLAY CLOCK.
+//
+//======================================================================
+ 
+///////////// replay_rate /////////////////////////////
+//
+// Replay speed multiplier.
+//
+// Must be greater than zero. 1 is realtime, 2 is twice realtime, and 
+//   0.5 is half realtime.
+//
+// Type: double
+
+replay_rate = 3;
+
+///////////// time_offset_secs ////////////////////////
+//
+// Offset applied to output data times, seconds.
+//
+// The offset changes data timestamps without changing replay waits.
+//
+// Type: double
+
+time_offset_secs = 0;
+
+///////////// repeat_replay ///////////////////////////
+//
+// Repeat the resolved input sequence.
+//
+// Type: boolean
+
+repeat_replay = TRUE;
+
+///////////// inter_cycle_gap_secs ////////////////////
+//
+// Gap between repeated replay cycles, seconds.
+//
+// Must be greater than zero when repeat_replay is TRUE.
+//
+// Type: double
+
+inter_cycle_gap_secs = 1;
+
+//======================================================================
+//
+// OUTPUT.
+//
+//======================================================================
+ 
+///////////// output_dir //////////////////////////////
+//
+// CfRadial output directory.
+//
+// Type: string
+
+output_dir = "$(HOME)/data/lucid/sim/cfradial/spol/rhi";
+
+///////////// append_day_dir_to_output_dir ////////////
+//
+// Append a yyyyMMdd day directory to output_dir.
+//
+// Type: boolean
+
+append_day_dir_to_output_dir = TRUE;
+
+///////////// append_year_dir_to_output_dir ///////////
+//
+// Append a yyyy year directory above the optional day directory.
+//
+// Type: boolean
+
+append_year_dir_to_output_dir = FALSE;
+
+///////////// compression_level ///////////////////////
+//
+// NetCDF compression level.
+//
+// Valid range is 0 through 9.
+//
+// Type: int
+
+compression_level = 4;
+
