@@ -1,0 +1,62 @@
+######################################################################
+# PRECIP - simulator
+#
+######################################################################
+# SYSTEM processes
+#
+Scout             primary  start_Scout               kill_Scout
+DataMapper        primary  start_DataMapper          kill_DataMapper
+#
+######################################################################
+# SERVER processes
+#
+DsServerMgr       primary  start_inst(no-params)     snuff_inst
+DsProxyServer     primary  start_inst(no-params)     snuff_inst
+DsMdvServer       manager  start_inst(no-params)     snuff_inst
+DsFmqServer       manager  start_inst(no-params)     snuff_inst
+DsSpdbServer      manager  start_inst(no-params)     snuff_inst
+DsFCopyServer     manager  start_inst(no-params)     snuff_inst
+Metar2Symprod     manager  start_inst(no-params)     snuff_inst
+Rhi2Symprod       manager  start_inst(no-params)     snuff_inst
+AcTrack2Symprod   manager  start_inst(no-params)     snuff_inst
+SunCal2Symprod    manager  start_inst(no-params)     snuff_inst
+Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
+#
+######################################################################
+# RHI tick marks
+#
+Rhi2Spdb      spol     start_inst(ingest)   snuff_inst
+######################################################################
+# GFS MODEL
+#
+MdvSim         gfs          start_inst(ingest)   snuff_inst
+######################################################################
+# WRF MODEL
+#
+MdvSim         wrf          start_inst(ingest)   snuff_inst
+######################################################################
+# HIMAWARO Satellite
+#
+MdvSim         himawari_ch03  start_inst(ingest)   snuff_inst
+######################################################################
+# LIGHTING
+#
+#SpdbSim       ltg          start_inst(ingest)   snuff_inst
+######################################################################
+# Surface stations
+#
+#SpdbSim       surface       start_inst(ingest)   snuff_inst
+#SpdbSim       gauge         start_inst(ingest)   snuff_inst
+#SpdbSim       metar         start_inst(ingest)   snuff_inst
+######################################################################
+# model-based soundings for PID
+#Mdv2SoundingSpdb    precip             start_inst(ingest) snuff_inst
+#
+######################################################################
+# PID, Precip rate
+#RadxRate           spoldrx.sur     start_inst(alg)       snuff_inst
+#RadxRate           spoldrx.rhi     start_inst(alg)       snuff_inst
+######################################################################
+# Cartesian transforms, conv/strat
+#Radx2Grid         RMA1.long_range   start_inst(alg)    snuff_inst
+#stratiform_filter RMA1              start_inst(alg)    snuff_inst
