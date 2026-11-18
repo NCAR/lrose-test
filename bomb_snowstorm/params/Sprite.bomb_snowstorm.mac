@@ -370,7 +370,7 @@ max_range_km = 150;
 // Type: int
 //
 
-main_window_width = 1800;
+main_window_width = 1200;
 
 ///////////// main_window_height //////////////////////
 //
@@ -390,7 +390,7 @@ main_window_height = 900;
 // Type: int
 //
 
-main_window_start_x = 1130;
+main_window_start_x = 100;
 
 ///////////// main_window_start_y /////////////////////
 //
@@ -810,7 +810,7 @@ ascope_y_axis_labels_inside = FALSE;
 // Type: int
 //
 
-waterfall_n_panels = 4;
+waterfall_n_panels = 2;
 
 ///////////// waterfall_plots /////////////////////////
 //
@@ -880,29 +880,7 @@ waterfall_plots = {
   }
   ,
   {
-    plot_type = WATERFALL_HC,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = FALSE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
     plot_type = WATERFALL_ZDR,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = FALSE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
-    plot_type = WATERFALL_PHIDP,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
@@ -1306,7 +1284,7 @@ waterfall_y_axis_labels_inside = FALSE;
 // Type: int
 //
 
-iqplots_n_rows = 3;
+iqplots_n_rows = 2;
 
 ///////////// iqplots_n_columns ///////////////////////
 //
@@ -1319,7 +1297,7 @@ iqplots_n_rows = 3;
 // Type: int
 //
 
-iqplots_n_columns = 2;
+iqplots_n_columns = 1;
 
 ///////////// iq_plots ////////////////////////////////
 //
@@ -1409,58 +1387,6 @@ iq_plots = {
     median_filter_len = 1,
     clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     plot_clutter_model = TRUE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_POWER,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    plot_clutter_model = TRUE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_POWER,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    plot_clutter_model = TRUE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_NONE,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_ZDR,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
-    plot_clutter_model = FALSE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_PHIDP,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
-    plot_clutter_model = FALSE,
     clutter_model_width_mps = 0.75,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
